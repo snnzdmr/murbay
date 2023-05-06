@@ -1,0 +1,4300 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m23
+	.eabi_attribute	6, 16	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.eabi_attribute	34, 0	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"menu.c"
+	.file	1 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "..\\Inc/menu.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../src/menu.c"
+	.section	.text.Menu_Enter,"ax",%progbits
+	.hidden	Menu_Enter                      @ -- Begin function Menu_Enter
+	.globl	Menu_Enter
+	.p2align	1
+	.type	Menu_Enter,%function
+	.code	16                              @ @Menu_Enter
+	.thumb_func
+Menu_Enter:
+.Lfunc_begin0:
+	.loc	2 8 0                           @ ../src/menu.c:8:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+.Ltmp0:
+	.loc	2 9 9 prologue_end              @ ../src/menu.c:9:9
+	ldr	r0, [sp, #4]
+	.loc	2 9 8 is_stmt 0                 @ ../src/menu.c:9:8
+	ldr	r0, [r0]
+	.loc	2 9 23                          @ ../src/menu.c:9:23
+	ldr	r0, [r0, #4]
+.Ltmp1:
+	.loc	2 9 7                           @ ../src/menu.c:9:7
+	cbz	r0, .LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+.Ltmp2:
+	.loc	2 10 25 is_stmt 1               @ ../src/menu.c:10:25
+	ldr	r1, [sp, #4]
+	.loc	2 10 24 is_stmt 0               @ ../src/menu.c:10:24
+	ldr	r0, [r1]
+	.loc	2 10 39                         @ ../src/menu.c:10:39
+	ldr	r0, [r0, #4]
+	.loc	2 10 21                         @ ../src/menu.c:10:21
+	str	r0, [r1]
+	.loc	2 11 8 is_stmt 1                @ ../src/menu.c:11:8
+	ldr	r0, [sp, #4]
+	.loc	2 11 7 is_stmt 0                @ ../src/menu.c:11:7
+	ldr	r0, [r0]
+	.loc	2 11 22                         @ ../src/menu.c:11:22
+	ldr	r0, [r0]
+	.loc	2 11 6                          @ ../src/menu.c:11:6
+	blx	r0
+	.loc	2 12 4 is_stmt 1                @ ../src/menu.c:12:4
+	b	.LBB0_2
+.Ltmp3:
+.LBB0_2:
+	.loc	2 13 1                          @ ../src/menu.c:13:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp4:
+.Lfunc_end0:
+	.size	Menu_Enter, .Lfunc_end0-Menu_Enter
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.Menu_Exit,"ax",%progbits
+	.hidden	Menu_Exit                       @ -- Begin function Menu_Exit
+	.globl	Menu_Exit
+	.p2align	1
+	.type	Menu_Exit,%function
+	.code	16                              @ @Menu_Exit
+	.thumb_func
+Menu_Exit:
+.Lfunc_begin1:
+	.loc	2 15 0                          @ ../src/menu.c:15:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+.Ltmp5:
+	.loc	2 16 8 prologue_end             @ ../src/menu.c:16:8
+	ldr	r0, [sp, #4]
+	.loc	2 16 7 is_stmt 0                @ ../src/menu.c:16:7
+	ldr	r0, [r0]
+	.loc	2 16 22                         @ ../src/menu.c:16:22
+	ldr	r0, [r0, #8]
+.Ltmp6:
+	.loc	2 16 6                          @ ../src/menu.c:16:6
+	cbz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+.Ltmp7:
+	.loc	2 17 23 is_stmt 1               @ ../src/menu.c:17:23
+	ldr	r1, [sp, #4]
+	.loc	2 17 22 is_stmt 0               @ ../src/menu.c:17:22
+	ldr	r0, [r1]
+	.loc	2 17 37                         @ ../src/menu.c:17:37
+	ldr	r0, [r0, #8]
+	.loc	2 17 19                         @ ../src/menu.c:17:19
+	str	r0, [r1]
+	.loc	2 18 8 is_stmt 1                @ ../src/menu.c:18:8
+	ldr	r0, [sp, #4]
+	.loc	2 18 7 is_stmt 0                @ ../src/menu.c:18:7
+	ldr	r0, [r0]
+	.loc	2 18 22                         @ ../src/menu.c:18:22
+	ldr	r0, [r0]
+	.loc	2 18 6                          @ ../src/menu.c:18:6
+	blx	r0
+	.loc	2 20 3 is_stmt 1                @ ../src/menu.c:20:3
+	b	.LBB1_2
+.Ltmp8:
+.LBB1_2:
+	.loc	2 21 1                          @ ../src/menu.c:21:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp9:
+.Lfunc_end1:
+	.size	Menu_Exit, .Lfunc_end1-Menu_Exit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.Menu_Up,"ax",%progbits
+	.hidden	Menu_Up                         @ -- Begin function Menu_Up
+	.globl	Menu_Up
+	.p2align	1
+	.type	Menu_Up,%function
+	.code	16                              @ @Menu_Up
+	.thumb_func
+Menu_Up:
+.Lfunc_begin2:
+	.loc	2 23 0                          @ ../src/menu.c:23:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+.Ltmp10:
+	.loc	2 24 8 prologue_end             @ ../src/menu.c:24:8
+	ldr	r0, [sp, #4]
+	.loc	2 24 7 is_stmt 0                @ ../src/menu.c:24:7
+	ldr	r0, [r0]
+	.loc	2 24 22                         @ ../src/menu.c:24:22
+	ldr	r0, [r0, #12]
+.Ltmp11:
+	.loc	2 24 6                          @ ../src/menu.c:24:6
+	cbz	r0, .LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+.Ltmp12:
+	.loc	2 25 23 is_stmt 1               @ ../src/menu.c:25:23
+	ldr	r1, [sp, #4]
+	.loc	2 25 22 is_stmt 0               @ ../src/menu.c:25:22
+	ldr	r0, [r1]
+	.loc	2 25 37                         @ ../src/menu.c:25:37
+	ldr	r0, [r0, #12]
+	.loc	2 25 19                         @ ../src/menu.c:25:19
+	str	r0, [r1]
+	.loc	2 26 7 is_stmt 1                @ ../src/menu.c:26:7
+	ldr	r0, [sp, #4]
+	.loc	2 26 6 is_stmt 0                @ ../src/menu.c:26:6
+	ldr	r0, [r0]
+	.loc	2 26 21                         @ ../src/menu.c:26:21
+	ldr	r0, [r0]
+	.loc	2 26 5                          @ ../src/menu.c:26:5
+	blx	r0
+	.loc	2 28 3 is_stmt 1                @ ../src/menu.c:28:3
+	b	.LBB2_2
+.Ltmp13:
+.LBB2_2:
+	.loc	2 29 1                          @ ../src/menu.c:29:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp14:
+.Lfunc_end2:
+	.size	Menu_Up, .Lfunc_end2-Menu_Up
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.Menu_Down,"ax",%progbits
+	.hidden	Menu_Down                       @ -- Begin function Menu_Down
+	.globl	Menu_Down
+	.p2align	1
+	.type	Menu_Down,%function
+	.code	16                              @ @Menu_Down
+	.thumb_func
+Menu_Down:
+.Lfunc_begin3:
+	.loc	2 31 0                          @ ../src/menu.c:31:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+.Ltmp15:
+	.loc	2 32 9 prologue_end             @ ../src/menu.c:32:9
+	ldr	r0, [sp, #4]
+	.loc	2 32 8 is_stmt 0                @ ../src/menu.c:32:8
+	ldr	r0, [r0]
+	.loc	2 32 24                         @ ../src/menu.c:32:24
+	ldr	r0, [r0, #16]
+.Ltmp16:
+	.loc	2 32 7                          @ ../src/menu.c:32:7
+	cbz	r0, .LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+.Ltmp17:
+	.loc	2 33 22 is_stmt 1               @ ../src/menu.c:33:22
+	ldr	r1, [sp, #4]
+	.loc	2 33 21 is_stmt 0               @ ../src/menu.c:33:21
+	ldr	r0, [r1]
+	.loc	2 33 36                         @ ../src/menu.c:33:36
+	ldr	r0, [r0, #16]
+	.loc	2 33 18                         @ ../src/menu.c:33:18
+	str	r0, [r1]
+	.loc	2 34 7 is_stmt 1                @ ../src/menu.c:34:7
+	ldr	r0, [sp, #4]
+	.loc	2 34 6 is_stmt 0                @ ../src/menu.c:34:6
+	ldr	r0, [r0]
+	.loc	2 34 21                         @ ../src/menu.c:34:21
+	ldr	r0, [r0]
+	.loc	2 34 5                          @ ../src/menu.c:34:5
+	blx	r0
+	.loc	2 36 3 is_stmt 1                @ ../src/menu.c:36:3
+	b	.LBB3_2
+.Ltmp18:
+.LBB3_2:
+	.loc	2 37 1                          @ ../src/menu.c:37:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp19:
+.Lfunc_end3:
+	.size	Menu_Down, .Lfunc_end3-Menu_Down
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.buildMenu,"ax",%progbits
+	.hidden	buildMenu                       @ -- Begin function buildMenu
+	.globl	buildMenu
+	.p2align	1
+	.type	buildMenu,%function
+	.code	16                              @ @buildMenu
+	.thumb_func
+buildMenu:
+.Lfunc_begin4:
+	.loc	2 39 0                          @ ../src/menu.c:39:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, lr}
+	push	{r4, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r4, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	ldr	r4, [sp, #28]
+	ldr	r4, [sp, #24]
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	str	r3, [sp]
+.Ltmp20:
+	.loc	2 40 23 prologue_end            @ ../src/menu.c:40:23
+	ldr	r0, [sp, #4]
+	.loc	2 40 2 is_stmt 0                @ ../src/menu.c:40:2
+	ldr	r1, [sp, #12]
+	.loc	2 40 21                         @ ../src/menu.c:40:21
+	str	r0, [r1, #4]
+	.loc	2 41 22 is_stmt 1               @ ../src/menu.c:41:22
+	ldr	r0, [sp]
+	.loc	2 41 2 is_stmt 0                @ ../src/menu.c:41:2
+	ldr	r1, [sp, #12]
+	.loc	2 41 20                         @ ../src/menu.c:41:20
+	str	r0, [r1, #8]
+	.loc	2 42 20 is_stmt 1               @ ../src/menu.c:42:20
+	ldr	r0, [sp, #24]
+	.loc	2 42 2 is_stmt 0                @ ../src/menu.c:42:2
+	ldr	r1, [sp, #12]
+	.loc	2 42 18                         @ ../src/menu.c:42:18
+	str	r0, [r1, #12]
+	.loc	2 43 22 is_stmt 1               @ ../src/menu.c:43:22
+	ldr	r0, [sp, #28]
+	.loc	2 43 2 is_stmt 0                @ ../src/menu.c:43:2
+	ldr	r1, [sp, #12]
+	.loc	2 43 20                         @ ../src/menu.c:43:20
+	str	r0, [r1, #16]
+	.loc	2 44 31 is_stmt 1               @ ../src/menu.c:44:31
+	ldr	r0, [sp, #8]
+	.loc	2 44 2 is_stmt 0                @ ../src/menu.c:44:2
+	ldr	r1, [sp, #12]
+	.loc	2 44 29                         @ ../src/menu.c:44:29
+	str	r0, [r1]
+	.loc	2 46 1 is_stmt 1                @ ../src/menu.c:46:1
+	add	sp, #16
+	pop	{r4, pc}
+.Ltmp21:
+.Lfunc_end4:
+	.size	buildMenu, .Lfunc_end4-buildMenu
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.Menu_Init,"ax",%progbits
+	.hidden	Menu_Init                       @ -- Begin function Menu_Init
+	.globl	Menu_Init
+	.p2align	2
+	.type	Menu_Init,%function
+	.code	16                              @ @Menu_Init
+	.thumb_func
+Menu_Init:
+.Lfunc_begin5:
+	.loc	2 69 0                          @ ../src/menu.c:69:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#156
+	sub	sp, #156
+	.cfi_def_cfa_offset 176
+.Ltmp22:
+	.loc	2 71 9 prologue_end             @ ../src/menu.c:71:9
+	ldr	r0, __arm_cp.5_0
+	str	r0, [sp, #36]                   @ 4-byte Spill
+	str	r0, [sp, #152]
+	movs	r3, #0
+	.loc	2 74 2                          @ ../src/menu.c:74:2
+	str	r3, [sp, #144]                  @ 4-byte Spill
+	str	r3, [sp, #4]
+	str	r3, [sp]
+	ldr	r1, __arm_cp.5_1
+	ldr	r2, __arm_cp.5_2
+	str	r2, [sp, #24]                   @ 4-byte Spill
+	bl	buildMenu
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 75 2                          @ ../src/menu.c:75:2
+	ldr	r1, __arm_cp.5_3
+	str	r1, [sp, #56]                   @ 4-byte Spill
+	str	r1, [sp, #4]
+	ldr	r1, __arm_cp.5_4
+	str	r1, [sp, #32]                   @ 4-byte Spill
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_5
+	bl	buildMenu
+	ldr	r1, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r0, [sp, #56]                   @ 4-byte Reload
+	.loc	2 76 2                          @ ../src/menu.c:76:2
+	ldr	r2, __arm_cp.5_6
+	str	r2, [sp, #72]                   @ 4-byte Spill
+	str	r2, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_7
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	ldr	r2, __arm_cp.5_8
+	str	r2, [sp, #44]                   @ 4-byte Spill
+	bl	buildMenu
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r1, [sp, #56]                   @ 4-byte Reload
+	ldr	r0, [sp, #72]                   @ 4-byte Reload
+	.loc	2 77 2                          @ ../src/menu.c:77:2
+	ldr	r2, __arm_cp.5_9
+	str	r2, [sp, #92]                   @ 4-byte Spill
+	str	r2, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_10
+	ldr	r7, __arm_cp.5_11
+	mov	r2, r7
+	bl	buildMenu
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r1, [sp, #72]                   @ 4-byte Reload
+	ldr	r0, [sp, #92]                   @ 4-byte Reload
+	.loc	2 78 2                          @ ../src/menu.c:78:2
+	ldr	r2, __arm_cp.5_12
+	str	r2, [sp, #104]                  @ 4-byte Spill
+	str	r2, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_13
+	ldr	r6, __arm_cp.5_14
+	mov	r2, r6
+	bl	buildMenu
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #92]                   @ 4-byte Reload
+	ldr	r0, [sp, #104]                  @ 4-byte Reload
+	.loc	2 79 2                          @ ../src/menu.c:79:2
+	ldr	r4, __arm_cp.5_15
+	str	r4, [sp, #116]                  @ 4-byte Spill
+	str	r4, [sp, #4]
+	str	r2, [sp]
+	ldr	r2, __arm_cp.5_16
+	str	r2, [sp, #96]                   @ 4-byte Spill
+	bl	buildMenu
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r0, [sp, #116]                  @ 4-byte Reload
+	.loc	2 80 2                          @ ../src/menu.c:80:2
+	ldr	r1, __arm_cp.5_17
+	str	r1, [sp, #132]                  @ 4-byte Spill
+	str	r1, [sp, #4]
+	ldr	r5, __arm_cp.5_18
+	str	r5, [sp]
+	ldr	r1, __arm_cp.5_19
+	mov	r2, r5
+	bl	buildMenu
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r1, [sp, #104]                  @ 4-byte Reload
+	ldr	r0, [sp, #132]                  @ 4-byte Reload
+	.loc	2 81 2                          @ ../src/menu.c:81:2
+	ldr	r2, __arm_cp.5_20
+	str	r2, [sp, #148]                  @ 4-byte Spill
+	str	r2, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_21
+	ldr	r4, __arm_cp.5_22
+	mov	r2, r4
+	bl	buildMenu
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r1, [sp, #116]                  @ 4-byte Reload
+	ldr	r0, [sp, #148]                  @ 4-byte Reload
+	.loc	2 82 2                          @ ../src/menu.c:82:2
+	ldr	r2, __arm_cp.5_23
+	str	r2, [sp, #16]                   @ 4-byte Spill
+	str	r2, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_24
+	ldr	r2, __arm_cp.5_25
+	str	r2, [sp, #136]                  @ 4-byte Spill
+	bl	buildMenu
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r1, [sp, #132]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 83 2                          @ ../src/menu.c:83:2
+	ldr	r0, __arm_cp.5_26
+	str	r0, [sp, #28]                   @ 4-byte Spill
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_27
+	bl	buildMenu
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	ldr	r1, [sp, #148]                  @ 4-byte Reload
+	.loc	2 84 2                          @ ../src/menu.c:84:2
+	ldr	r0, __arm_cp.5_28
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_29
+	bl	buildMenu
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	ldr	r2, [sp, #32]                   @ 4-byte Reload
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	.loc	2 85 2                          @ ../src/menu.c:85:2
+	str	r2, [sp, #4]
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_30
+	bl	buildMenu
+	ldr	r2, [sp, #24]                   @ 4-byte Reload
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	.loc	2 86 2                          @ ../src/menu.c:86:2
+	str	r2, [sp, #4]
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_31
+	bl	buildMenu
+	ldr	r0, [sp, #44]                   @ 4-byte Reload
+	ldr	r3, [sp, #56]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 93 2                          @ ../src/menu.c:93:2
+	ldr	r1, __arm_cp.5_32
+	str	r1, [sp, #40]                   @ 4-byte Spill
+	str	r1, [sp, #4]
+	ldr	r1, __arm_cp.5_33
+	str	r1, [sp, #52]                   @ 4-byte Spill
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_34
+	bl	buildMenu
+	ldr	r1, [sp, #44]                   @ 4-byte Reload
+	ldr	r3, [sp, #56]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 94 2                          @ ../src/menu.c:94:2
+	ldr	r0, __arm_cp.5_35
+	str	r0, [sp, #48]                   @ 4-byte Spill
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_36
+	bl	buildMenu
+	ldr	r1, [sp, #40]                   @ 4-byte Reload
+	ldr	r0, [sp, #52]                   @ 4-byte Reload
+	ldr	r3, [sp, #56]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 95 2                          @ ../src/menu.c:95:2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #48]                   @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_37
+	bl	buildMenu
+	ldr	r2, [sp, #44]                   @ 4-byte Reload
+	ldr	r1, [sp, #48]                   @ 4-byte Reload
+	ldr	r0, [sp, #52]                   @ 4-byte Reload
+	ldr	r3, [sp, #56]                   @ 4-byte Reload
+	.loc	2 96 2                          @ ../src/menu.c:96:2
+	str	r2, [sp, #4]
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_38
+	bl	buildMenu
+	ldr	r3, [sp, #72]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 98 2                          @ ../src/menu.c:98:2
+	ldr	r0, __arm_cp.5_39
+	str	r0, [sp, #60]                   @ 4-byte Spill
+	str	r0, [sp, #4]
+	ldr	r0, __arm_cp.5_40
+	str	r0, [sp, #68]                   @ 4-byte Spill
+	str	r0, [sp]
+	ldr	r1, __arm_cp.5_41
+	mov	r0, r7
+	bl	buildMenu
+	ldr	r0, [sp, #60]                   @ 4-byte Reload
+	ldr	r3, [sp, #72]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 99 2                          @ ../src/menu.c:99:2
+	ldr	r1, __arm_cp.5_42
+	str	r1, [sp, #64]                   @ 4-byte Spill
+	str	r1, [sp, #4]
+	str	r7, [sp]
+	ldr	r1, __arm_cp.5_43
+	bl	buildMenu
+	ldr	r1, [sp, #60]                   @ 4-byte Reload
+	ldr	r0, [sp, #68]                   @ 4-byte Reload
+	ldr	r3, [sp, #72]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 100 2                         @ ../src/menu.c:100:2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #64]                   @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_44
+	bl	buildMenu
+	ldr	r1, [sp, #64]                   @ 4-byte Reload
+	ldr	r0, [sp, #68]                   @ 4-byte Reload
+	ldr	r3, [sp, #72]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 101 2                         @ ../src/menu.c:101:2
+	str	r7, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_45
+	bl	buildMenu
+	ldr	r3, [sp, #92]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 103 2                         @ ../src/menu.c:103:2
+	ldr	r0, __arm_cp.5_46
+	str	r0, [sp, #76]                   @ 4-byte Spill
+	str	r0, [sp, #4]
+	ldr	r7, __arm_cp.5_47
+	str	r7, [sp, #88]                   @ 4-byte Spill
+	str	r7, [sp]
+	ldr	r1, __arm_cp.5_48
+	mov	r0, r6
+	bl	buildMenu
+	ldr	r0, [sp, #76]                   @ 4-byte Reload
+	ldr	r3, [sp, #92]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 104 2                         @ ../src/menu.c:104:2
+	ldr	r1, __arm_cp.5_49
+	str	r1, [sp, #80]                   @ 4-byte Spill
+	str	r1, [sp, #4]
+	str	r6, [sp]
+	ldr	r1, __arm_cp.5_50
+	bl	buildMenu
+	ldr	r1, [sp, #76]                   @ 4-byte Reload
+	ldr	r3, [sp, #92]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 105 2                         @ ../src/menu.c:105:2
+	ldr	r0, __arm_cp.5_51
+	str	r0, [sp, #84]                   @ 4-byte Spill
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #80]                   @ 4-byte Reload
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_52
+	bl	buildMenu
+	ldr	r1, [sp, #80]                   @ 4-byte Reload
+	ldr	r0, [sp, #84]                   @ 4-byte Reload
+	ldr	r3, [sp, #92]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 106 2                         @ ../src/menu.c:106:2
+	str	r7, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_53
+	bl	buildMenu
+	ldr	r1, [sp, #84]                   @ 4-byte Reload
+	ldr	r0, [sp, #88]                   @ 4-byte Reload
+	ldr	r3, [sp, #92]                   @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 107 2                         @ ../src/menu.c:107:2
+	str	r6, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_54
+	bl	buildMenu
+	ldr	r0, [sp, #96]                   @ 4-byte Reload
+	ldr	r3, [sp, #104]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 109 2                         @ ../src/menu.c:109:2
+	ldr	r1, __arm_cp.5_55
+	str	r1, [sp, #100]                  @ 4-byte Spill
+	str	r1, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_56
+	bl	buildMenu
+	ldr	r1, [sp, #96]                   @ 4-byte Reload
+	ldr	r0, [sp, #100]                  @ 4-byte Reload
+	ldr	r3, [sp, #104]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 110 2                         @ ../src/menu.c:110:2
+	str	r1, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_57
+	bl	buildMenu
+	ldr	r3, [sp, #116]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 112 2                         @ ../src/menu.c:112:2
+	ldr	r0, __arm_cp.5_58
+	str	r0, [sp, #108]                  @ 4-byte Spill
+	str	r0, [sp, #4]
+	ldr	r0, __arm_cp.5_59
+	str	r0, [sp, #112]                  @ 4-byte Spill
+	str	r0, [sp]
+	ldr	r1, __arm_cp.5_60
+	mov	r0, r5
+	bl	buildMenu
+	ldr	r0, [sp, #108]                  @ 4-byte Reload
+	ldr	r1, [sp, #112]                  @ 4-byte Reload
+	ldr	r3, [sp, #116]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 113 2                         @ ../src/menu.c:113:2
+	str	r1, [sp, #4]
+	str	r5, [sp]
+	ldr	r1, __arm_cp.5_61
+	bl	buildMenu
+	ldr	r1, [sp, #108]                  @ 4-byte Reload
+	ldr	r0, [sp, #112]                  @ 4-byte Reload
+	ldr	r3, [sp, #116]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 114 2                         @ ../src/menu.c:114:2
+	str	r5, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_62
+	bl	buildMenu
+	ldr	r3, [sp, #132]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 116 2                         @ ../src/menu.c:116:2
+	ldr	r0, __arm_cp.5_63
+	str	r0, [sp, #120]                  @ 4-byte Spill
+	str	r0, [sp, #4]
+	ldr	r5, __arm_cp.5_64
+	str	r5, [sp, #128]                  @ 4-byte Spill
+	str	r5, [sp]
+	ldr	r1, __arm_cp.5_65
+	mov	r0, r4
+	bl	buildMenu
+	ldr	r0, [sp, #120]                  @ 4-byte Reload
+	ldr	r3, [sp, #132]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 117 2                         @ ../src/menu.c:117:2
+	ldr	r1, __arm_cp.5_66
+	str	r1, [sp, #124]                  @ 4-byte Spill
+	str	r1, [sp, #4]
+	str	r4, [sp]
+	ldr	r1, __arm_cp.5_67
+	bl	buildMenu
+	ldr	r1, [sp, #120]                  @ 4-byte Reload
+	ldr	r0, [sp, #124]                  @ 4-byte Reload
+	ldr	r3, [sp, #132]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 118 2                         @ ../src/menu.c:118:2
+	str	r5, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_68
+	bl	buildMenu
+	ldr	r1, [sp, #124]                  @ 4-byte Reload
+	ldr	r0, [sp, #128]                  @ 4-byte Reload
+	ldr	r3, [sp, #132]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	.loc	2 119 2                         @ ../src/menu.c:119:2
+	str	r4, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_69
+	bl	buildMenu
+	ldr	r0, [sp, #136]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	ldr	r3, [sp, #148]                  @ 4-byte Reload
+	.loc	2 121 2                         @ ../src/menu.c:121:2
+	ldr	r1, __arm_cp.5_70
+	str	r1, [sp, #140]                  @ 4-byte Spill
+	str	r1, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_71
+	bl	buildMenu
+	ldr	r1, [sp, #136]                  @ 4-byte Reload
+	ldr	r0, [sp, #140]                  @ 4-byte Reload
+	ldr	r2, [sp, #144]                  @ 4-byte Reload
+	ldr	r3, [sp, #148]                  @ 4-byte Reload
+	.loc	2 122 2                         @ ../src/menu.c:122:2
+	str	r1, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, __arm_cp.5_72
+	bl	buildMenu
+	.loc	2 125 1                         @ ../src/menu.c:125:1
+	add	sp, #156
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp23:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.5_0:
+	.long	root
+.Lcpi_end0:
+	.size	__arm_cp.5_0, .Lcpi_end0-__arm_cp.5_0
+__arm_cp.5_1:
+	.long	shw_mainScreen
+.Lcpi_end1:
+	.size	__arm_cp.5_1, .Lcpi_end1-__arm_cp.5_1
+__arm_cp.5_2:
+	.long	f0_cal
+.Lcpi_end2:
+	.size	__arm_cp.5_2, .Lcpi_end2-__arm_cp.5_2
+__arm_cp.5_3:
+	.long	f1_resolution
+.Lcpi_end3:
+	.size	__arm_cp.5_3, .Lcpi_end3-__arm_cp.5_3
+__arm_cp.5_4:
+	.long	f11_rs232
+.Lcpi_end4:
+	.size	__arm_cp.5_4, .Lcpi_end4-__arm_cp.5_4
+__arm_cp.5_5:
+	.long	shw_calibration
+.Lcpi_end5:
+	.size	__arm_cp.5_5, .Lcpi_end5-__arm_cp.5_5
+__arm_cp.5_6:
+	.long	f2_capacity
+.Lcpi_end6:
+	.size	__arm_cp.5_6, .Lcpi_end6-__arm_cp.5_6
+__arm_cp.5_7:
+	.long	shw_resolution
+.Lcpi_end7:
+	.size	__arm_cp.5_7, .Lcpi_end7-__arm_cp.5_7
+__arm_cp.5_8:
+	.long	f1a_3000
+.Lcpi_end8:
+	.size	__arm_cp.5_8, .Lcpi_end8-__arm_cp.5_8
+__arm_cp.5_9:
+	.long	f3_decimalPoint
+.Lcpi_end9:
+	.size	__arm_cp.5_9, .Lcpi_end9-__arm_cp.5_9
+__arm_cp.5_10:
+	.long	shw_capacity
+.Lcpi_end10:
+	.size	__arm_cp.5_10, .Lcpi_end10-__arm_cp.5_10
+__arm_cp.5_11:
+	.long	f2a_3
+.Lcpi_end11:
+	.size	__arm_cp.5_11, .Lcpi_end11-__arm_cp.5_11
+__arm_cp.5_12:
+	.long	f4_fixFloat
+.Lcpi_end12:
+	.size	__arm_cp.5_12, .Lcpi_end12-__arm_cp.5_12
+__arm_cp.5_13:
+	.long	shw_decimalPoint
+.Lcpi_end13:
+	.size	__arm_cp.5_13, .Lcpi_end13-__arm_cp.5_13
+__arm_cp.5_14:
+	.long	f3a
+.Lcpi_end14:
+	.size	__arm_cp.5_14, .Lcpi_end14-__arm_cp.5_14
+__arm_cp.5_15:
+	.long	f5_speed
+.Lcpi_end15:
+	.size	__arm_cp.5_15, .Lcpi_end15-__arm_cp.5_15
+__arm_cp.5_16:
+	.long	f4a_fix
+.Lcpi_end16:
+	.size	__arm_cp.5_16, .Lcpi_end16-__arm_cp.5_16
+__arm_cp.5_17:
+	.long	f6_minCoin
+.Lcpi_end17:
+	.size	__arm_cp.5_17, .Lcpi_end17-__arm_cp.5_17
+__arm_cp.5_18:
+	.long	f5a_slow
+.Lcpi_end18:
+	.size	__arm_cp.5_18, .Lcpi_end18-__arm_cp.5_18
+__arm_cp.5_19:
+	.long	shw_speed
+.Lcpi_end19:
+	.size	__arm_cp.5_19, .Lcpi_end19-__arm_cp.5_19
+__arm_cp.5_20:
+	.long	f7_multiTare
+.Lcpi_end20:
+	.size	__arm_cp.5_20, .Lcpi_end20-__arm_cp.5_20
+__arm_cp.5_21:
+	.long	shw_minCoin
+.Lcpi_end21:
+	.size	__arm_cp.5_21, .Lcpi_end21-__arm_cp.5_21
+__arm_cp.5_22:
+	.long	f6a_1
+.Lcpi_end22:
+	.size	__arm_cp.5_22, .Lcpi_end22-__arm_cp.5_22
+__arm_cp.5_23:
+	.long	f8
+.Lcpi_end23:
+	.size	__arm_cp.5_23, .Lcpi_end23-__arm_cp.5_23
+__arm_cp.5_24:
+	.long	shw_multiTare
+.Lcpi_end24:
+	.size	__arm_cp.5_24, .Lcpi_end24-__arm_cp.5_24
+__arm_cp.5_25:
+	.long	f7a_on
+.Lcpi_end25:
+	.size	__arm_cp.5_25, .Lcpi_end25-__arm_cp.5_25
+__arm_cp.5_26:
+	.long	f9_gravity
+.Lcpi_end26:
+	.size	__arm_cp.5_26, .Lcpi_end26-__arm_cp.5_26
+__arm_cp.5_27:
+	.long	shw_f8
+.Lcpi_end27:
+	.size	__arm_cp.5_27, .Lcpi_end27-__arm_cp.5_27
+__arm_cp.5_28:
+	.long	f10_reset
+.Lcpi_end28:
+	.size	__arm_cp.5_28, .Lcpi_end28-__arm_cp.5_28
+__arm_cp.5_29:
+	.long	shw_gravity
+.Lcpi_end29:
+	.size	__arm_cp.5_29, .Lcpi_end29-__arm_cp.5_29
+__arm_cp.5_30:
+	.long	shw_reset
+.Lcpi_end30:
+	.size	__arm_cp.5_30, .Lcpi_end30-__arm_cp.5_30
+__arm_cp.5_31:
+	.long	shw_rs232
+.Lcpi_end31:
+	.size	__arm_cp.5_31, .Lcpi_end31-__arm_cp.5_31
+__arm_cp.5_32:
+	.long	f1b_6000
+.Lcpi_end32:
+	.size	__arm_cp.5_32, .Lcpi_end32-__arm_cp.5_32
+__arm_cp.5_33:
+	.long	f1d_dual2
+.Lcpi_end33:
+	.size	__arm_cp.5_33, .Lcpi_end33-__arm_cp.5_33
+__arm_cp.5_34:
+	.long	shw_f1a_3000
+.Lcpi_end34:
+	.size	__arm_cp.5_34, .Lcpi_end34-__arm_cp.5_34
+__arm_cp.5_35:
+	.long	f1c_dual1
+.Lcpi_end35:
+	.size	__arm_cp.5_35, .Lcpi_end35-__arm_cp.5_35
+__arm_cp.5_36:
+	.long	shw_f1b_6000
+.Lcpi_end36:
+	.size	__arm_cp.5_36, .Lcpi_end36-__arm_cp.5_36
+__arm_cp.5_37:
+	.long	shw_f1c_dual1
+.Lcpi_end37:
+	.size	__arm_cp.5_37, .Lcpi_end37-__arm_cp.5_37
+__arm_cp.5_38:
+	.long	shw_f1d_dual2
+.Lcpi_end38:
+	.size	__arm_cp.5_38, .Lcpi_end38-__arm_cp.5_38
+__arm_cp.5_39:
+	.long	f2b_6
+.Lcpi_end39:
+	.size	__arm_cp.5_39, .Lcpi_end39-__arm_cp.5_39
+__arm_cp.5_40:
+	.long	f2d_30
+.Lcpi_end40:
+	.size	__arm_cp.5_40, .Lcpi_end40-__arm_cp.5_40
+__arm_cp.5_41:
+	.long	shw_f2a_3
+.Lcpi_end41:
+	.size	__arm_cp.5_41, .Lcpi_end41-__arm_cp.5_41
+__arm_cp.5_42:
+	.long	f2c_15
+.Lcpi_end42:
+	.size	__arm_cp.5_42, .Lcpi_end42-__arm_cp.5_42
+__arm_cp.5_43:
+	.long	shw_f2b_6
+.Lcpi_end43:
+	.size	__arm_cp.5_43, .Lcpi_end43-__arm_cp.5_43
+__arm_cp.5_44:
+	.long	shw_f2c_15
+.Lcpi_end44:
+	.size	__arm_cp.5_44, .Lcpi_end44-__arm_cp.5_44
+__arm_cp.5_45:
+	.long	shw_f2d_30
+.Lcpi_end45:
+	.size	__arm_cp.5_45, .Lcpi_end45-__arm_cp.5_45
+__arm_cp.5_46:
+	.long	f3b
+.Lcpi_end46:
+	.size	__arm_cp.5_46, .Lcpi_end46-__arm_cp.5_46
+__arm_cp.5_47:
+	.long	f3e
+.Lcpi_end47:
+	.size	__arm_cp.5_47, .Lcpi_end47-__arm_cp.5_47
+__arm_cp.5_48:
+	.long	shw_f3a
+.Lcpi_end48:
+	.size	__arm_cp.5_48, .Lcpi_end48-__arm_cp.5_48
+__arm_cp.5_49:
+	.long	f3c
+.Lcpi_end49:
+	.size	__arm_cp.5_49, .Lcpi_end49-__arm_cp.5_49
+__arm_cp.5_50:
+	.long	shw_f3b
+.Lcpi_end50:
+	.size	__arm_cp.5_50, .Lcpi_end50-__arm_cp.5_50
+__arm_cp.5_51:
+	.long	f3d
+.Lcpi_end51:
+	.size	__arm_cp.5_51, .Lcpi_end51-__arm_cp.5_51
+__arm_cp.5_52:
+	.long	shw_f3c
+.Lcpi_end52:
+	.size	__arm_cp.5_52, .Lcpi_end52-__arm_cp.5_52
+__arm_cp.5_53:
+	.long	shw_f3d
+.Lcpi_end53:
+	.size	__arm_cp.5_53, .Lcpi_end53-__arm_cp.5_53
+__arm_cp.5_54:
+	.long	shw_f3e
+.Lcpi_end54:
+	.size	__arm_cp.5_54, .Lcpi_end54-__arm_cp.5_54
+__arm_cp.5_55:
+	.long	f4b_flot
+.Lcpi_end55:
+	.size	__arm_cp.5_55, .Lcpi_end55-__arm_cp.5_55
+__arm_cp.5_56:
+	.long	shw_f4a_fix
+.Lcpi_end56:
+	.size	__arm_cp.5_56, .Lcpi_end56-__arm_cp.5_56
+__arm_cp.5_57:
+	.long	shw_f4b_flot
+.Lcpi_end57:
+	.size	__arm_cp.5_57, .Lcpi_end57-__arm_cp.5_57
+__arm_cp.5_58:
+	.long	f5b_normal
+.Lcpi_end58:
+	.size	__arm_cp.5_58, .Lcpi_end58-__arm_cp.5_58
+__arm_cp.5_59:
+	.long	f5c_fast
+.Lcpi_end59:
+	.size	__arm_cp.5_59, .Lcpi_end59-__arm_cp.5_59
+__arm_cp.5_60:
+	.long	shw_f5a_slow
+.Lcpi_end60:
+	.size	__arm_cp.5_60, .Lcpi_end60-__arm_cp.5_60
+__arm_cp.5_61:
+	.long	shw_f5b_normal
+.Lcpi_end61:
+	.size	__arm_cp.5_61, .Lcpi_end61-__arm_cp.5_61
+__arm_cp.5_62:
+	.long	shw_f5c_fast
+.Lcpi_end62:
+	.size	__arm_cp.5_62, .Lcpi_end62-__arm_cp.5_62
+__arm_cp.5_63:
+	.long	f6b_2
+.Lcpi_end63:
+	.size	__arm_cp.5_63, .Lcpi_end63-__arm_cp.5_63
+__arm_cp.5_64:
+	.long	f6d_10
+.Lcpi_end64:
+	.size	__arm_cp.5_64, .Lcpi_end64-__arm_cp.5_64
+__arm_cp.5_65:
+	.long	shw_f6a_1
+.Lcpi_end65:
+	.size	__arm_cp.5_65, .Lcpi_end65-__arm_cp.5_65
+__arm_cp.5_66:
+	.long	f6c_5
+.Lcpi_end66:
+	.size	__arm_cp.5_66, .Lcpi_end66-__arm_cp.5_66
+__arm_cp.5_67:
+	.long	shw_f6b_2
+.Lcpi_end67:
+	.size	__arm_cp.5_67, .Lcpi_end67-__arm_cp.5_67
+__arm_cp.5_68:
+	.long	shw_f6c_5
+.Lcpi_end68:
+	.size	__arm_cp.5_68, .Lcpi_end68-__arm_cp.5_68
+__arm_cp.5_69:
+	.long	shw_f6d_10
+.Lcpi_end69:
+	.size	__arm_cp.5_69, .Lcpi_end69-__arm_cp.5_69
+__arm_cp.5_70:
+	.long	f7b_off
+.Lcpi_end70:
+	.size	__arm_cp.5_70, .Lcpi_end70-__arm_cp.5_70
+__arm_cp.5_71:
+	.long	shw_f7a_on
+.Lcpi_end71:
+	.size	__arm_cp.5_71, .Lcpi_end71-__arm_cp.5_71
+__arm_cp.5_72:
+	.long	shw_f7b_off
+.Lcpi_end72:
+	.size	__arm_cp.5_72, .Lcpi_end72-__arm_cp.5_72
+.Lfunc_end5:
+	.size	Menu_Init, .Lfunc_end5-Menu_Init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_mainScreen,"ax",%progbits
+	.hidden	shw_mainScreen                  @ -- Begin function shw_mainScreen
+	.globl	shw_mainScreen
+	.p2align	2
+	.type	shw_mainScreen,%function
+	.code	16                              @ @shw_mainScreen
+	.thumb_func
+shw_mainScreen:
+.Lfunc_begin6:
+	.loc	2 128 0 is_stmt 1               @ ../src/menu.c:128:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp24:
+	.loc	2 129 2 prologue_end            @ ../src/menu.c:129:2
+	ldr	r0, __arm_cp.6_0
+	bl	printf
+	.loc	2 130 1                         @ ../src/menu.c:130:1
+	pop	{r7, pc}
+.Ltmp25:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.6_0:
+	.long	.L.str
+.Lcpi_end73:
+	.size	__arm_cp.6_0, .Lcpi_end73-__arm_cp.6_0
+.Lfunc_end6:
+	.size	shw_mainScreen, .Lfunc_end6-shw_mainScreen
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_calibration,"ax",%progbits
+	.hidden	shw_calibration                 @ -- Begin function shw_calibration
+	.globl	shw_calibration
+	.p2align	2
+	.type	shw_calibration,%function
+	.code	16                              @ @shw_calibration
+	.thumb_func
+shw_calibration:
+.Lfunc_begin7:
+	.loc	2 131 0 is_stmt 1               @ ../src/menu.c:131:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp26:
+	.loc	2 132 2 prologue_end            @ ../src/menu.c:132:2
+	ldr	r0, __arm_cp.7_0
+	bl	printf
+	.loc	2 133 1                         @ ../src/menu.c:133:1
+	pop	{r7, pc}
+.Ltmp27:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.7_0:
+	.long	.L.str.1
+.Lcpi_end74:
+	.size	__arm_cp.7_0, .Lcpi_end74-__arm_cp.7_0
+.Lfunc_end7:
+	.size	shw_calibration, .Lfunc_end7-shw_calibration
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_capacity,"ax",%progbits
+	.hidden	shw_capacity                    @ -- Begin function shw_capacity
+	.globl	shw_capacity
+	.p2align	2
+	.type	shw_capacity,%function
+	.code	16                              @ @shw_capacity
+	.thumb_func
+shw_capacity:
+.Lfunc_begin8:
+	.loc	2 134 0 is_stmt 1               @ ../src/menu.c:134:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp28:
+	.loc	2 135 2 prologue_end            @ ../src/menu.c:135:2
+	ldr	r0, __arm_cp.8_0
+	bl	printf
+	.loc	2 136 1                         @ ../src/menu.c:136:1
+	pop	{r7, pc}
+.Ltmp29:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.8_0:
+	.long	.L.str.2
+.Lcpi_end75:
+	.size	__arm_cp.8_0, .Lcpi_end75-__arm_cp.8_0
+.Lfunc_end8:
+	.size	shw_capacity, .Lfunc_end8-shw_capacity
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_decimalPoint,"ax",%progbits
+	.hidden	shw_decimalPoint                @ -- Begin function shw_decimalPoint
+	.globl	shw_decimalPoint
+	.p2align	2
+	.type	shw_decimalPoint,%function
+	.code	16                              @ @shw_decimalPoint
+	.thumb_func
+shw_decimalPoint:
+.Lfunc_begin9:
+	.loc	2 137 0 is_stmt 1               @ ../src/menu.c:137:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp30:
+	.loc	2 138 2 prologue_end            @ ../src/menu.c:138:2
+	ldr	r0, __arm_cp.9_0
+	bl	printf
+	.loc	2 139 1                         @ ../src/menu.c:139:1
+	pop	{r7, pc}
+.Ltmp31:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.9_0:
+	.long	.L.str.3
+.Lcpi_end76:
+	.size	__arm_cp.9_0, .Lcpi_end76-__arm_cp.9_0
+.Lfunc_end9:
+	.size	shw_decimalPoint, .Lfunc_end9-shw_decimalPoint
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_resolution,"ax",%progbits
+	.hidden	shw_resolution                  @ -- Begin function shw_resolution
+	.globl	shw_resolution
+	.p2align	2
+	.type	shw_resolution,%function
+	.code	16                              @ @shw_resolution
+	.thumb_func
+shw_resolution:
+.Lfunc_begin10:
+	.loc	2 140 0 is_stmt 1               @ ../src/menu.c:140:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp32:
+	.loc	2 141 2 prologue_end            @ ../src/menu.c:141:2
+	ldr	r0, __arm_cp.10_0
+	bl	printf
+	.loc	2 142 1                         @ ../src/menu.c:142:1
+	pop	{r7, pc}
+.Ltmp33:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.10_0:
+	.long	.L.str.4
+.Lcpi_end77:
+	.size	__arm_cp.10_0, .Lcpi_end77-__arm_cp.10_0
+.Lfunc_end10:
+	.size	shw_resolution, .Lfunc_end10-shw_resolution
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_speed,"ax",%progbits
+	.hidden	shw_speed                       @ -- Begin function shw_speed
+	.globl	shw_speed
+	.p2align	2
+	.type	shw_speed,%function
+	.code	16                              @ @shw_speed
+	.thumb_func
+shw_speed:
+.Lfunc_begin11:
+	.loc	2 143 0 is_stmt 1               @ ../src/menu.c:143:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp34:
+	.loc	2 144 2 prologue_end            @ ../src/menu.c:144:2
+	ldr	r0, __arm_cp.11_0
+	bl	printf
+	.loc	2 145 1                         @ ../src/menu.c:145:1
+	pop	{r7, pc}
+.Ltmp35:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.11_0:
+	.long	.L.str.5
+.Lcpi_end78:
+	.size	__arm_cp.11_0, .Lcpi_end78-__arm_cp.11_0
+.Lfunc_end11:
+	.size	shw_speed, .Lfunc_end11-shw_speed
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_minCoin,"ax",%progbits
+	.hidden	shw_minCoin                     @ -- Begin function shw_minCoin
+	.globl	shw_minCoin
+	.p2align	2
+	.type	shw_minCoin,%function
+	.code	16                              @ @shw_minCoin
+	.thumb_func
+shw_minCoin:
+.Lfunc_begin12:
+	.loc	2 146 0 is_stmt 1               @ ../src/menu.c:146:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp36:
+	.loc	2 147 2 prologue_end            @ ../src/menu.c:147:2
+	ldr	r0, __arm_cp.12_0
+	bl	printf
+	.loc	2 148 1                         @ ../src/menu.c:148:1
+	pop	{r7, pc}
+.Ltmp37:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.12_0:
+	.long	.L.str.6
+.Lcpi_end79:
+	.size	__arm_cp.12_0, .Lcpi_end79-__arm_cp.12_0
+.Lfunc_end12:
+	.size	shw_minCoin, .Lfunc_end12-shw_minCoin
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_multiTare,"ax",%progbits
+	.hidden	shw_multiTare                   @ -- Begin function shw_multiTare
+	.globl	shw_multiTare
+	.p2align	2
+	.type	shw_multiTare,%function
+	.code	16                              @ @shw_multiTare
+	.thumb_func
+shw_multiTare:
+.Lfunc_begin13:
+	.loc	2 149 0 is_stmt 1               @ ../src/menu.c:149:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp38:
+	.loc	2 150 2 prologue_end            @ ../src/menu.c:150:2
+	ldr	r0, __arm_cp.13_0
+	bl	printf
+	.loc	2 151 1                         @ ../src/menu.c:151:1
+	pop	{r7, pc}
+.Ltmp39:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.13_0:
+	.long	.L.str.7
+.Lcpi_end80:
+	.size	__arm_cp.13_0, .Lcpi_end80-__arm_cp.13_0
+.Lfunc_end13:
+	.size	shw_multiTare, .Lfunc_end13-shw_multiTare
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f8,"ax",%progbits
+	.hidden	shw_f8                          @ -- Begin function shw_f8
+	.globl	shw_f8
+	.p2align	2
+	.type	shw_f8,%function
+	.code	16                              @ @shw_f8
+	.thumb_func
+shw_f8:
+.Lfunc_begin14:
+	.loc	2 152 0 is_stmt 1               @ ../src/menu.c:152:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp40:
+	.loc	2 153 2 prologue_end            @ ../src/menu.c:153:2
+	ldr	r0, __arm_cp.14_0
+	bl	printf
+	.loc	2 154 1                         @ ../src/menu.c:154:1
+	pop	{r7, pc}
+.Ltmp41:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.14_0:
+	.long	.L.str.8
+.Lcpi_end81:
+	.size	__arm_cp.14_0, .Lcpi_end81-__arm_cp.14_0
+.Lfunc_end14:
+	.size	shw_f8, .Lfunc_end14-shw_f8
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_gravity,"ax",%progbits
+	.hidden	shw_gravity                     @ -- Begin function shw_gravity
+	.globl	shw_gravity
+	.p2align	2
+	.type	shw_gravity,%function
+	.code	16                              @ @shw_gravity
+	.thumb_func
+shw_gravity:
+.Lfunc_begin15:
+	.loc	2 155 0 is_stmt 1               @ ../src/menu.c:155:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp42:
+	.loc	2 156 2 prologue_end            @ ../src/menu.c:156:2
+	ldr	r0, __arm_cp.15_0
+	bl	printf
+	.loc	2 157 1                         @ ../src/menu.c:157:1
+	pop	{r7, pc}
+.Ltmp43:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.15_0:
+	.long	.L.str.9
+.Lcpi_end82:
+	.size	__arm_cp.15_0, .Lcpi_end82-__arm_cp.15_0
+.Lfunc_end15:
+	.size	shw_gravity, .Lfunc_end15-shw_gravity
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_reset,"ax",%progbits
+	.hidden	shw_reset                       @ -- Begin function shw_reset
+	.globl	shw_reset
+	.p2align	2
+	.type	shw_reset,%function
+	.code	16                              @ @shw_reset
+	.thumb_func
+shw_reset:
+.Lfunc_begin16:
+	.loc	2 158 0 is_stmt 1               @ ../src/menu.c:158:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp44:
+	.loc	2 159 2 prologue_end            @ ../src/menu.c:159:2
+	ldr	r0, __arm_cp.16_0
+	bl	printf
+	.loc	2 160 1                         @ ../src/menu.c:160:1
+	pop	{r7, pc}
+.Ltmp45:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.16_0:
+	.long	.L.str.10
+.Lcpi_end83:
+	.size	__arm_cp.16_0, .Lcpi_end83-__arm_cp.16_0
+.Lfunc_end16:
+	.size	shw_reset, .Lfunc_end16-shw_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_rs232,"ax",%progbits
+	.hidden	shw_rs232                       @ -- Begin function shw_rs232
+	.globl	shw_rs232
+	.p2align	2
+	.type	shw_rs232,%function
+	.code	16                              @ @shw_rs232
+	.thumb_func
+shw_rs232:
+.Lfunc_begin17:
+	.loc	2 161 0 is_stmt 1               @ ../src/menu.c:161:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp46:
+	.loc	2 162 2 prologue_end            @ ../src/menu.c:162:2
+	ldr	r0, __arm_cp.17_0
+	bl	printf
+	.loc	2 163 1                         @ ../src/menu.c:163:1
+	pop	{r7, pc}
+.Ltmp47:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.17_0:
+	.long	.L.str.11
+.Lcpi_end84:
+	.size	__arm_cp.17_0, .Lcpi_end84-__arm_cp.17_0
+.Lfunc_end17:
+	.size	shw_rs232, .Lfunc_end17-shw_rs232
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f1a_3000,"ax",%progbits
+	.hidden	shw_f1a_3000                    @ -- Begin function shw_f1a_3000
+	.globl	shw_f1a_3000
+	.p2align	2
+	.type	shw_f1a_3000,%function
+	.code	16                              @ @shw_f1a_3000
+	.thumb_func
+shw_f1a_3000:
+.Lfunc_begin18:
+	.loc	2 164 0 is_stmt 1               @ ../src/menu.c:164:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp48:
+	.loc	2 165 2 prologue_end            @ ../src/menu.c:165:2
+	ldr	r0, __arm_cp.18_0
+	bl	printf
+	.loc	2 166 1                         @ ../src/menu.c:166:1
+	pop	{r7, pc}
+.Ltmp49:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.18_0:
+	.long	.L.str.12
+.Lcpi_end85:
+	.size	__arm_cp.18_0, .Lcpi_end85-__arm_cp.18_0
+.Lfunc_end18:
+	.size	shw_f1a_3000, .Lfunc_end18-shw_f1a_3000
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f1b_6000,"ax",%progbits
+	.hidden	shw_f1b_6000                    @ -- Begin function shw_f1b_6000
+	.globl	shw_f1b_6000
+	.p2align	2
+	.type	shw_f1b_6000,%function
+	.code	16                              @ @shw_f1b_6000
+	.thumb_func
+shw_f1b_6000:
+.Lfunc_begin19:
+	.loc	2 167 0 is_stmt 1               @ ../src/menu.c:167:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp50:
+	.loc	2 168 2 prologue_end            @ ../src/menu.c:168:2
+	ldr	r0, __arm_cp.19_0
+	bl	printf
+	.loc	2 169 1                         @ ../src/menu.c:169:1
+	pop	{r7, pc}
+.Ltmp51:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.19_0:
+	.long	.L.str.13
+.Lcpi_end86:
+	.size	__arm_cp.19_0, .Lcpi_end86-__arm_cp.19_0
+.Lfunc_end19:
+	.size	shw_f1b_6000, .Lfunc_end19-shw_f1b_6000
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f1c_dual1,"ax",%progbits
+	.hidden	shw_f1c_dual1                   @ -- Begin function shw_f1c_dual1
+	.globl	shw_f1c_dual1
+	.p2align	2
+	.type	shw_f1c_dual1,%function
+	.code	16                              @ @shw_f1c_dual1
+	.thumb_func
+shw_f1c_dual1:
+.Lfunc_begin20:
+	.loc	2 170 0 is_stmt 1               @ ../src/menu.c:170:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp52:
+	.loc	2 171 2 prologue_end            @ ../src/menu.c:171:2
+	ldr	r0, __arm_cp.20_0
+	bl	printf
+	.loc	2 172 1                         @ ../src/menu.c:172:1
+	pop	{r7, pc}
+.Ltmp53:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.20_0:
+	.long	.L.str.14
+.Lcpi_end87:
+	.size	__arm_cp.20_0, .Lcpi_end87-__arm_cp.20_0
+.Lfunc_end20:
+	.size	shw_f1c_dual1, .Lfunc_end20-shw_f1c_dual1
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f1d_dual2,"ax",%progbits
+	.hidden	shw_f1d_dual2                   @ -- Begin function shw_f1d_dual2
+	.globl	shw_f1d_dual2
+	.p2align	2
+	.type	shw_f1d_dual2,%function
+	.code	16                              @ @shw_f1d_dual2
+	.thumb_func
+shw_f1d_dual2:
+.Lfunc_begin21:
+	.loc	2 173 0 is_stmt 1               @ ../src/menu.c:173:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp54:
+	.loc	2 174 2 prologue_end            @ ../src/menu.c:174:2
+	ldr	r0, __arm_cp.21_0
+	bl	printf
+	.loc	2 175 1                         @ ../src/menu.c:175:1
+	pop	{r7, pc}
+.Ltmp55:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.21_0:
+	.long	.L.str.15
+.Lcpi_end88:
+	.size	__arm_cp.21_0, .Lcpi_end88-__arm_cp.21_0
+.Lfunc_end21:
+	.size	shw_f1d_dual2, .Lfunc_end21-shw_f1d_dual2
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f2a_3,"ax",%progbits
+	.hidden	shw_f2a_3                       @ -- Begin function shw_f2a_3
+	.globl	shw_f2a_3
+	.p2align	2
+	.type	shw_f2a_3,%function
+	.code	16                              @ @shw_f2a_3
+	.thumb_func
+shw_f2a_3:
+.Lfunc_begin22:
+	.loc	2 176 0 is_stmt 1               @ ../src/menu.c:176:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp56:
+	.loc	2 177 2 prologue_end            @ ../src/menu.c:177:2
+	ldr	r0, __arm_cp.22_0
+	bl	printf
+	.loc	2 178 1                         @ ../src/menu.c:178:1
+	pop	{r7, pc}
+.Ltmp57:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.22_0:
+	.long	.L.str.16
+.Lcpi_end89:
+	.size	__arm_cp.22_0, .Lcpi_end89-__arm_cp.22_0
+.Lfunc_end22:
+	.size	shw_f2a_3, .Lfunc_end22-shw_f2a_3
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f2b_6,"ax",%progbits
+	.hidden	shw_f2b_6                       @ -- Begin function shw_f2b_6
+	.globl	shw_f2b_6
+	.p2align	2
+	.type	shw_f2b_6,%function
+	.code	16                              @ @shw_f2b_6
+	.thumb_func
+shw_f2b_6:
+.Lfunc_begin23:
+	.loc	2 179 0 is_stmt 1               @ ../src/menu.c:179:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp58:
+	.loc	2 180 2 prologue_end            @ ../src/menu.c:180:2
+	ldr	r0, __arm_cp.23_0
+	bl	printf
+	.loc	2 181 1                         @ ../src/menu.c:181:1
+	pop	{r7, pc}
+.Ltmp59:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.23_0:
+	.long	.L.str.17
+.Lcpi_end90:
+	.size	__arm_cp.23_0, .Lcpi_end90-__arm_cp.23_0
+.Lfunc_end23:
+	.size	shw_f2b_6, .Lfunc_end23-shw_f2b_6
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f2c_15,"ax",%progbits
+	.hidden	shw_f2c_15                      @ -- Begin function shw_f2c_15
+	.globl	shw_f2c_15
+	.p2align	2
+	.type	shw_f2c_15,%function
+	.code	16                              @ @shw_f2c_15
+	.thumb_func
+shw_f2c_15:
+.Lfunc_begin24:
+	.loc	2 182 0 is_stmt 1               @ ../src/menu.c:182:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp60:
+	.loc	2 183 2 prologue_end            @ ../src/menu.c:183:2
+	ldr	r0, __arm_cp.24_0
+	bl	printf
+	.loc	2 184 1                         @ ../src/menu.c:184:1
+	pop	{r7, pc}
+.Ltmp61:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.24_0:
+	.long	.L.str.18
+.Lcpi_end91:
+	.size	__arm_cp.24_0, .Lcpi_end91-__arm_cp.24_0
+.Lfunc_end24:
+	.size	shw_f2c_15, .Lfunc_end24-shw_f2c_15
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f2d_30,"ax",%progbits
+	.hidden	shw_f2d_30                      @ -- Begin function shw_f2d_30
+	.globl	shw_f2d_30
+	.p2align	2
+	.type	shw_f2d_30,%function
+	.code	16                              @ @shw_f2d_30
+	.thumb_func
+shw_f2d_30:
+.Lfunc_begin25:
+	.loc	2 185 0 is_stmt 1               @ ../src/menu.c:185:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp62:
+	.loc	2 186 2 prologue_end            @ ../src/menu.c:186:2
+	ldr	r0, __arm_cp.25_0
+	bl	printf
+	.loc	2 187 1                         @ ../src/menu.c:187:1
+	pop	{r7, pc}
+.Ltmp63:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.25_0:
+	.long	.L.str.19
+.Lcpi_end92:
+	.size	__arm_cp.25_0, .Lcpi_end92-__arm_cp.25_0
+.Lfunc_end25:
+	.size	shw_f2d_30, .Lfunc_end25-shw_f2d_30
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f3a,"ax",%progbits
+	.hidden	shw_f3a                         @ -- Begin function shw_f3a
+	.globl	shw_f3a
+	.p2align	2
+	.type	shw_f3a,%function
+	.code	16                              @ @shw_f3a
+	.thumb_func
+shw_f3a:
+.Lfunc_begin26:
+	.loc	2 188 0 is_stmt 1               @ ../src/menu.c:188:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp64:
+	.loc	2 189 2 prologue_end            @ ../src/menu.c:189:2
+	ldr	r0, __arm_cp.26_0
+	bl	printf
+	.loc	2 190 1                         @ ../src/menu.c:190:1
+	pop	{r7, pc}
+.Ltmp65:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.26_0:
+	.long	.L.str.20
+.Lcpi_end93:
+	.size	__arm_cp.26_0, .Lcpi_end93-__arm_cp.26_0
+.Lfunc_end26:
+	.size	shw_f3a, .Lfunc_end26-shw_f3a
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f3b,"ax",%progbits
+	.hidden	shw_f3b                         @ -- Begin function shw_f3b
+	.globl	shw_f3b
+	.p2align	2
+	.type	shw_f3b,%function
+	.code	16                              @ @shw_f3b
+	.thumb_func
+shw_f3b:
+.Lfunc_begin27:
+	.loc	2 191 0 is_stmt 1               @ ../src/menu.c:191:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp66:
+	.loc	2 192 2 prologue_end            @ ../src/menu.c:192:2
+	ldr	r0, __arm_cp.27_0
+	bl	printf
+	.loc	2 193 1                         @ ../src/menu.c:193:1
+	pop	{r7, pc}
+.Ltmp67:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.27_0:
+	.long	.L.str.21
+.Lcpi_end94:
+	.size	__arm_cp.27_0, .Lcpi_end94-__arm_cp.27_0
+.Lfunc_end27:
+	.size	shw_f3b, .Lfunc_end27-shw_f3b
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f3c,"ax",%progbits
+	.hidden	shw_f3c                         @ -- Begin function shw_f3c
+	.globl	shw_f3c
+	.p2align	2
+	.type	shw_f3c,%function
+	.code	16                              @ @shw_f3c
+	.thumb_func
+shw_f3c:
+.Lfunc_begin28:
+	.loc	2 194 0 is_stmt 1               @ ../src/menu.c:194:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp68:
+	.loc	2 195 2 prologue_end            @ ../src/menu.c:195:2
+	ldr	r0, __arm_cp.28_0
+	bl	printf
+	.loc	2 196 1                         @ ../src/menu.c:196:1
+	pop	{r7, pc}
+.Ltmp69:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.28_0:
+	.long	.L.str.22
+.Lcpi_end95:
+	.size	__arm_cp.28_0, .Lcpi_end95-__arm_cp.28_0
+.Lfunc_end28:
+	.size	shw_f3c, .Lfunc_end28-shw_f3c
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f3d,"ax",%progbits
+	.hidden	shw_f3d                         @ -- Begin function shw_f3d
+	.globl	shw_f3d
+	.p2align	2
+	.type	shw_f3d,%function
+	.code	16                              @ @shw_f3d
+	.thumb_func
+shw_f3d:
+.Lfunc_begin29:
+	.loc	2 197 0 is_stmt 1               @ ../src/menu.c:197:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp70:
+	.loc	2 198 2 prologue_end            @ ../src/menu.c:198:2
+	ldr	r0, __arm_cp.29_0
+	bl	printf
+	.loc	2 199 1                         @ ../src/menu.c:199:1
+	pop	{r7, pc}
+.Ltmp71:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.29_0:
+	.long	.L.str.23
+.Lcpi_end96:
+	.size	__arm_cp.29_0, .Lcpi_end96-__arm_cp.29_0
+.Lfunc_end29:
+	.size	shw_f3d, .Lfunc_end29-shw_f3d
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f3e,"ax",%progbits
+	.hidden	shw_f3e                         @ -- Begin function shw_f3e
+	.globl	shw_f3e
+	.p2align	2
+	.type	shw_f3e,%function
+	.code	16                              @ @shw_f3e
+	.thumb_func
+shw_f3e:
+.Lfunc_begin30:
+	.loc	2 200 0 is_stmt 1               @ ../src/menu.c:200:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp72:
+	.loc	2 201 2 prologue_end            @ ../src/menu.c:201:2
+	ldr	r0, __arm_cp.30_0
+	bl	printf
+	.loc	2 202 1                         @ ../src/menu.c:202:1
+	pop	{r7, pc}
+.Ltmp73:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.30_0:
+	.long	.L.str.24
+.Lcpi_end97:
+	.size	__arm_cp.30_0, .Lcpi_end97-__arm_cp.30_0
+.Lfunc_end30:
+	.size	shw_f3e, .Lfunc_end30-shw_f3e
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f4a_fix,"ax",%progbits
+	.hidden	shw_f4a_fix                     @ -- Begin function shw_f4a_fix
+	.globl	shw_f4a_fix
+	.p2align	2
+	.type	shw_f4a_fix,%function
+	.code	16                              @ @shw_f4a_fix
+	.thumb_func
+shw_f4a_fix:
+.Lfunc_begin31:
+	.loc	2 203 0 is_stmt 1               @ ../src/menu.c:203:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp74:
+	.loc	2 204 2 prologue_end            @ ../src/menu.c:204:2
+	ldr	r0, __arm_cp.31_0
+	bl	printf
+	.loc	2 205 1                         @ ../src/menu.c:205:1
+	pop	{r7, pc}
+.Ltmp75:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.31_0:
+	.long	.L.str.25
+.Lcpi_end98:
+	.size	__arm_cp.31_0, .Lcpi_end98-__arm_cp.31_0
+.Lfunc_end31:
+	.size	shw_f4a_fix, .Lfunc_end31-shw_f4a_fix
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f4b_flot,"ax",%progbits
+	.hidden	shw_f4b_flot                    @ -- Begin function shw_f4b_flot
+	.globl	shw_f4b_flot
+	.p2align	2
+	.type	shw_f4b_flot,%function
+	.code	16                              @ @shw_f4b_flot
+	.thumb_func
+shw_f4b_flot:
+.Lfunc_begin32:
+	.loc	2 206 0 is_stmt 1               @ ../src/menu.c:206:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp76:
+	.loc	2 207 2 prologue_end            @ ../src/menu.c:207:2
+	ldr	r0, __arm_cp.32_0
+	bl	printf
+	.loc	2 208 1                         @ ../src/menu.c:208:1
+	pop	{r7, pc}
+.Ltmp77:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.32_0:
+	.long	.L.str.26
+.Lcpi_end99:
+	.size	__arm_cp.32_0, .Lcpi_end99-__arm_cp.32_0
+.Lfunc_end32:
+	.size	shw_f4b_flot, .Lfunc_end32-shw_f4b_flot
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f5a_slow,"ax",%progbits
+	.hidden	shw_f5a_slow                    @ -- Begin function shw_f5a_slow
+	.globl	shw_f5a_slow
+	.p2align	2
+	.type	shw_f5a_slow,%function
+	.code	16                              @ @shw_f5a_slow
+	.thumb_func
+shw_f5a_slow:
+.Lfunc_begin33:
+	.loc	2 209 0 is_stmt 1               @ ../src/menu.c:209:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp78:
+	.loc	2 210 2 prologue_end            @ ../src/menu.c:210:2
+	ldr	r0, __arm_cp.33_0
+	bl	printf
+	.loc	2 211 1                         @ ../src/menu.c:211:1
+	pop	{r7, pc}
+.Ltmp79:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.33_0:
+	.long	.L.str.27
+.Lcpi_end100:
+	.size	__arm_cp.33_0, .Lcpi_end100-__arm_cp.33_0
+.Lfunc_end33:
+	.size	shw_f5a_slow, .Lfunc_end33-shw_f5a_slow
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f5b_normal,"ax",%progbits
+	.hidden	shw_f5b_normal                  @ -- Begin function shw_f5b_normal
+	.globl	shw_f5b_normal
+	.p2align	2
+	.type	shw_f5b_normal,%function
+	.code	16                              @ @shw_f5b_normal
+	.thumb_func
+shw_f5b_normal:
+.Lfunc_begin34:
+	.loc	2 212 0 is_stmt 1               @ ../src/menu.c:212:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp80:
+	.loc	2 213 2 prologue_end            @ ../src/menu.c:213:2
+	ldr	r0, __arm_cp.34_0
+	bl	printf
+	.loc	2 214 1                         @ ../src/menu.c:214:1
+	pop	{r7, pc}
+.Ltmp81:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.34_0:
+	.long	.L.str.28
+.Lcpi_end101:
+	.size	__arm_cp.34_0, .Lcpi_end101-__arm_cp.34_0
+.Lfunc_end34:
+	.size	shw_f5b_normal, .Lfunc_end34-shw_f5b_normal
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f5c_fast,"ax",%progbits
+	.hidden	shw_f5c_fast                    @ -- Begin function shw_f5c_fast
+	.globl	shw_f5c_fast
+	.p2align	2
+	.type	shw_f5c_fast,%function
+	.code	16                              @ @shw_f5c_fast
+	.thumb_func
+shw_f5c_fast:
+.Lfunc_begin35:
+	.loc	2 215 0 is_stmt 1               @ ../src/menu.c:215:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp82:
+	.loc	2 216 2 prologue_end            @ ../src/menu.c:216:2
+	ldr	r0, __arm_cp.35_0
+	bl	printf
+	.loc	2 217 1                         @ ../src/menu.c:217:1
+	pop	{r7, pc}
+.Ltmp83:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.35_0:
+	.long	.L.str.29
+.Lcpi_end102:
+	.size	__arm_cp.35_0, .Lcpi_end102-__arm_cp.35_0
+.Lfunc_end35:
+	.size	shw_f5c_fast, .Lfunc_end35-shw_f5c_fast
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f6a_1,"ax",%progbits
+	.hidden	shw_f6a_1                       @ -- Begin function shw_f6a_1
+	.globl	shw_f6a_1
+	.p2align	2
+	.type	shw_f6a_1,%function
+	.code	16                              @ @shw_f6a_1
+	.thumb_func
+shw_f6a_1:
+.Lfunc_begin36:
+	.loc	2 218 0 is_stmt 1               @ ../src/menu.c:218:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp84:
+	.loc	2 219 2 prologue_end            @ ../src/menu.c:219:2
+	ldr	r0, __arm_cp.36_0
+	bl	printf
+	.loc	2 220 1                         @ ../src/menu.c:220:1
+	pop	{r7, pc}
+.Ltmp85:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.36_0:
+	.long	.L.str.30
+.Lcpi_end103:
+	.size	__arm_cp.36_0, .Lcpi_end103-__arm_cp.36_0
+.Lfunc_end36:
+	.size	shw_f6a_1, .Lfunc_end36-shw_f6a_1
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f6b_2,"ax",%progbits
+	.hidden	shw_f6b_2                       @ -- Begin function shw_f6b_2
+	.globl	shw_f6b_2
+	.p2align	2
+	.type	shw_f6b_2,%function
+	.code	16                              @ @shw_f6b_2
+	.thumb_func
+shw_f6b_2:
+.Lfunc_begin37:
+	.loc	2 221 0 is_stmt 1               @ ../src/menu.c:221:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp86:
+	.loc	2 222 2 prologue_end            @ ../src/menu.c:222:2
+	ldr	r0, __arm_cp.37_0
+	bl	printf
+	.loc	2 223 1                         @ ../src/menu.c:223:1
+	pop	{r7, pc}
+.Ltmp87:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.37_0:
+	.long	.L.str.31
+.Lcpi_end104:
+	.size	__arm_cp.37_0, .Lcpi_end104-__arm_cp.37_0
+.Lfunc_end37:
+	.size	shw_f6b_2, .Lfunc_end37-shw_f6b_2
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f6c_5,"ax",%progbits
+	.hidden	shw_f6c_5                       @ -- Begin function shw_f6c_5
+	.globl	shw_f6c_5
+	.p2align	2
+	.type	shw_f6c_5,%function
+	.code	16                              @ @shw_f6c_5
+	.thumb_func
+shw_f6c_5:
+.Lfunc_begin38:
+	.loc	2 224 0 is_stmt 1               @ ../src/menu.c:224:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp88:
+	.loc	2 225 2 prologue_end            @ ../src/menu.c:225:2
+	ldr	r0, __arm_cp.38_0
+	bl	printf
+	.loc	2 226 1                         @ ../src/menu.c:226:1
+	pop	{r7, pc}
+.Ltmp89:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.38_0:
+	.long	.L.str.32
+.Lcpi_end105:
+	.size	__arm_cp.38_0, .Lcpi_end105-__arm_cp.38_0
+.Lfunc_end38:
+	.size	shw_f6c_5, .Lfunc_end38-shw_f6c_5
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f6d_10,"ax",%progbits
+	.hidden	shw_f6d_10                      @ -- Begin function shw_f6d_10
+	.globl	shw_f6d_10
+	.p2align	2
+	.type	shw_f6d_10,%function
+	.code	16                              @ @shw_f6d_10
+	.thumb_func
+shw_f6d_10:
+.Lfunc_begin39:
+	.loc	2 227 0 is_stmt 1               @ ../src/menu.c:227:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp90:
+	.loc	2 228 2 prologue_end            @ ../src/menu.c:228:2
+	ldr	r0, __arm_cp.39_0
+	bl	printf
+	.loc	2 229 1                         @ ../src/menu.c:229:1
+	pop	{r7, pc}
+.Ltmp91:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.39_0:
+	.long	.L.str.33
+.Lcpi_end106:
+	.size	__arm_cp.39_0, .Lcpi_end106-__arm_cp.39_0
+.Lfunc_end39:
+	.size	shw_f6d_10, .Lfunc_end39-shw_f6d_10
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f7a_on,"ax",%progbits
+	.hidden	shw_f7a_on                      @ -- Begin function shw_f7a_on
+	.globl	shw_f7a_on
+	.p2align	2
+	.type	shw_f7a_on,%function
+	.code	16                              @ @shw_f7a_on
+	.thumb_func
+shw_f7a_on:
+.Lfunc_begin40:
+	.loc	2 230 0 is_stmt 1               @ ../src/menu.c:230:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp92:
+	.loc	2 231 2 prologue_end            @ ../src/menu.c:231:2
+	ldr	r0, __arm_cp.40_0
+	bl	printf
+	.loc	2 232 1                         @ ../src/menu.c:232:1
+	pop	{r7, pc}
+.Ltmp93:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.40_0:
+	.long	.L.str.34
+.Lcpi_end107:
+	.size	__arm_cp.40_0, .Lcpi_end107-__arm_cp.40_0
+.Lfunc_end40:
+	.size	shw_f7a_on, .Lfunc_end40-shw_f7a_on
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.shw_f7b_off,"ax",%progbits
+	.hidden	shw_f7b_off                     @ -- Begin function shw_f7b_off
+	.globl	shw_f7b_off
+	.p2align	2
+	.type	shw_f7b_off,%function
+	.code	16                              @ @shw_f7b_off
+	.thumb_func
+shw_f7b_off:
+.Lfunc_begin41:
+	.loc	2 233 0 is_stmt 1               @ ../src/menu.c:233:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp94:
+	.loc	2 234 2 prologue_end            @ ../src/menu.c:234:2
+	ldr	r0, __arm_cp.41_0
+	bl	printf
+	.loc	2 235 1                         @ ../src/menu.c:235:1
+	pop	{r7, pc}
+.Ltmp95:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ ../src/menu.c:0:1
+__arm_cp.41_0:
+	.long	.L.str.35
+.Lcpi_end108:
+	.size	__arm_cp.41_0, .Lcpi_end108-__arm_cp.41_0
+.Lfunc_end41:
+	.size	shw_f7b_off, .Lfunc_end41-shw_f7b_off
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	root                            @ @root
+	.type	root,%object
+	.section	.bss.root,"aw",%nobits
+	.globl	root
+	.p2align	2
+root:
+	.zero	20
+	.size	root, 20
+
+	.hidden	f0_cal                          @ @f0_cal
+	.type	f0_cal,%object
+	.section	.bss.f0_cal,"aw",%nobits
+	.globl	f0_cal
+	.p2align	2
+f0_cal:
+	.zero	20
+	.size	f0_cal, 20
+
+	.hidden	f11_rs232                       @ @f11_rs232
+	.type	f11_rs232,%object
+	.section	.bss.f11_rs232,"aw",%nobits
+	.globl	f11_rs232
+	.p2align	2
+f11_rs232:
+	.zero	20
+	.size	f11_rs232, 20
+
+	.hidden	f1_resolution                   @ @f1_resolution
+	.type	f1_resolution,%object
+	.section	.bss.f1_resolution,"aw",%nobits
+	.globl	f1_resolution
+	.p2align	2
+f1_resolution:
+	.zero	20
+	.size	f1_resolution, 20
+
+	.hidden	f1a_3000                        @ @f1a_3000
+	.type	f1a_3000,%object
+	.section	.bss.f1a_3000,"aw",%nobits
+	.globl	f1a_3000
+	.p2align	2
+f1a_3000:
+	.zero	20
+	.size	f1a_3000, 20
+
+	.hidden	f2_capacity                     @ @f2_capacity
+	.type	f2_capacity,%object
+	.section	.bss.f2_capacity,"aw",%nobits
+	.globl	f2_capacity
+	.p2align	2
+f2_capacity:
+	.zero	20
+	.size	f2_capacity, 20
+
+	.hidden	f2a_3                           @ @f2a_3
+	.type	f2a_3,%object
+	.section	.bss.f2a_3,"aw",%nobits
+	.globl	f2a_3
+	.p2align	2
+f2a_3:
+	.zero	20
+	.size	f2a_3, 20
+
+	.hidden	f3_decimalPoint                 @ @f3_decimalPoint
+	.type	f3_decimalPoint,%object
+	.section	.bss.f3_decimalPoint,"aw",%nobits
+	.globl	f3_decimalPoint
+	.p2align	2
+f3_decimalPoint:
+	.zero	20
+	.size	f3_decimalPoint, 20
+
+	.hidden	f3a                             @ @f3a
+	.type	f3a,%object
+	.section	.bss.f3a,"aw",%nobits
+	.globl	f3a
+	.p2align	2
+f3a:
+	.zero	20
+	.size	f3a, 20
+
+	.hidden	f4_fixFloat                     @ @f4_fixFloat
+	.type	f4_fixFloat,%object
+	.section	.bss.f4_fixFloat,"aw",%nobits
+	.globl	f4_fixFloat
+	.p2align	2
+f4_fixFloat:
+	.zero	20
+	.size	f4_fixFloat, 20
+
+	.hidden	f4a_fix                         @ @f4a_fix
+	.type	f4a_fix,%object
+	.section	.bss.f4a_fix,"aw",%nobits
+	.globl	f4a_fix
+	.p2align	2
+f4a_fix:
+	.zero	20
+	.size	f4a_fix, 20
+
+	.hidden	f5_speed                        @ @f5_speed
+	.type	f5_speed,%object
+	.section	.bss.f5_speed,"aw",%nobits
+	.globl	f5_speed
+	.p2align	2
+f5_speed:
+	.zero	20
+	.size	f5_speed, 20
+
+	.hidden	f5a_slow                        @ @f5a_slow
+	.type	f5a_slow,%object
+	.section	.bss.f5a_slow,"aw",%nobits
+	.globl	f5a_slow
+	.p2align	2
+f5a_slow:
+	.zero	20
+	.size	f5a_slow, 20
+
+	.hidden	f6_minCoin                      @ @f6_minCoin
+	.type	f6_minCoin,%object
+	.section	.bss.f6_minCoin,"aw",%nobits
+	.globl	f6_minCoin
+	.p2align	2
+f6_minCoin:
+	.zero	20
+	.size	f6_minCoin, 20
+
+	.hidden	f6a_1                           @ @f6a_1
+	.type	f6a_1,%object
+	.section	.bss.f6a_1,"aw",%nobits
+	.globl	f6a_1
+	.p2align	2
+f6a_1:
+	.zero	20
+	.size	f6a_1, 20
+
+	.hidden	f7_multiTare                    @ @f7_multiTare
+	.type	f7_multiTare,%object
+	.section	.bss.f7_multiTare,"aw",%nobits
+	.globl	f7_multiTare
+	.p2align	2
+f7_multiTare:
+	.zero	20
+	.size	f7_multiTare, 20
+
+	.hidden	f7a_on                          @ @f7a_on
+	.type	f7a_on,%object
+	.section	.bss.f7a_on,"aw",%nobits
+	.globl	f7a_on
+	.p2align	2
+f7a_on:
+	.zero	20
+	.size	f7a_on, 20
+
+	.hidden	f8                              @ @f8
+	.type	f8,%object
+	.section	.bss.f8,"aw",%nobits
+	.globl	f8
+	.p2align	2
+f8:
+	.zero	20
+	.size	f8, 20
+
+	.hidden	f9_gravity                      @ @f9_gravity
+	.type	f9_gravity,%object
+	.section	.bss.f9_gravity,"aw",%nobits
+	.globl	f9_gravity
+	.p2align	2
+f9_gravity:
+	.zero	20
+	.size	f9_gravity, 20
+
+	.hidden	f10_reset                       @ @f10_reset
+	.type	f10_reset,%object
+	.section	.bss.f10_reset,"aw",%nobits
+	.globl	f10_reset
+	.p2align	2
+f10_reset:
+	.zero	20
+	.size	f10_reset, 20
+
+	.hidden	f1d_dual2                       @ @f1d_dual2
+	.type	f1d_dual2,%object
+	.section	.bss.f1d_dual2,"aw",%nobits
+	.globl	f1d_dual2
+	.p2align	2
+f1d_dual2:
+	.zero	20
+	.size	f1d_dual2, 20
+
+	.hidden	f1b_6000                        @ @f1b_6000
+	.type	f1b_6000,%object
+	.section	.bss.f1b_6000,"aw",%nobits
+	.globl	f1b_6000
+	.p2align	2
+f1b_6000:
+	.zero	20
+	.size	f1b_6000, 20
+
+	.hidden	f1c_dual1                       @ @f1c_dual1
+	.type	f1c_dual1,%object
+	.section	.bss.f1c_dual1,"aw",%nobits
+	.globl	f1c_dual1
+	.p2align	2
+f1c_dual1:
+	.zero	20
+	.size	f1c_dual1, 20
+
+	.hidden	f2d_30                          @ @f2d_30
+	.type	f2d_30,%object
+	.section	.bss.f2d_30,"aw",%nobits
+	.globl	f2d_30
+	.p2align	2
+f2d_30:
+	.zero	20
+	.size	f2d_30, 20
+
+	.hidden	f2b_6                           @ @f2b_6
+	.type	f2b_6,%object
+	.section	.bss.f2b_6,"aw",%nobits
+	.globl	f2b_6
+	.p2align	2
+f2b_6:
+	.zero	20
+	.size	f2b_6, 20
+
+	.hidden	f2c_15                          @ @f2c_15
+	.type	f2c_15,%object
+	.section	.bss.f2c_15,"aw",%nobits
+	.globl	f2c_15
+	.p2align	2
+f2c_15:
+	.zero	20
+	.size	f2c_15, 20
+
+	.hidden	f3e                             @ @f3e
+	.type	f3e,%object
+	.section	.bss.f3e,"aw",%nobits
+	.globl	f3e
+	.p2align	2
+f3e:
+	.zero	20
+	.size	f3e, 20
+
+	.hidden	f3b                             @ @f3b
+	.type	f3b,%object
+	.section	.bss.f3b,"aw",%nobits
+	.globl	f3b
+	.p2align	2
+f3b:
+	.zero	20
+	.size	f3b, 20
+
+	.hidden	f3c                             @ @f3c
+	.type	f3c,%object
+	.section	.bss.f3c,"aw",%nobits
+	.globl	f3c
+	.p2align	2
+f3c:
+	.zero	20
+	.size	f3c, 20
+
+	.hidden	f3d                             @ @f3d
+	.type	f3d,%object
+	.section	.bss.f3d,"aw",%nobits
+	.globl	f3d
+	.p2align	2
+f3d:
+	.zero	20
+	.size	f3d, 20
+
+	.hidden	f4b_flot                        @ @f4b_flot
+	.type	f4b_flot,%object
+	.section	.bss.f4b_flot,"aw",%nobits
+	.globl	f4b_flot
+	.p2align	2
+f4b_flot:
+	.zero	20
+	.size	f4b_flot, 20
+
+	.hidden	f5c_fast                        @ @f5c_fast
+	.type	f5c_fast,%object
+	.section	.bss.f5c_fast,"aw",%nobits
+	.globl	f5c_fast
+	.p2align	2
+f5c_fast:
+	.zero	20
+	.size	f5c_fast, 20
+
+	.hidden	f5b_normal                      @ @f5b_normal
+	.type	f5b_normal,%object
+	.section	.bss.f5b_normal,"aw",%nobits
+	.globl	f5b_normal
+	.p2align	2
+f5b_normal:
+	.zero	20
+	.size	f5b_normal, 20
+
+	.hidden	f6d_10                          @ @f6d_10
+	.type	f6d_10,%object
+	.section	.bss.f6d_10,"aw",%nobits
+	.globl	f6d_10
+	.p2align	2
+f6d_10:
+	.zero	20
+	.size	f6d_10, 20
+
+	.hidden	f6b_2                           @ @f6b_2
+	.type	f6b_2,%object
+	.section	.bss.f6b_2,"aw",%nobits
+	.globl	f6b_2
+	.p2align	2
+f6b_2:
+	.zero	20
+	.size	f6b_2, 20
+
+	.hidden	f6c_5                           @ @f6c_5
+	.type	f6c_5,%object
+	.section	.bss.f6c_5,"aw",%nobits
+	.globl	f6c_5
+	.p2align	2
+f6c_5:
+	.zero	20
+	.size	f6c_5, 20
+
+	.hidden	f7b_off                         @ @f7b_off
+	.type	f7b_off,%object
+	.section	.bss.f7b_off,"aw",%nobits
+	.globl	f7b_off
+	.p2align	2
+f7b_off:
+	.zero	20
+	.size	f7b_off, 20
+
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"main screen\n"
+	.size	.L.str, 13
+
+	.type	.L.str.1,%object                @ @.str.1
+.L.str.1:
+	.asciz	"shw_calibration \n"
+	.size	.L.str.1, 18
+
+	.type	.L.str.2,%object                @ @.str.2
+.L.str.2:
+	.asciz	"shw_capacity \n"
+	.size	.L.str.2, 15
+
+	.type	.L.str.3,%object                @ @.str.3
+.L.str.3:
+	.asciz	"shw_decimalPoint \n"
+	.size	.L.str.3, 19
+
+	.type	.L.str.4,%object                @ @.str.4
+.L.str.4:
+	.asciz	"shw_resolution \n"
+	.size	.L.str.4, 17
+
+	.type	.L.str.5,%object                @ @.str.5
+.L.str.5:
+	.asciz	"shw_speed \n"
+	.size	.L.str.5, 12
+
+	.type	.L.str.6,%object                @ @.str.6
+.L.str.6:
+	.asciz	"shw_minCoin \n"
+	.size	.L.str.6, 14
+
+	.type	.L.str.7,%object                @ @.str.7
+.L.str.7:
+	.asciz	"shw_multiTare \n"
+	.size	.L.str.7, 16
+
+	.type	.L.str.8,%object                @ @.str.8
+.L.str.8:
+	.asciz	"shw_f8 \n"
+	.size	.L.str.8, 9
+
+	.type	.L.str.9,%object                @ @.str.9
+.L.str.9:
+	.asciz	"shw_gravity \n"
+	.size	.L.str.9, 14
+
+	.type	.L.str.10,%object               @ @.str.10
+.L.str.10:
+	.asciz	"shw_reset \n"
+	.size	.L.str.10, 12
+
+	.type	.L.str.11,%object               @ @.str.11
+.L.str.11:
+	.asciz	"shw_rs232 \n"
+	.size	.L.str.11, 12
+
+	.type	.L.str.12,%object               @ @.str.12
+.L.str.12:
+	.asciz	"shw_f1a_3000 \n"
+	.size	.L.str.12, 15
+
+	.type	.L.str.13,%object               @ @.str.13
+.L.str.13:
+	.asciz	"shw_f1b_6000 \n"
+	.size	.L.str.13, 15
+
+	.type	.L.str.14,%object               @ @.str.14
+.L.str.14:
+	.asciz	"shw_f1c_dual1 \n"
+	.size	.L.str.14, 16
+
+	.type	.L.str.15,%object               @ @.str.15
+.L.str.15:
+	.asciz	"shw_f1d_dual2 \n"
+	.size	.L.str.15, 16
+
+	.type	.L.str.16,%object               @ @.str.16
+.L.str.16:
+	.asciz	"shw_f2a_3 \n"
+	.size	.L.str.16, 12
+
+	.type	.L.str.17,%object               @ @.str.17
+.L.str.17:
+	.asciz	"shw_f2b_6 \n"
+	.size	.L.str.17, 12
+
+	.type	.L.str.18,%object               @ @.str.18
+.L.str.18:
+	.asciz	"shw_f2c_15 \n"
+	.size	.L.str.18, 13
+
+	.type	.L.str.19,%object               @ @.str.19
+.L.str.19:
+	.asciz	"shw_f2d_30 \n"
+	.size	.L.str.19, 13
+
+	.type	.L.str.20,%object               @ @.str.20
+.L.str.20:
+	.asciz	"shw_f3a \n"
+	.size	.L.str.20, 10
+
+	.type	.L.str.21,%object               @ @.str.21
+.L.str.21:
+	.asciz	"shw_f3b \n"
+	.size	.L.str.21, 10
+
+	.type	.L.str.22,%object               @ @.str.22
+.L.str.22:
+	.asciz	"shw_f3c \n"
+	.size	.L.str.22, 10
+
+	.type	.L.str.23,%object               @ @.str.23
+.L.str.23:
+	.asciz	"shw_f3d \n"
+	.size	.L.str.23, 10
+
+	.type	.L.str.24,%object               @ @.str.24
+.L.str.24:
+	.asciz	"shw_f3e \n"
+	.size	.L.str.24, 10
+
+	.type	.L.str.25,%object               @ @.str.25
+.L.str.25:
+	.asciz	"shw_f4a_fix \n"
+	.size	.L.str.25, 14
+
+	.type	.L.str.26,%object               @ @.str.26
+.L.str.26:
+	.asciz	"shw_f4b_flot \n"
+	.size	.L.str.26, 15
+
+	.type	.L.str.27,%object               @ @.str.27
+.L.str.27:
+	.asciz	"shw_f5a_slow \n"
+	.size	.L.str.27, 15
+
+	.type	.L.str.28,%object               @ @.str.28
+.L.str.28:
+	.asciz	"shw_f5b_normal \n"
+	.size	.L.str.28, 17
+
+	.type	.L.str.29,%object               @ @.str.29
+.L.str.29:
+	.asciz	"shw_f5c_fast \n"
+	.size	.L.str.29, 15
+
+	.type	.L.str.30,%object               @ @.str.30
+.L.str.30:
+	.asciz	"shw_f6a_1 \n"
+	.size	.L.str.30, 12
+
+	.type	.L.str.31,%object               @ @.str.31
+.L.str.31:
+	.asciz	"shw_f6b_2 \n"
+	.size	.L.str.31, 12
+
+	.type	.L.str.32,%object               @ @.str.32
+.L.str.32:
+	.asciz	"shw_f6c_5 \n"
+	.size	.L.str.32, 12
+
+	.type	.L.str.33,%object               @ @.str.33
+.L.str.33:
+	.asciz	"shw_f6d_10 \n"
+	.size	.L.str.33, 13
+
+	.type	.L.str.34,%object               @ @.str.34
+.L.str.34:
+	.asciz	"shw_f7a_on \n"
+	.size	.L.str.34, 13
+
+	.type	.L.str.35,%object               @ @.str.35
+.L.str.35:
+	.asciz	"shw_f7b_off \n"
+	.size	.L.str.35, 14
+
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	85                              @ DW_AT_ranges
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	19                              @ DW_TAG_structure_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	13                              @ DW_TAG_member
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	56                              @ DW_AT_data_member_location
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	21                              @ DW_TAG_subroutine_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	12                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	4                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x661 DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	0                               @ DW_AT_low_pc
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	2                               @ Abbrev [2] 0x26:0x11 DW_TAG_variable
+	.long	.Linfo_string3                  @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	54                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	root
+	.byte	3                               @ Abbrev [3] 0x37:0xb DW_TAG_typedef
+	.long	66                              @ DW_AT_type
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	11                              @ DW_AT_decl_line
+	.byte	4                               @ Abbrev [4] 0x42:0x45 DW_TAG_structure_type
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	20                              @ DW_AT_byte_size
+	.byte	1                               @ DW_AT_decl_file
+	.byte	4                               @ DW_AT_decl_line
+	.byte	5                               @ Abbrev [5] 0x4a:0xc DW_TAG_member
+	.long	.Linfo_string4                  @ DW_AT_name
+	.long	135                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	6                               @ DW_AT_decl_line
+	.byte	0                               @ DW_AT_data_member_location
+	.byte	5                               @ Abbrev [5] 0x56:0xc DW_TAG_member
+	.long	.Linfo_string5                  @ DW_AT_name
+	.long	141                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	7                               @ DW_AT_decl_line
+	.byte	4                               @ DW_AT_data_member_location
+	.byte	5                               @ Abbrev [5] 0x62:0xc DW_TAG_member
+	.long	.Linfo_string6                  @ DW_AT_name
+	.long	141                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	8                               @ DW_AT_decl_line
+	.byte	8                               @ DW_AT_data_member_location
+	.byte	5                               @ Abbrev [5] 0x6e:0xc DW_TAG_member
+	.long	.Linfo_string7                  @ DW_AT_name
+	.long	141                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	9                               @ DW_AT_decl_line
+	.byte	12                              @ DW_AT_data_member_location
+	.byte	5                               @ Abbrev [5] 0x7a:0xc DW_TAG_member
+	.long	.Linfo_string8                  @ DW_AT_name
+	.long	141                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	10                              @ DW_AT_decl_line
+	.byte	16                              @ DW_AT_data_member_location
+	.byte	0                               @ End Of Children Mark
+	.byte	6                               @ Abbrev [6] 0x87:0x5 DW_TAG_pointer_type
+	.long	140                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x8c:0x1 DW_TAG_subroutine_type
+                                        @ DW_AT_prototyped
+	.byte	6                               @ Abbrev [6] 0x8d:0x5 DW_TAG_pointer_type
+	.long	66                              @ DW_AT_type
+	.byte	2                               @ Abbrev [2] 0x92:0x11 DW_TAG_variable
+	.long	.Linfo_string10                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	55                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f0_cal
+	.byte	2                               @ Abbrev [2] 0xa3:0x11 DW_TAG_variable
+	.long	.Linfo_string11                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f1_resolution
+	.byte	2                               @ Abbrev [2] 0xb4:0x11 DW_TAG_variable
+	.long	.Linfo_string12                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f1a_3000
+	.byte	2                               @ Abbrev [2] 0xc5:0x11 DW_TAG_variable
+	.long	.Linfo_string13                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f1b_6000
+	.byte	2                               @ Abbrev [2] 0xd6:0x11 DW_TAG_variable
+	.long	.Linfo_string14                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f1c_dual1
+	.byte	2                               @ Abbrev [2] 0xe7:0x11 DW_TAG_variable
+	.long	.Linfo_string15                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f1d_dual2
+	.byte	2                               @ Abbrev [2] 0xf8:0x11 DW_TAG_variable
+	.long	.Linfo_string16                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f2_capacity
+	.byte	2                               @ Abbrev [2] 0x109:0x11 DW_TAG_variable
+	.long	.Linfo_string17                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f2a_3
+	.byte	2                               @ Abbrev [2] 0x11a:0x11 DW_TAG_variable
+	.long	.Linfo_string18                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f2b_6
+	.byte	2                               @ Abbrev [2] 0x12b:0x11 DW_TAG_variable
+	.long	.Linfo_string19                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f2c_15
+	.byte	2                               @ Abbrev [2] 0x13c:0x11 DW_TAG_variable
+	.long	.Linfo_string20                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f2d_30
+	.byte	2                               @ Abbrev [2] 0x14d:0x11 DW_TAG_variable
+	.long	.Linfo_string21                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f3_decimalPoint
+	.byte	2                               @ Abbrev [2] 0x15e:0x11 DW_TAG_variable
+	.long	.Linfo_string22                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f3a
+	.byte	2                               @ Abbrev [2] 0x16f:0x11 DW_TAG_variable
+	.long	.Linfo_string23                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f3b
+	.byte	2                               @ Abbrev [2] 0x180:0x11 DW_TAG_variable
+	.long	.Linfo_string24                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f3c
+	.byte	2                               @ Abbrev [2] 0x191:0x11 DW_TAG_variable
+	.long	.Linfo_string25                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f3d
+	.byte	2                               @ Abbrev [2] 0x1a2:0x11 DW_TAG_variable
+	.long	.Linfo_string26                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f3e
+	.byte	2                               @ Abbrev [2] 0x1b3:0x11 DW_TAG_variable
+	.long	.Linfo_string27                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f4_fixFloat
+	.byte	2                               @ Abbrev [2] 0x1c4:0x11 DW_TAG_variable
+	.long	.Linfo_string28                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f4a_fix
+	.byte	2                               @ Abbrev [2] 0x1d5:0x11 DW_TAG_variable
+	.long	.Linfo_string29                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f4b_flot
+	.byte	2                               @ Abbrev [2] 0x1e6:0x11 DW_TAG_variable
+	.long	.Linfo_string30                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	60                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f5_speed
+	.byte	2                               @ Abbrev [2] 0x1f7:0x11 DW_TAG_variable
+	.long	.Linfo_string31                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	60                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f5a_slow
+	.byte	2                               @ Abbrev [2] 0x208:0x11 DW_TAG_variable
+	.long	.Linfo_string32                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	60                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f5b_normal
+	.byte	2                               @ Abbrev [2] 0x219:0x11 DW_TAG_variable
+	.long	.Linfo_string33                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	60                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f5c_fast
+	.byte	2                               @ Abbrev [2] 0x22a:0x11 DW_TAG_variable
+	.long	.Linfo_string34                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f6_minCoin
+	.byte	2                               @ Abbrev [2] 0x23b:0x11 DW_TAG_variable
+	.long	.Linfo_string35                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f6a_1
+	.byte	2                               @ Abbrev [2] 0x24c:0x11 DW_TAG_variable
+	.long	.Linfo_string36                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f6b_2
+	.byte	2                               @ Abbrev [2] 0x25d:0x11 DW_TAG_variable
+	.long	.Linfo_string37                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f6c_5
+	.byte	2                               @ Abbrev [2] 0x26e:0x11 DW_TAG_variable
+	.long	.Linfo_string38                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f6d_10
+	.byte	2                               @ Abbrev [2] 0x27f:0x11 DW_TAG_variable
+	.long	.Linfo_string39                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	62                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f7_multiTare
+	.byte	2                               @ Abbrev [2] 0x290:0x11 DW_TAG_variable
+	.long	.Linfo_string40                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	62                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f7a_on
+	.byte	2                               @ Abbrev [2] 0x2a1:0x11 DW_TAG_variable
+	.long	.Linfo_string41                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	62                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f7b_off
+	.byte	2                               @ Abbrev [2] 0x2b2:0x11 DW_TAG_variable
+	.long	.Linfo_string42                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	63                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f8
+	.byte	2                               @ Abbrev [2] 0x2c3:0x11 DW_TAG_variable
+	.long	.Linfo_string43                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f9_gravity
+	.byte	2                               @ Abbrev [2] 0x2d4:0x11 DW_TAG_variable
+	.long	.Linfo_string44                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	65                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f10_reset
+	.byte	2                               @ Abbrev [2] 0x2e5:0x11 DW_TAG_variable
+	.long	.Linfo_string45                 @ DW_AT_name
+	.long	55                              @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	66                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	f11_rs232
+	.byte	8                               @ Abbrev [8] 0x2f6:0x20 DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	8                               @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	9                               @ Abbrev [9] 0x307:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string88                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	8                               @ DW_AT_decl_line
+	.long	1633                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	8                               @ Abbrev [8] 0x316:0x20 DW_TAG_subprogram
+	.long	.Lfunc_begin1                   @ DW_AT_low_pc
+	.long	.Lfunc_end1-.Lfunc_begin1       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string47                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	15                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	9                               @ Abbrev [9] 0x327:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string88                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	15                              @ DW_AT_decl_line
+	.long	1633                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	8                               @ Abbrev [8] 0x336:0x20 DW_TAG_subprogram
+	.long	.Lfunc_begin2                   @ DW_AT_low_pc
+	.long	.Lfunc_end2-.Lfunc_begin2       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	23                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	9                               @ Abbrev [9] 0x347:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string88                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	23                              @ DW_AT_decl_line
+	.long	1633                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	8                               @ Abbrev [8] 0x356:0x20 DW_TAG_subprogram
+	.long	.Lfunc_begin3                   @ DW_AT_low_pc
+	.long	.Lfunc_end3-.Lfunc_begin3       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	31                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	9                               @ Abbrev [9] 0x367:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string88                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	31                              @ DW_AT_decl_line
+	.long	1633                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	8                               @ Abbrev [8] 0x376:0x66 DW_TAG_subprogram
+	.long	.Lfunc_begin4                   @ DW_AT_low_pc
+	.long	.Lfunc_end4-.Lfunc_begin4       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string50                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	9                               @ Abbrev [9] 0x387:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string88                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.long	1638                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x395:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string89                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.long	135                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x3a3:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string90                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.long	1638                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x3b1:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string91                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.long	1638                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x3bf:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string92                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.long	1638                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x3cd:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	28
+	.long	.Linfo_string93                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.long	1638                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	10                              @ Abbrev [10] 0x3dc:0x21 DW_TAG_subprogram
+	.long	.Lfunc_begin5                   @ DW_AT_low_pc
+	.long	.Lfunc_end5-.Lfunc_begin5       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string51                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	69                              @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	11                              @ Abbrev [11] 0x3ed:0xf DW_TAG_variable
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.ascii	"\230\001"
+	.long	.Linfo_string88                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	71                              @ DW_AT_decl_line
+	.long	1638                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x3fd:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin6                   @ DW_AT_low_pc
+	.long	.Lfunc_end6-.Lfunc_begin6       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	128                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x40e:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin7                   @ DW_AT_low_pc
+	.long	.Lfunc_end7-.Lfunc_begin7       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string53                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	131                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x41f:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin8                   @ DW_AT_low_pc
+	.long	.Lfunc_end8-.Lfunc_begin8       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string54                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	134                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x430:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin9                   @ DW_AT_low_pc
+	.long	.Lfunc_end9-.Lfunc_begin9       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	137                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x441:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin10                  @ DW_AT_low_pc
+	.long	.Lfunc_end10-.Lfunc_begin10     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string56                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	140                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x452:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin11                  @ DW_AT_low_pc
+	.long	.Lfunc_end11-.Lfunc_begin11     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string57                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	143                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x463:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin12                  @ DW_AT_low_pc
+	.long	.Lfunc_end12-.Lfunc_begin12     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string58                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	146                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x474:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin13                  @ DW_AT_low_pc
+	.long	.Lfunc_end13-.Lfunc_begin13     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	149                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x485:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin14                  @ DW_AT_low_pc
+	.long	.Lfunc_end14-.Lfunc_begin14     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string60                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	152                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x496:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin15                  @ DW_AT_low_pc
+	.long	.Lfunc_end15-.Lfunc_begin15     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string61                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	155                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x4a7:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin16                  @ DW_AT_low_pc
+	.long	.Lfunc_end16-.Lfunc_begin16     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string62                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	158                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x4b8:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin17                  @ DW_AT_low_pc
+	.long	.Lfunc_end17-.Lfunc_begin17     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string63                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	161                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x4c9:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin18                  @ DW_AT_low_pc
+	.long	.Lfunc_end18-.Lfunc_begin18     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string64                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	164                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x4da:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin19                  @ DW_AT_low_pc
+	.long	.Lfunc_end19-.Lfunc_begin19     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	167                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x4eb:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin20                  @ DW_AT_low_pc
+	.long	.Lfunc_end20-.Lfunc_begin20     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string66                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	170                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x4fc:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin21                  @ DW_AT_low_pc
+	.long	.Lfunc_end21-.Lfunc_begin21     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	173                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x50d:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin22                  @ DW_AT_low_pc
+	.long	.Lfunc_end22-.Lfunc_begin22     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string68                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	176                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x51e:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin23                  @ DW_AT_low_pc
+	.long	.Lfunc_end23-.Lfunc_begin23     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string69                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	179                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x52f:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin24                  @ DW_AT_low_pc
+	.long	.Lfunc_end24-.Lfunc_begin24     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string70                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	182                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x540:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin25                  @ DW_AT_low_pc
+	.long	.Lfunc_end25-.Lfunc_begin25     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string71                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	185                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x551:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin26                  @ DW_AT_low_pc
+	.long	.Lfunc_end26-.Lfunc_begin26     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string72                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	188                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x562:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin27                  @ DW_AT_low_pc
+	.long	.Lfunc_end27-.Lfunc_begin27     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string73                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	191                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x573:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin28                  @ DW_AT_low_pc
+	.long	.Lfunc_end28-.Lfunc_begin28     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string74                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	194                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x584:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin29                  @ DW_AT_low_pc
+	.long	.Lfunc_end29-.Lfunc_begin29     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string75                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	197                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x595:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin30                  @ DW_AT_low_pc
+	.long	.Lfunc_end30-.Lfunc_begin30     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string76                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	200                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x5a6:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin31                  @ DW_AT_low_pc
+	.long	.Lfunc_end31-.Lfunc_begin31     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string77                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	203                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x5b7:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin32                  @ DW_AT_low_pc
+	.long	.Lfunc_end32-.Lfunc_begin32     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string78                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	206                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x5c8:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin33                  @ DW_AT_low_pc
+	.long	.Lfunc_end33-.Lfunc_begin33     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string79                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	209                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x5d9:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin34                  @ DW_AT_low_pc
+	.long	.Lfunc_end34-.Lfunc_begin34     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string80                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	212                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x5ea:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin35                  @ DW_AT_low_pc
+	.long	.Lfunc_end35-.Lfunc_begin35     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string81                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	215                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x5fb:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin36                  @ DW_AT_low_pc
+	.long	.Lfunc_end36-.Lfunc_begin36     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string82                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	218                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x60c:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin37                  @ DW_AT_low_pc
+	.long	.Lfunc_end37-.Lfunc_begin37     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string83                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	221                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x61d:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin38                  @ DW_AT_low_pc
+	.long	.Lfunc_end38-.Lfunc_begin38     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string84                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	224                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x62e:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin39                  @ DW_AT_low_pc
+	.long	.Lfunc_end39-.Lfunc_begin39     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string85                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	227                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x63f:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin40                  @ DW_AT_low_pc
+	.long	.Lfunc_end40-.Lfunc_begin40     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string86                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	230                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x650:0x11 DW_TAG_subprogram
+	.long	.Lfunc_begin41                  @ DW_AT_low_pc
+	.long	.Lfunc_end41-.Lfunc_begin41     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string87                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	233                             @ DW_AT_decl_line
+                                        @ DW_AT_external
+	.byte	6                               @ Abbrev [6] 0x661:0x5 DW_TAG_pointer_type
+	.long	1638                            @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x666:0x5 DW_TAG_pointer_type
+	.long	55                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Lfunc_begin0
+	.long	.Lfunc_end0
+	.long	.Lfunc_begin1
+	.long	.Lfunc_end1
+	.long	.Lfunc_begin2
+	.long	.Lfunc_end2
+	.long	.Lfunc_begin3
+	.long	.Lfunc_end3
+	.long	.Lfunc_begin4
+	.long	.Lfunc_end4
+	.long	.Lfunc_begin5
+	.long	.Lfunc_end5
+	.long	.Lfunc_begin6
+	.long	.Lfunc_end6
+	.long	.Lfunc_begin7
+	.long	.Lfunc_end7
+	.long	.Lfunc_begin8
+	.long	.Lfunc_end8
+	.long	.Lfunc_begin9
+	.long	.Lfunc_end9
+	.long	.Lfunc_begin10
+	.long	.Lfunc_end10
+	.long	.Lfunc_begin11
+	.long	.Lfunc_end11
+	.long	.Lfunc_begin12
+	.long	.Lfunc_end12
+	.long	.Lfunc_begin13
+	.long	.Lfunc_end13
+	.long	.Lfunc_begin14
+	.long	.Lfunc_end14
+	.long	.Lfunc_begin15
+	.long	.Lfunc_end15
+	.long	.Lfunc_begin16
+	.long	.Lfunc_end16
+	.long	.Lfunc_begin17
+	.long	.Lfunc_end17
+	.long	.Lfunc_begin18
+	.long	.Lfunc_end18
+	.long	.Lfunc_begin19
+	.long	.Lfunc_end19
+	.long	.Lfunc_begin20
+	.long	.Lfunc_end20
+	.long	.Lfunc_begin21
+	.long	.Lfunc_end21
+	.long	.Lfunc_begin22
+	.long	.Lfunc_end22
+	.long	.Lfunc_begin23
+	.long	.Lfunc_end23
+	.long	.Lfunc_begin24
+	.long	.Lfunc_end24
+	.long	.Lfunc_begin25
+	.long	.Lfunc_end25
+	.long	.Lfunc_begin26
+	.long	.Lfunc_end26
+	.long	.Lfunc_begin27
+	.long	.Lfunc_end27
+	.long	.Lfunc_begin28
+	.long	.Lfunc_end28
+	.long	.Lfunc_begin29
+	.long	.Lfunc_end29
+	.long	.Lfunc_begin30
+	.long	.Lfunc_end30
+	.long	.Lfunc_begin31
+	.long	.Lfunc_end31
+	.long	.Lfunc_begin32
+	.long	.Lfunc_end32
+	.long	.Lfunc_begin33
+	.long	.Lfunc_end33
+	.long	.Lfunc_begin34
+	.long	.Lfunc_end34
+	.long	.Lfunc_begin35
+	.long	.Lfunc_end35
+	.long	.Lfunc_begin36
+	.long	.Lfunc_end36
+	.long	.Lfunc_begin37
+	.long	.Lfunc_end37
+	.long	.Lfunc_begin38
+	.long	.Lfunc_end38
+	.long	.Lfunc_begin39
+	.long	.Lfunc_end39
+	.long	.Lfunc_begin40
+	.long	.Lfunc_end40
+	.long	.Lfunc_begin41
+	.long	.Lfunc_end41
+	.long	0
+	.long	0
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: Arm Compiler for Embedded 6.18 Tool: armclang [5e4cca00]" @ string offset=0
+.Linfo_string1:
+	.asciz	"../src\\menu.c"                @ string offset=68
+.Linfo_string2:
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=82
+.Linfo_string3:
+	.asciz	"root"                          @ string offset=130
+.Linfo_string4:
+	.asciz	"DoWorkDisplay"                 @ string offset=135
+.Linfo_string5:
+	.asciz	"enter"                         @ string offset=149
+.Linfo_string6:
+	.asciz	"exit"                          @ string offset=155
+.Linfo_string7:
+	.asciz	"up"                            @ string offset=160
+.Linfo_string8:
+	.asciz	"down"                          @ string offset=163
+.Linfo_string9:
+	.asciz	"node"                          @ string offset=168
+.Linfo_string10:
+	.asciz	"f0_cal"                        @ string offset=173
+.Linfo_string11:
+	.asciz	"f1_resolution"                 @ string offset=180
+.Linfo_string12:
+	.asciz	"f1a_3000"                      @ string offset=194
+.Linfo_string13:
+	.asciz	"f1b_6000"                      @ string offset=203
+.Linfo_string14:
+	.asciz	"f1c_dual1"                     @ string offset=212
+.Linfo_string15:
+	.asciz	"f1d_dual2"                     @ string offset=222
+.Linfo_string16:
+	.asciz	"f2_capacity"                   @ string offset=232
+.Linfo_string17:
+	.asciz	"f2a_3"                         @ string offset=244
+.Linfo_string18:
+	.asciz	"f2b_6"                         @ string offset=250
+.Linfo_string19:
+	.asciz	"f2c_15"                        @ string offset=256
+.Linfo_string20:
+	.asciz	"f2d_30"                        @ string offset=263
+.Linfo_string21:
+	.asciz	"f3_decimalPoint"               @ string offset=270
+.Linfo_string22:
+	.asciz	"f3a"                           @ string offset=286
+.Linfo_string23:
+	.asciz	"f3b"                           @ string offset=290
+.Linfo_string24:
+	.asciz	"f3c"                           @ string offset=294
+.Linfo_string25:
+	.asciz	"f3d"                           @ string offset=298
+.Linfo_string26:
+	.asciz	"f3e"                           @ string offset=302
+.Linfo_string27:
+	.asciz	"f4_fixFloat"                   @ string offset=306
+.Linfo_string28:
+	.asciz	"f4a_fix"                       @ string offset=318
+.Linfo_string29:
+	.asciz	"f4b_flot"                      @ string offset=326
+.Linfo_string30:
+	.asciz	"f5_speed"                      @ string offset=335
+.Linfo_string31:
+	.asciz	"f5a_slow"                      @ string offset=344
+.Linfo_string32:
+	.asciz	"f5b_normal"                    @ string offset=353
+.Linfo_string33:
+	.asciz	"f5c_fast"                      @ string offset=364
+.Linfo_string34:
+	.asciz	"f6_minCoin"                    @ string offset=373
+.Linfo_string35:
+	.asciz	"f6a_1"                         @ string offset=384
+.Linfo_string36:
+	.asciz	"f6b_2"                         @ string offset=390
+.Linfo_string37:
+	.asciz	"f6c_5"                         @ string offset=396
+.Linfo_string38:
+	.asciz	"f6d_10"                        @ string offset=402
+.Linfo_string39:
+	.asciz	"f7_multiTare"                  @ string offset=409
+.Linfo_string40:
+	.asciz	"f7a_on"                        @ string offset=422
+.Linfo_string41:
+	.asciz	"f7b_off"                       @ string offset=429
+.Linfo_string42:
+	.asciz	"f8"                            @ string offset=437
+.Linfo_string43:
+	.asciz	"f9_gravity"                    @ string offset=440
+.Linfo_string44:
+	.asciz	"f10_reset"                     @ string offset=451
+.Linfo_string45:
+	.asciz	"f11_rs232"                     @ string offset=461
+.Linfo_string46:
+	.asciz	"Menu_Enter"                    @ string offset=471
+.Linfo_string47:
+	.asciz	"Menu_Exit"                     @ string offset=482
+.Linfo_string48:
+	.asciz	"Menu_Up"                       @ string offset=492
+.Linfo_string49:
+	.asciz	"Menu_Down"                     @ string offset=500
+.Linfo_string50:
+	.asciz	"buildMenu"                     @ string offset=510
+.Linfo_string51:
+	.asciz	"Menu_Init"                     @ string offset=520
+.Linfo_string52:
+	.asciz	"shw_mainScreen"                @ string offset=530
+.Linfo_string53:
+	.asciz	"shw_calibration"               @ string offset=545
+.Linfo_string54:
+	.asciz	"shw_capacity"                  @ string offset=561
+.Linfo_string55:
+	.asciz	"shw_decimalPoint"              @ string offset=574
+.Linfo_string56:
+	.asciz	"shw_resolution"                @ string offset=591
+.Linfo_string57:
+	.asciz	"shw_speed"                     @ string offset=606
+.Linfo_string58:
+	.asciz	"shw_minCoin"                   @ string offset=616
+.Linfo_string59:
+	.asciz	"shw_multiTare"                 @ string offset=628
+.Linfo_string60:
+	.asciz	"shw_f8"                        @ string offset=642
+.Linfo_string61:
+	.asciz	"shw_gravity"                   @ string offset=649
+.Linfo_string62:
+	.asciz	"shw_reset"                     @ string offset=661
+.Linfo_string63:
+	.asciz	"shw_rs232"                     @ string offset=671
+.Linfo_string64:
+	.asciz	"shw_f1a_3000"                  @ string offset=681
+.Linfo_string65:
+	.asciz	"shw_f1b_6000"                  @ string offset=694
+.Linfo_string66:
+	.asciz	"shw_f1c_dual1"                 @ string offset=707
+.Linfo_string67:
+	.asciz	"shw_f1d_dual2"                 @ string offset=721
+.Linfo_string68:
+	.asciz	"shw_f2a_3"                     @ string offset=735
+.Linfo_string69:
+	.asciz	"shw_f2b_6"                     @ string offset=745
+.Linfo_string70:
+	.asciz	"shw_f2c_15"                    @ string offset=755
+.Linfo_string71:
+	.asciz	"shw_f2d_30"                    @ string offset=766
+.Linfo_string72:
+	.asciz	"shw_f3a"                       @ string offset=777
+.Linfo_string73:
+	.asciz	"shw_f3b"                       @ string offset=785
+.Linfo_string74:
+	.asciz	"shw_f3c"                       @ string offset=793
+.Linfo_string75:
+	.asciz	"shw_f3d"                       @ string offset=801
+.Linfo_string76:
+	.asciz	"shw_f3e"                       @ string offset=809
+.Linfo_string77:
+	.asciz	"shw_f4a_fix"                   @ string offset=817
+.Linfo_string78:
+	.asciz	"shw_f4b_flot"                  @ string offset=829
+.Linfo_string79:
+	.asciz	"shw_f5a_slow"                  @ string offset=842
+.Linfo_string80:
+	.asciz	"shw_f5b_normal"                @ string offset=855
+.Linfo_string81:
+	.asciz	"shw_f5c_fast"                  @ string offset=870
+.Linfo_string82:
+	.asciz	"shw_f6a_1"                     @ string offset=883
+.Linfo_string83:
+	.asciz	"shw_f6b_2"                     @ string offset=893
+.Linfo_string84:
+	.asciz	"shw_f6c_5"                     @ string offset=903
+.Linfo_string85:
+	.asciz	"shw_f6d_10"                    @ string offset=913
+.Linfo_string86:
+	.asciz	"shw_f7a_on"                    @ string offset=924
+.Linfo_string87:
+	.asciz	"shw_f7b_off"                   @ string offset=935
+.Linfo_string88:
+	.asciz	"currentNode"                   @ string offset=947
+.Linfo_string89:
+	.asciz	"_DoWorkDisplay"                @ string offset=959
+.Linfo_string90:
+	.asciz	"_enter"                        @ string offset=974
+.Linfo_string91:
+	.asciz	"_exit"                         @ string offset=981
+.Linfo_string92:
+	.asciz	"_up"                           @ string offset=987
+.Linfo_string93:
+	.asciz	"_down"                         @ string offset=991
+	.ident	"Component: Arm Compiler for Embedded 6.18 Tool: armclang [5e4cca00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:
