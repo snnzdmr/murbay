@@ -4001,6 +4001,20 @@ void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 1 "../periph_conf.h" 1
 # 13 "../scale_v1.h" 2
 # 12 "../int_handler.c" 2
+# 1 "../Inc/millis.h" 1
+
+
+
+# 1 "..\\scale_v1.h" 1
+# 12 "..\\scale_v1.h"
+# 1 "../periph_conf.h" 1
+# 13 "..\\scale_v1.h" 2
+# 5 "../Inc/millis.h" 2
+
+void wdt_tickCounter(void);
+
+int64_t millis(void);
+# 13 "../int_handler.c" 2
 void GPB_IRQHandler(void)
 {
 
@@ -4110,6 +4124,7 @@ void WDT_IRQHandler(void)
 
     if (((((WDT_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x00000UL))->CTL & (0x1ul << (3)))? 1UL : 0UL))
     {
+    wdt_tickCounter();
 
         (((WDT_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x00000UL))->CTL = (((WDT_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x00000UL))->CTL & ~((0x1ul << (2)) | (0x1ul << (5)))) | (0x1ul << (3)));
     }

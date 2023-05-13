@@ -32,7 +32,7 @@
 GPB_IRQHandler:
 .Lfunc_begin0:
 	.file	5 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../int_handler.c"
-	.loc	5 13 0                          @ ../int_handler.c:13:0
+	.loc	5 14 0                          @ ../int_handler.c:14:0
 	.fnstart
 	.cfi_sections .debug_frame
 	.cfi_startproc
@@ -44,10 +44,10 @@ GPB_IRQHandler:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.0_0
 .Ltmp0:
-	.loc	5 15 9 prologue_end             @ ../int_handler.c:15:9
+	.loc	5 16 9 prologue_end             @ ../int_handler.c:16:9
 	ldr	r0, [r0]
 .Ltmp1:
-	.loc	5 15 9 is_stmt 0                @ ../int_handler.c:15:9
+	.loc	5 16 9 is_stmt 0                @ ../int_handler.c:16:9
 	lsls	r0, r0, #29
 	cmp	r0, #0
 	bpl	.LBB0_2
@@ -57,29 +57,29 @@ GPB_IRQHandler:
 	ldr	r1, __arm_cp.0_0
 	movs	r0, #4
 .Ltmp2:
-	.loc	5 17 9 is_stmt 1                @ ../int_handler.c:17:9
+	.loc	5 18 9 is_stmt 1                @ ../int_handler.c:18:9
 	str	r0, [r1]
-	.loc	5 18 9                          @ ../int_handler.c:18:9
+	.loc	5 19 9                          @ ../int_handler.c:19:9
 	ldr	r0, __arm_cp.0_2
 	bl	printf
-	.loc	5 19 5                          @ ../int_handler.c:19:5
+	.loc	5 20 5                          @ ../int_handler.c:20:5
 	b	.LBB0_3
 .Ltmp3:
 .LBB0_2:
 	.loc	5 0 5 is_stmt 0                 @ ../int_handler.c:0:5
 	ldr	r1, __arm_cp.0_0
 .Ltmp4:
-	.loc	5 23 26 is_stmt 1               @ ../int_handler.c:23:26
+	.loc	5 24 26 is_stmt 1               @ ../int_handler.c:24:26
 	ldr	r0, [r1]
-	.loc	5 23 20 is_stmt 0               @ ../int_handler.c:23:20
+	.loc	5 24 20 is_stmt 0               @ ../int_handler.c:24:20
 	str	r0, [r1]
-	.loc	5 24 9 is_stmt 1                @ ../int_handler.c:24:9
+	.loc	5 25 9 is_stmt 1                @ ../int_handler.c:25:9
 	ldr	r0, __arm_cp.0_1
 	bl	printf
 	b	.LBB0_3
 .Ltmp5:
 .LBB0_3:
-	.loc	5 26 1                          @ ../int_handler.c:26:1
+	.loc	5 27 1                          @ ../int_handler.c:27:1
 	pop	{r7, pc}
 .Ltmp6:
 	.p2align	2
@@ -112,7 +112,7 @@ __arm_cp.0_2:
 	.thumb_func
 GPC_IRQHandler:
 .Lfunc_begin1:
-	.loc	5 29 0 is_stmt 1                @ ../int_handler.c:29:0
+	.loc	5 30 0 is_stmt 1                @ ../int_handler.c:30:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -123,10 +123,10 @@ GPC_IRQHandler:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.1_0
 .Ltmp7:
-	.loc	5 31 9 prologue_end             @ ../int_handler.c:31:9
+	.loc	5 32 9 prologue_end             @ ../int_handler.c:32:9
 	ldr	r0, [r0]
 .Ltmp8:
-	.loc	5 31 9 is_stmt 0                @ ../int_handler.c:31:9
+	.loc	5 32 9 is_stmt 0                @ ../int_handler.c:32:9
 	lsls	r0, r0, #31
 	cbz	r0, .LBB1_2
 	b	.LBB1_1
@@ -135,29 +135,29 @@ GPC_IRQHandler:
 	ldr	r1, __arm_cp.1_0
 	movs	r0, #1
 .Ltmp9:
-	.loc	5 33 9 is_stmt 1                @ ../int_handler.c:33:9
+	.loc	5 34 9 is_stmt 1                @ ../int_handler.c:34:9
 	str	r0, [r1]
-	.loc	5 34 9                          @ ../int_handler.c:34:9
+	.loc	5 35 9                          @ ../int_handler.c:35:9
 	ldr	r0, __arm_cp.1_2
 	bl	printf
-	.loc	5 35 5                          @ ../int_handler.c:35:5
+	.loc	5 36 5                          @ ../int_handler.c:36:5
 	b	.LBB1_3
 .Ltmp10:
 .LBB1_2:
 	.loc	5 0 5 is_stmt 0                 @ ../int_handler.c:0:5
 	ldr	r1, __arm_cp.1_0
 .Ltmp11:
-	.loc	5 39 26 is_stmt 1               @ ../int_handler.c:39:26
+	.loc	5 40 26 is_stmt 1               @ ../int_handler.c:40:26
 	ldr	r0, [r1]
-	.loc	5 39 20 is_stmt 0               @ ../int_handler.c:39:20
+	.loc	5 40 20 is_stmt 0               @ ../int_handler.c:40:20
 	str	r0, [r1]
-	.loc	5 40 9 is_stmt 1                @ ../int_handler.c:40:9
+	.loc	5 41 9 is_stmt 1                @ ../int_handler.c:41:9
 	ldr	r0, __arm_cp.1_1
 	bl	printf
 	b	.LBB1_3
 .Ltmp12:
 .LBB1_3:
-	.loc	5 42 1                          @ ../int_handler.c:42:1
+	.loc	5 43 1                          @ ../int_handler.c:43:1
 	pop	{r7, pc}
 .Ltmp13:
 	.p2align	2
@@ -190,7 +190,7 @@ __arm_cp.1_2:
 	.thumb_func
 GPD_IRQHandler:
 .Lfunc_begin2:
-	.loc	5 45 0 is_stmt 1                @ ../int_handler.c:45:0
+	.loc	5 46 0 is_stmt 1                @ ../int_handler.c:46:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -201,10 +201,10 @@ GPD_IRQHandler:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.2_0
 .Ltmp14:
-	.loc	5 47 9 prologue_end             @ ../int_handler.c:47:9
+	.loc	5 48 9 prologue_end             @ ../int_handler.c:48:9
 	ldr	r0, [r0]
 .Ltmp15:
-	.loc	5 47 9 is_stmt 0                @ ../int_handler.c:47:9
+	.loc	5 48 9 is_stmt 0                @ ../int_handler.c:48:9
 	lsls	r0, r0, #31
 	cbz	r0, .LBB2_2
 	b	.LBB2_1
@@ -213,29 +213,29 @@ GPD_IRQHandler:
 	ldr	r1, __arm_cp.2_0
 	movs	r0, #1
 .Ltmp16:
-	.loc	5 49 9 is_stmt 1                @ ../int_handler.c:49:9
+	.loc	5 50 9 is_stmt 1                @ ../int_handler.c:50:9
 	str	r0, [r1]
-	.loc	5 50 9                          @ ../int_handler.c:50:9
+	.loc	5 51 9                          @ ../int_handler.c:51:9
 	ldr	r0, __arm_cp.2_2
 	bl	printf
-	.loc	5 51 5                          @ ../int_handler.c:51:5
+	.loc	5 52 5                          @ ../int_handler.c:52:5
 	b	.LBB2_3
 .Ltmp17:
 .LBB2_2:
 	.loc	5 0 5 is_stmt 0                 @ ../int_handler.c:0:5
 	ldr	r1, __arm_cp.2_0
 .Ltmp18:
-	.loc	5 55 26 is_stmt 1               @ ../int_handler.c:55:26
+	.loc	5 56 26 is_stmt 1               @ ../int_handler.c:56:26
 	ldr	r0, [r1]
-	.loc	5 55 20 is_stmt 0               @ ../int_handler.c:55:20
+	.loc	5 56 20 is_stmt 0               @ ../int_handler.c:56:20
 	str	r0, [r1]
-	.loc	5 56 9 is_stmt 1                @ ../int_handler.c:56:9
+	.loc	5 57 9 is_stmt 1                @ ../int_handler.c:57:9
 	ldr	r0, __arm_cp.2_1
 	bl	printf
 	b	.LBB2_3
 .Ltmp19:
 .LBB2_3:
-	.loc	5 58 1                          @ ../int_handler.c:58:1
+	.loc	5 59 1                          @ ../int_handler.c:59:1
 	pop	{r7, pc}
 .Ltmp20:
 	.p2align	2
@@ -268,7 +268,7 @@ __arm_cp.2_2:
 	.thumb_func
 EINT0_IRQHandler:
 .Lfunc_begin3:
-	.loc	5 61 0 is_stmt 1                @ ../int_handler.c:61:0
+	.loc	5 62 0 is_stmt 1                @ ../int_handler.c:62:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -279,10 +279,10 @@ EINT0_IRQHandler:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.3_0
 .Ltmp21:
-	.loc	5 64 9 prologue_end             @ ../int_handler.c:64:9
+	.loc	5 65 9 prologue_end             @ ../int_handler.c:65:9
 	ldr	r0, [r0]
 .Ltmp22:
-	.loc	5 64 9 is_stmt 0                @ ../int_handler.c:64:9
+	.loc	5 65 9 is_stmt 0                @ ../int_handler.c:65:9
 	lsls	r0, r0, #26
 	cmp	r0, #0
 	bpl	.LBB3_2
@@ -292,16 +292,16 @@ EINT0_IRQHandler:
 	ldr	r1, __arm_cp.3_0
 	movs	r0, #32
 .Ltmp23:
-	.loc	5 66 9 is_stmt 1                @ ../int_handler.c:66:9
+	.loc	5 67 9 is_stmt 1                @ ../int_handler.c:67:9
 	str	r0, [r1]
-	.loc	5 67 9                          @ ../int_handler.c:67:9
+	.loc	5 68 9                          @ ../int_handler.c:68:9
 	ldr	r0, __arm_cp.3_1
 	bl	printf
-	.loc	5 68 5                          @ ../int_handler.c:68:5
+	.loc	5 69 5                          @ ../int_handler.c:69:5
 	b	.LBB3_2
 .Ltmp24:
 .LBB3_2:
-	.loc	5 70 1                          @ ../int_handler.c:70:1
+	.loc	5 71 1                          @ ../int_handler.c:71:1
 	pop	{r7, pc}
 .Ltmp25:
 	.p2align	2
@@ -330,7 +330,7 @@ __arm_cp.3_1:
 	.thumb_func
 EINT1_IRQHandler:
 .Lfunc_begin4:
-	.loc	5 73 0 is_stmt 1                @ ../int_handler.c:73:0
+	.loc	5 74 0 is_stmt 1                @ ../int_handler.c:74:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -341,10 +341,10 @@ EINT1_IRQHandler:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.4_0
 .Ltmp26:
-	.loc	5 76 9 prologue_end             @ ../int_handler.c:76:9
+	.loc	5 77 9 prologue_end             @ ../int_handler.c:77:9
 	ldr	r0, [r0]
 .Ltmp27:
-	.loc	5 76 9 is_stmt 0                @ ../int_handler.c:76:9
+	.loc	5 77 9 is_stmt 0                @ ../int_handler.c:77:9
 	lsls	r0, r0, #27
 	cmp	r0, #0
 	bpl	.LBB4_2
@@ -354,16 +354,16 @@ EINT1_IRQHandler:
 	ldr	r1, __arm_cp.4_0
 	movs	r0, #16
 .Ltmp28:
-	.loc	5 78 9 is_stmt 1                @ ../int_handler.c:78:9
+	.loc	5 79 9 is_stmt 1                @ ../int_handler.c:79:9
 	str	r0, [r1]
-	.loc	5 79 9                          @ ../int_handler.c:79:9
+	.loc	5 80 9                          @ ../int_handler.c:80:9
 	ldr	r0, __arm_cp.4_1
 	bl	printf
-	.loc	5 80 5                          @ ../int_handler.c:80:5
+	.loc	5 81 5                          @ ../int_handler.c:81:5
 	b	.LBB4_2
 .Ltmp29:
 .LBB4_2:
-	.loc	5 82 1                          @ ../int_handler.c:82:1
+	.loc	5 83 1                          @ ../int_handler.c:83:1
 	pop	{r7, pc}
 .Ltmp30:
 	.p2align	2
@@ -392,7 +392,7 @@ __arm_cp.4_1:
 	.thumb_func
 EINT3_IRQHandler:
 .Lfunc_begin5:
-	.loc	5 85 0 is_stmt 1                @ ../int_handler.c:85:0
+	.loc	5 86 0 is_stmt 1                @ ../int_handler.c:86:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -403,10 +403,10 @@ EINT3_IRQHandler:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.5_0
 .Ltmp31:
-	.loc	5 88 9 prologue_end             @ ../int_handler.c:88:9
+	.loc	5 89 9 prologue_end             @ ../int_handler.c:89:9
 	ldr	r0, [r0]
 .Ltmp32:
-	.loc	5 88 9 is_stmt 0                @ ../int_handler.c:88:9
+	.loc	5 89 9 is_stmt 0                @ ../int_handler.c:89:9
 	lsls	r0, r0, #29
 	cmp	r0, #0
 	bpl	.LBB5_2
@@ -416,16 +416,16 @@ EINT3_IRQHandler:
 	ldr	r1, __arm_cp.5_0
 	movs	r0, #4
 .Ltmp33:
-	.loc	5 90 9 is_stmt 1                @ ../int_handler.c:90:9
+	.loc	5 91 9 is_stmt 1                @ ../int_handler.c:91:9
 	str	r0, [r1]
-	.loc	5 91 9                          @ ../int_handler.c:91:9
+	.loc	5 92 9                          @ ../int_handler.c:92:9
 	ldr	r0, __arm_cp.5_1
 	bl	printf
-	.loc	5 92 5                          @ ../int_handler.c:92:5
+	.loc	5 93 5                          @ ../int_handler.c:93:5
 	b	.LBB5_2
 .Ltmp34:
 .LBB5_2:
-	.loc	5 94 1                          @ ../int_handler.c:94:1
+	.loc	5 95 1                          @ ../int_handler.c:95:1
 	pop	{r7, pc}
 .Ltmp35:
 	.p2align	2
@@ -454,7 +454,7 @@ __arm_cp.5_1:
 	.thumb_func
 TMR0_IRQHandler:
 .Lfunc_begin6:
-	.loc	5 96 0 is_stmt 1                @ ../int_handler.c:96:0
+	.loc	5 97 0 is_stmt 1                @ ../int_handler.c:97:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -465,23 +465,23 @@ TMR0_IRQHandler:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.6_0
 .Ltmp36:
-	.loc	5 98 9 prologue_end             @ ../int_handler.c:98:9
+	.loc	5 99 9 prologue_end             @ ../int_handler.c:99:9
 	bl	TIMER_GetIntFlag
 .Ltmp37:
-	.loc	5 98 9 is_stmt 0                @ ../int_handler.c:98:9
+	.loc	5 99 9 is_stmt 0                @ ../int_handler.c:99:9
 	cbz	r0, .LBB6_2
 	b	.LBB6_1
 .LBB6_1:
 	.loc	5 0 9                           @ ../int_handler.c:0:9
 	ldr	r0, __arm_cp.6_0
 .Ltmp38:
-	.loc	5 101 9 is_stmt 1               @ ../int_handler.c:101:9
+	.loc	5 102 9 is_stmt 1               @ ../int_handler.c:102:9
 	bl	TIMER_ClearIntFlag
-	.loc	5 102 5                         @ ../int_handler.c:102:5
+	.loc	5 103 5                         @ ../int_handler.c:103:5
 	b	.LBB6_2
 .Ltmp39:
 .LBB6_2:
-	.loc	5 104 1                         @ ../int_handler.c:104:1
+	.loc	5 105 1                         @ ../int_handler.c:105:1
 	pop	{r7, pc}
 .Ltmp40:
 	.p2align	2
@@ -571,7 +571,7 @@ TIMER_ClearIntFlag:
 	.thumb_func
 TMR1_IRQHandler:
 .Lfunc_begin9:
-	.loc	5 107 0                         @ ../int_handler.c:107:0
+	.loc	5 108 0                         @ ../int_handler.c:108:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -582,23 +582,23 @@ TMR1_IRQHandler:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.9_0
 .Ltmp45:
-	.loc	5 109 9 prologue_end            @ ../int_handler.c:109:9
+	.loc	5 110 9 prologue_end            @ ../int_handler.c:110:9
 	bl	TIMER_GetIntFlag
 .Ltmp46:
-	.loc	5 109 9 is_stmt 0               @ ../int_handler.c:109:9
+	.loc	5 110 9 is_stmt 0               @ ../int_handler.c:110:9
 	cbz	r0, .LBB9_2
 	b	.LBB9_1
 .LBB9_1:
 	.loc	5 0 9                           @ ../int_handler.c:0:9
 	ldr	r0, __arm_cp.9_0
 .Ltmp47:
-	.loc	5 112 9 is_stmt 1               @ ../int_handler.c:112:9
+	.loc	5 113 9 is_stmt 1               @ ../int_handler.c:113:9
 	bl	TIMER_ClearIntFlag
-	.loc	5 113 5                         @ ../int_handler.c:113:5
+	.loc	5 114 5                         @ ../int_handler.c:114:5
 	b	.LBB9_2
 .Ltmp48:
 .LBB9_2:
-	.loc	5 115 1                         @ ../int_handler.c:115:1
+	.loc	5 116 1                         @ ../int_handler.c:116:1
 	pop	{r7, pc}
 .Ltmp49:
 	.p2align	2
@@ -623,16 +623,21 @@ __arm_cp.9_0:
 	.thumb_func
 WDT_IRQHandler:
 .Lfunc_begin10:
-	.loc	5 117 0 is_stmt 1               @ ../int_handler.c:117:0
+	.loc	5 118 0 is_stmt 1               @ ../int_handler.c:118:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.10_0
 .Ltmp50:
-	.loc	5 119 9 prologue_end            @ ../int_handler.c:119:9
+	.loc	5 120 9 prologue_end            @ ../int_handler.c:120:9
 	ldr	r0, [r0]
 .Ltmp51:
-	.loc	5 119 9 is_stmt 0               @ ../int_handler.c:119:9
+	.loc	5 120 9 is_stmt 0               @ ../int_handler.c:120:9
 	lsls	r0, r0, #28
 	cmp	r0, #0
 	bpl	.LBB10_2
@@ -641,38 +646,39 @@ WDT_IRQHandler:
 	.loc	5 0 9                           @ ../int_handler.c:0:9
 	movs	r0, #1
 .Ltmp52:
-	.loc	5 119 9                         @ ../int_handler.c:119:9
+	.loc	5 120 9                         @ ../int_handler.c:120:9
 	cbnz	r0, .LBB10_3
 	b	.LBB10_4
 .Ltmp53:
 .LBB10_2:
 	.loc	5 0 9                           @ ../int_handler.c:0:9
 	movs	r0, #1
-	.loc	5 119 9                         @ ../int_handler.c:119:9
+	.loc	5 120 9                         @ ../int_handler.c:120:9
 	cbnz	r0, .LBB10_4
 	b	.LBB10_3
 .LBB10_3:
-	.loc	5 0 9                           @ ../int_handler.c:0:9
-	ldr	r1, __arm_cp.10_0
 .Ltmp54:
-	.loc	5 122 9 is_stmt 1               @ ../int_handler.c:122:9
+	.loc	5 122 5 is_stmt 1               @ ../int_handler.c:122:5
+	bl	wdt_tickCounter
+	ldr	r1, __arm_cp.10_0
+	.loc	5 124 9                         @ ../int_handler.c:124:9
 	ldr	r0, [r1]
 	movs	r2, #8
 	orrs	r0, r2
 	movs	r2, #36
 	bics	r0, r2
 	str	r0, [r1]
-	.loc	5 123 5                         @ ../int_handler.c:123:5
+	.loc	5 125 5                         @ ../int_handler.c:125:5
 	b	.LBB10_4
 .Ltmp55:
 .LBB10_4:
 	.loc	5 0 5 is_stmt 0                 @ ../int_handler.c:0:5
 	ldr	r0, __arm_cp.10_0
 .Ltmp56:
-	.loc	5 126 9 is_stmt 1               @ ../int_handler.c:126:9
+	.loc	5 128 9 is_stmt 1               @ ../int_handler.c:128:9
 	ldr	r0, [r0]
 .Ltmp57:
-	.loc	5 126 9 is_stmt 0               @ ../int_handler.c:126:9
+	.loc	5 128 9 is_stmt 0               @ ../int_handler.c:128:9
 	lsls	r0, r0, #26
 	cmp	r0, #0
 	bpl	.LBB10_6
@@ -681,38 +687,38 @@ WDT_IRQHandler:
 	.loc	5 0 9                           @ ../int_handler.c:0:9
 	movs	r0, #1
 .Ltmp58:
-	.loc	5 126 9                         @ ../int_handler.c:126:9
+	.loc	5 128 9                         @ ../int_handler.c:128:9
 	cbnz	r0, .LBB10_7
 	b	.LBB10_8
 .Ltmp59:
 .LBB10_6:
 	.loc	5 0 9                           @ ../int_handler.c:0:9
 	movs	r0, #1
-	.loc	5 126 9                         @ ../int_handler.c:126:9
+	.loc	5 128 9                         @ ../int_handler.c:128:9
 	cbnz	r0, .LBB10_8
 	b	.LBB10_7
 .LBB10_7:
 	.loc	5 0 9                           @ ../int_handler.c:0:9
 	ldr	r1, __arm_cp.10_0
 .Ltmp60:
-	.loc	5 129 9 is_stmt 1               @ ../int_handler.c:129:9
+	.loc	5 131 9 is_stmt 1               @ ../int_handler.c:131:9
 	ldr	r0, [r1]
 	movs	r2, #32
 	orrs	r0, r2
 	movs	r2, #12
 	bics	r0, r2
 	str	r0, [r1]
-	.loc	5 130 5                         @ ../int_handler.c:130:5
+	.loc	5 132 5                         @ ../int_handler.c:132:5
 	b	.LBB10_8
 .Ltmp61:
 .LBB10_8:
 	.loc	5 0 5 is_stmt 0                 @ ../int_handler.c:0:5
 	ldr	r1, __arm_cp.10_1
 	ldr	r0, __arm_cp.10_2
-	.loc	5 135 5 is_stmt 1               @ ../int_handler.c:135:5
+	.loc	5 137 5 is_stmt 1               @ ../int_handler.c:137:5
 	str	r0, [r1]
-	.loc	5 136 1                         @ ../int_handler.c:136:1
-	bx	lr
+	.loc	5 138 1                         @ ../int_handler.c:138:1
+	pop	{r7, pc}
 .Ltmp62:
 	.p2align	2
 @ %bb.9:
@@ -1315,7 +1321,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string46                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	12                              @ DW_AT_decl_line
+	.byte	13                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	14                              @ Abbrev [14] 0x29d:0x11 DW_TAG_subprogram
@@ -1325,7 +1331,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string47                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	28                              @ DW_AT_decl_line
+	.byte	29                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	14                              @ Abbrev [14] 0x2ae:0x11 DW_TAG_subprogram
@@ -1335,7 +1341,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string48                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	44                              @ DW_AT_decl_line
+	.byte	45                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	14                              @ Abbrev [14] 0x2bf:0x11 DW_TAG_subprogram
@@ -1345,7 +1351,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string49                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	60                              @ DW_AT_decl_line
+	.byte	61                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	14                              @ Abbrev [14] 0x2d0:0x11 DW_TAG_subprogram
@@ -1355,7 +1361,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string50                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	72                              @ DW_AT_decl_line
+	.byte	73                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	14                              @ Abbrev [14] 0x2e1:0x11 DW_TAG_subprogram
@@ -1365,7 +1371,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string51                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	84                              @ DW_AT_decl_line
+	.byte	85                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	14                              @ Abbrev [14] 0x2f2:0x11 DW_TAG_subprogram
@@ -1375,7 +1381,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string52                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	95                              @ DW_AT_decl_line
+	.byte	96                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	15                              @ Abbrev [15] 0x303:0x26 DW_TAG_subprogram
@@ -1422,7 +1428,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string55                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	106                             @ DW_AT_decl_line
+	.byte	107                             @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	14                              @ Abbrev [14] 0x35c:0x11 DW_TAG_subprogram
@@ -1432,7 +1438,7 @@ __arm_cp.10_2:
 	.byte	93
 	.long	.Linfo_string56                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
-	.byte	116                             @ DW_AT_decl_line
+	.byte	117                             @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	0                               @ End Of Children Mark

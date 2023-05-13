@@ -1,9 +1,11 @@
-./obj/int_handler.o: ..\int_handler.c ..\scale_v1.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+./obj/sparkfun_nau7802.o: ..\src\SparkFun_NAU7802.c \
+  ..\Inc\SparkFun_NAU7802.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\Inc\millis.h \
+  ..\scale_v1.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\M251.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\..\..\..\Library\CMSIS\Include\core_cm23.h \
   ..\..\..\..\Library\CMSIS\Include\cmsis_version.h \
   ..\..\..\..\Library\CMSIS\Include\cmsis_compiler.h \
@@ -72,5 +74,4 @@
   ..\..\..\..\Library\StdDriver\inc\sc.h \
   ..\..\..\..\Library\StdDriver\inc\scuart.h \
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
-  ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h \
-  ..\Inc\millis.h
+  ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h

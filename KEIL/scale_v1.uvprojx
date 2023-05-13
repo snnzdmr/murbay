@@ -529,6 +529,16 @@
               <FileType>5</FileType>
               <FilePath>..\Inc\menu.h</FilePath>
             </File>
+            <File>
+              <FileName>millis.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\millis.h</FilePath>
+            </File>
+            <File>
+              <FileName>SparkFun_NAU7802.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\SparkFun_NAU7802.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -558,6 +568,16 @@
               <FileName>menu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>millis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\millis.c</FilePath>
+            </File>
+            <File>
+              <FileName>SparkFun_NAU7802.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SparkFun_NAU7802.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -176,28 +176,28 @@ main:
 .Ltmp9:
 	.loc	3 40 5 prologue_end             @ ../main.c:40:5
 	bl	System_Init
-	.loc	3 42 5                          @ ../main.c:42:5
+	.loc	3 43 5                          @ ../main.c:43:5
 	ldr	r0, __arm_cp.3_0
 	bl	printf
-	.loc	3 43 31                         @ ../main.c:43:31
+	.loc	3 44 31                         @ ../main.c:44:31
 	ldr	r0, __arm_cp.3_1
 	ldr	r0, [r0]
 	ldr	r1, __arm_cp.3_2
-	.loc	3 43 46 is_stmt 0               @ ../main.c:43:46
+	.loc	3 44 46 is_stmt 0               @ ../main.c:44:46
 	udiv	r1, r0, r1
-	.loc	3 43 3                          @ ../main.c:43:3
+	.loc	3 44 3                          @ ../main.c:44:3
 	ldr	r0, __arm_cp.3_3
 	bl	printf
-	.loc	3 44 3 is_stmt 1                @ ../main.c:44:3
+	.loc	3 45 3 is_stmt 1                @ ../main.c:45:3
 	bl	APP_Init
-	.loc	3 45 3                          @ ../main.c:45:3
+	.loc	3 46 3                          @ ../main.c:46:3
 	b	.LBB3_1
 .LBB3_1:                                @ =>This Inner Loop Header: Depth=1
 .Ltmp10:
-	.loc	3 46 4                          @ ../main.c:46:4
+	.loc	3 47 4                          @ ../main.c:47:4
 	bl	APP_Handle
 .Ltmp11:
-	.loc	3 45 3                          @ ../main.c:45:3
+	.loc	3 46 3                          @ ../main.c:46:3
 	b	.LBB3_1
 .Ltmp12:
 	.p2align	2

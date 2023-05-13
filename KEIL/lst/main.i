@@ -4145,6 +4145,7 @@ typedef struct AIP{
  uint8_t (*WriteChar) (uint8_t *,FontDef *,struct AIP *);
  void (*SetCursor)(uint8_t,uint8_t,struct AIP *);
  void (*WriteString)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *);
+ void (*WriteStringLen)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *,uint8_t);
  void (*Spoint)(uint8_t,uint8_t,struct AIP *);
  void (*WriteNumber) (uint8_t,uint8_t,FontDef *,struct AIP *);
  void (*Cs)(uint8_t);
@@ -4154,7 +4155,6 @@ typedef struct AIP{
  Ai_position AIP_currentPos;
 
 }AIP;
-
 
 
 
@@ -4171,6 +4171,7 @@ static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p);
 static uint8_t AIP_writeChar(uint8_t *_chr,FontDef *Font,AIP *p);
 static void AIP_SetCursor(uint8_t _x,uint8_t _y,AIP *p);
 static void AIP_WriteString(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p);
+static void AIP_WriteStringLen(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p,uint8_t _len) ;
 static void AIP_Spoint(uint8_t _id,uint8_t _val,AIP *p);
 static void AIP_writeNumber(uint8_t _number,uint8_t _state,FontDef *Font,AIP *p);
 
@@ -4195,14 +4196,23 @@ void SCREEN_3_AIP_CSPin(uint8_t _val);
 # 1 "../periph_conf.h" 1
 # 13 "..\\scale_v1.h" 2
 # 7 "../Inc/app.h" 2
+
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
+# 9 "../Inc/app.h" 2
 # 23 "../Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
 void APP_SetBatteryLevel(uint8_t _level,AIP *p);
+void APP_SettingsHandle();
 void APP_Handle();
-void APP_StartScreen();
-void APP_All_Point_High();
+uint8_t APP_StartScreen();
+void APP_All_Point_High(uint8_t selScreen);
+_Bool APP_GetMeasure(float *_weight);
+_Bool APP_Show_Weight(float *_weight);
+
+
+ float customValueInput(char pressedKey,AIP *p);
 # 15 "../main.c" 2
 
 
@@ -4230,6 +4240,7 @@ int32_t main(void)
 {
 
     System_Init();
+
 
     printf("*** Init Done, User add operation code ***\n");
   printf("\n\nCPU @ %uMHz\n",(SystemCoreClock/1000000));

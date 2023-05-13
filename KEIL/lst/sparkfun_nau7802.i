@@ -1,15 +1,15 @@
-# 1 "../src/menu.c"
+# 1 "../src/SparkFun_NAU7802.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 375 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "../src/menu.c" 2
-# 1 "..\\Inc/menu.h" 1
-
-
-
-
+# 1 "../src/SparkFun_NAU7802.c" 2
+# 23 "../src/SparkFun_NAU7802.c"
+# 1 "..\\Inc/SparkFun_NAU7802.h" 1
+# 25 "..\\Inc/SparkFun_NAU7802.h"
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
+# 26 "..\\Inc/SparkFun_NAU7802.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 1 3
 # 56 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 3
 typedef signed char int8_t;
@@ -64,328 +64,192 @@ typedef unsigned int uintptr_t;
 
 typedef signed long long intmax_t;
 typedef unsigned long long uintmax_t;
-# 6 "..\\Inc/menu.h" 2
+# 27 "..\\Inc/SparkFun_NAU7802.h" 2
 
 
-
-typedef struct node
+typedef enum
 {
- void (*DoWorkDisplay)(void);
- struct node *enter;
- struct node *exit;
- struct node *up;
- struct node *down;
-}node;
+  NAU7802_PU_CTRL = 0x00,
+  NAU7802_CTRL1,
+  NAU7802_CTRL2,
+  NAU7802_OCAL1_B2,
+  NAU7802_OCAL1_B1,
+  NAU7802_OCAL1_B0,
+  NAU7802_GCAL1_B3,
+  NAU7802_GCAL1_B2,
+  NAU7802_GCAL1_B1,
+  NAU7802_GCAL1_B0,
+  NAU7802_OCAL2_B2,
+  NAU7802_OCAL2_B1,
+  NAU7802_OCAL2_B0,
+  NAU7802_GCAL2_B3,
+  NAU7802_GCAL2_B2,
+  NAU7802_GCAL2_B1,
+  NAU7802_GCAL2_B0,
+  NAU7802_I2C_CONTROL,
+  NAU7802_ADCO_B2,
+  NAU7802_ADCO_B1,
+  NAU7802_ADCO_B0,
+  NAU7802_ADC = 0x15,
+  NAU7802_OTP_B1,
+  NAU7802_OTP_B0,
+  NAU7802_PGA = 0x1B,
+  NAU7802_PGA_PWR = 0x1C,
+  NAU7802_DEVICE_REV = 0x1F,
+} Scale_Registers;
 
 
-typedef struct MENU{
- void (*Init)();
- void (*Enter)(node **);
- void (*Exit)(node **);
- void (*Up)(node **);
- void (*Down)(node **);
- node *currentNode;
-}MENU;
-
-typedef enum RESOLUTION{
- r3000=0,
- r6000,
- rDual1,
- rDual2
-}RESOLUTION;
-
-typedef enum CAPACITY{
- c3kg=0,
- c6kg,
- c15kg,
- c30kg
-}CAPACITY;
-
-typedef enum DECIMAL_POINT{
- dp_0=0,
- dp_0_0,
- dp_0_00,
- dp_0_000,
- dp_0_0000
-}DECIMAL_POINT;
-typedef enum FIX_FLOAT{
- ff_fix=0,
- ff_float,
-}FIX_FLOAT;
-typedef enum SPEED{
- sp_slow=0,
- sp_medium,
- sp_fast
-}SPEED;
-typedef enum MIN_COIN{
- mc_1=0,
- mc_2,
- mc_5,
- mc_10
-}MIN_COIN;
-typedef enum MULTI_TARE{
- mt_on=0,
- mt_off
-}MULTI_TARE;
-
-typedef struct RS232_Params{
- uint32_t baudrate;
- uint8_t parity;
- uint8_t stop;
- uint8_t word;
-}RS232_Params;
-
-typedef struct MENU_Params{
- uint8_t resolution;
- uint8_t capacity;
- uint8_t decimalPoint;
- uint8_t FixFloat;
- uint8_t speed;
- uint8_t minCoin;
- uint8_t multiTare;
- uint32_t isn;
- float gravity;
- uint8_t factoryReset;
- RS232_Params rs232Param;
-}MENU_Params;
-
-MENU *newMenuObj();
-static void Enter(node **currentNode);
-static void Exit(node **currentNode);
-static void Up(node **currentNode);
-static void Down(node **currentNode);
-static void Menu_Init();
-
-void shw_mainScreen();
-void shw_calibration();
-void shw_resolution();
-void shw_capacity();
-void shw_decimalPoint();
-void shw_fixFloat();
-void shw_speed();
-void shw_minCoin();
-void shw_multiTare();
-void shw_f8();
-void shw_gravity();
-void shw_reset();
-void shw_rs232();
-void shw_f1a_3000();
-void shw_f1b_6000();
-void shw_f1c_dual1();
-void shw_f1d_dual2();
-void f1_Saved();
-void shw_f2a_3();
-void shw_f2b_6();
-void shw_f2c_15();
-void shw_f2d_30();
-void f2_Saved();
-void shw_f3a();
-void shw_f3b();
-void shw_f3c();
-void shw_f3d();
-void shw_f3e();
-void f3_Saved();
-void shw_f4a_fix();
-void shw_f4b_flot();
-void f4_Saved();
-void shw_f5a_slow();
-void shw_f5b_normal();
-void shw_f5c_fast();
-void f5_Saved();
-void shw_f6a_1();
-void shw_f6b_2();
-void shw_f6c_5();
-void shw_f6d_10();
-void f6_Saved();
-void shw_f7a_on();
-void shw_f7b_off();
-void f7_Saved();
-void shw_f9a();
-void shw_f10a();
-# 2 "../src/menu.c" 2
-# 1 "..\\Inc/costumLcd.h" 1
+typedef enum
+{
+  NAU7802_PU_CTRL_RR = 0,
+  NAU7802_PU_CTRL_PUD,
+  NAU7802_PU_CTRL_PUA,
+  NAU7802_PU_CTRL_PUR,
+  NAU7802_PU_CTRL_CS,
+  NAU7802_PU_CTRL_CR,
+  NAU7802_PU_CTRL_OSCS,
+  NAU7802_PU_CTRL_AVDDS,
+} PU_CTRL_Bits;
 
 
+typedef enum
+{
+  NAU7802_CTRL1_GAIN = 2,
+  NAU7802_CTRL1_VLDO = 5,
+  NAU7802_CTRL1_DRDY_SEL = 6,
+  NAU7802_CTRL1_CRP = 7,
+} CTRL1_Bits;
 
 
+typedef enum
+{
+  NAU7802_CTRL2_CALMOD = 0,
+  NAU7802_CTRL2_CALS = 2,
+  NAU7802_CTRL2_CAL_ERROR = 3,
+  NAU7802_CTRL2_CRS = 4,
+  NAU7802_CTRL2_CHS = 7,
+} CTRL2_Bits;
 
 
-# 1 "..\\Inc/font.h" 1
+typedef enum
+{
+  NAU7802_PGA_CHP_DIS = 0,
+  NAU7802_PGA_INV = 3,
+  NAU7802_PGA_BYPASS_EN,
+  NAU7802_PGA_OUT_EN,
+  NAU7802_PGA_LDOMODE,
+  NAU7802_PGA_RD_OTP_SEL,
+} PGA_Bits;
 
 
+typedef enum
+{
+  NAU7802_PGA_PWR_PGA_CURR = 0,
+  NAU7802_PGA_PWR_ADC_CURR = 2,
+  NAU7802_PGA_PWR_MSTR_BIAS_CURR = 4,
+  NAU7802_PGA_PWR_PGA_CAP_EN = 7,
+} PGA_PWR_Bits;
 
 
+typedef enum
+{
+  NAU7802_LDO_2V4 = 0b111,
+  NAU7802_LDO_2V7 = 0b110,
+  NAU7802_LDO_3V0 = 0b101,
+  NAU7802_LDO_3V3 = 0b100,
+  NAU7802_LDO_3V6 = 0b011,
+  NAU7802_LDO_3V9 = 0b010,
+  NAU7802_LDO_4V2 = 0b001,
+  NAU7802_LDO_4V5 = 0b000,
+} NAU7802_LDO_Values;
 
-static const unsigned short fontArray[] = {
-        0x00, 0x00, 0x00,
-        0x02, 0x07, 0x06,
-        0x04, 0x00, 0x04,
-        0x00, 0x02, 0x00,
-        0x00, 0x02, 0x00,
-        0x00, 0x02, 0x00,
-        0x00, 0x02, 0x00,
-        0x04, 0x00, 0x00,
-        0x06, 0x05, 0x00,
-        0x00, 0x05, 0x06,
-        0x00, 0x02, 0x00,
-        0x00, 0x02, 0x00,
-        0x00, 0x02, 0x00,
-        0x00, 0x02, 0x00,
-        0x00, 0x02, 0x00,
-        0x02, 0x02, 0x04,
-        0x06, 0x05, 0x06,
-        0x00, 0x00, 0x06,
-        0x02, 0x07, 0x04,
-        0x00, 0x07, 0x06,
-        0x04, 0x02, 0x06,
-        0x04, 0x07, 0x02,
-        0x06, 0x07, 0x02,
-        0x00, 0x04, 0x06,
-        0x06, 0x07, 0x06,
-        0x04, 0x07, 0x06,
-        0x00, 0x03, 0x00,
-        0x02, 0x00, 0x06,
-        0x00, 0x02, 0x00,
-        0x00, 0x03, 0x00,
-        0x00, 0x02, 0x00,
-        0x04, 0x04, 0x06,
-        0x00, 0x02, 0x00,
-        0x06, 0x06, 0x06,
-        0x06, 0x07, 0x06,
-        0x06, 0x05, 0x00,
-        0x06, 0x05, 0x06,
-        0x06, 0x07, 0x00,
-        0x06, 0x06, 0x00,
-        0x06, 0x07, 0x02,
-        0x06, 0x02, 0x06,
-        0x00, 0x00, 0x06,
-        0x00, 0x01, 0x06,
-        0x06, 0x02, 0x06,
-        0x06, 0x01, 0x00,
-        0x00, 0x02, 0x00,
-        0x02, 0x02, 0x02,
-        0x02, 0x03, 0x02,
-        0x06, 0x06, 0x04,
-        0x00, 0x02, 0x00,
-        0x02, 0x02, 0x00,
-        0x04, 0x07, 0x02,
-        0x06, 0x01, 0x00,
-        0x02, 0x01, 0x02,
-        0x02, 0x01, 0x02,
-        0x00, 0x02, 0x00,
-        0x06, 0x02, 0x06,
-        0x04, 0x02, 0x06,
-        0x02, 0x07, 0x04,
-        0x06, 0x05, 0x00,
-        0x04, 0x02, 0x02,
-        0x00, 0x05, 0x06,
-        0x04, 0x04, 0x04,
-        0x00, 0x01, 0x00,
-        0x04, 0x00, 0x00,
-        0x02, 0x07, 0x06,
-        0x06, 0x03, 0x02,
-        0x02, 0x03, 0x00,
-        0x02, 0x03, 0x06,
-        0x06, 0x07, 0x00,
-        0x06, 0x06, 0x00,
-        0x04, 0x07, 0x06,
-        0x06, 0x02, 0x02,
-        0x00, 0x00, 0x06,
-        0x00, 0x01, 0x06,
-        0x06, 0x02, 0x06,
-        0x00, 0x00, 0x06,
-        0x00, 0x02, 0x00,
-        0x02, 0x02, 0x02,
-        0x02, 0x03, 0x02,
-        0x06, 0x06, 0x04,
-        0x04, 0x06, 0x06,
-        0x02, 0x02, 0x00,
-        0x04, 0x07, 0x02,
-        0x06, 0x01, 0x00,
-        0x02, 0x01, 0x02,
-        0x02, 0x01, 0x02,
-        0x00, 0x02, 0x00,
-        0x06, 0x02, 0x06,
-        0x04, 0x03, 0x06,
-        0x02, 0x07, 0x04,
-        0x06, 0x05, 0x00,
-        0x00, 0x00, 0x00,
-        0x00, 0x05, 0x06,
-        0x00, 0x00, 0x00,
-        0x00, 0x00, 0x00
-};
-# 8 "..\\Inc/costumLcd.h" 2
-# 25 "..\\Inc/costumLcd.h"
-typedef struct FontDef{
- const uint8_t FontWidth;
- uint8_t FontHeight;
- const uint16_t *data;
-} FontDef;
 
-typedef struct Ai_position{
- uint8_t x_pos;
- uint8_t y_pos;
+typedef enum
+{
+  NAU7802_GAIN_128 = 0b111,
+  NAU7802_GAIN_64 = 0b110,
+  NAU7802_GAIN_32 = 0b101,
+  NAU7802_GAIN_16 = 0b100,
+  NAU7802_GAIN_8 = 0b011,
+  NAU7802_GAIN_4 = 0b010,
+  NAU7802_GAIN_2 = 0b001,
+  NAU7802_GAIN_1 = 0b000,
+} NAU7802_Gain_Values;
 
-}Ai_position;
 
-typedef struct Params{
- void (*Cs)(uint8_t);
- void (*Reset)(uint8_t);
- void (*A0)(uint8_t);
- uint8_t ramB[(19*4/4)];
-}Params;
+typedef enum
+{
+  NAU7802_SPS_320 = 0b111,
+  NAU7802_SPS_80 = 0b011,
+  NAU7802_SPS_40 = 0b010,
+  NAU7802_SPS_20 = 0b001,
+  NAU7802_SPS_10 = 0b000,
+} NAU7802_SPS_Values;
 
-typedef struct AIP{
 
- void (*Init)(struct AIP *);
- void (*WriteData)(uint8_t *,uint8_t,struct AIP *);
- void (*WriteCommand)(uint8_t,struct AIP *);
- void (*ClearScreen)(struct AIP *);
- void (*UpdateScreen)(struct AIP *);
- void (*DrawPixel)(uint8_t,uint8_t,uint8_t,struct AIP *);
- uint8_t (*WriteChar) (uint8_t *,FontDef *,struct AIP *);
- void (*SetCursor)(uint8_t,uint8_t,struct AIP *);
- void (*WriteString)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *);
- void (*WriteStringLen)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *,uint8_t);
- void (*Spoint)(uint8_t,uint8_t,struct AIP *);
- void (*WriteNumber) (uint8_t,uint8_t,FontDef *,struct AIP *);
- void (*Cs)(uint8_t);
- void (*Reset)(uint8_t);
- void (*A0)(uint8_t);
- uint8_t * ptrRam;
- Ai_position AIP_currentPos;
+typedef enum
+{
+  NAU7802_CHANNEL_1 = 0,
+  NAU7802_CHANNEL_2 = 1,
+} NAU7802_Channels;
 
-}AIP;
+
+typedef enum
+{
+  NAU7802_CAL_SUCCESS = 0,
+  NAU7802_CAL_IN_PROGRESS = 1,
+  NAU7802_CAL_FAILURE = 2,
+} NAU7802_Cal_Status;
+
+
+  _Bool NAU7802_begin();
+  _Bool NAU7802_isConnected();
+
+  _Bool NAU7802_available();
+  int32_t NAU7802_getReading();
+  int32_t NAU7802_getAverage(uint8_t samplesToTake);
+
+  void NAU7802_calculateZeroOffset(uint8_t averageAmount);
+  void NAU7802_setZeroOffset(int32_t newZeroOffset);
+  int32_t NAU7802_getZeroOffset();
+
+  void NAU7802_calculateCalibrationFactor(float weightOnScale, uint8_t averageAmount);
+  void NAU7802_setCalibrationFactor(float calFactor);
+  float NAU7802_getCalibrationFactor();
+
+  float NAU7802_getWeight(_Bool allowNegativeWeights, uint8_t samplesToTake);
+
+  _Bool NAU7802_setGain(uint8_t gainValue);
+  _Bool NAU7802_setLDO(uint8_t ldoValue);
+  _Bool NAU7802_setSampleRate(uint8_t rate);
+  _Bool NAU7802_setChannel(uint8_t channelNumber);
+
+  _Bool NAU7802_calibrateAFE();
+  void NAU7802_beginCalibrateAFE();
+  _Bool NAU7802_waitForCalibrateAFE(uint32_t timeout_ms);
+  NAU7802_Cal_Status NAU7802_calAFEStatus();
+
+  _Bool NAU7802_reset();
+
+  _Bool NAU7802_powerUp();
+  _Bool NAU7802_powerDown();
+
+  _Bool NAU7802_setIntPolarityHigh();
+  _Bool NAU7802_setIntPolarityLow();
+
+  uint8_t NAU7802_getRevisionCode();
+
+  _Bool NAU7802_setBit(uint8_t bitNumber, uint8_t registerAddress);
+  _Bool NAU7802_clearBit(uint8_t bitNumber, uint8_t registerAddress);
+  _Bool NAU7802_getBit(uint8_t bitNumber, uint8_t registerAddress);
+
+  uint8_t NAU7802_getRegister(uint8_t registerAddress);
+  _Bool NAU7802_setRegister(uint8_t registerAddress, uint8_t value);
+# 24 "../src/SparkFun_NAU7802.c" 2
+# 1 "..\\Inc/millis.h" 1
 
 
 
-
-
-AIP *newLCDObj(Params *_params);
-static uint8_t spi_transfer(uint8_t *_data);
-static void AIP_Init(AIP *p);
-static void AIP_writeData(uint8_t *data,uint8_t len,AIP *p);
-static void AIP_writeCommand(uint8_t _cmd,AIP *p);
-static void AIP_ClearScreen(AIP *p);
-static void AIP_UpdateScreen(AIP *p);
-static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p);
-static uint8_t AIP_writeChar(uint8_t *_chr,FontDef *Font,AIP *p);
-static void AIP_SetCursor(uint8_t _x,uint8_t _y,AIP *p);
-static void AIP_WriteString(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p);
-static void AIP_WriteStringLen(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p,uint8_t _len) ;
-static void AIP_Spoint(uint8_t _id,uint8_t _val,AIP *p);
-static void AIP_writeNumber(uint8_t _number,uint8_t _state,FontDef *Font,AIP *p);
-
-void SCREEN_1_AIP_ResetPin(uint8_t _val);
-void SCREEN_1_AIP_A0Pin(uint8_t _val);
-void SCREEN_1_AIP_CSPin(uint8_t _val);
-void SCREEN_2_AIP_ResetPin(uint8_t _val);
-void SCREEN_2_AIP_A0Pin(uint8_t _val);
-void SCREEN_2_AIP_CSPin(uint8_t _val);
-void SCREEN_3_AIP_ResetPin(uint8_t _val);
-void SCREEN_3_AIP_A0Pin(uint8_t _val);
-void SCREEN_3_AIP_CSPin(uint8_t _val);
-# 3 "../src/menu.c" 2
 # 1 "..\\scale_v1.h" 1
 
 
@@ -4325,892 +4189,356 @@ void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 12 "..\\scale_v1.h" 2
 # 1 "../periph_conf.h" 1
 # 13 "..\\scale_v1.h" 2
-# 4 "../src/menu.c" 2
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
-# 91 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-    typedef unsigned short wchar_t;
+# 5 "..\\Inc/millis.h" 2
 
+void wdt_tickCounter(void);
 
+int64_t millis(void);
+# 25 "../src/SparkFun_NAU7802.c" 2
 
 
-typedef struct div_t { int quot, rem; } div_t;
 
-typedef struct ldiv_t { long int quot, rem; } ldiv_t;
-
-
-typedef struct lldiv_t { long long quot, rem; } lldiv_t;
-# 139 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int __aeabi_MB_CUR_MAX(void);
-# 158 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) double atof(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-extern __attribute__((__nothrow__)) int atoi(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-extern __attribute__((__nothrow__)) long int atol(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) long long atoll(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) double strtod(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
-# 206 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) float strtof(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
-extern __attribute__((__nothrow__)) long double strtold(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
-
-
-
-
-extern __attribute__((__nothrow__)) long int strtol(const char * __restrict ,
-                        char ** __restrict , int ) __attribute__((__nonnull__(1)));
-# 243 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) unsigned long int strtoul(const char * __restrict ,
-                                       char ** __restrict , int ) __attribute__((__nonnull__(1)));
-# 275 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) long long strtoll(const char * __restrict ,
-                                  char ** __restrict , int )
-                          __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) unsigned long long strtoull(const char * __restrict ,
-                                            char ** __restrict , int )
-                                   __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int rand(void);
-# 303 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) void srand(unsigned int );
-# 313 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-struct _rand_state { int __x[57]; };
-extern __attribute__((__nothrow__)) int _rand_r(struct _rand_state *);
-extern __attribute__((__nothrow__)) void _srand_r(struct _rand_state *, unsigned int);
-struct _ANSI_rand_state { int __x[1]; };
-extern __attribute__((__nothrow__)) int _ANSI_rand_r(struct _ANSI_rand_state *);
-extern __attribute__((__nothrow__)) void _ANSI_srand_r(struct _ANSI_rand_state *, unsigned int);
-
-
-
-
-
-extern __attribute__((__nothrow__)) void *calloc(size_t , size_t );
-
-
-
-
-
-extern __attribute__((__nothrow__)) void free(void * );
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) void *malloc(size_t );
-
-
-
-
-
-extern __attribute__((__nothrow__)) void *realloc(void * , size_t );
-# 374 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-typedef int (*__heapprt)(void *, char const *, ...);
-extern __attribute__((__nothrow__)) void __heapstats(int (* )(void * ,
-                                           char const * , ...),
-                        void * ) __attribute__((__nonnull__(1)));
-# 390 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int __heapvalid(int (* )(void * ,
-                                           char const * , ...),
-                       void * , int ) __attribute__((__nonnull__(1)));
-# 411 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void abort(void);
-# 422 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int atexit(void (* )(void)) __attribute__((__nonnull__(1)));
-# 444 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void exit(int );
-# 460 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void _Exit(int );
-# 471 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) char *getenv(const char * ) __attribute__((__nonnull__(1)));
-# 484 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int system(const char * );
-# 497 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern void *bsearch(const void * , const void * ,
-              size_t , size_t ,
-              int (* )(const void *, const void *)) __attribute__((__nonnull__(1,2,5)));
-# 532 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern void qsort(void * , size_t , size_t ,
-           int (* )(const void *, const void *)) __attribute__((__nonnull__(1,4)));
-# 560 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) int abs(int );
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) __attribute__((__const__)) div_t div(int , int );
-# 579 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) long int labs(long int );
-# 589 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) ldiv_t ldiv(long int , long int );
-# 610 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) long long llabs(long long );
-# 620 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) lldiv_t lldiv(long long , long long );
-# 644 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-typedef struct __sdiv32by16 { long quot, rem; } __sdiv32by16;
-typedef struct __udiv32by16 { unsigned long quot, rem; } __udiv32by16;
-
-typedef struct __sdiv64by32 { long rem, quot; } __sdiv64by32;
-
-__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv32by16 __rt_sdiv32by16(
-     int ,
-     short int );
-
-
-
-__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __udiv32by16 __rt_udiv32by16(
-     unsigned int ,
-     unsigned short );
-
-
-
-__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv64by32 __rt_sdiv64by32(
-     int , unsigned int ,
-     int );
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) unsigned int __fp_status(unsigned int , unsigned int );
-# 705 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int mblen(const char * , size_t );
-# 720 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int mbtowc(wchar_t * __restrict ,
-                   const char * __restrict , size_t );
-# 739 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int wctomb(char * , wchar_t );
-# 761 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) size_t mbstowcs(wchar_t * __restrict ,
-                      const char * __restrict , size_t ) __attribute__((__nonnull__(2)));
-# 779 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) size_t wcstombs(char * __restrict ,
-                      const wchar_t * __restrict , size_t ) __attribute__((__nonnull__(2)));
-# 798 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) void __use_realtime_heap(void);
-extern __attribute__((__nothrow__)) void __use_realtime_division(void);
-extern __attribute__((__nothrow__)) void __use_two_region_memory(void);
-extern __attribute__((__nothrow__)) void __use_no_heap(void);
-extern __attribute__((__nothrow__)) void __use_no_heap_region(void);
-
-extern __attribute__((__nothrow__)) char const *__C_library_version_string(void);
-extern __attribute__((__nothrow__)) int __C_library_version_number(void);
-# 5 "../src/menu.c" 2
-# 1 "..\\Inc/app.h" 1
-
-
-
-
-
-# 1 "..\\scale_v1.h" 1
-# 12 "..\\scale_v1.h"
-# 1 "../periph_conf.h" 1
-# 13 "..\\scale_v1.h" 2
-# 7 "..\\Inc/app.h" 2
-
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
-# 9 "..\\Inc/app.h" 2
-# 23 "..\\Inc/app.h"
-void ISR_timer();
-
-void APP_Init();
-void APP_SetBatteryLevel(uint8_t _level,AIP *p);
-void APP_SettingsHandle();
-void APP_Handle();
-uint8_t APP_StartScreen();
-void APP_All_Point_High(uint8_t selScreen);
-_Bool APP_GetMeasure(float *_weight);
-_Bool APP_Show_Weight(float *_weight);
-
-
- float customValueInput(char pressedKey,AIP *p);
-# 6 "../src/menu.c" 2
-# 1 "..\\Inc/keypad.h" 1
-# 37 "..\\Inc/keypad.h"
-typedef struct
+int32_t _zeroOffset;
+float _calibrationFactor;
+# 39 "../src/SparkFun_NAU7802.c"
+_Bool NAU7802_begin()
 {
- uint8_t ColumnSize;
- uint8_t RowSize;
- uint16_t LastKey;
-
-}KeyPad_t;
-
-typedef struct KEYPAD{
- void (*Init)(uint8_t,uint8_t);
- int16_t (*Scan)(uint8_t *);
- void (*setColumnPin)(uint8_t);
- void (*resetAllColumnPins)(void);
- int8_t (*ReadRowPin)(uint8_t);
-}KEYPAD;
-# 60 "..\\Inc/keypad.h"
-KEYPAD *newKeyPadObj();
-static void Init(uint8_t _columnSize,uint8_t _rowSize);
-static int16_t Scan(uint8_t *_longPress);
 
 
+  if (NAU7802_isConnected() == 0)
+  {
 
-static void setColumnPin(uint8_t _sel);
-static void resetAllColumnPins(void);
-static int8_t readRowPin(uint8_t _sel);
-# 7 "../src/menu.c" 2
-
-extern AIP * p_LcdObj_S1;
-extern AIP * p_LcdObj_S2;
-extern AIP * p_LcdObj_S3;
-extern KEYPAD * p_KeypadObj;
-extern FontDef *p_CurrentFont;
-extern MENU_Params m_Param;
-
-
-
-RESOLUTION currentResolution;
-CAPACITY currentCapacity;
-DECIMAL_POINT currentDecimalPoint;
-FIX_FLOAT currnetFixFloat;
-SPEED currentSpeed;
-MIN_COIN currentMinCoin;
-MULTI_TARE currentMultiTare;
-
-
-
-
-
-static void Enter(node **currentNode) {
-   if((*currentNode)->enter != 0){
-     (*currentNode) = (*currentNode)->enter;
-     (*currentNode)->DoWorkDisplay();
-   }
-}
-
-static void Exit(node **currentNode) {
-  if((*currentNode)->exit != 0){
-   (*currentNode) = (*currentNode)->exit;
-     (*currentNode)->DoWorkDisplay();
-
+    if (NAU7802_isConnected() == 0)
+      return (0);
   }
+
+  _Bool result = 1;
+
+ result &= NAU7802_reset();
+
+ result &= NAU7802_powerUp();
+
+ result &= NAU7802_setLDO(NAU7802_LDO_3V3);
+
+ result &= NAU7802_setGain(NAU7802_GAIN_128);
+
+ result &= NAU7802_setSampleRate(NAU7802_SPS_80);
+
+ result &= NAU7802_setRegister(NAU7802_ADC, 0x30);
+
+ result &= NAU7802_setBit(NAU7802_PGA_PWR_PGA_CAP_EN, NAU7802_PGA_PWR);
+
+ result &= NAU7802_calibrateAFE();
+
+  return (result);
 }
 
-static void Up(node **currentNode){
-  if((*currentNode)->up != 0){
-   (*currentNode) = (*currentNode)->up;
-    (*currentNode)->DoWorkDisplay();
 
+
+_Bool NAU7802_isConnected()
+{
+
+  return (1);
+}
+
+
+_Bool NAU7802_available()
+{
+  return (NAU7802_getBit(NAU7802_PU_CTRL_CR, NAU7802_PU_CTRL));
+}
+
+
+
+
+_Bool NAU7802_calibrateAFE()
+{
+  NAU7802_beginCalibrateAFE();
+  return NAU7802_waitForCalibrateAFE(1000);
+}
+
+
+
+void NAU7802_beginCalibrateAFE()
+{
+  NAU7802_setBit(NAU7802_CTRL2_CALS, NAU7802_CTRL2);
+}
+
+
+NAU7802_Cal_Status NAU7802_calAFEStatus()
+{
+  if (NAU7802_getBit(NAU7802_CTRL2_CALS, NAU7802_CTRL2))
+  {
+    return NAU7802_CAL_IN_PROGRESS;
   }
-}
 
-static void Down(node **currentNode){
-  if( (*currentNode) ->down != 0){
-  (*currentNode) = (*currentNode)->down;
-    (*currentNode)->DoWorkDisplay();
-
+  if (NAU7802_getBit(NAU7802_CTRL2_CAL_ERROR, NAU7802_CTRL2))
+  {
+    return NAU7802_CAL_FAILURE;
   }
-}
 
-void build(node *currentNode,void (*_DoWorkDisplay)(void),node *_enter,node *_exit,node *_up,node *_down){
- currentNode->enter = _enter;
- currentNode->exit = _exit;
- currentNode->up = _up;
- currentNode->down = _down;
- currentNode->DoWorkDisplay = _DoWorkDisplay;
 
+  return NAU7802_CAL_SUCCESS;
 }
 
 
 
 
-
-
-
-node root;
-node f0_cal;
-node f1_resolution, f1a_3000,f1b_6000,f1c_dual1,f1d_dual2,f1_save;
-node f2_capacity, f2a_3,f2b_6,f2c_15,f2d_30,f2_save;
-node f3_decimalPoint,f3a,f3b,f3c,f3d,f3e,f3_save;
-node f4_fixFloat,f4a_fix,f4b_flot,f4_save;
-node f5_speed,f5a_slow,f5b_normal,f5c_fast,f5_save;
-node f6_minCoin,f6a_1,f6b_2,f6c_5,f6d_10,f6_save;
-node f7_multiTare,f7a_on,f7b_off,f7_save;
-node f8;
-node f9_gravity,f9a;
-node f10_reset,f10a;
-node f11_rs232;
-
-
-MENU *newMenuObj(){
- MENU *p = (MENU *)malloc(sizeof(MENU));
- if(p == 0){
-
-
-
-  while(1);
- }else{
-
-
-
-
- }
-
- p->Init = &Menu_Init;
- p->Enter =&Enter;
- p->Exit =&Exit;
- p->Up =&Up;
- p->Down =&Down;
- p->currentNode =&root;
- return p;
-
-}
-static void Menu_Init(){
-
-
-
- build(&root,&shw_mainScreen,&f0_cal,0,0,0);
- build(&f0_cal,&shw_calibration,0,&root,&f11_rs232,&f1_resolution);
- build(&f1_resolution,&shw_resolution,&f1a_3000,&root,&f0_cal,&f2_capacity);
- build(&f2_capacity,&shw_capacity,&f2a_3,&root,&f1_resolution,&f3_decimalPoint);
- build(&f3_decimalPoint,&shw_decimalPoint,&f3a,&root,&f2_capacity,&f4_fixFloat);
- build(&f4_fixFloat,&shw_fixFloat,&f4a_fix,&root,&f3_decimalPoint,&f5_speed);
- build(&f5_speed,&shw_speed,&f5a_slow,&root,&f4_fixFloat,&f6_minCoin);
- build(&f6_minCoin,&shw_minCoin,&f6a_1,&root,&f5_speed,&f7_multiTare);
- build(&f7_multiTare,&shw_multiTare,&f7a_on,&root,&f6_minCoin,&f8);
- build(&f8,&shw_f8,0,&root,&f7_multiTare,&f9_gravity);
- build(&f9_gravity,&shw_gravity,&f9a,&root,&f8,&f10_reset);
- build(&f10_reset,&shw_reset,&f10a,&root,&f9_gravity,&f11_rs232);
- build(&f11_rs232,&shw_rs232,0,&root,&f10_reset,&f0_cal);
-
-
-
-
-
-
- build(&f1a_3000,&shw_f1a_3000,&f1_save,&f1_resolution,&f1d_dual2,&f1b_6000);
- build(&f1b_6000,&shw_f1b_6000,&f1_save,&f1_resolution,&f1a_3000,&f1c_dual1);
- build(&f1c_dual1,&shw_f1c_dual1,&f1_save,&f1_resolution,&f1b_6000,&f1d_dual2);
- build(&f1d_dual2,&shw_f1d_dual2,&f1_save,&f1_resolution,&f1c_dual1,&f1a_3000);
- build(&f1_save,&f1_Saved,0,&f1_resolution,0,0);
-
- build(&f2a_3,&shw_f2a_3,&f2_save,&f2_capacity,&f2d_30,&f2b_6);
- build(&f2b_6,&shw_f2b_6,&f2_save,&f2_capacity,&f2a_3,&f2c_15);
- build(&f2c_15,&shw_f2c_15,&f2_save,&f2_capacity,&f2b_6,&f2d_30);
- build(&f2d_30,&shw_f2d_30,&f2_save,&f2_capacity,&f2c_15,&f2a_3);
- build(&f2_save,&f2_Saved,0,&f2_capacity,0,0);
-
- build(&f3a,&shw_f3a,&f3_save,&f3_decimalPoint,&f3e,&f3b);
- build(&f3b,&shw_f3b,&f3_save,&f3_decimalPoint,&f3a,&f3c);
- build(&f3c,&shw_f3c,&f3_save,&f3_decimalPoint,&f3b,&f3d);
- build(&f3d,&shw_f3d,&f3_save,&f3_decimalPoint,&f3c,&f3e);
- build(&f3e,&shw_f3e,&f3_save,&f3_decimalPoint,&f3d,&f3a);
- build(&f3_save,&f3_Saved,0,&f3_decimalPoint,0,0);
-
- build(&f4a_fix,&shw_f4a_fix,&f4_save,&f4_fixFloat,&f4b_flot,&f4b_flot);
- build(&f4b_flot,&shw_f4b_flot,&f4_save,&f4_fixFloat,&f4a_fix,&f4a_fix);
- build(&f4_save,&f4_Saved,0,&f4_fixFloat,0,0);
-
- build(&f5a_slow,&shw_f5a_slow,&f5_save,&f5_speed,&f5c_fast,&f5b_normal);
- build(&f5b_normal,&shw_f5b_normal,&f5_save,&f5_speed,&f5a_slow,&f5c_fast);
- build(&f5c_fast,&shw_f5c_fast,&f5_save,&f5_speed,&f5b_normal,&f5a_slow);
- build(&f5_save,&f5_Saved,0,&f5_speed,0,0);
-
- build(&f6a_1,&shw_f6a_1,&f6_save,&f6_minCoin,&f6d_10,&f6b_2);
- build(&f6b_2,&shw_f6b_2,&f6_save,&f6_minCoin,&f6a_1,&f6c_5);
- build(&f6c_5,&shw_f6c_5,&f6_save,&f6_minCoin,&f6b_2,&f6d_10);
- build(&f6d_10,&shw_f6d_10,&f6_save,&f6_minCoin,&f6c_5,&f6a_1);
- build(&f6_save,&f6_Saved,0,&f6_minCoin,0,0);
-
- build(&f7a_on,&shw_f7a_on,&f7_save,&f7_multiTare,&f7b_off,&f7b_off);
- build(&f7b_off,&shw_f7b_off,&f7_save,&f7_multiTare,&f7a_on,&f7a_on);
- build(&f7_save,&f7_Saved,0,&f7_multiTare,0,0);
-
- build(&f9a,&shw_f9a,0,&f9_gravity,0,0);
-
- build(&f10a,&shw_f10a,0,&f10_reset,0,0);
-
-}
-
-
-void shw_mainScreen(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"000000",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"000000",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
-
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"000000",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-
-}
-void shw_calibration(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F0",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   CAL",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-
-}
-void shw_resolution(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F1",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   rES",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-
-
- switch(m_Param.resolution){
-  case r3000:
-   build(&f1_resolution,&shw_resolution,&f1a_3000,&root,&f0_cal,&f2_capacity);
-   break;
-  case r6000:
-   build(&f1_resolution,&shw_resolution,&f1b_6000,&root,&f0_cal,&f2_capacity);
-   break;
-  case rDual1:
-   build(&f1_resolution,&shw_resolution,&f1c_dual1,&root,&f0_cal,&f2_capacity);
-   break;
-  case rDual2:
-   build(&f1_resolution,&shw_resolution,&f1d_dual2,&root,&f0_cal,&f2_capacity);
-   break;
- }
-}
-void shw_capacity(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F2",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   CAP",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-
-
- switch(m_Param.capacity){
-  case c3kg:
-   build(&f2_capacity,&shw_capacity,&f2a_3,&root,&f1_resolution,&f3_decimalPoint);
-   break;
-  case c6kg:
-   build(&f2_capacity,&shw_capacity,&f2b_6,&root,&f1_resolution,&f3_decimalPoint);
-   break;
-  case c15kg:
-   build(&f2_capacity,&shw_capacity,&f2c_15,&root,&f1_resolution,&f3_decimalPoint);
-   break;
-  case c30kg:
-   build(&f2_capacity,&shw_capacity,&f2d_30,&root,&f1_resolution,&f3_decimalPoint);
-   break;
- }
-}
-void shw_decimalPoint(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F3",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" PdECi",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- switch(m_Param.decimalPoint){
-  case dp_0:
-   build(&f3_decimalPoint,&shw_decimalPoint,&f3a,&root,&f2_capacity,&f4_fixFloat);
-   break;
-  case dp_0_0:
-   build(&f3_decimalPoint,&shw_decimalPoint,&f3b,&root,&f2_capacity,&f4_fixFloat);
-   break;
-  case dp_0_00:
-   build(&f3_decimalPoint,&shw_decimalPoint,&f3c,&root,&f2_capacity,&f4_fixFloat);
-   break;
-  case dp_0_000:
-   build(&f3_decimalPoint,&shw_decimalPoint,&f3d,&root,&f2_capacity,&f4_fixFloat);
-   break;
-  case dp_0_0000:
-   build(&f3_decimalPoint,&shw_decimalPoint,&f3e,&root,&f2_capacity,&f4_fixFloat);
-   break;
- }
-}
-void shw_fixFloat(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F4",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" PdESC",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- switch(m_Param.FixFloat){
-  case ff_fix:
-   build(&f4_fixFloat,&shw_fixFloat,&f4a_fix,&root,&f3_decimalPoint,&f5_speed);
-   break;
-  case ff_float:
-   build(&f4_fixFloat,&shw_fixFloat,&f4b_flot,&root,&f3_decimalPoint,&f5_speed);
-   break;
- }
-}
-void shw_speed(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F5",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SPEEd",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- switch(m_Param.speed){
-  case sp_slow:
-   build(&f5_speed,&shw_speed,&f5a_slow,&root,&f4_fixFloat,&f6_minCoin);
-   break;
-  case sp_medium:
-   build(&f5_speed,&shw_speed,&f5b_normal,&root,&f4_fixFloat,&f6_minCoin);
-   break;
-  case sp_fast:
-   build(&f5_speed,&shw_speed,&f5c_fast,&root,&f4_fixFloat,&f6_minCoin);
-   break;
- }
-}
-void shw_minCoin(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F6 Min",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"coin",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- switch(m_Param.minCoin){
-  case mc_1:
-   build(&f6_minCoin,&shw_minCoin,&f6a_1,&root,&f5_speed,&f7_multiTare);
-   break;
-  case mc_2:
-   build(&f6_minCoin,&shw_minCoin,&f6b_2,&root,&f5_speed,&f7_multiTare);
-   break;
-  case mc_5:
-   build(&f6_minCoin,&shw_minCoin,&f6c_5,&root,&f5_speed,&f7_multiTare);
-   break;
-  case mc_10:
-   build(&f6_minCoin,&shw_minCoin,&f6d_10,&root,&f5_speed,&f7_multiTare);
-   break;
- }
-}
-void shw_multiTare(){
-
-
-
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F7",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"tare",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- switch(m_Param.multiTare){
-  case mc_1:
-   build(&f7_multiTare,&shw_multiTare,&f7a_on,&root,&f6_minCoin,&f8);
-   break;
-  case mc_2:
-   build(&f7_multiTare,&shw_multiTare,&f7b_off,&root,&f6_minCoin,&f8);
-   break;
- }
-}
-void shw_f8(){
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F8",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   ISN",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-}
-void shw_gravity(){
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F9",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   GrA",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-}
-void shw_reset(){
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F10",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" rESEt",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-}
-void shw_rs232(){
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"F11",p_CurrentFont,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"rS232",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-}
-void shw_f1a_3000(){
-   p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  3000",p_CurrentFont,p_LcdObj_S3);
-   p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-   currentResolution = r3000;
-}
-void shw_f1b_6000(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  6000",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-   currentResolution = r6000;
-}
-void shw_f1c_dual1(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)" dual1",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-   currentResolution = rDual1;
-}
-void shw_f1d_dual2(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)" dual2",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-   currentResolution = rDual2;
-}
-void f1_Saved(){
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
- m_Param.resolution = currentResolution;
-
-}
-
-void shw_f2a_3(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   3KG",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentCapacity = c3kg;
-}
-void shw_f2b_6(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   6KG",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentCapacity = c6kg;
-}
-void shw_f2c_15(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  15KG",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentCapacity = c15kg;
-}
-void shw_f2d_30(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  30KG",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentCapacity = c30kg;
-}
-void f2_Saved(){
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
- m_Param.capacity = currentCapacity;
-
-}
-void shw_f3a(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"     0",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentDecimalPoint = dp_0;
-}
-void shw_f3b(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"    0.0",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentDecimalPoint = dp_0_0;
-}
-void shw_f3c(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   0.00",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentDecimalPoint = dp_0_00;
-}
-void shw_f3d(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  0.000",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentDecimalPoint = dp_0_000;
-}
-void shw_f3e(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)" 0.0000",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentDecimalPoint = dp_0_0000;
-}
-void f3_Saved(){
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
- m_Param.decimalPoint = currentDecimalPoint;
-
-}
-void shw_f4a_fix(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   FIX",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currnetFixFloat=ff_fix;
-}
-void shw_f4b_flot(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)" FLOAT",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currnetFixFloat=ff_float;
-}
-
-void f4_Saved(){
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
- m_Param.FixFloat = currnetFixFloat;
-
-}
-void shw_f5a_slow(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  Slow",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentSpeed=sp_slow;
-}
-void shw_f5b_normal(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"Medium",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentSpeed=sp_medium;
-}
-void shw_f5c_fast(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  Fast",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentSpeed=sp_fast;
-}
-void f5_Saved(){
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
- m_Param.speed = currentSpeed;
-
-}
-void shw_f6a_1(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"     1",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentMinCoin=mc_1;
-}
-void shw_f6b_2(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"     2",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentMinCoin=mc_2;
-}
-void shw_f6c_5(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"     5",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentMinCoin=mc_5;
-}
-void shw_f6d_10(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"    10",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentMinCoin=mc_10;
-}
-void f6_Saved(){
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
- m_Param.minCoin = currentMinCoin;
-
-}
-void shw_f7a_on(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"    ON",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentMultiTare = mt_on;
-}
-void shw_f7b_off(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   OFF",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- currentMultiTare = mt_off;
-}
-
-void f7_Saved(){
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
- m_Param.multiTare = currentMultiTare;
-
-}
-void shw_f9a(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"9.8474",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- int16_t pressedKey=0;
- uint8_t longPres=0;
- float ret=0;
- while(1){
-  pressedKey = p_KeypadObj->Scan(&longPres);
-  if(pressedKey > -1){
-   ret =customValueInput(pressedKey,p_LcdObj_S3);
-   if(pressedKey == 't'){
-     m_Param.gravity = ret;
-    return;
-   }
+_Bool NAU7802_waitForCalibrateAFE(uint32_t timeout_ms)
+{
+  uint32_t begin = millis();
+  NAU7802_Cal_Status cal_ready;
+
+  while ((cal_ready = NAU7802_calAFEStatus()) == NAU7802_CAL_IN_PROGRESS)
+  {
+    if ((timeout_ms > 0) && ((millis() - begin) > timeout_ms))
+    {
+      break;
+    }
+    CLK_SysTickDelay(1*1000);
   }
- }
+
+  if (cal_ready == NAU7802_CAL_SUCCESS)
+  {
+    return (1);
+  }
+  return (0);
 }
-void shw_f10a(){
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"rest",p_CurrentFont,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+
+
+
+_Bool NAU7802_setSampleRate(uint8_t rate)
+{
+  if (rate > 0b111)
+    rate = 0b111;
+
+  uint8_t value = NAU7802_getRegister(NAU7802_CTRL2);
+  value &= 0b10001111;
+  value |= rate << 4;
+
+  return (NAU7802_setRegister(NAU7802_CTRL2, value));
+}
+
+
+_Bool NAU7802_setChannel(uint8_t channelNumber)
+{
+  if (channelNumber == NAU7802_CHANNEL_1)
+    return (NAU7802_clearBit(NAU7802_CTRL2_CHS, NAU7802_CTRL2));
+  else
+    return (NAU7802_setBit(NAU7802_CTRL2_CHS, NAU7802_CTRL2));
+}
+
+
+_Bool NAU7802_powerUp()
+{
+  NAU7802_setBit(NAU7802_PU_CTRL_PUD, NAU7802_PU_CTRL);
+  NAU7802_setBit(NAU7802_PU_CTRL_PUA, NAU7802_PU_CTRL);
+
+
+  uint8_t counter = 0;
+  while (1)
+  {
+    if (NAU7802_getBit(NAU7802_PU_CTRL_PUR, NAU7802_PU_CTRL) == 1)
+      break;
+    CLK_SysTickDelay(1*1000);
+    if (counter++ > 100)
+      return (0);
+  }
+  return (1);
+}
+
+
+_Bool NAU7802_powerDown()
+{
+  NAU7802_clearBit(NAU7802_PU_CTRL_PUD, NAU7802_PU_CTRL);
+  return (NAU7802_clearBit(NAU7802_PU_CTRL_PUA, NAU7802_PU_CTRL));
+}
+
+
+_Bool NAU7802_reset()
+{
+  NAU7802_setBit(NAU7802_PU_CTRL_RR, NAU7802_PU_CTRL);
+  CLK_SysTickDelay(1*1000);
+  return (NAU7802_clearBit(NAU7802_PU_CTRL_RR, NAU7802_PU_CTRL));
+}
+
+
+
+_Bool NAU7802_setLDO(uint8_t ldoValue)
+{
+  if (ldoValue > 0b111)
+    ldoValue = 0b111;
+
+
+  uint8_t value = NAU7802_getRegister(NAU7802_CTRL1);
+  value &= 0b11000111;
+  value |= ldoValue << 3;
+  NAU7802_setRegister(NAU7802_CTRL1, value);
+
+  return (NAU7802_setBit(NAU7802_PU_CTRL_AVDDS, NAU7802_PU_CTRL));
+}
+
+
+
+_Bool NAU7802_setGain(uint8_t gainValue)
+{
+  if (gainValue > 0b111)
+    gainValue = 0b111;
+
+  uint8_t value = NAU7802_getRegister(NAU7802_CTRL1);
+  value &= 0b11111000;
+  value |= gainValue;
+
+  return (NAU7802_setRegister(NAU7802_CTRL1, value));
+}
+
+
+uint8_t NAU7802_getRevisionCode()
+{
+  uint8_t revisionCode = NAU7802_getRegister(NAU7802_DEVICE_REV);
+  return (revisionCode & 0x0F);
+}
+
+
+
+int32_t NAU7802_getReading()
+{
+
+
+
+
+
+
+
+    return (1);
+}
+
+
+
+int32_t NAU7802_getAverage(uint8_t averageAmount)
+{
+  long total = 0;
+  uint8_t samplesAquired = 0;
+
+  unsigned long startTime = millis();
+  while (1)
+  {
+    if (NAU7802_available() == 1)
+    {
+      total += NAU7802_getReading();
+      if (++samplesAquired == averageAmount)
+        break;
+    }
+    if (millis() - startTime > 1000)
+      return (0);
+    CLK_SysTickDelay(1*1000);
+  }
+  total /= averageAmount;
+
+  return (total);
+}
+
+
+void NAU7802_calculateZeroOffset(uint8_t averageAmount)
+{
+  NAU7802_setZeroOffset(NAU7802_getAverage(averageAmount));
+}
+
+
+void NAU7802_setZeroOffset(int32_t newZeroOffset)
+{
+  _zeroOffset = newZeroOffset;
+}
+
+int32_t NAU7802_getZeroOffset()
+{
+  return (_zeroOffset);
+}
+
+
+void NAU7802_calculateCalibrationFactor(float weightOnScale, uint8_t averageAmount)
+{
+  int32_t onScale = NAU7802_getAverage(averageAmount);
+  float newCalFactor = (onScale - _zeroOffset) / (float)weightOnScale;
+  NAU7802_setCalibrationFactor(newCalFactor);
+}
+
+
+
+void NAU7802_setCalibrationFactor(float newCalFactor)
+{
+  _calibrationFactor = newCalFactor;
+}
+
+float NAU7802_getCalibrationFactor()
+{
+  return (_calibrationFactor);
+}
+
+
+float NAU7802_getWeight(_Bool allowNegativeWeights, uint8_t samplesToTake)
+{
+  int32_t onScale = NAU7802_getAverage(samplesToTake);
+
+
+
+
+  if (allowNegativeWeights == 0)
+  {
+    if (onScale < _zeroOffset)
+      onScale = _zeroOffset;
+  }
+
+  float weight = (onScale - _zeroOffset) / _calibrationFactor;
+  return (weight);
+}
+
+
+_Bool NAU7802_setIntPolarityHigh()
+{
+  return (NAU7802_clearBit(NAU7802_CTRL1_CRP, NAU7802_CTRL1));
+}
+
+
+_Bool NAU7802_setIntPolarityLow()
+{
+  return (NAU7802_setBit(NAU7802_CTRL1_CRP, NAU7802_CTRL1));
+}
+
+
+_Bool NAU7802_setBit(uint8_t bitNumber, uint8_t registerAddress)
+{
+  uint8_t value = NAU7802_getRegister(registerAddress);
+  value |= (1 << bitNumber);
+  return (NAU7802_setRegister(registerAddress, value));
+}
+
+
+_Bool NAU7802_clearBit(uint8_t bitNumber, uint8_t registerAddress)
+{
+  uint8_t value = NAU7802_getRegister(registerAddress);
+  value &= ~(1 << bitNumber);
+  return (NAU7802_setRegister(registerAddress, value));
+}
+
+
+_Bool NAU7802_getBit(uint8_t bitNumber, uint8_t registerAddress)
+{
+  uint8_t value = NAU7802_getRegister(registerAddress);
+  value &= (1 << bitNumber);
+  return (value);
+}
+
+
+uint8_t NAU7802_getRegister(uint8_t registerAddress)
+{
+   return 1;
+}
+
+
+
+_Bool NAU7802_setRegister(uint8_t registerAddress, uint8_t value)
+{
+
+ return 1;
+
 }

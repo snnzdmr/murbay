@@ -9,6 +9,7 @@
 
 /*!<Includes */
 #include "scale_v1.h"
+#include "Inc/millis.h"
 void GPB_IRQHandler(void)
 {
     /* To check if PB.2 interrupt occurred */
@@ -118,6 +119,7 @@ void WDT_IRQHandler(void)
     /* Get WDT Time-out interrupt flag */
     if (WDT_GET_TIMEOUT_INT_FLAG())
     {
+		  wdt_tickCounter();
         /* Clear WDT time-out interrupt flag */
         WDT_CLEAR_TIMEOUT_INT_FLAG();
     }

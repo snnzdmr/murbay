@@ -73,5 +73,6 @@
   ..\..\..\..\Library\StdDriver\inc\scuart.h \
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
   ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h \
-  ..\Inc\costumLcd.h ..\Inc\font.h ..\Inc\keypad.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h
+  ..\Inc\costumLcd.h ..\Inc\font.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\Inc\keypad.h \
+  ..\Inc\menu.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h

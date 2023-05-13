@@ -743,6 +743,7 @@ void UART2_Init()
 
     /* RX FIFO Interrupt Trigger Level */
     UART2->FIFO = (UART2->FIFO & ~ UART_FIFO_RFITL_Msk) | UART_FIFO_RFITL_1BYTE;
+	
 
 }
 void WDT_Init(void)

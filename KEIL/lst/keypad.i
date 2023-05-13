@@ -67,7 +67,7 @@ typedef unsigned long long uintmax_t;
 # 6 "..\\Inc/keypad.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
 # 7 "..\\Inc/keypad.h" 2
-# 36 "..\\Inc/keypad.h"
+# 37 "..\\Inc/keypad.h"
 typedef struct
 {
  uint8_t ColumnSize;
@@ -78,20 +78,20 @@ typedef struct
 
 typedef struct KEYPAD{
  void (*Init)(uint8_t,uint8_t);
- uint32_t (*Scan)(void);
- void (*SetAllColumnPins)(void);
- void (*ResetColumnPin)(uint8_t);
+ int16_t (*Scan)(uint8_t *);
+ void (*setColumnPin)(uint8_t);
+ void (*resetAllColumnPins)(void);
  int8_t (*ReadRowPin)(uint8_t);
 }KEYPAD;
-# 59 "..\\Inc/keypad.h"
+# 60 "..\\Inc/keypad.h"
 KEYPAD *newKeyPadObj();
 static void Init(uint8_t _columnSize,uint8_t _rowSize);
-static uint32_t Scan(void);
+static int16_t Scan(uint8_t *_longPress);
 
 
 
-static void setAllColumnPins();
-static void resetColumnPin(uint8_t _sel);
+static void setColumnPin(uint8_t _sel);
+static void resetAllColumnPins(void);
 static int8_t readRowPin(uint8_t _sel);
 # 2 "../src/keypad.c" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
@@ -4250,6 +4250,12 @@ void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 
 KeyPad_t KeyPad;
 
+char keyboardMatris[4][5] = {
+  {'0','.','c','z','t'},
+  {'1','2','3','q','s'},
+  {'4','5','6','p','u'},
+  {'7','8','9','m','C'},
+};
 
 
 
@@ -4271,8 +4277,8 @@ KEYPAD *newKeyPadObj(){
 
  p->Init = &Init;
  p->Scan = &Scan;
- p->SetAllColumnPins = &setAllColumnPins;
- p->ResetColumnPin = &resetColumnPin;
+ p->setColumnPin = &setColumnPin;
+ p->resetAllColumnPins = &resetAllColumnPins;
  p->ReadRowPin = &readRowPin;
 
  return p;
@@ -4288,63 +4294,63 @@ static void Init(uint8_t _columnSize,uint8_t _rowSize){
 
 }
 
-static uint32_t Scan(void){
-  volatile uint32_t key=0,counter=0;
+static int16_t Scan(uint8_t *_longPress){
+ char ret;
+ uint32_t longPresCounter=0;
+ *_longPress=0;
   for(uint8_t c=0 ; c<KeyPad.ColumnSize ; c++)
   {
-    setAllColumnPins();
-    resetColumnPin(c);
+    resetAllColumnPins();
+    setColumnPin(c);
     for(uint8_t r=0 ; r<KeyPad.RowSize ; r++)
     {
-      if(readRowPin(r) == 0)
+      if(readRowPin(r) == 1)
       {
         CLK_SysTickDelay(20*1000);;
-        if(readRowPin(r) == 0)
-        {
-          key |= 1<<c;
-          key |= 1<<(r+8);
-          while(readRowPin(r) == 0){
-      counter++;
-      if(counter>100000){
-       key = key | 0x10000000;
-       break;
+        if(readRowPin(r) == 1){
+     ret = keyboardMatris[r][c];
+     while(readRowPin(r)){
+      longPresCounter++;
+      if(longPresCounter > 1000000){
+       *_longPress=1;
+       return ret;
       }
      }
-          return key;
+     return ret;
         }
       }
     }
   }
-  return key;
+  return -1;
 }
 
 
 
 
-static void setAllColumnPins(void){
-    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((3)<<2)))) = 1;
-    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((2)<<2)))) = 1;
-    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((6)<<2)))) = 1;
-    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((7)<<2)))) = 1;
-    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((6)<<2)))) = 1;
+static void resetAllColumnPins(void){
+    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((7)<<2)))) = 0;
+    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((6)<<2)))) = 0;
+    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((2)<<2)))) = 0;
+    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((3)<<2)))) = 0;
+    (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((2)<<2)))) = 0;
 }
 
-static void resetColumnPin(uint8_t _sel){
+static void setColumnPin(uint8_t _sel){
     switch(_sel){
     case 0:
-        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((3)<<2)))) = 0;
+        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((7)<<2)))) = 1;
         break;
     case 1:
-        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((2)<<2)))) = 0;
+        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((6)<<2)))) = 1;
         break;
     case 2:
-        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((6)<<2)))) = 0;
+        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((2)<<2)))) = 1;
         break;
     case 3:
-        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((7)<<2)))) = 0;
+        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((3)<<2)))) = 1;
         break;
     case 4:
-        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((6)<<2)))) = 0;
+        (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((2)<<2)))) = 1;
         break;
     }
 }
@@ -4352,13 +4358,13 @@ static void resetColumnPin(uint8_t _sel){
 static int8_t readRowPin(uint8_t _sel){
     switch(_sel){
     case 0:
-        return (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((0)<<2))));
+        return (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((0)<<2))));
     case 1:
         return (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((1)<<2))));
     case 2:
-        return (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((0)<<2))));
+        return (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(3))) + ((0)<<2))));
     case 3:
-        return (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(2))) + ((1)<<2))));
+        return (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((12)<<2))));
     }
   return -1;
 }

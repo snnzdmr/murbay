@@ -4148,6 +4148,7 @@ typedef struct AIP{
  uint8_t (*WriteChar) (uint8_t *,FontDef *,struct AIP *);
  void (*SetCursor)(uint8_t,uint8_t,struct AIP *);
  void (*WriteString)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *);
+ void (*WriteStringLen)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *,uint8_t);
  void (*Spoint)(uint8_t,uint8_t,struct AIP *);
  void (*WriteNumber) (uint8_t,uint8_t,FontDef *,struct AIP *);
  void (*Cs)(uint8_t);
@@ -4157,7 +4158,6 @@ typedef struct AIP{
  Ai_position AIP_currentPos;
 
 }AIP;
-
 
 
 
@@ -4174,6 +4174,7 @@ static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p);
 static uint8_t AIP_writeChar(uint8_t *_chr,FontDef *Font,AIP *p);
 static void AIP_SetCursor(uint8_t _x,uint8_t _y,AIP *p);
 static void AIP_WriteString(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p);
+static void AIP_WriteStringLen(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p,uint8_t _len) ;
 static void AIP_Spoint(uint8_t _id,uint8_t _val,AIP *p);
 static void AIP_writeNumber(uint8_t _number,uint8_t _state,FontDef *Font,AIP *p);
 
@@ -4187,24 +4188,25 @@ void SCREEN_3_AIP_ResetPin(uint8_t _val);
 void SCREEN_3_AIP_A0Pin(uint8_t _val);
 void SCREEN_3_AIP_CSPin(uint8_t _val);
 # 8 "..\\Inc/app.h" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
+# 9 "..\\Inc/app.h" 2
 # 23 "..\\Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
 void APP_SetBatteryLevel(uint8_t _level,AIP *p);
+void APP_SettingsHandle();
 void APP_Handle();
-void APP_StartScreen();
-void APP_All_Point_High();
+uint8_t APP_StartScreen();
+void APP_All_Point_High(uint8_t selScreen);
+_Bool APP_GetMeasure(float *_weight);
+_Bool APP_Show_Weight(float *_weight);
+
+
+ float customValueInput(char pressedKey,AIP *p);
 # 2 "../src/app.c" 2
 # 1 "..\\Inc/keypad.h" 1
-
-
-
-
-
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
-# 7 "..\\Inc/keypad.h" 2
-# 36 "..\\Inc/keypad.h"
+# 37 "..\\Inc/keypad.h"
 typedef struct
 {
  uint8_t ColumnSize;
@@ -4215,27 +4217,377 @@ typedef struct
 
 typedef struct KEYPAD{
  void (*Init)(uint8_t,uint8_t);
- uint32_t (*Scan)(void);
- void (*SetAllColumnPins)(void);
- void (*ResetColumnPin)(uint8_t);
+ int16_t (*Scan)(uint8_t *);
+ void (*setColumnPin)(uint8_t);
+ void (*resetAllColumnPins)(void);
  int8_t (*ReadRowPin)(uint8_t);
 }KEYPAD;
-# 59 "..\\Inc/keypad.h"
+# 60 "..\\Inc/keypad.h"
 KEYPAD *newKeyPadObj();
 static void Init(uint8_t _columnSize,uint8_t _rowSize);
-static uint32_t Scan(void);
+static int16_t Scan(uint8_t *_longPress);
 
 
 
-static void setAllColumnPins();
-static void resetColumnPin(uint8_t _sel);
+static void setColumnPin(uint8_t _sel);
+static void resetAllColumnPins(void);
 static int8_t readRowPin(uint8_t _sel);
 # 3 "../src/app.c" 2
+# 1 "..\\Inc/menu.h" 1
 
 
 
 
-int sil = 0;
+
+
+
+
+typedef struct node
+{
+ void (*DoWorkDisplay)(void);
+ struct node *enter;
+ struct node *exit;
+ struct node *up;
+ struct node *down;
+}node;
+
+
+typedef struct MENU{
+ void (*Init)();
+ void (*Enter)(node **);
+ void (*Exit)(node **);
+ void (*Up)(node **);
+ void (*Down)(node **);
+ node *currentNode;
+}MENU;
+
+typedef enum RESOLUTION{
+ r3000=0,
+ r6000,
+ rDual1,
+ rDual2
+}RESOLUTION;
+
+typedef enum CAPACITY{
+ c3kg=0,
+ c6kg,
+ c15kg,
+ c30kg
+}CAPACITY;
+
+typedef enum DECIMAL_POINT{
+ dp_0=0,
+ dp_0_0,
+ dp_0_00,
+ dp_0_000,
+ dp_0_0000
+}DECIMAL_POINT;
+typedef enum FIX_FLOAT{
+ ff_fix=0,
+ ff_float,
+}FIX_FLOAT;
+typedef enum SPEED{
+ sp_slow=0,
+ sp_medium,
+ sp_fast
+}SPEED;
+typedef enum MIN_COIN{
+ mc_1=0,
+ mc_2,
+ mc_5,
+ mc_10
+}MIN_COIN;
+typedef enum MULTI_TARE{
+ mt_on=0,
+ mt_off
+}MULTI_TARE;
+
+typedef struct RS232_Params{
+ uint32_t baudrate;
+ uint8_t parity;
+ uint8_t stop;
+ uint8_t word;
+}RS232_Params;
+
+typedef struct MENU_Params{
+ uint8_t resolution;
+ uint8_t capacity;
+ uint8_t decimalPoint;
+ uint8_t FixFloat;
+ uint8_t speed;
+ uint8_t minCoin;
+ uint8_t multiTare;
+ uint32_t isn;
+ float gravity;
+ uint8_t factoryReset;
+ RS232_Params rs232Param;
+}MENU_Params;
+
+MENU *newMenuObj();
+static void Enter(node **currentNode);
+static void Exit(node **currentNode);
+static void Up(node **currentNode);
+static void Down(node **currentNode);
+static void Menu_Init();
+
+void shw_mainScreen();
+void shw_calibration();
+void shw_resolution();
+void shw_capacity();
+void shw_decimalPoint();
+void shw_fixFloat();
+void shw_speed();
+void shw_minCoin();
+void shw_multiTare();
+void shw_f8();
+void shw_gravity();
+void shw_reset();
+void shw_rs232();
+void shw_f1a_3000();
+void shw_f1b_6000();
+void shw_f1c_dual1();
+void shw_f1d_dual2();
+void f1_Saved();
+void shw_f2a_3();
+void shw_f2b_6();
+void shw_f2c_15();
+void shw_f2d_30();
+void f2_Saved();
+void shw_f3a();
+void shw_f3b();
+void shw_f3c();
+void shw_f3d();
+void shw_f3e();
+void f3_Saved();
+void shw_f4a_fix();
+void shw_f4b_flot();
+void f4_Saved();
+void shw_f5a_slow();
+void shw_f5b_normal();
+void shw_f5c_fast();
+void f5_Saved();
+void shw_f6a_1();
+void shw_f6b_2();
+void shw_f6c_5();
+void shw_f6d_10();
+void f6_Saved();
+void shw_f7a_on();
+void shw_f7b_off();
+void f7_Saved();
+void shw_f9a();
+void shw_f10a();
+# 4 "../src/app.c" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
+# 91 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+    typedef unsigned short wchar_t;
+
+
+
+
+typedef struct div_t { int quot, rem; } div_t;
+
+typedef struct ldiv_t { long int quot, rem; } ldiv_t;
+
+
+typedef struct lldiv_t { long long quot, rem; } lldiv_t;
+# 139 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int __aeabi_MB_CUR_MAX(void);
+# 158 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) double atof(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) int atoi(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) long int atol(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) long long atoll(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) double strtod(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+# 206 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) float strtof(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+extern __attribute__((__nothrow__)) long double strtold(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+
+
+
+
+extern __attribute__((__nothrow__)) long int strtol(const char * __restrict ,
+                        char ** __restrict , int ) __attribute__((__nonnull__(1)));
+# 243 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) unsigned long int strtoul(const char * __restrict ,
+                                       char ** __restrict , int ) __attribute__((__nonnull__(1)));
+# 275 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) long long strtoll(const char * __restrict ,
+                                  char ** __restrict , int )
+                          __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) unsigned long long strtoull(const char * __restrict ,
+                                            char ** __restrict , int )
+                                   __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int rand(void);
+# 303 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) void srand(unsigned int );
+# 313 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+struct _rand_state { int __x[57]; };
+extern __attribute__((__nothrow__)) int _rand_r(struct _rand_state *);
+extern __attribute__((__nothrow__)) void _srand_r(struct _rand_state *, unsigned int);
+struct _ANSI_rand_state { int __x[1]; };
+extern __attribute__((__nothrow__)) int _ANSI_rand_r(struct _ANSI_rand_state *);
+extern __attribute__((__nothrow__)) void _ANSI_srand_r(struct _ANSI_rand_state *, unsigned int);
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *calloc(size_t , size_t );
+
+
+
+
+
+extern __attribute__((__nothrow__)) void free(void * );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *malloc(size_t );
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *realloc(void * , size_t );
+# 374 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+typedef int (*__heapprt)(void *, char const *, ...);
+extern __attribute__((__nothrow__)) void __heapstats(int (* )(void * ,
+                                           char const * , ...),
+                        void * ) __attribute__((__nonnull__(1)));
+# 390 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int __heapvalid(int (* )(void * ,
+                                           char const * , ...),
+                       void * , int ) __attribute__((__nonnull__(1)));
+# 411 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void abort(void);
+# 422 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int atexit(void (* )(void)) __attribute__((__nonnull__(1)));
+# 444 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void exit(int );
+# 460 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void _Exit(int );
+# 471 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) char *getenv(const char * ) __attribute__((__nonnull__(1)));
+# 484 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int system(const char * );
+# 497 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern void *bsearch(const void * , const void * ,
+              size_t , size_t ,
+              int (* )(const void *, const void *)) __attribute__((__nonnull__(1,2,5)));
+# 532 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern void qsort(void * , size_t , size_t ,
+           int (* )(const void *, const void *)) __attribute__((__nonnull__(1,4)));
+# 560 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) int abs(int );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) div_t div(int , int );
+# 579 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) long int labs(long int );
+# 589 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) ldiv_t ldiv(long int , long int );
+# 610 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) long long llabs(long long );
+# 620 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) lldiv_t lldiv(long long , long long );
+# 644 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+typedef struct __sdiv32by16 { long quot, rem; } __sdiv32by16;
+typedef struct __udiv32by16 { unsigned long quot, rem; } __udiv32by16;
+
+typedef struct __sdiv64by32 { long rem, quot; } __sdiv64by32;
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv32by16 __rt_sdiv32by16(
+     int ,
+     short int );
+
+
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __udiv32by16 __rt_udiv32by16(
+     unsigned int ,
+     unsigned short );
+
+
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv64by32 __rt_sdiv64by32(
+     int , unsigned int ,
+     int );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) unsigned int __fp_status(unsigned int , unsigned int );
+# 705 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int mblen(const char * , size_t );
+# 720 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int mbtowc(wchar_t * __restrict ,
+                   const char * __restrict , size_t );
+# 739 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int wctomb(char * , wchar_t );
+# 761 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) size_t mbstowcs(wchar_t * __restrict ,
+                      const char * __restrict , size_t ) __attribute__((__nonnull__(2)));
+# 779 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) size_t wcstombs(char * __restrict ,
+                      const wchar_t * __restrict , size_t ) __attribute__((__nonnull__(2)));
+# 798 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) void __use_realtime_heap(void);
+extern __attribute__((__nothrow__)) void __use_realtime_division(void);
+extern __attribute__((__nothrow__)) void __use_two_region_memory(void);
+extern __attribute__((__nothrow__)) void __use_no_heap(void);
+extern __attribute__((__nothrow__)) void __use_no_heap_region(void);
+
+extern __attribute__((__nothrow__)) char const *__C_library_version_string(void);
+extern __attribute__((__nothrow__)) int __C_library_version_number(void);
+# 5 "../src/app.c" 2
+
+
+
 AIP * p_LcdObj_S1;
 AIP * p_LcdObj_S2;
 AIP * p_LcdObj_S3;
@@ -4243,9 +4595,11 @@ AIP * p_LcdObj_S3;
 Params _param1;
 Params _param2;
 Params _param3;
-
+MENU_Params m_Param;
 KEYPAD * p_KeypadObj;
-
+MENU * p_MenuObj;
+node * currentNode;
+FontDef *p_CurrentFont;
 FontDef font_small = {
  .FontWidth=3,
  .FontHeight=3,
@@ -4291,8 +4645,11 @@ void APP_Init(){
 
   p_KeypadObj = newKeyPadObj();
   p_KeypadObj->Init(5,4);
- sil=1;
 
+ p_MenuObj = newMenuObj();
+ p_MenuObj->Init();
+
+ p_CurrentFont =&font_small;
 }
 
 void APP_SetBatteryLevel(uint8_t _level,AIP *p){
@@ -4313,29 +4670,126 @@ void APP_SetBatteryLevel(uint8_t _level,AIP *p){
  }
 }
 
-void APP_Handle(){
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"bersy",&font_small,p_LcdObj_S1);
- APP_SetBatteryLevel(2,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
-
- p_LcdObj_S2->WriteString(0,0,(uint8_t *)"hello",&font_small,p_LcdObj_S2);
- APP_SetBatteryLevel(2,p_LcdObj_S2);
- p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
-
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)"hello",&font_small,p_LcdObj_S3);
- APP_SetBatteryLevel(2,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+void APP_SettingsHandle(){
+ uint8_t longPres=0;
+ char pressedKey=0;
+ p_MenuObj->Enter(&(p_MenuObj->currentNode));
  while(1){
-  int keypadRet = p_KeypadObj->Scan();
-  if(keypadRet > 0){
-   printf("key : 0x%x\n",keypadRet);
+  pressedKey = p_KeypadObj->Scan(&longPres);
+  switch(pressedKey){
+   case 't':
+    p_MenuObj->Enter(&(p_MenuObj->currentNode));
+    break;
+   case 'z':
+    p_MenuObj->Exit(&(p_MenuObj->currentNode));
+    if( (p_MenuObj->currentNode)->exit == 0){
+     return;
+    }
+    break;
+   case 'm':
+    p_MenuObj->Up(&(p_MenuObj->currentNode));
+    break;
+   case 'p':
+    p_MenuObj->Down(&(p_MenuObj->currentNode));
+    break;
+  }
+ }
+}
+float customValueInput(char pressedKey,AIP *p){
+  static uint8_t pointCounter=0;
+  static uint8_t _id=0;
+  static uint8_t tempArray[7]={0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+  uint8_t buffer[7]="";
+  switch(pressedKey){
+   case 'c':
+    pointCounter = 0;
+    _id=0;
+    memset(&tempArray[0],0x00,7);
+    p->WriteString(0,0,(uint8_t *)"      ",&font_small,p);
+    p->UpdateScreen(p);
+    break;
+   case 'z':
+    break;
+   case 't':
+    break;
+   case 'q':
+    break;
+   case 's':
+    break;
+   case 'p':
+    break;
+   case 'u':
+    break;
+   case 'm':
+    break;
+   case 'C':
+    break;
+   case '.':
+    if(pressedKey == '.' && pointCounter<1 && _id>0 && _id<6){
+     pointCounter++;
+    }
+    else{
+     break;
+    }
+   default:
+    if(_id<(6+pointCounter)){
+      _id++;
+     for(int i=0;i<((6+pointCounter)-_id);i++){
+      buffer[i] =0x20;
+     }
+     if(pressedKey == '.'){
+      buffer[(6+pointCounter)-(_id+pointCounter)] =0x00;
+     }
+     strncat((char *)tempArray, &pressedKey, 1);
+     strncat((char *)buffer,(const char *)tempArray,_id);
+
+     p->WriteString(0,0,&buffer[0],&font_small,p);
+     p->UpdateScreen(p);
+
+
+
+    }
+    break;
+  }
+  return atof((const char *)tempArray);
+}
+
+float setPrice(char pressedKey,AIP *p){
+ return customValueInput(pressedKey,p);
+}
+void APP_ShowTotal(float _totatl,float _wight){
+ char array[20]="";
+ sprintf(&array[0],"%f",(_totatl*_wight));
+
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)array,&font_small,p_LcdObj_S3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+}
+void APP_Handle(){
+ uint8_t ret = 0;
+ int16_t pressedKey=0;
+ uint8_t longPres=0;
+ float weight=0;
+ float total = 0;
+ ret = APP_StartScreen();
+ if(ret){
+  APP_SettingsHandle();
+ }
+ while(1){
+  APP_Show_Weight(&weight);
+  pressedKey = p_KeypadObj->Scan(&longPres);
+  if(pressedKey > -1 && longPres == 0){
+   total = setPrice((char)pressedKey,p_LcdObj_S2);
+   APP_ShowTotal(total,weight);
+  }
+
+  if(pressedKey > -1 && longPres == 1){
+   longPres=0;
   }
  }
 
 
 }
+
 
 void SCREEN_1_AIP_ResetPin(uint8_t _val){
  (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((5)<<2))))=_val;
@@ -4379,62 +4833,203 @@ void SCREEN_3_AIP_CSPin(uint8_t _val){
  (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(1))) + ((9)<<2))))=_val;
 }
 
-void APP_StartScreen(){
+uint8_t APP_StartScreen(){
 
 
 
 
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"999999",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"999999",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"999999",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"888888",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"888888",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"888888",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"777777",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"777777",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"777777",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"666666",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"666666",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"666666",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"555555",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"555555",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"555555",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"444444",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"444444",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"444444",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"333333",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"333333",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"333333",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"222222",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"222222",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"222222",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"111111",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"111111",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"111111",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"000000",&font_small,p_LcdObj_S1);
+ APP_All_Point_High(1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"000000",&font_small,p_LcdObj_S2);
+ APP_All_Point_High(2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"000000",&font_small,p_LcdObj_S3);
+ APP_All_Point_High(3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ CLK_SysTickLongDelay(200000);
 
  p_LcdObj_S1->ClearScreen(p_LcdObj_S1);
-  APP_SetBatteryLevel(2,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"999999",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
  p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"888888",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"777777",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"666666",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"555555",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"444444",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"333333",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"222222",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"111111",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)"000000",&font_small,p_LcdObj_S1);
- APP_All_Point_High();
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
- CLK_SysTickLongDelay(1000000);
+
+ p_LcdObj_S2->ClearScreen(p_LcdObj_S2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+
+ p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+
+ char pressedKey=0;
+ uint8_t _longPress=0;
+ pressedKey = p_KeypadObj->Scan(&_longPress);
+ if(pressedKey == 't'){
+  return 1;
+ }
+ return 0;
 
 }
 
-void APP_All_Point_High(){
+void APP_All_Point_High(uint8_t selScreen){
+ AIP *p;
+ switch (selScreen){
+  case 1:
+   p = p_LcdObj_S1;
+   break;
+  case 2:
+   p = p_LcdObj_S2;
+   break;
+  case 3:
+   p = p_LcdObj_S3;
+   break;
+  default:
+   return;
+ }
  for(int i=17;i>=0;i--){
-  p_LcdObj_S1->Spoint(i,1,p_LcdObj_S1);
+  p->Spoint(i,1,p);
  }
 
+}
+
+
+
+
+
+
+
+_Bool APP_GetMeasure(float *_weight){
+ _Bool stable=0;
+ *_weight = 123456;
+ stable=1;
+ return stable;
+}
+
+
+
+
+
+
+
+_Bool APP_Show_Weight(float *_weight){
+ char array[10]="";
+ _Bool stable=0;
+ stable = APP_GetMeasure(_weight);
+ if(stable){
+  p_LcdObj_S1->Spoint(16,1,p_LcdObj_S1);
+ }
+ else{
+  p_LcdObj_S1->Spoint(16,0,p_LcdObj_S1);
+ }
+ sprintf(&array[0],"%f",*_weight);
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)array,&font_small,p_LcdObj_S1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+
+ return stable;
 }

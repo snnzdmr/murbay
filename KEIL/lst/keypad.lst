@@ -18,9 +18,9 @@
 	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"keypad.c"
-	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "..\\Inc/keypad.h"
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../src/keypad.c"
+	.file	1 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../src/keypad.c"
+	.file	2 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "..\\Inc/keypad.h"
 	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/CMSIS/Include\\core_cm23.h"
 	.section	.text.newKeyPadObj,"ax",%progbits
 	.hidden	newKeyPadObj                    @ -- Begin function newKeyPadObj
@@ -31,7 +31,7 @@
 	.thumb_func
 newKeyPadObj:
 .Lfunc_begin0:
-	.loc	3 17 0                          @ ../src/keypad.c:17:0
+	.loc	1 23 0                          @ ../src/keypad.c:23:0
 	.fnstart
 	.cfi_sections .debug_frame
 	.cfi_startproc
@@ -46,62 +46,62 @@ newKeyPadObj:
 	.cfi_def_cfa_offset 16
 	movs	r0, #20
 .Ltmp0:
-	.loc	3 18 24 prologue_end            @ ../src/keypad.c:18:24
+	.loc	1 24 24 prologue_end            @ ../src/keypad.c:24:24
 	bl	malloc
-	.loc	3 18 10 is_stmt 0               @ ../src/keypad.c:18:10
+	.loc	1 24 10 is_stmt 0               @ ../src/keypad.c:24:10
 	str	r0, [sp, #4]
 .Ltmp1:
-	.loc	3 19 5 is_stmt 1                @ ../src/keypad.c:19:5
+	.loc	1 25 5 is_stmt 1                @ ../src/keypad.c:25:5
 	ldr	r0, [sp, #4]
 .Ltmp2:
-	.loc	3 19 5 is_stmt 0                @ ../src/keypad.c:19:5
+	.loc	1 25 5 is_stmt 0                @ ../src/keypad.c:25:5
 	cbnz	r0, .LBB0_3
 	b	.LBB0_1
 .LBB0_1:
 .Ltmp3:
-	.loc	3 23 3 is_stmt 1                @ ../src/keypad.c:23:3
+	.loc	1 29 3 is_stmt 1                @ ../src/keypad.c:29:3
 	b	.LBB0_2
 .LBB0_2:                                @ =>This Inner Loop Header: Depth=1
 	b	.LBB0_2
 .Ltmp4:
 .LBB0_3:
-	.loc	3 0 3 is_stmt 0                 @ ../src/keypad.c:0:3
+	.loc	1 0 3 is_stmt 0                 @ ../src/keypad.c:0:3
 	b	.LBB0_4
 .LBB0_4:
-	.loc	3 31 2 is_stmt 1                @ ../src/keypad.c:31:2
+	.loc	1 37 2 is_stmt 1                @ ../src/keypad.c:37:2
 	ldr	r1, [sp, #4]
-	.loc	3 31 20 is_stmt 0               @ ../src/keypad.c:31:20
+	.loc	1 37 21 is_stmt 0               @ ../src/keypad.c:37:21
 	ldr	r0, __arm_cp.0_0
 	str	r0, [r1]
-	.loc	3 32 2 is_stmt 1                @ ../src/keypad.c:32:2
+	.loc	1 38 2 is_stmt 1                @ ../src/keypad.c:38:2
 	ldr	r1, [sp, #4]
-	.loc	3 32 20 is_stmt 0               @ ../src/keypad.c:32:20
+	.loc	1 38 21 is_stmt 0               @ ../src/keypad.c:38:21
 	ldr	r0, __arm_cp.0_1
 	str	r0, [r1, #4]
-	.loc	3 33 2 is_stmt 1                @ ../src/keypad.c:33:2
+	.loc	1 39 2 is_stmt 1                @ ../src/keypad.c:39:2
 	ldr	r1, [sp, #4]
-	.loc	3 33 23 is_stmt 0               @ ../src/keypad.c:33:23
+	.loc	1 39 24 is_stmt 0               @ ../src/keypad.c:39:24
 	ldr	r0, __arm_cp.0_2
 	str	r0, [r1, #8]
-	.loc	3 34 2 is_stmt 1                @ ../src/keypad.c:34:2
+	.loc	1 40 2 is_stmt 1                @ ../src/keypad.c:40:2
 	ldr	r1, [sp, #4]
-	.loc	3 34 23 is_stmt 0               @ ../src/keypad.c:34:23
+	.loc	1 40 24 is_stmt 0               @ ../src/keypad.c:40:24
 	ldr	r0, __arm_cp.0_3
 	str	r0, [r1, #12]
-	.loc	3 35 2 is_stmt 1                @ ../src/keypad.c:35:2
+	.loc	1 41 2 is_stmt 1                @ ../src/keypad.c:41:2
 	ldr	r1, [sp, #4]
-	.loc	3 35 23 is_stmt 0               @ ../src/keypad.c:35:23
+	.loc	1 41 24 is_stmt 0               @ ../src/keypad.c:41:24
 	ldr	r0, __arm_cp.0_4
 	str	r0, [r1, #16]
-	.loc	3 37 9 is_stmt 1                @ ../src/keypad.c:37:9
+	.loc	1 43 9 is_stmt 1                @ ../src/keypad.c:43:9
 	ldr	r0, [sp, #4]
-	.loc	3 37 2 is_stmt 0                @ ../src/keypad.c:37:2
+	.loc	1 43 2 is_stmt 0                @ ../src/keypad.c:43:2
 	add	sp, #8
 	pop	{r7, pc}
 .Ltmp5:
 	.p2align	2
 @ %bb.5:
-	.loc	3 0 2                           @ ../src/keypad.c:0:2
+	.loc	1 0 2                           @ ../src/keypad.c:0:2
 __arm_cp.0_0:
 	.long	Init
 .Lcpi_end0:
@@ -111,11 +111,11 @@ __arm_cp.0_1:
 .Lcpi_end1:
 	.size	__arm_cp.0_1, .Lcpi_end1-__arm_cp.0_1
 __arm_cp.0_2:
-	.long	setAllColumnPins
+	.long	setColumnPin
 .Lcpi_end2:
 	.size	__arm_cp.0_2, .Lcpi_end2-__arm_cp.0_2
 __arm_cp.0_3:
-	.long	resetColumnPin
+	.long	resetAllColumnPins
 .Lcpi_end3:
 	.size	__arm_cp.0_3, .Lcpi_end3-__arm_cp.0_3
 __arm_cp.0_4:
@@ -135,7 +135,7 @@ __arm_cp.0_4:
 	.thumb_func
 Init:
 .Lfunc_begin1:
-	.loc	3 41 0 is_stmt 1                @ ../src/keypad.c:41:0
+	.loc	1 47 0 is_stmt 1                @ ../src/keypad.c:47:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -149,22 +149,22 @@ Init:
 	mov	r0, sp
 	strb	r1, [r0]
 .Ltmp6:
-	.loc	3 42 23 prologue_end            @ ../src/keypad.c:42:23
+	.loc	1 48 23 prologue_end            @ ../src/keypad.c:48:23
 	ldr	r0, [sp, #4]
-	.loc	3 42 21 is_stmt 0               @ ../src/keypad.c:42:21
+	.loc	1 48 21 is_stmt 0               @ ../src/keypad.c:48:21
 	ldr	r1, __arm_cp.1_0
 	strb	r0, [r1]
-	.loc	3 43 20 is_stmt 1               @ ../src/keypad.c:43:20
+	.loc	1 49 20 is_stmt 1               @ ../src/keypad.c:49:20
 	ldr	r0, [sp]
-	.loc	3 43 18 is_stmt 0               @ ../src/keypad.c:43:18
+	.loc	1 49 18 is_stmt 0               @ ../src/keypad.c:49:18
 	strb	r0, [r1, #1]
-	.loc	3 48 1 is_stmt 1                @ ../src/keypad.c:48:1
+	.loc	1 54 1 is_stmt 1                @ ../src/keypad.c:54:1
 	add	sp, #8
 	bx	lr
 .Ltmp7:
 	.p2align	2
 @ %bb.1:
-	.loc	3 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
+	.loc	1 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
 __arm_cp.1_0:
 	.long	KeyPad
 .Lcpi_end5:
@@ -182,7 +182,7 @@ __arm_cp.1_0:
 	.thumb_func
 Scan:
 .Lfunc_begin2:
-	.loc	3 50 0 is_stmt 1                @ ../src/keypad.c:50:0
+	.loc	1 56 0 is_stmt 1                @ ../src/keypad.c:56:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -194,238 +194,253 @@ Scan:
 	.pad	#24
 	sub	sp, #24
 	.cfi_def_cfa_offset 32
+	str	r0, [sp, #16]
 	movs	r0, #0
 .Ltmp8:
-	.loc	3 51 22 prologue_end            @ ../src/keypad.c:51:22
-	str	r0, [sp, #16]
-	.loc	3 51 28 is_stmt 0               @ ../src/keypad.c:51:28
-	str	r0, [sp, #12]
-	add	r1, sp, #8
-.Ltmp9:
-	.loc	3 52 15 is_stmt 1               @ ../src/keypad.c:52:15
+	.loc	1 58 11 prologue_end            @ ../src/keypad.c:58:11
+	str	r0, [sp, #8]
+	.loc	1 59 3                          @ ../src/keypad.c:59:3
+	ldr	r1, [sp, #16]
+	.loc	1 59 13 is_stmt 0               @ ../src/keypad.c:59:13
 	strb	r0, [r1]
-	.loc	3 52 7 is_stmt 0                @ ../src/keypad.c:52:7
+	add	r1, sp, #4
+.Ltmp9:
+	.loc	1 60 15 is_stmt 1               @ ../src/keypad.c:60:15
+	strb	r0, [r1]
+	.loc	1 60 7 is_stmt 0                @ ../src/keypad.c:60:7
 	b	.LBB2_1
 .LBB2_1:                                @ =>This Loop Header: Depth=1
                                         @     Child Loop BB2_3 Depth 2
-	.loc	3 0 7                           @ ../src/keypad.c:0:7
-	add	r0, sp, #8
+	.loc	1 0 7                           @ ../src/keypad.c:0:7
+	add	r0, sp, #4
 .Ltmp10:
-	.loc	3 52 21                         @ ../src/keypad.c:52:21
+	.loc	1 60 21                         @ ../src/keypad.c:60:21
 	ldrb	r0, [r0]
-	.loc	3 52 30                         @ ../src/keypad.c:52:30
+	.loc	1 60 30                         @ ../src/keypad.c:60:30
 	ldr	r1, __arm_cp.2_0
 	ldrb	r1, [r1]
 .Ltmp11:
-	.loc	3 52 3                          @ ../src/keypad.c:52:3
+	.loc	1 60 3                          @ ../src/keypad.c:60:3
 	cmp	r0, r1
 	bge	.LBB2_17
 	b	.LBB2_2
 .LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
 .Ltmp12:
-	.loc	3 54 5 is_stmt 1                @ ../src/keypad.c:54:5
-	bl	setAllColumnPins
-	add	r0, sp, #8
-	.loc	3 55 20                         @ ../src/keypad.c:55:20
+	.loc	1 62 5 is_stmt 1                @ ../src/keypad.c:62:5
+	bl	resetAllColumnPins
+	add	r0, sp, #4
+	.loc	1 63 18                         @ ../src/keypad.c:63:18
 	ldrb	r0, [r0]
-	.loc	3 55 5 is_stmt 0                @ ../src/keypad.c:55:5
-	bl	resetColumnPin
-	add	r1, sp, #4
+	.loc	1 63 5 is_stmt 0                @ ../src/keypad.c:63:5
+	bl	setColumnPin
+	mov	r1, sp
 	movs	r0, #0
 .Ltmp13:
-	.loc	3 56 17 is_stmt 1               @ ../src/keypad.c:56:17
+	.loc	1 64 17 is_stmt 1               @ ../src/keypad.c:64:17
 	strb	r0, [r1]
-	.loc	3 56 9 is_stmt 0                @ ../src/keypad.c:56:9
+	.loc	1 64 9 is_stmt 0                @ ../src/keypad.c:64:9
 	b	.LBB2_3
 .LBB2_3:                                @   Parent Loop BB2_1 Depth=1
                                         @ =>  This Inner Loop Header: Depth=2
-	.loc	3 0 9                           @ ../src/keypad.c:0:9
-	add	r0, sp, #4
+	.loc	1 0 9                           @ ../src/keypad.c:0:9
+	mov	r0, sp
 .Ltmp14:
-	.loc	3 56 23                         @ ../src/keypad.c:56:23
+	.loc	1 64 23                         @ ../src/keypad.c:64:23
 	ldrb	r0, [r0]
-	.loc	3 56 32                         @ ../src/keypad.c:56:32
+	.loc	1 64 32                         @ ../src/keypad.c:64:32
 	ldr	r1, __arm_cp.2_0
 	ldrb	r1, [r1, #1]
 .Ltmp15:
-	.loc	3 56 5                          @ ../src/keypad.c:56:5
+	.loc	1 64 5                          @ ../src/keypad.c:64:5
 	cmp	r0, r1
 	bge	.LBB2_15
 	b	.LBB2_4
 .LBB2_4:                                @   in Loop: Header=BB2_3 Depth=2
-	.loc	3 0 5                           @ ../src/keypad.c:0:5
-	add	r0, sp, #4
+	.loc	1 0 5                           @ ../src/keypad.c:0:5
+	mov	r0, sp
 .Ltmp16:
-	.loc	3 58 21 is_stmt 1               @ ../src/keypad.c:58:21
+	.loc	1 66 21 is_stmt 1               @ ../src/keypad.c:66:21
 	ldrb	r0, [r0]
-	.loc	3 58 10 is_stmt 0               @ ../src/keypad.c:58:10
+	.loc	1 66 10 is_stmt 0               @ ../src/keypad.c:66:10
 	bl	readRowPin
 .Ltmp17:
-	.loc	3 58 10                         @ ../src/keypad.c:58:10
-	cbnz	r0, .LBB2_13
+	.loc	1 66 10                         @ ../src/keypad.c:66:10
+	cmp	r0, #1
+	bne	.LBB2_13
 	b	.LBB2_5
 .LBB2_5:                                @   in Loop: Header=BB2_3 Depth=2
-	.loc	3 0 10                          @ ../src/keypad.c:0:10
-	ldr	r0, __arm_cp.2_1
+	.loc	1 0 10                          @ ../src/keypad.c:0:10
+	ldr	r0, __arm_cp.2_2
 .Ltmp18:
-	.loc	3 60 9 is_stmt 1                @ ../src/keypad.c:60:9
+	.loc	1 68 9 is_stmt 1                @ ../src/keypad.c:68:9
 	bl	CLK_SysTickDelay
-	add	r0, sp, #4
+	mov	r0, sp
 .Ltmp19:
-	.loc	3 61 23                         @ ../src/keypad.c:61:23
+	.loc	1 69 23                         @ ../src/keypad.c:69:23
 	ldrb	r0, [r0]
-	.loc	3 61 12 is_stmt 0               @ ../src/keypad.c:61:12
+	.loc	1 69 12 is_stmt 0               @ ../src/keypad.c:69:12
 	bl	readRowPin
 .Ltmp20:
-	.loc	3 61 12                         @ ../src/keypad.c:61:12
-	cbnz	r0, .LBB2_12
+	.loc	1 69 12                         @ ../src/keypad.c:69:12
+	cmp	r0, #1
+	bne	.LBB2_12
 	b	.LBB2_6
 .LBB2_6:
-	.loc	3 0 12                          @ ../src/keypad.c:0:12
-	add	r0, sp, #8
+	.loc	1 0 12                          @ ../src/keypad.c:0:12
+	mov	r0, sp
 .Ltmp21:
-	.loc	3 63 21 is_stmt 1               @ ../src/keypad.c:63:21
+	.loc	1 70 27 is_stmt 1               @ ../src/keypad.c:70:27
 	ldrb	r0, [r0]
-	movs	r1, #1
-	.loc	3 63 19 is_stmt 0               @ ../src/keypad.c:63:19
-	mov	r2, r1
-	lsls	r2, r0
-	.loc	3 63 15                         @ ../src/keypad.c:63:15
-	ldr	r0, [sp, #16]
-	orrs	r0, r2
-	str	r0, [sp, #16]
-	add	r0, sp, #4
-	.loc	3 64 22 is_stmt 1               @ ../src/keypad.c:64:22
-	ldrb	r0, [r0]
-	.loc	3 64 23 is_stmt 0               @ ../src/keypad.c:64:23
-	adds	r0, #8
-	.loc	3 64 19                         @ ../src/keypad.c:64:19
-	lsls	r1, r0
-	.loc	3 64 15                         @ ../src/keypad.c:64:15
-	ldr	r0, [sp, #16]
-	orrs	r0, r1
-	str	r0, [sp, #16]
-	.loc	3 65 11 is_stmt 1               @ ../src/keypad.c:65:11
+	movs	r1, #5
+	.loc	1 70 12 is_stmt 0               @ ../src/keypad.c:70:12
+	muls	r1, r0, r1
+	ldr	r0, __arm_cp.2_3
+	adds	r0, r0, r1
+	add	r1, sp, #4
+	.loc	1 70 30                         @ ../src/keypad.c:70:30
+	ldrb	r1, [r1]
+	.loc	1 70 12                         @ ../src/keypad.c:70:12
+	ldrb	r0, [r0, r1]
+	add	r1, sp, #12
+	.loc	1 70 10                         @ ../src/keypad.c:70:10
+	strb	r0, [r1]
+	.loc	1 71 6 is_stmt 1                @ ../src/keypad.c:71:6
 	b	.LBB2_7
 .LBB2_7:                                @ =>This Inner Loop Header: Depth=1
-	.loc	3 0 11 is_stmt 0                @ ../src/keypad.c:0:11
-	add	r0, sp, #4
-	.loc	3 65 28                         @ ../src/keypad.c:65:28
+	.loc	1 0 6 is_stmt 0                 @ ../src/keypad.c:0:6
+	mov	r0, sp
+	.loc	1 71 23                         @ ../src/keypad.c:71:23
 	ldrb	r0, [r0]
-	.loc	3 65 17                         @ ../src/keypad.c:65:17
+	.loc	1 71 12                         @ ../src/keypad.c:71:12
 	bl	readRowPin
-	.loc	3 65 11                         @ ../src/keypad.c:65:11
-	cbnz	r0, .LBB2_11
+	.loc	1 71 6                          @ ../src/keypad.c:71:6
+	cbz	r0, .LBB2_11
 	b	.LBB2_8
 .LBB2_8:                                @   in Loop: Header=BB2_7 Depth=1
 .Ltmp22:
-	.loc	3 66 14 is_stmt 1               @ ../src/keypad.c:66:14
-	ldr	r0, [sp, #12]
+	.loc	1 72 22 is_stmt 1               @ ../src/keypad.c:72:22
+	ldr	r0, [sp, #8]
 	adds	r0, r0, #1
-	str	r0, [sp, #12]
+	str	r0, [sp, #8]
 .Ltmp23:
-	.loc	3 67 10                         @ ../src/keypad.c:67:10
-	ldr	r0, [sp, #12]
-	ldr	r1, __arm_cp.2_2
+	.loc	1 73 10                         @ ../src/keypad.c:73:10
+	ldr	r0, [sp, #8]
+	ldr	r1, __arm_cp.2_4
 .Ltmp24:
-	.loc	3 67 10 is_stmt 0               @ ../src/keypad.c:67:10
+	.loc	1 73 10 is_stmt 0               @ ../src/keypad.c:73:10
 	cmp	r0, r1
 	blo	.LBB2_10
 	b	.LBB2_9
 .LBB2_9:
 .Ltmp25:
-	.loc	3 68 14 is_stmt 1               @ ../src/keypad.c:68:14
-	ldr	r0, [sp, #16]
-	movs	r1, #1
-	lsls	r1, r1, #28
-	.loc	3 68 18 is_stmt 0               @ ../src/keypad.c:68:18
-	orrs	r0, r1
-	.loc	3 68 12                         @ ../src/keypad.c:68:12
-	str	r0, [sp, #16]
-	.loc	3 69 8 is_stmt 1                @ ../src/keypad.c:69:8
-	b	.LBB2_11
+	.loc	1 74 9 is_stmt 1                @ ../src/keypad.c:74:9
+	ldr	r1, [sp, #16]
+	movs	r0, #1
+	.loc	1 74 19 is_stmt 0               @ ../src/keypad.c:74:19
+	strb	r0, [r1]
+	add	r0, sp, #12
+	.loc	1 75 15 is_stmt 1               @ ../src/keypad.c:75:15
+	ldrb	r0, [r0]
+	add	r1, sp, #20
+	.loc	1 75 8 is_stmt 0                @ ../src/keypad.c:75:8
+	strh	r0, [r1]
+	b	.LBB2_18
 .Ltmp26:
 .LBB2_10:                               @   in Loop: Header=BB2_7 Depth=1
-	.loc	3 65 11                         @ ../src/keypad.c:65:11
+	.loc	1 71 6 is_stmt 1                @ ../src/keypad.c:71:6
 	b	.LBB2_7
 .LBB2_11:
-	.loc	3 72 18                         @ ../src/keypad.c:72:18
-	ldr	r0, [sp, #16]
-	.loc	3 72 11 is_stmt 0               @ ../src/keypad.c:72:11
-	str	r0, [sp, #20]
+	.loc	1 0 6 is_stmt 0                 @ ../src/keypad.c:0:6
+	add	r0, sp, #12
+	.loc	1 78 13 is_stmt 1               @ ../src/keypad.c:78:13
+	ldrb	r0, [r0]
+	add	r1, sp, #20
+	.loc	1 78 6 is_stmt 0                @ ../src/keypad.c:78:6
+	strh	r0, [r1]
 	b	.LBB2_18
 .Ltmp27:
 .LBB2_12:                               @   in Loop: Header=BB2_3 Depth=2
-	.loc	3 74 7 is_stmt 1                @ ../src/keypad.c:74:7
+	.loc	1 80 7 is_stmt 1                @ ../src/keypad.c:80:7
 	b	.LBB2_13
 .Ltmp28:
 .LBB2_13:                               @   in Loop: Header=BB2_3 Depth=2
-	.loc	3 75 5                          @ ../src/keypad.c:75:5
+	.loc	1 81 5                          @ ../src/keypad.c:81:5
 	b	.LBB2_14
 .Ltmp29:
 .LBB2_14:                               @   in Loop: Header=BB2_3 Depth=2
-	.loc	3 56 43                         @ ../src/keypad.c:56:43
+	.loc	1 64 43                         @ ../src/keypad.c:64:43
+	ldr	r0, [sp]
+	adds	r0, r0, #1
+	mov	r1, sp
+	strb	r0, [r1]
+	.loc	1 64 5 is_stmt 0                @ ../src/keypad.c:64:5
+	b	.LBB2_3
+.Ltmp30:
+.LBB2_15:                               @   in Loop: Header=BB2_1 Depth=1
+	.loc	1 82 3 is_stmt 1                @ ../src/keypad.c:82:3
+	b	.LBB2_16
+.Ltmp31:
+.LBB2_16:                               @   in Loop: Header=BB2_1 Depth=1
+	.loc	1 60 44                         @ ../src/keypad.c:60:44
 	ldr	r0, [sp, #4]
 	adds	r0, r0, #1
 	add	r1, sp, #4
 	strb	r0, [r1]
-	.loc	3 56 5 is_stmt 0                @ ../src/keypad.c:56:5
-	b	.LBB2_3
-.Ltmp30:
-.LBB2_15:                               @   in Loop: Header=BB2_1 Depth=1
-	.loc	3 76 3 is_stmt 1                @ ../src/keypad.c:76:3
-	b	.LBB2_16
-.Ltmp31:
-.LBB2_16:                               @   in Loop: Header=BB2_1 Depth=1
-	.loc	3 52 44                         @ ../src/keypad.c:52:44
-	ldr	r0, [sp, #8]
-	adds	r0, r0, #1
-	add	r1, sp, #8
-	strb	r0, [r1]
-	.loc	3 52 3 is_stmt 0                @ ../src/keypad.c:52:3
+	.loc	1 60 3 is_stmt 0                @ ../src/keypad.c:60:3
 	b	.LBB2_1
 .Ltmp32:
 .LBB2_17:
-	.loc	3 77 10 is_stmt 1               @ ../src/keypad.c:77:10
-	ldr	r0, [sp, #16]
-	.loc	3 77 3 is_stmt 0                @ ../src/keypad.c:77:3
-	str	r0, [sp, #20]
+	.loc	1 0 3                           @ ../src/keypad.c:0:3
+	add	r1, sp, #20
+	ldr	r0, __arm_cp.2_1
+	.loc	1 83 3 is_stmt 1                @ ../src/keypad.c:83:3
+	strh	r0, [r1]
 	b	.LBB2_18
 .LBB2_18:
-	.loc	3 78 1 is_stmt 1                @ ../src/keypad.c:78:1
-	ldr	r0, [sp, #20]
+	.loc	1 84 1                          @ ../src/keypad.c:84:1
+	movs	r1, #0
+	add	r0, sp, #20
+	ldrsh	r0, [r0, r1]
 	add	sp, #24
 	pop	{r7, pc}
 .Ltmp33:
 	.p2align	2
 @ %bb.19:
-	.loc	3 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
+	.loc	1 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
 __arm_cp.2_0:
 	.long	KeyPad
 .Lcpi_end6:
 	.size	__arm_cp.2_0, .Lcpi_end6-__arm_cp.2_0
 __arm_cp.2_1:
-	.long	20000                           @ 0x4e20
+	.long	65535                           @ 0xffff
 .Lcpi_end7:
 	.size	__arm_cp.2_1, .Lcpi_end7-__arm_cp.2_1
 __arm_cp.2_2:
-	.long	100001                          @ 0x186a1
+	.long	20000                           @ 0x4e20
 .Lcpi_end8:
 	.size	__arm_cp.2_2, .Lcpi_end8-__arm_cp.2_2
+__arm_cp.2_3:
+	.long	keyboardMatris
+.Lcpi_end9:
+	.size	__arm_cp.2_3, .Lcpi_end9-__arm_cp.2_3
+__arm_cp.2_4:
+	.long	1000001                         @ 0xf4241
+.Lcpi_end10:
+	.size	__arm_cp.2_4, .Lcpi_end10-__arm_cp.2_4
 .Lfunc_end2:
 	.size	Scan, .Lfunc_end2-Scan
 	.cfi_endproc
 	.cantunwind
 	.fnend
                                         @ -- End function
-	.section	.text.resetColumnPin,"ax",%progbits
-	.p2align	2                               @ -- Begin function resetColumnPin
-	.type	resetColumnPin,%function
-	.code	16                              @ @resetColumnPin
+	.section	.text.setColumnPin,"ax",%progbits
+	.p2align	2                               @ -- Begin function setColumnPin
+	.type	setColumnPin,%function
+	.code	16                              @ @setColumnPin
 	.thumb_func
-resetColumnPin:
+setColumnPin:
 .Lfunc_begin3:
-	.loc	3 91 0 is_stmt 1                @ ../src/keypad.c:91:0
+	.loc	1 97 0 is_stmt 1                @ ../src/keypad.c:97:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -437,14 +452,14 @@ resetColumnPin:
 	add	r0, sp, #4
 	strb	r1, [r0]
 .Ltmp34:
-	.loc	3 92 12 prologue_end            @ ../src/keypad.c:92:12
+	.loc	1 98 12 prologue_end            @ ../src/keypad.c:98:12
 	ldrb	r0, [r0]
-	.loc	3 92 5 is_stmt 0                @ ../src/keypad.c:92:5
+	.loc	1 98 5 is_stmt 0                @ ../src/keypad.c:98:5
 	str	r0, [sp]                        @ 4-byte Spill
 	cmp	r0, #4
 	bhi	.LBB3_8
 @ %bb.1:
-	.loc	3 0 5                           @ ../src/keypad.c:0:5
+	.loc	1 0 5                           @ ../src/keypad.c:0:5
 	ldr	r1, [sp]                        @ 4-byte Reload
 	lsls	r2, r1, #2
 	adr	r0, .LJTI3_0
@@ -460,75 +475,135 @@ resetColumnPin:
 	b.w	.LBB3_7
 .LBB3_3:
 	ldr	r1, __arm_cp.3_4
-	movs	r0, #0
+	movs	r0, #1
 .Ltmp35:
-	.loc	3 94 19 is_stmt 1               @ ../src/keypad.c:94:19
+	.loc	1 100 19 is_stmt 1              @ ../src/keypad.c:100:19
 	str	r0, [r1]
-	.loc	3 95 9                          @ ../src/keypad.c:95:9
+	.loc	1 101 9                         @ ../src/keypad.c:101:9
 	b	.LBB3_8
 .LBB3_4:
-	.loc	3 0 9 is_stmt 0                 @ ../src/keypad.c:0:9
+	.loc	1 0 9 is_stmt 0                 @ ../src/keypad.c:0:9
 	ldr	r1, __arm_cp.3_3
-	movs	r0, #0
-	.loc	3 97 19 is_stmt 1               @ ../src/keypad.c:97:19
+	movs	r0, #1
+	.loc	1 103 19 is_stmt 1              @ ../src/keypad.c:103:19
 	str	r0, [r1]
-	.loc	3 98 9                          @ ../src/keypad.c:98:9
+	.loc	1 104 9                         @ ../src/keypad.c:104:9
 	b	.LBB3_8
 .LBB3_5:
-	.loc	3 0 9 is_stmt 0                 @ ../src/keypad.c:0:9
+	.loc	1 0 9 is_stmt 0                 @ ../src/keypad.c:0:9
 	ldr	r1, __arm_cp.3_2
-	movs	r0, #0
-	.loc	3 100 19 is_stmt 1              @ ../src/keypad.c:100:19
+	movs	r0, #1
+	.loc	1 106 19 is_stmt 1              @ ../src/keypad.c:106:19
 	str	r0, [r1]
-	.loc	3 101 9                         @ ../src/keypad.c:101:9
+	.loc	1 107 9                         @ ../src/keypad.c:107:9
 	b	.LBB3_8
 .LBB3_6:
-	.loc	3 0 9 is_stmt 0                 @ ../src/keypad.c:0:9
+	.loc	1 0 9 is_stmt 0                 @ ../src/keypad.c:0:9
 	ldr	r1, __arm_cp.3_1
-	movs	r0, #0
-	.loc	3 103 19 is_stmt 1              @ ../src/keypad.c:103:19
+	movs	r0, #1
+	.loc	1 109 19 is_stmt 1              @ ../src/keypad.c:109:19
 	str	r0, [r1]
-	.loc	3 104 9                         @ ../src/keypad.c:104:9
+	.loc	1 110 9                         @ ../src/keypad.c:110:9
 	b	.LBB3_8
 .LBB3_7:
-	.loc	3 0 9 is_stmt 0                 @ ../src/keypad.c:0:9
+	.loc	1 0 9 is_stmt 0                 @ ../src/keypad.c:0:9
 	ldr	r1, __arm_cp.3_0
-	movs	r0, #0
-	.loc	3 106 19 is_stmt 1              @ ../src/keypad.c:106:19
+	movs	r0, #1
+	.loc	1 112 19 is_stmt 1              @ ../src/keypad.c:112:19
 	str	r0, [r1]
-	.loc	3 107 9                         @ ../src/keypad.c:107:9
+	.loc	1 113 9                         @ ../src/keypad.c:113:9
 	b	.LBB3_8
 .Ltmp36:
 .LBB3_8:
-	.loc	3 109 1                         @ ../src/keypad.c:109:1
+	.loc	1 115 1                         @ ../src/keypad.c:115:1
 	add	sp, #8
 	bx	lr
 .Ltmp37:
 	.p2align	2
 @ %bb.9:
-	.loc	3 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
+	.loc	1 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
 __arm_cp.3_0:
-	.long	1073760280                      @ 0x40004818
-.Lcpi_end9:
-	.size	__arm_cp.3_0, .Lcpi_end9-__arm_cp.3_0
-__arm_cp.3_1:
-	.long	1073760284                      @ 0x4000481c
-.Lcpi_end10:
-	.size	__arm_cp.3_1, .Lcpi_end10-__arm_cp.3_1
-__arm_cp.3_2:
-	.long	1073760408                      @ 0x40004898
+	.long	1073760456                      @ 0x400048c8
 .Lcpi_end11:
-	.size	__arm_cp.3_2, .Lcpi_end11-__arm_cp.3_2
-__arm_cp.3_3:
-	.long	1073760392                      @ 0x40004888
-.Lcpi_end12:
-	.size	__arm_cp.3_3, .Lcpi_end12-__arm_cp.3_3
-__arm_cp.3_4:
+	.size	__arm_cp.3_0, .Lcpi_end11-__arm_cp.3_0
+__arm_cp.3_1:
 	.long	1073760460                      @ 0x400048cc
+.Lcpi_end12:
+	.size	__arm_cp.3_1, .Lcpi_end12-__arm_cp.3_1
+__arm_cp.3_2:
+	.long	1073760392                      @ 0x40004888
 .Lcpi_end13:
-	.size	__arm_cp.3_4, .Lcpi_end13-__arm_cp.3_4
+	.size	__arm_cp.3_2, .Lcpi_end13-__arm_cp.3_2
+__arm_cp.3_3:
+	.long	1073760408                      @ 0x40004898
+.Lcpi_end14:
+	.size	__arm_cp.3_3, .Lcpi_end14-__arm_cp.3_3
+__arm_cp.3_4:
+	.long	1073760284                      @ 0x4000481c
+.Lcpi_end15:
+	.size	__arm_cp.3_4, .Lcpi_end15-__arm_cp.3_4
 .Lfunc_end3:
-	.size	resetColumnPin, .Lfunc_end3-resetColumnPin
+	.size	setColumnPin, .Lfunc_end3-setColumnPin
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.resetAllColumnPins,"ax",%progbits
+	.p2align	2                               @ -- Begin function resetAllColumnPins
+	.type	resetAllColumnPins,%function
+	.code	16                              @ @resetAllColumnPins
+	.thumb_func
+resetAllColumnPins:
+.Lfunc_begin4:
+	.loc	1 89 0 is_stmt 1                @ ../src/keypad.c:89:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	ldr	r1, __arm_cp.4_0
+	movs	r0, #0
+.Ltmp38:
+	.loc	1 90 15 prologue_end            @ ../src/keypad.c:90:15
+	str	r0, [r1]
+	ldr	r1, __arm_cp.4_1
+	.loc	1 91 15                         @ ../src/keypad.c:91:15
+	str	r0, [r1]
+	ldr	r1, __arm_cp.4_2
+	.loc	1 92 15                         @ ../src/keypad.c:92:15
+	str	r0, [r1]
+	ldr	r1, __arm_cp.4_3
+	.loc	1 93 15                         @ ../src/keypad.c:93:15
+	str	r0, [r1]
+	ldr	r1, __arm_cp.4_4
+	.loc	1 94 15                         @ ../src/keypad.c:94:15
+	str	r0, [r1]
+	.loc	1 95 1                          @ ../src/keypad.c:95:1
+	bx	lr
+.Ltmp39:
+	.p2align	2
+@ %bb.1:
+	.loc	1 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
+__arm_cp.4_0:
+	.long	1073760284                      @ 0x4000481c
+.Lcpi_end16:
+	.size	__arm_cp.4_0, .Lcpi_end16-__arm_cp.4_0
+__arm_cp.4_1:
+	.long	1073760408                      @ 0x40004898
+.Lcpi_end17:
+	.size	__arm_cp.4_1, .Lcpi_end17-__arm_cp.4_1
+__arm_cp.4_2:
+	.long	1073760392                      @ 0x40004888
+.Lcpi_end18:
+	.size	__arm_cp.4_2, .Lcpi_end18-__arm_cp.4_2
+__arm_cp.4_3:
+	.long	1073760460                      @ 0x400048cc
+.Lcpi_end19:
+	.size	__arm_cp.4_3, .Lcpi_end19-__arm_cp.4_3
+__arm_cp.4_4:
+	.long	1073760456                      @ 0x400048c8
+.Lcpi_end20:
+	.size	__arm_cp.4_4, .Lcpi_end20-__arm_cp.4_4
+.Lfunc_end4:
+	.size	resetAllColumnPins, .Lfunc_end4-resetAllColumnPins
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -539,8 +614,8 @@ __arm_cp.3_4:
 	.code	16                              @ @readRowPin
 	.thumb_func
 readRowPin:
-.Lfunc_begin4:
-	.loc	3 111 0 is_stmt 1               @ ../src/keypad.c:111:0
+.Lfunc_begin5:
+	.loc	1 117 0 is_stmt 1               @ ../src/keypad.c:117:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -551,100 +626,100 @@ readRowPin:
                                         @ kill: def $r0 killed $r1
 	add	r0, sp, #4
 	strb	r1, [r0]
-.Ltmp38:
-	.loc	3 112 12 prologue_end           @ ../src/keypad.c:112:12
+.Ltmp40:
+	.loc	1 118 12 prologue_end           @ ../src/keypad.c:118:12
 	ldrb	r0, [r0]
-	.loc	3 112 5 is_stmt 0               @ ../src/keypad.c:112:5
+	.loc	1 118 5 is_stmt 0               @ ../src/keypad.c:118:5
 	str	r0, [sp]                        @ 4-byte Spill
 	cmp	r0, #3
-	bhi	.LBB4_7
+	bhi	.LBB5_7
 @ %bb.1:
-	.loc	3 0 5                           @ ../src/keypad.c:0:5
+	.loc	1 0 5                           @ ../src/keypad.c:0:5
 	ldr	r1, [sp]                        @ 4-byte Reload
 	lsls	r2, r1, #2
-	adr	r0, .LJTI4_0
+	adr	r0, .LJTI5_0
 	adds	r0, r0, r2
 	mov	pc, r0
 @ %bb.2:
 	.p2align	2
-.LJTI4_0:
-	b.w	.LBB4_3
-	b.w	.LBB4_4
-	b.w	.LBB4_5
-	b.w	.LBB4_6
-.LBB4_3:
-	ldr	r0, __arm_cp.4_3
-.Ltmp39:
-	.loc	3 114 16 is_stmt 1              @ ../src/keypad.c:114:16
+.LJTI5_0:
+	b.w	.LBB5_3
+	b.w	.LBB5_4
+	b.w	.LBB5_5
+	b.w	.LBB5_6
+.LBB5_3:
+	ldr	r0, __arm_cp.5_3
+.Ltmp41:
+	.loc	1 120 16 is_stmt 1              @ ../src/keypad.c:120:16
 	ldr	r0, [r0]
 	add	r1, sp, #8
-	.loc	3 114 9 is_stmt 0               @ ../src/keypad.c:114:9
+	.loc	1 120 9 is_stmt 0               @ ../src/keypad.c:120:9
 	strb	r0, [r1]
-	b	.LBB4_8
-.LBB4_4:
-	.loc	3 0 9                           @ ../src/keypad.c:0:9
-	ldr	r0, __arm_cp.4_2
-	.loc	3 116 16 is_stmt 1              @ ../src/keypad.c:116:16
+	b	.LBB5_8
+.LBB5_4:
+	.loc	1 0 9                           @ ../src/keypad.c:0:9
+	ldr	r0, __arm_cp.5_2
+	.loc	1 122 16 is_stmt 1              @ ../src/keypad.c:122:16
 	ldr	r0, [r0]
 	add	r1, sp, #8
-	.loc	3 116 9 is_stmt 0               @ ../src/keypad.c:116:9
+	.loc	1 122 9 is_stmt 0               @ ../src/keypad.c:122:9
 	strb	r0, [r1]
-	b	.LBB4_8
-.LBB4_5:
-	.loc	3 0 9                           @ ../src/keypad.c:0:9
-	ldr	r0, __arm_cp.4_1
-	.loc	3 118 16 is_stmt 1              @ ../src/keypad.c:118:16
+	b	.LBB5_8
+.LBB5_5:
+	.loc	1 0 9                           @ ../src/keypad.c:0:9
+	ldr	r0, __arm_cp.5_1
+	.loc	1 124 16 is_stmt 1              @ ../src/keypad.c:124:16
 	ldr	r0, [r0]
 	add	r1, sp, #8
-	.loc	3 118 9 is_stmt 0               @ ../src/keypad.c:118:9
+	.loc	1 124 9 is_stmt 0               @ ../src/keypad.c:124:9
 	strb	r0, [r1]
-	b	.LBB4_8
-.LBB4_6:
-	.loc	3 0 9                           @ ../src/keypad.c:0:9
-	ldr	r0, __arm_cp.4_0
-	.loc	3 120 16 is_stmt 1              @ ../src/keypad.c:120:16
+	b	.LBB5_8
+.LBB5_6:
+	.loc	1 0 9                           @ ../src/keypad.c:0:9
+	ldr	r0, __arm_cp.5_0
+	.loc	1 126 16 is_stmt 1              @ ../src/keypad.c:126:16
 	ldr	r0, [r0]
 	add	r1, sp, #8
-	.loc	3 120 9 is_stmt 0               @ ../src/keypad.c:120:9
+	.loc	1 126 9 is_stmt 0               @ ../src/keypad.c:126:9
 	strb	r0, [r1]
-	b	.LBB4_8
-.Ltmp40:
-.LBB4_7:
-	.loc	3 0 9                           @ ../src/keypad.c:0:9
+	b	.LBB5_8
+.Ltmp42:
+.LBB5_7:
+	.loc	1 0 9                           @ ../src/keypad.c:0:9
 	add	r1, sp, #8
 	movs	r0, #255
-	.loc	3 122 3 is_stmt 1               @ ../src/keypad.c:122:3
+	.loc	1 128 3 is_stmt 1               @ ../src/keypad.c:128:3
 	strb	r0, [r1]
-	b	.LBB4_8
-.LBB4_8:
-	.loc	3 123 1                         @ ../src/keypad.c:123:1
+	b	.LBB5_8
+.LBB5_8:
+	.loc	1 129 1                         @ ../src/keypad.c:129:1
 	movs	r1, #0
 	add	r0, sp, #8
 	ldrsb	r0, [r0, r1]
 	add	sp, #12
 	bx	lr
-.Ltmp41:
+.Ltmp43:
 	.p2align	2
 @ %bb.9:
-	.loc	3 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
-__arm_cp.4_0:
-	.long	1073760388                      @ 0x40004884
-.Lcpi_end14:
-	.size	__arm_cp.4_0, .Lcpi_end14-__arm_cp.4_0
-__arm_cp.4_1:
-	.long	1073760384                      @ 0x40004880
-.Lcpi_end15:
-	.size	__arm_cp.4_1, .Lcpi_end15-__arm_cp.4_1
-__arm_cp.4_2:
-	.long	1073760452                      @ 0x400048c4
-.Lcpi_end16:
-	.size	__arm_cp.4_2, .Lcpi_end16-__arm_cp.4_2
-__arm_cp.4_3:
+	.loc	1 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
+__arm_cp.5_0:
+	.long	1073760304                      @ 0x40004830
+.Lcpi_end21:
+	.size	__arm_cp.5_0, .Lcpi_end21-__arm_cp.5_0
+__arm_cp.5_1:
 	.long	1073760448                      @ 0x400048c0
-.Lcpi_end17:
-	.size	__arm_cp.4_3, .Lcpi_end17-__arm_cp.4_3
-.Lfunc_end4:
-	.size	readRowPin, .Lfunc_end4-readRowPin
+.Lcpi_end22:
+	.size	__arm_cp.5_1, .Lcpi_end22-__arm_cp.5_1
+__arm_cp.5_2:
+	.long	1073760452                      @ 0x400048c4
+.Lcpi_end23:
+	.size	__arm_cp.5_2, .Lcpi_end23-__arm_cp.5_2
+__arm_cp.5_3:
+	.long	1073760384                      @ 0x40004880
+.Lcpi_end24:
+	.size	__arm_cp.5_3, .Lcpi_end24-__arm_cp.5_3
+.Lfunc_end5:
+	.size	readRowPin, .Lfunc_end5-readRowPin
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -655,7 +730,7 @@ __arm_cp.4_3:
 	.code	16                              @ @CLK_SysTickDelay
 	.thumb_func
 CLK_SysTickDelay:
-.Lfunc_begin5:
+.Lfunc_begin6:
 	.file	5 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/StdDriver/inc\\clk.h"
 	.loc	5 597 0 is_stmt 1               @ ../../../../Library/StdDriver/inc\clk.h:597:0
 	.fnstart
@@ -665,134 +740,85 @@ CLK_SysTickDelay:
 	sub	sp, #4
 	.cfi_def_cfa_offset 4
 	str	r0, [sp]
-.Ltmp42:
+.Ltmp44:
 	.loc	5 598 21 prologue_end           @ ../../../../Library/StdDriver/inc\clk.h:598:21
 	ldr	r1, [sp]
 	.loc	5 598 31 is_stmt 0              @ ../../../../Library/StdDriver/inc\clk.h:598:31
-	ldr	r0, __arm_cp.5_0
+	ldr	r0, __arm_cp.6_0
 	ldr	r0, [r0]
 	.loc	5 598 29                        @ ../../../../Library/StdDriver/inc\clk.h:598:29
 	muls	r0, r1, r0
-	ldr	r1, __arm_cp.5_1
+	ldr	r1, __arm_cp.6_1
 	.loc	5 598 19                        @ ../../../../Library/StdDriver/inc\clk.h:598:19
 	str	r0, [r1]
-	ldr	r1, __arm_cp.5_2
+	ldr	r1, __arm_cp.6_2
 	movs	r0, #0
 	.loc	5 599 19 is_stmt 1              @ ../../../../Library/StdDriver/inc\clk.h:599:19
 	str	r0, [r1]
-	ldr	r1, __arm_cp.5_3
+	ldr	r1, __arm_cp.6_3
 	movs	r0, #5
 	.loc	5 600 19                        @ ../../../../Library/StdDriver/inc\clk.h:600:19
 	str	r0, [r1]
 	.loc	5 603 5                         @ ../../../../Library/StdDriver/inc\clk.h:603:5
-	b	.LBB5_1
-.LBB5_1:                                @ =>This Inner Loop Header: Depth=1
+	b	.LBB6_1
+.LBB6_1:                                @ =>This Inner Loop Header: Depth=1
 	.loc	5 0 5 is_stmt 0                 @ ../../../../Library/StdDriver/inc\clk.h:0:5
-	ldr	r0, __arm_cp.5_3
+	ldr	r0, __arm_cp.6_3
 	.loc	5 603 22                        @ ../../../../Library/StdDriver/inc\clk.h:603:22
 	ldr	r0, [r0]
 	.loc	5 603 5                         @ ../../../../Library/StdDriver/inc\clk.h:603:5
 	lsls	r0, r0, #15
 	cmp	r0, #0
-	bmi	.LBB5_3
-	b	.LBB5_2
-.LBB5_2:                                @   in Loop: Header=BB5_1 Depth=1
-	b	.LBB5_1
-.LBB5_3:
+	bmi	.LBB6_3
+	b	.LBB6_2
+.LBB6_2:                                @   in Loop: Header=BB6_1 Depth=1
+	b	.LBB6_1
+.LBB6_3:
 	.loc	5 0 5                           @ ../../../../Library/StdDriver/inc\clk.h:0:5
-	ldr	r1, __arm_cp.5_3
+	ldr	r1, __arm_cp.6_3
 	movs	r0, #0
 	.loc	5 608 19 is_stmt 1              @ ../../../../Library/StdDriver/inc\clk.h:608:19
 	str	r0, [r1]
 	.loc	5 609 1                         @ ../../../../Library/StdDriver/inc\clk.h:609:1
 	add	sp, #4
 	bx	lr
-.Ltmp43:
+.Ltmp45:
 	.p2align	2
 @ %bb.4:
 	.loc	5 0 1 is_stmt 0                 @ ../../../../Library/StdDriver/inc\clk.h:0:1
-__arm_cp.5_0:
-	.long	CyclesPerUs
-.Lcpi_end18:
-	.size	__arm_cp.5_0, .Lcpi_end18-__arm_cp.5_0
-__arm_cp.5_1:
-	.long	3758153748                      @ 0xe000e014
-.Lcpi_end19:
-	.size	__arm_cp.5_1, .Lcpi_end19-__arm_cp.5_1
-__arm_cp.5_2:
-	.long	3758153752                      @ 0xe000e018
-.Lcpi_end20:
-	.size	__arm_cp.5_2, .Lcpi_end20-__arm_cp.5_2
-__arm_cp.5_3:
-	.long	3758153744                      @ 0xe000e010
-.Lcpi_end21:
-	.size	__arm_cp.5_3, .Lcpi_end21-__arm_cp.5_3
-.Lfunc_end5:
-	.size	CLK_SysTickDelay, .Lfunc_end5-CLK_SysTickDelay
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.setAllColumnPins,"ax",%progbits
-	.p2align	2                               @ -- Begin function setAllColumnPins
-	.type	setAllColumnPins,%function
-	.code	16                              @ @setAllColumnPins
-	.thumb_func
-setAllColumnPins:
-.Lfunc_begin6:
-	.loc	3 83 0 is_stmt 1                @ ../src/keypad.c:83:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	ldr	r1, __arm_cp.6_0
-	movs	r0, #1
-.Ltmp44:
-	.loc	3 84 15 prologue_end            @ ../src/keypad.c:84:15
-	str	r0, [r1]
-	ldr	r1, __arm_cp.6_1
-	.loc	3 85 15                         @ ../src/keypad.c:85:15
-	str	r0, [r1]
-	ldr	r1, __arm_cp.6_2
-	.loc	3 86 15                         @ ../src/keypad.c:86:15
-	str	r0, [r1]
-	ldr	r1, __arm_cp.6_3
-	.loc	3 87 15                         @ ../src/keypad.c:87:15
-	str	r0, [r1]
-	ldr	r1, __arm_cp.6_4
-	.loc	3 88 15                         @ ../src/keypad.c:88:15
-	str	r0, [r1]
-	.loc	3 89 1                          @ ../src/keypad.c:89:1
-	bx	lr
-.Ltmp45:
-	.p2align	2
-@ %bb.1:
-	.loc	3 0 1 is_stmt 0                 @ ../src/keypad.c:0:1
 __arm_cp.6_0:
-	.long	1073760460                      @ 0x400048cc
-.Lcpi_end22:
-	.size	__arm_cp.6_0, .Lcpi_end22-__arm_cp.6_0
-__arm_cp.6_1:
-	.long	1073760392                      @ 0x40004888
-.Lcpi_end23:
-	.size	__arm_cp.6_1, .Lcpi_end23-__arm_cp.6_1
-__arm_cp.6_2:
-	.long	1073760408                      @ 0x40004898
-.Lcpi_end24:
-	.size	__arm_cp.6_2, .Lcpi_end24-__arm_cp.6_2
-__arm_cp.6_3:
-	.long	1073760284                      @ 0x4000481c
+	.long	CyclesPerUs
 .Lcpi_end25:
-	.size	__arm_cp.6_3, .Lcpi_end25-__arm_cp.6_3
-__arm_cp.6_4:
-	.long	1073760280                      @ 0x40004818
+	.size	__arm_cp.6_0, .Lcpi_end25-__arm_cp.6_0
+__arm_cp.6_1:
+	.long	3758153748                      @ 0xe000e014
 .Lcpi_end26:
-	.size	__arm_cp.6_4, .Lcpi_end26-__arm_cp.6_4
+	.size	__arm_cp.6_1, .Lcpi_end26-__arm_cp.6_1
+__arm_cp.6_2:
+	.long	3758153752                      @ 0xe000e018
+.Lcpi_end27:
+	.size	__arm_cp.6_2, .Lcpi_end27-__arm_cp.6_2
+__arm_cp.6_3:
+	.long	3758153744                      @ 0xe000e010
+.Lcpi_end28:
+	.size	__arm_cp.6_3, .Lcpi_end28-__arm_cp.6_3
 .Lfunc_end6:
-	.size	setAllColumnPins, .Lfunc_end6-setAllColumnPins
+	.size	CLK_SysTickDelay, .Lfunc_end6-CLK_SysTickDelay
 	.cfi_endproc
 	.cantunwind
 	.fnend
                                         @ -- End function
+	.hidden	keyboardMatris                  @ @keyboardMatris
+	.type	keyboardMatris,%object
+	.section	.data.keyboardMatris,"aw",%progbits
+	.globl	keyboardMatris
+keyboardMatris:
+	.ascii	"0.czt"
+	.ascii	"123qs"
+	.ascii	"456pu"
+	.ascii	"789mC"
+	.size	keyboardMatris, 20
+
 	.hidden	KeyPad                          @ @KeyPad
 	.type	KeyPad,%object
 	.section	.bss.KeyPad,"aw",%nobits
@@ -840,45 +866,22 @@ KeyPad:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	3                               @ Abbreviation Code
-	.byte	22                              @ DW_TAG_typedef
-	.byte	0                               @ DW_CHILDREN_no
+	.byte	1                               @ DW_TAG_array_type
+	.byte	1                               @ DW_CHILDREN_yes
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	4                               @ Abbreviation Code
-	.byte	19                              @ DW_TAG_structure_type
-	.byte	1                               @ DW_CHILDREN_yes
-	.byte	11                              @ DW_AT_byte_size
-	.byte	11                              @ DW_FORM_data1
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
+	.byte	33                              @ DW_TAG_subrange_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	55                              @ DW_AT_count
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	5                               @ Abbreviation Code
-	.byte	13                              @ DW_TAG_member
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	73                              @ DW_AT_type
-	.byte	19                              @ DW_FORM_ref4
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	11                              @ DW_FORM_data1
-	.byte	56                              @ DW_AT_data_member_location
-	.byte	11                              @ DW_FORM_data1
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
-	.byte	6                               @ Abbreviation Code
 	.byte	36                              @ DW_TAG_base_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -889,14 +892,64 @@ KeyPad:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
 	.byte	7                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	19                              @ DW_TAG_structure_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	13                              @ DW_TAG_member
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	56                              @ DW_AT_data_member_location
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
 	.byte	15                              @ DW_TAG_pointer_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	8                               @ Abbreviation Code
+	.byte	11                              @ Abbreviation Code
 	.byte	19                              @ DW_TAG_structure_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	3                               @ DW_AT_name
@@ -909,37 +962,21 @@ KeyPad:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	9                               @ Abbreviation Code
+	.byte	12                              @ Abbreviation Code
 	.byte	21                              @ DW_TAG_subroutine_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	39                              @ DW_AT_prototyped
 	.byte	25                              @ DW_FORM_flag_present
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	10                              @ Abbreviation Code
+	.byte	13                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	11                              @ Abbreviation Code
-	.byte	21                              @ DW_TAG_subroutine_type
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	73                              @ DW_AT_type
-	.byte	19                              @ DW_FORM_ref4
-	.byte	39                              @ DW_AT_prototyped
-	.byte	25                              @ DW_FORM_flag_present
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
-	.byte	12                              @ Abbreviation Code
-	.byte	21                              @ DW_TAG_subroutine_type
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	39                              @ DW_AT_prototyped
-	.byte	25                              @ DW_FORM_flag_present
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
-	.byte	13                              @ Abbreviation Code
+	.byte	14                              @ Abbreviation Code
 	.byte	21                              @ DW_TAG_subroutine_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	73                              @ DW_AT_type
@@ -948,7 +985,14 @@ KeyPad:
 	.byte	25                              @ DW_FORM_flag_present
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	14                              @ Abbreviation Code
+	.byte	15                              @ Abbreviation Code
+	.byte	21                              @ DW_TAG_subroutine_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	16                              @ Abbreviation Code
 	.byte	22                              @ DW_TAG_typedef
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
@@ -961,7 +1005,7 @@ KeyPad:
 	.byte	5                               @ DW_FORM_data2
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	15                              @ Abbreviation Code
+	.byte	17                              @ Abbreviation Code
 	.byte	19                              @ DW_TAG_structure_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	11                              @ DW_AT_byte_size
@@ -972,7 +1016,7 @@ KeyPad:
 	.byte	5                               @ DW_FORM_data2
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	16                              @ Abbreviation Code
+	.byte	18                              @ Abbreviation Code
 	.byte	13                              @ DW_TAG_member
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -987,21 +1031,21 @@ KeyPad:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	17                              @ Abbreviation Code
+	.byte	19                              @ Abbreviation Code
 	.byte	53                              @ DW_TAG_volatile_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	18                              @ Abbreviation Code
+	.byte	20                              @ Abbreviation Code
 	.byte	38                              @ DW_TAG_const_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	19                              @ Abbreviation Code
+	.byte	21                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1022,42 +1066,8 @@ KeyPad:
 	.byte	25                              @ DW_FORM_flag_present
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	20                              @ Abbreviation Code
-	.byte	52                              @ DW_TAG_variable
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	2                               @ DW_AT_location
-	.byte	24                              @ DW_FORM_exprloc
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	11                              @ DW_FORM_data1
-	.byte	73                              @ DW_AT_type
-	.byte	19                              @ DW_FORM_ref4
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
-	.byte	21                              @ Abbreviation Code
-	.byte	46                              @ DW_TAG_subprogram
-	.byte	1                               @ DW_CHILDREN_yes
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	6                               @ DW_FORM_data4
-	.byte	64                              @ DW_AT_frame_base
-	.byte	24                              @ DW_FORM_exprloc
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	11                              @ DW_FORM_data1
-	.byte	39                              @ DW_AT_prototyped
-	.byte	25                              @ DW_FORM_flag_present
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
 	.byte	22                              @ Abbreviation Code
-	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
 	.byte	24                              @ DW_FORM_exprloc
@@ -1088,11 +1098,45 @@ KeyPad:
 	.byte	11                              @ DW_FORM_data1
 	.byte	39                              @ DW_AT_prototyped
 	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	24                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	24                              @ Abbreviation Code
+	.byte	25                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	26                              @ Abbreviation Code
 	.byte	11                              @ DW_TAG_lexical_block
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1101,7 +1145,26 @@ KeyPad:
 	.byte	6                               @ DW_FORM_data4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	25                              @ Abbreviation Code
+	.byte	27                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	28                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1120,7 +1183,7 @@ KeyPad:
 	.byte	25                              @ DW_FORM_flag_present
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	26                              @ Abbreviation Code
+	.byte	29                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
@@ -1135,23 +1198,6 @@ KeyPad:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	27                              @ Abbreviation Code
-	.byte	46                              @ DW_TAG_subprogram
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	6                               @ DW_FORM_data4
-	.byte	64                              @ DW_AT_frame_base
-	.byte	24                              @ DW_FORM_exprloc
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	11                              @ DW_FORM_data1
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
 	.byte	0                               @ EOM(3)
 	.section	.debug_info,"",%progbits
 .Lcu_begin0:
@@ -1160,7 +1206,7 @@ KeyPad:
 	.short	4                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x2c0 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x31c DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -1172,352 +1218,401 @@ KeyPad:
 	.long	.Linfo_string3                  @ DW_AT_name
 	.long	55                              @ DW_AT_type
                                         @ DW_AT_external
-	.byte	3                               @ DW_AT_decl_file
+	.byte	1                               @ DW_AT_decl_file
+	.byte	12                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	keyboardMatris
+	.byte	3                               @ Abbrev [3] 0x37:0x12 DW_TAG_array_type
+	.long	73                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x3c:0x6 DW_TAG_subrange_type
+	.long	80                              @ DW_AT_type
+	.byte	4                               @ DW_AT_count
+	.byte	4                               @ Abbrev [4] 0x42:0x6 DW_TAG_subrange_type
+	.long	80                              @ DW_AT_type
+	.byte	5                               @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0x49:0x7 DW_TAG_base_type
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	6                               @ Abbrev [6] 0x50:0x7 DW_TAG_base_type
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	8                               @ DW_AT_byte_size
+	.byte	7                               @ DW_AT_encoding
+	.byte	2                               @ Abbrev [2] 0x57:0x11 DW_TAG_variable
+	.long	.Linfo_string6                  @ DW_AT_name
+	.long	104                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
 	.byte	10                              @ DW_AT_decl_line
 	.byte	5                               @ DW_AT_location
 	.byte	3
 	.long	KeyPad
-	.byte	3                               @ Abbrev [3] 0x37:0xb DW_TAG_typedef
-	.long	66                              @ DW_AT_type
-	.long	.Linfo_string11                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	42                              @ DW_AT_decl_line
-	.byte	4                               @ Abbrev [4] 0x42:0x29 DW_TAG_structure_type
+	.byte	7                               @ Abbrev [7] 0x68:0xb DW_TAG_typedef
+	.long	115                             @ DW_AT_type
+	.long	.Linfo_string14                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	43                              @ DW_AT_decl_line
+	.byte	8                               @ Abbrev [8] 0x73:0x29 DW_TAG_structure_type
 	.byte	4                               @ DW_AT_byte_size
-	.byte	2                               @ DW_AT_decl_file
-	.byte	36                              @ DW_AT_decl_line
-	.byte	5                               @ Abbrev [5] 0x46:0xc DW_TAG_member
-	.long	.Linfo_string4                  @ DW_AT_name
-	.long	107                             @ DW_AT_type
-	.byte	2                               @ DW_AT_decl_file
-	.byte	38                              @ DW_AT_decl_line
-	.byte	0                               @ DW_AT_data_member_location
-	.byte	5                               @ Abbrev [5] 0x52:0xc DW_TAG_member
+	.byte	3                               @ DW_AT_decl_file
+	.byte	37                              @ DW_AT_decl_line
+	.byte	9                               @ Abbrev [9] 0x77:0xc DW_TAG_member
 	.long	.Linfo_string7                  @ DW_AT_name
-	.long	107                             @ DW_AT_type
-	.byte	2                               @ DW_AT_decl_file
+	.long	156                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
 	.byte	39                              @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_data_member_location
-	.byte	5                               @ Abbrev [5] 0x5e:0xc DW_TAG_member
-	.long	.Linfo_string8                  @ DW_AT_name
-	.long	125                             @ DW_AT_type
-	.byte	2                               @ DW_AT_decl_file
+	.byte	0                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0x83:0xc DW_TAG_member
+	.long	.Linfo_string10                 @ DW_AT_name
+	.long	156                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
 	.byte	40                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0x8f:0xc DW_TAG_member
+	.long	.Linfo_string11                 @ DW_AT_name
+	.long	174                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
+	.byte	41                              @ DW_AT_decl_line
 	.byte	2                               @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	3                               @ Abbrev [3] 0x6b:0xb DW_TAG_typedef
-	.long	118                             @ DW_AT_type
-	.long	.Linfo_string6                  @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
+	.byte	7                               @ Abbrev [7] 0x9c:0xb DW_TAG_typedef
+	.long	167                             @ DW_AT_type
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
-	.byte	6                               @ Abbrev [6] 0x76:0x7 DW_TAG_base_type
-	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	5                               @ Abbrev [5] 0xa7:0x7 DW_TAG_base_type
+	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	8                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	3                               @ Abbrev [3] 0x7d:0xb DW_TAG_typedef
-	.long	136                             @ DW_AT_type
-	.long	.Linfo_string10                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
+	.byte	7                               @ Abbrev [7] 0xae:0xb DW_TAG_typedef
+	.long	185                             @ DW_AT_type
+	.long	.Linfo_string13                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
 	.byte	63                              @ DW_AT_decl_line
-	.byte	6                               @ Abbrev [6] 0x88:0x7 DW_TAG_base_type
-	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	5                               @ Abbrev [5] 0xb9:0x7 DW_TAG_base_type
+	.long	.Linfo_string12                 @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	2                               @ DW_AT_byte_size
-	.byte	7                               @ Abbrev [7] 0x8f:0x5 DW_TAG_pointer_type
-	.long	148                             @ DW_AT_type
-	.byte	3                               @ Abbrev [3] 0x94:0xb DW_TAG_typedef
-	.long	159                             @ DW_AT_type
-	.long	.Linfo_string21                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	50                              @ DW_AT_decl_line
-	.byte	8                               @ Abbrev [8] 0x9f:0x45 DW_TAG_structure_type
-	.long	.Linfo_string21                 @ DW_AT_name
+	.byte	10                              @ Abbrev [10] 0xc0:0x5 DW_TAG_pointer_type
+	.long	197                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0xc5:0xb DW_TAG_typedef
+	.long	208                             @ DW_AT_type
+	.long	.Linfo_string24                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	51                              @ DW_AT_decl_line
+	.byte	11                              @ Abbrev [11] 0xd0:0x45 DW_TAG_structure_type
+	.long	.Linfo_string24                 @ DW_AT_name
 	.byte	20                              @ DW_AT_byte_size
-	.byte	2                               @ DW_AT_decl_file
-	.byte	44                              @ DW_AT_decl_line
-	.byte	5                               @ Abbrev [5] 0xa7:0xc DW_TAG_member
-	.long	.Linfo_string12                 @ DW_AT_name
-	.long	228                             @ DW_AT_type
-	.byte	2                               @ DW_AT_decl_file
+	.byte	3                               @ DW_AT_decl_file
 	.byte	45                              @ DW_AT_decl_line
-	.byte	0                               @ DW_AT_data_member_location
-	.byte	5                               @ Abbrev [5] 0xb3:0xc DW_TAG_member
-	.long	.Linfo_string13                 @ DW_AT_name
-	.long	245                             @ DW_AT_type
-	.byte	2                               @ DW_AT_decl_file
+	.byte	9                               @ Abbrev [9] 0xd8:0xc DW_TAG_member
+	.long	.Linfo_string15                 @ DW_AT_name
+	.long	277                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
 	.byte	46                              @ DW_AT_decl_line
-	.byte	4                               @ DW_AT_data_member_location
-	.byte	5                               @ Abbrev [5] 0xbf:0xc DW_TAG_member
+	.byte	0                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0xe4:0xc DW_TAG_member
 	.long	.Linfo_string16                 @ DW_AT_name
-	.long	273                             @ DW_AT_type
-	.byte	2                               @ DW_AT_decl_file
+	.long	294                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
 	.byte	47                              @ DW_AT_decl_line
-	.byte	8                               @ DW_AT_data_member_location
-	.byte	5                               @ Abbrev [5] 0xcb:0xc DW_TAG_member
-	.long	.Linfo_string17                 @ DW_AT_name
-	.long	279                             @ DW_AT_type
-	.byte	2                               @ DW_AT_decl_file
+	.byte	4                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0xf0:0xc DW_TAG_member
+	.long	.Linfo_string19                 @ DW_AT_name
+	.long	333                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
 	.byte	48                              @ DW_AT_decl_line
-	.byte	12                              @ DW_AT_data_member_location
-	.byte	5                               @ Abbrev [5] 0xd7:0xc DW_TAG_member
-	.long	.Linfo_string18                 @ DW_AT_name
-	.long	291                             @ DW_AT_type
-	.byte	2                               @ DW_AT_decl_file
+	.byte	8                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0xfc:0xc DW_TAG_member
+	.long	.Linfo_string20                 @ DW_AT_name
+	.long	345                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
 	.byte	49                              @ DW_AT_decl_line
+	.byte	12                              @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0x108:0xc DW_TAG_member
+	.long	.Linfo_string21                 @ DW_AT_name
+	.long	351                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
+	.byte	50                              @ DW_AT_decl_line
 	.byte	16                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	7                               @ Abbrev [7] 0xe4:0x5 DW_TAG_pointer_type
-	.long	233                             @ DW_AT_type
-	.byte	9                               @ Abbrev [9] 0xe9:0xc DW_TAG_subroutine_type
+	.byte	10                              @ Abbrev [10] 0x115:0x5 DW_TAG_pointer_type
+	.long	282                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x11a:0xc DW_TAG_subroutine_type
                                         @ DW_AT_prototyped
-	.byte	10                              @ Abbrev [10] 0xea:0x5 DW_TAG_formal_parameter
-	.long	107                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0xef:0x5 DW_TAG_formal_parameter
-	.long	107                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x11b:0x5 DW_TAG_formal_parameter
+	.long	156                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x120:0x5 DW_TAG_formal_parameter
+	.long	156                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	7                               @ Abbrev [7] 0xf5:0x5 DW_TAG_pointer_type
-	.long	250                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0xfa:0x5 DW_TAG_subroutine_type
-	.long	255                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x126:0x5 DW_TAG_pointer_type
+	.long	299                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x12b:0xb DW_TAG_subroutine_type
+	.long	310                             @ DW_AT_type
                                         @ DW_AT_prototyped
-	.byte	3                               @ Abbrev [3] 0xff:0xb DW_TAG_typedef
-	.long	266                             @ DW_AT_type
-	.long	.Linfo_string15                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	64                              @ DW_AT_decl_line
-	.byte	6                               @ Abbrev [6] 0x10a:0x7 DW_TAG_base_type
-	.long	.Linfo_string14                 @ DW_AT_name
-	.byte	7                               @ DW_AT_encoding
-	.byte	4                               @ DW_AT_byte_size
-	.byte	7                               @ Abbrev [7] 0x111:0x5 DW_TAG_pointer_type
-	.long	278                             @ DW_AT_type
-	.byte	12                              @ Abbrev [12] 0x116:0x1 DW_TAG_subroutine_type
-                                        @ DW_AT_prototyped
-	.byte	7                               @ Abbrev [7] 0x117:0x5 DW_TAG_pointer_type
-	.long	284                             @ DW_AT_type
-	.byte	9                               @ Abbrev [9] 0x11c:0x7 DW_TAG_subroutine_type
-                                        @ DW_AT_prototyped
-	.byte	10                              @ Abbrev [10] 0x11d:0x5 DW_TAG_formal_parameter
-	.long	107                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x130:0x5 DW_TAG_formal_parameter
+	.long	328                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	7                               @ Abbrev [7] 0x123:0x5 DW_TAG_pointer_type
-	.long	296                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x128:0xb DW_TAG_subroutine_type
-	.long	307                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x136:0xb DW_TAG_typedef
+	.long	321                             @ DW_AT_type
+	.long	.Linfo_string18                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.byte	5                               @ Abbrev [5] 0x141:0x7 DW_TAG_base_type
+	.long	.Linfo_string17                 @ DW_AT_name
+	.byte	5                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	10                              @ Abbrev [10] 0x148:0x5 DW_TAG_pointer_type
+	.long	156                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x14d:0x5 DW_TAG_pointer_type
+	.long	338                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x152:0x7 DW_TAG_subroutine_type
                                         @ DW_AT_prototyped
-	.byte	10                              @ Abbrev [10] 0x12d:0x5 DW_TAG_formal_parameter
-	.long	107                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x153:0x5 DW_TAG_formal_parameter
+	.long	156                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	3                               @ Abbrev [3] 0x133:0xb DW_TAG_typedef
-	.long	318                             @ DW_AT_type
-	.long	.Linfo_string20                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
+	.byte	10                              @ Abbrev [10] 0x159:0x5 DW_TAG_pointer_type
+	.long	350                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x15e:0x1 DW_TAG_subroutine_type
+                                        @ DW_AT_prototyped
+	.byte	10                              @ Abbrev [10] 0x15f:0x5 DW_TAG_pointer_type
+	.long	356                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x164:0xb DW_TAG_subroutine_type
+	.long	367                             @ DW_AT_type
+                                        @ DW_AT_prototyped
+	.byte	13                              @ Abbrev [13] 0x169:0x5 DW_TAG_formal_parameter
+	.long	156                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x16f:0xb DW_TAG_typedef
+	.long	378                             @ DW_AT_type
+	.long	.Linfo_string23                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
 	.byte	56                              @ DW_AT_decl_line
-	.byte	6                               @ Abbrev [6] 0x13e:0x7 DW_TAG_base_type
-	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	5                               @ Abbrev [5] 0x17a:0x7 DW_TAG_base_type
+	.long	.Linfo_string22                 @ DW_AT_name
 	.byte	6                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	7                               @ Abbrev [7] 0x145:0x5 DW_TAG_pointer_type
-	.long	330                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x14a:0xc DW_TAG_typedef
-	.long	342                             @ DW_AT_type
-	.long	.Linfo_string26                 @ DW_AT_name
+	.byte	10                              @ Abbrev [10] 0x181:0x5 DW_TAG_pointer_type
+	.long	390                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x186:0xc DW_TAG_typedef
+	.long	402                             @ DW_AT_type
+	.long	.Linfo_string31                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	561                             @ DW_AT_decl_line
-	.byte	15                              @ Abbrev [15] 0x156:0x3a DW_TAG_structure_type
+	.byte	17                              @ Abbrev [17] 0x192:0x3a DW_TAG_structure_type
 	.byte	16                              @ DW_AT_byte_size
 	.byte	4                               @ DW_AT_decl_file
 	.short	555                             @ DW_AT_decl_line
-	.byte	16                              @ Abbrev [16] 0x15b:0xd DW_TAG_member
-	.long	.Linfo_string22                 @ DW_AT_name
-	.long	400                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x197:0xd DW_TAG_member
+	.long	.Linfo_string25                 @ DW_AT_name
+	.long	460                             @ DW_AT_type
 	.byte	4                               @ DW_AT_decl_file
 	.short	557                             @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	16                              @ Abbrev [16] 0x168:0xd DW_TAG_member
-	.long	.Linfo_string23                 @ DW_AT_name
-	.long	400                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x1a4:0xd DW_TAG_member
+	.long	.Linfo_string28                 @ DW_AT_name
+	.long	460                             @ DW_AT_type
 	.byte	4                               @ DW_AT_decl_file
 	.short	558                             @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	16                              @ Abbrev [16] 0x175:0xd DW_TAG_member
-	.long	.Linfo_string24                 @ DW_AT_name
-	.long	400                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x1b1:0xd DW_TAG_member
+	.long	.Linfo_string29                 @ DW_AT_name
+	.long	460                             @ DW_AT_type
 	.byte	4                               @ DW_AT_decl_file
 	.short	559                             @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
-	.byte	16                              @ Abbrev [16] 0x182:0xd DW_TAG_member
-	.long	.Linfo_string25                 @ DW_AT_name
-	.long	405                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x1be:0xd DW_TAG_member
+	.long	.Linfo_string30                 @ DW_AT_name
+	.long	483                             @ DW_AT_type
 	.byte	4                               @ DW_AT_decl_file
 	.short	560                             @ DW_AT_decl_line
 	.byte	12                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	17                              @ Abbrev [17] 0x190:0x5 DW_TAG_volatile_type
-	.long	255                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x195:0x5 DW_TAG_const_type
-	.long	400                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x19a:0x5 DW_TAG_pointer_type
-	.long	400                             @ DW_AT_type
-	.byte	19                              @ Abbrev [19] 0x19f:0x24 DW_TAG_subprogram
+	.byte	19                              @ Abbrev [19] 0x1cc:0x5 DW_TAG_volatile_type
+	.long	465                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x1d1:0xb DW_TAG_typedef
+	.long	476                             @ DW_AT_type
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	5                               @ Abbrev [5] 0x1dc:0x7 DW_TAG_base_type
+	.long	.Linfo_string26                 @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	20                              @ Abbrev [20] 0x1e3:0x5 DW_TAG_const_type
+	.long	460                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x1e8:0x5 DW_TAG_pointer_type
+	.long	460                             @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x1ed:0x24 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0-.Lfunc_begin0       @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
-	.long	.Linfo_string27                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	17                              @ DW_AT_decl_line
-	.long	143                             @ DW_AT_type
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	23                              @ DW_AT_decl_line
+	.long	192                             @ DW_AT_type
                                         @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x1b4:0xe DW_TAG_variable
+	.byte	22                              @ Abbrev [22] 0x202:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	4
-	.long	.Linfo_string32                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	18                              @ DW_AT_decl_line
-	.long	143                             @ DW_AT_type
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	24                              @ DW_AT_decl_line
+	.long	192                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	21                              @ Abbrev [21] 0x1c3:0x2e DW_TAG_subprogram
+	.byte	23                              @ Abbrev [23] 0x211:0x2e DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1-.Lfunc_begin1       @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
-	.long	.Linfo_string12                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	41                              @ DW_AT_decl_line
+	.long	.Linfo_string15                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	47                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
-	.byte	22                              @ Abbrev [22] 0x1d4:0xe DW_TAG_formal_parameter
+	.byte	24                              @ Abbrev [24] 0x222:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	4
-	.long	.Linfo_string33                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	41                              @ DW_AT_decl_line
-	.long	107                             @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x1e2:0xe DW_TAG_formal_parameter
+	.long	.Linfo_string36                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	47                              @ DW_AT_decl_line
+	.long	156                             @ DW_AT_type
+	.byte	24                              @ Abbrev [24] 0x230:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	0
-	.long	.Linfo_string34                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	41                              @ DW_AT_decl_line
-	.long	107                             @ DW_AT_type
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	47                              @ DW_AT_decl_line
+	.long	156                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	23                              @ Abbrev [23] 0x1f1:0x62 DW_TAG_subprogram
+	.byte	25                              @ Abbrev [25] 0x23f:0x70 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2-.Lfunc_begin2       @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
-	.long	.Linfo_string13                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	50                              @ DW_AT_decl_line
+	.long	.Linfo_string16                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
-	.long	255                             @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x206:0xe DW_TAG_variable
+	.long	310                             @ DW_AT_type
+	.byte	24                              @ Abbrev [24] 0x254:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	16
-	.long	.Linfo_string35                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	51                              @ DW_AT_decl_line
-	.long	400                             @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x214:0xe DW_TAG_variable
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.long	328                             @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x262:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	12
-	.long	.Linfo_string36                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	51                              @ DW_AT_decl_line
-	.long	400                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x222:0x30 DW_TAG_lexical_block
-	.long	.Ltmp9                          @ DW_AT_low_pc
-	.long	.Ltmp32-.Ltmp9                  @ DW_AT_high_pc
-	.byte	20                              @ Abbrev [20] 0x22b:0xe DW_TAG_variable
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.long	73                              @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x270:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	8
-	.long	.Linfo_string37                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	52                              @ DW_AT_decl_line
-	.long	107                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x239:0x18 DW_TAG_lexical_block
-	.long	.Ltmp13                         @ DW_AT_low_pc
-	.long	.Ltmp30-.Ltmp13                 @ DW_AT_high_pc
-	.byte	20                              @ Abbrev [20] 0x242:0xe DW_TAG_variable
+	.long	.Linfo_string40                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.long	465                             @ DW_AT_type
+	.byte	26                              @ Abbrev [26] 0x27e:0x30 DW_TAG_lexical_block
+	.long	.Ltmp9                          @ DW_AT_low_pc
+	.long	.Ltmp32-.Ltmp9                  @ DW_AT_high_pc
+	.byte	22                              @ Abbrev [22] 0x287:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	4
-	.long	.Linfo_string38                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	56                              @ DW_AT_decl_line
-	.long	107                             @ DW_AT_type
+	.long	.Linfo_string41                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	60                              @ DW_AT_decl_line
+	.long	156                             @ DW_AT_type
+	.byte	26                              @ Abbrev [26] 0x295:0x18 DW_TAG_lexical_block
+	.long	.Ltmp13                         @ DW_AT_low_pc
+	.long	.Ltmp30-.Ltmp13                 @ DW_AT_high_pc
+	.byte	22                              @ Abbrev [22] 0x29e:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string42                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.long	156                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	21                              @ Abbrev [21] 0x253:0x20 DW_TAG_subprogram
+	.byte	23                              @ Abbrev [23] 0x2af:0x20 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3-.Lfunc_begin3       @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
-	.long	.Linfo_string28                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	91                              @ DW_AT_decl_line
+	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	97                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
-	.byte	22                              @ Abbrev [22] 0x264:0xe DW_TAG_formal_parameter
+	.byte	24                              @ Abbrev [24] 0x2c0:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	4
-	.long	.Linfo_string39                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	91                              @ DW_AT_decl_line
-	.long	107                             @ DW_AT_type
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	97                              @ DW_AT_decl_line
+	.long	156                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	23                              @ Abbrev [23] 0x273:0x24 DW_TAG_subprogram
+	.byte	27                              @ Abbrev [27] 0x2cf:0x11 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4-.Lfunc_begin4       @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
-	.long	.Linfo_string29                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	111                             @ DW_AT_decl_line
+	.long	.Linfo_string20                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	89                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
-	.long	307                             @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x288:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string39                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	111                             @ DW_AT_decl_line
-	.long	107                             @ DW_AT_type
-	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x297:0x22 DW_TAG_subprogram
+	.byte	25                              @ Abbrev [25] 0x2e0:0x24 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5-.Lfunc_begin5       @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
-	.long	.Linfo_string30                 @ DW_AT_name
-	.byte	5                               @ DW_AT_decl_file
-	.short	596                             @ DW_AT_decl_line
+	.long	.Linfo_string33                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	117                             @ DW_AT_decl_line
                                         @ DW_AT_prototyped
-	.byte	26                              @ Abbrev [26] 0x2a9:0xf DW_TAG_formal_parameter
+	.long	367                             @ DW_AT_type
+	.byte	24                              @ Abbrev [24] 0x2f5:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	0
-	.long	.Linfo_string40                 @ DW_AT_name
-	.byte	5                               @ DW_AT_decl_file
-	.short	596                             @ DW_AT_decl_line
-	.long	255                             @ DW_AT_type
+	.byte	4
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	117                             @ DW_AT_decl_line
+	.long	156                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	27                              @ Abbrev [27] 0x2b9:0x11 DW_TAG_subprogram
+	.byte	28                              @ Abbrev [28] 0x304:0x22 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6-.Lfunc_begin6       @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
-	.long	.Linfo_string31                 @ DW_AT_name
-	.byte	3                               @ DW_AT_decl_file
-	.byte	83                              @ DW_AT_decl_line
+	.long	.Linfo_string34                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.short	596                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.byte	29                              @ Abbrev [29] 0x316:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.short	596                             @ DW_AT_decl_line
+	.long	465                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
 	.section	.debug_ranges,"",%progbits
@@ -1546,81 +1641,89 @@ KeyPad:
 .Linfo_string2:
 	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=84
 .Linfo_string3:
-	.asciz	"KeyPad"                        @ string offset=132
+	.asciz	"keyboardMatris"                @ string offset=132
 .Linfo_string4:
-	.asciz	"ColumnSize"                    @ string offset=139
+	.asciz	"char"                          @ string offset=147
 .Linfo_string5:
-	.asciz	"unsigned char"                 @ string offset=150
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=152
 .Linfo_string6:
-	.asciz	"uint8_t"                       @ string offset=164
+	.asciz	"KeyPad"                        @ string offset=172
 .Linfo_string7:
-	.asciz	"RowSize"                       @ string offset=172
+	.asciz	"ColumnSize"                    @ string offset=179
 .Linfo_string8:
-	.asciz	"LastKey"                       @ string offset=180
+	.asciz	"unsigned char"                 @ string offset=190
 .Linfo_string9:
-	.asciz	"unsigned short"                @ string offset=188
+	.asciz	"uint8_t"                       @ string offset=204
 .Linfo_string10:
-	.asciz	"uint16_t"                      @ string offset=203
+	.asciz	"RowSize"                       @ string offset=212
 .Linfo_string11:
-	.asciz	"KeyPad_t"                      @ string offset=212
+	.asciz	"LastKey"                       @ string offset=220
 .Linfo_string12:
-	.asciz	"Init"                          @ string offset=221
+	.asciz	"unsigned short"                @ string offset=228
 .Linfo_string13:
-	.asciz	"Scan"                          @ string offset=226
+	.asciz	"uint16_t"                      @ string offset=243
 .Linfo_string14:
-	.asciz	"unsigned int"                  @ string offset=231
+	.asciz	"KeyPad_t"                      @ string offset=252
 .Linfo_string15:
-	.asciz	"uint32_t"                      @ string offset=244
+	.asciz	"Init"                          @ string offset=261
 .Linfo_string16:
-	.asciz	"SetAllColumnPins"              @ string offset=253
+	.asciz	"Scan"                          @ string offset=266
 .Linfo_string17:
-	.asciz	"ResetColumnPin"                @ string offset=270
+	.asciz	"short"                         @ string offset=271
 .Linfo_string18:
-	.asciz	"ReadRowPin"                    @ string offset=285
+	.asciz	"int16_t"                       @ string offset=277
 .Linfo_string19:
-	.asciz	"signed char"                   @ string offset=296
+	.asciz	"setColumnPin"                  @ string offset=285
 .Linfo_string20:
-	.asciz	"int8_t"                        @ string offset=308
+	.asciz	"resetAllColumnPins"            @ string offset=298
 .Linfo_string21:
-	.asciz	"KEYPAD"                        @ string offset=315
+	.asciz	"ReadRowPin"                    @ string offset=317
 .Linfo_string22:
-	.asciz	"CTRL"                          @ string offset=322
+	.asciz	"signed char"                   @ string offset=328
 .Linfo_string23:
-	.asciz	"LOAD"                          @ string offset=327
+	.asciz	"int8_t"                        @ string offset=340
 .Linfo_string24:
-	.asciz	"VAL"                           @ string offset=332
+	.asciz	"KEYPAD"                        @ string offset=347
 .Linfo_string25:
-	.asciz	"CALIB"                         @ string offset=336
+	.asciz	"CTRL"                          @ string offset=354
 .Linfo_string26:
-	.asciz	"SysTick_Type"                  @ string offset=342
+	.asciz	"unsigned int"                  @ string offset=359
 .Linfo_string27:
-	.asciz	"newKeyPadObj"                  @ string offset=355
+	.asciz	"uint32_t"                      @ string offset=372
 .Linfo_string28:
-	.asciz	"resetColumnPin"                @ string offset=368
+	.asciz	"LOAD"                          @ string offset=381
 .Linfo_string29:
-	.asciz	"readRowPin"                    @ string offset=383
+	.asciz	"VAL"                           @ string offset=386
 .Linfo_string30:
-	.asciz	"CLK_SysTickDelay"              @ string offset=394
+	.asciz	"CALIB"                         @ string offset=390
 .Linfo_string31:
-	.asciz	"setAllColumnPins"              @ string offset=411
+	.asciz	"SysTick_Type"                  @ string offset=396
 .Linfo_string32:
-	.asciz	"p"                             @ string offset=428
+	.asciz	"newKeyPadObj"                  @ string offset=409
 .Linfo_string33:
-	.asciz	"_columnSize"                   @ string offset=430
+	.asciz	"readRowPin"                    @ string offset=422
 .Linfo_string34:
-	.asciz	"_rowSize"                      @ string offset=442
+	.asciz	"CLK_SysTickDelay"              @ string offset=433
 .Linfo_string35:
-	.asciz	"key"                           @ string offset=451
+	.asciz	"p"                             @ string offset=450
 .Linfo_string36:
-	.asciz	"counter"                       @ string offset=455
+	.asciz	"_columnSize"                   @ string offset=452
 .Linfo_string37:
-	.asciz	"c"                             @ string offset=463
+	.asciz	"_rowSize"                      @ string offset=464
 .Linfo_string38:
-	.asciz	"r"                             @ string offset=465
+	.asciz	"_longPress"                    @ string offset=473
 .Linfo_string39:
-	.asciz	"_sel"                          @ string offset=467
+	.asciz	"ret"                           @ string offset=484
 .Linfo_string40:
-	.asciz	"u32USec"                       @ string offset=472
+	.asciz	"longPresCounter"               @ string offset=488
+.Linfo_string41:
+	.asciz	"c"                             @ string offset=504
+.Linfo_string42:
+	.asciz	"r"                             @ string offset=506
+.Linfo_string43:
+	.asciz	"_sel"                          @ string offset=508
+.Linfo_string44:
+	.asciz	"u32USec"                       @ string offset=513
 	.ident	"Component: Arm Compiler for Embedded 6.18 Tool: armclang [5e4cca00]"
 	.section	".note.GNU-stack","",%progbits
 	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals

@@ -62,21 +62,22 @@ printf("Memory Allocation Successful. (AIP) %d bytes used ! \n",sizeof(AIP));
 		
 	}
 	
-	p->Init					= &AIP_Init;
-	p->WriteData		= &AIP_writeData;
-	p->WriteCommand	= &AIP_writeCommand;
-	p->ClearScreen	= &AIP_ClearScreen;
-	p->UpdateScreen	= &AIP_UpdateScreen;
-	p->DrawPixel		= &AIP_draw_pixel;
-	p->WriteChar		= &AIP_writeChar;
-	p->SetCursor		= &AIP_SetCursor;
-	p->WriteString 	= &AIP_WriteString;
-	p->Spoint 			= &AIP_Spoint;
-	p->WriteNumber 	= &AIP_writeNumber;
-	p->Cs           = _params->Cs;
-	p->A0		   	    = _params->A0;
-	p->Reset   	 		= _params->Reset;
-	p->ptrRam			  = _params->ramB;
+	p->Init					        = &AIP_Init;
+	p->WriteData	          = &AIP_writeData;
+	p->WriteCommand	        = &AIP_writeCommand;
+	p->ClearScreen	        = &AIP_ClearScreen;
+	p->UpdateScreen	        = &AIP_UpdateScreen;
+	p->DrawPixel		        = &AIP_draw_pixel;
+	p->WriteChar		        = &AIP_writeChar;
+	p->SetCursor		        = &AIP_SetCursor;
+	p->WriteString 	        = &AIP_WriteString;
+	p->WriteStringLen       = &AIP_WriteStringLen;
+	p->Spoint 			        = &AIP_Spoint;
+	p->WriteNumber 	        = &AIP_writeNumber;
+	p->Cs                   = _params->Cs;
+	p->A0		   	            = _params->A0;
+	p->Reset   	 		        = _params->Reset;
+	p->ptrRam			          = _params->ramB;
 	return p;
 }
 //#############################################################################################
@@ -153,6 +154,8 @@ static void AIP_ClearScreen(AIP *p){
   AIP_SetCursor(0,0,p);
 }
 //#############################################################################################
+
+//#############################################################################################
 static void AIP_UpdateScreen(AIP *p){
 	
 
@@ -160,14 +163,16 @@ static void AIP_UpdateScreen(AIP *p){
 	AIP_writeCommand(0x00,p); //---set low column address
 	AIP_writeCommand(0x10,p); //---set high column address
 	AIP_writeData(p->ptrRam,BUFF_SIZE,p); // hata alinirsa page kismina bak ,
+	uint8_t _temp[20]="";
+	for(int i =0;i<19;i++){
+		_temp[i] = p->ptrRam[i];
+	}
 }
 //#############################################################################################
 static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p){
 	if(x>=WIDTH || y >= HEIGHT ){
 		return;
 	}
-	
-	
     if(color == 1) {
         p->ptrRam[x] |= 1<<(y%4);
     } else {  
@@ -208,12 +213,32 @@ static void AIP_SetCursor(uint8_t _x,uint8_t _y,AIP *p){
 }
 //#############################################################################################
 static void AIP_WriteString(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p) {
-	AIP_ClearScreen(p);
-	 AIP_SetCursor( x,  y,p);
+	uint8_t counter=0;
+	 AIP_ClearScreen(p);
+	 AIP_SetCursor(x,y,p);
     while (*str) {
+			counter++;
+			if(*str == '.'){
+				AIP_Spoint((counter*2)+1,1,p);
+        str++;
+				continue;
+			}
 				AIP_writeChar(str, Font,p);
         str++;
     }
+}
+static void AIP_WriteStringLen(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p,uint8_t _len) {
+	uint8_t counter=0;
+	 AIP_ClearScreen(p);
+	 AIP_SetCursor(x,y,p);
+	 for(uint8_t x=0;x<_len;x++){
+			counter++;
+			if(str[x] == '.'){
+				AIP_Spoint((counter*2)+1,1,p);
+				continue;
+			}
+				AIP_writeChar(&str[x], Font,p);
+	 }
 }
 //#############################################################################################
 static void AIP_Spoint(uint8_t _id,uint8_t _val,AIP *p){
@@ -280,13 +305,6 @@ static void AIP_writeNumber(uint8_t _number,uint8_t _state,FontDef *Font,AIP *p)
 	uint8_t _chrVal = _number + '0';
 	AIP_writeChar(&_chrVal,Font,p);
 }
-
-
-
-
-
-
-
 
 
 

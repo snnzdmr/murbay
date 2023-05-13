@@ -780,7 +780,7 @@ UART2_Init:
 	bics	r0, r2
 	.loc	11 745 17                       @ ../periph_conf.c:745:17
 	str	r0, [r1]
-	.loc	11 747 1 is_stmt 1              @ ../periph_conf.c:747:1
+	.loc	11 748 1 is_stmt 1              @ ../periph_conf.c:748:1
 	pop	{r7, pc}
 .Ltmp18:
 	.p2align	2
@@ -809,7 +809,7 @@ __arm_cp.7_1:
 	.thumb_func
 WDT_Init:
 .Lfunc_begin8:
-	.loc	11 749 0 is_stmt 1              @ ../periph_conf.c:749:0
+	.loc	11 750 0 is_stmt 1              @ ../periph_conf.c:750:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -819,20 +819,20 @@ WDT_Init:
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
 .Ltmp19:
-	.loc	11 751 5 prologue_end           @ ../periph_conf.c:751:5
+	.loc	11 752 5 prologue_end           @ ../periph_conf.c:752:5
 	bl	SYS_UnlockReg
 	movs	r1, #3
 	movs	r3, #0
-	.loc	11 754 5                        @ ../periph_conf.c:754:5
+	.loc	11 755 5                        @ ../periph_conf.c:755:5
 	mov	r0, r3
 	mov	r2, r3
 	bl	WDT_Open
-	.loc	11 757 5                        @ ../periph_conf.c:757:5
+	.loc	11 758 5                        @ ../periph_conf.c:758:5
 	bl	WDT_EnableInt
 	movs	r0, #8
-	.loc	11 760 5                        @ ../periph_conf.c:760:5
+	.loc	11 761 5                        @ ../periph_conf.c:761:5
 	bl	__NVIC_EnableIRQ
-	.loc	11 762 1                        @ ../periph_conf.c:762:1
+	.loc	11 763 1                        @ ../periph_conf.c:763:1
 	pop	{r7, pc}
 .Ltmp20:
 .Lfunc_end8:
@@ -943,7 +943,7 @@ __arm_cp.10_0:
 	.thumb_func
 Periph_Init:
 .Lfunc_begin11:
-	.loc	11 765 0 is_stmt 1              @ ../periph_conf.c:765:0
+	.loc	11 766 0 is_stmt 1              @ ../periph_conf.c:766:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -953,21 +953,21 @@ Periph_Init:
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
 .Ltmp28:
-	.loc	11 767 5 prologue_end           @ ../periph_conf.c:767:5
+	.loc	11 768 5 prologue_end           @ ../periph_conf.c:768:5
 	bl	UART2_Init
-	.loc	11 769 5                        @ ../periph_conf.c:769:5
+	.loc	11 770 5                        @ ../periph_conf.c:770:5
 	bl	GPIO_Init
-	.loc	11 771 5                        @ ../periph_conf.c:771:5
+	.loc	11 772 5                        @ ../periph_conf.c:772:5
 	bl	SPII2S0_Init
-	.loc	11 773 5                        @ ../periph_conf.c:773:5
+	.loc	11 774 5                        @ ../periph_conf.c:774:5
 	bl	TIMER0_Init
-	.loc	11 775 5                        @ ../periph_conf.c:775:5
+	.loc	11 776 5                        @ ../periph_conf.c:776:5
 	bl	TIMER1_Init
-	.loc	11 777 5                        @ ../periph_conf.c:777:5
+	.loc	11 778 5                        @ ../periph_conf.c:778:5
 	bl	WDT_Init
-	.loc	11 779 5                        @ ../periph_conf.c:779:5
+	.loc	11 780 5                        @ ../periph_conf.c:780:5
 	bl	FMC_Init
-	.loc	11 781 1                        @ ../periph_conf.c:781:1
+	.loc	11 782 1                        @ ../periph_conf.c:782:1
 	pop	{r7, pc}
 .Ltmp29:
 .Lfunc_end11:
@@ -2890,7 +2890,7 @@ Periph_Init:
 	.byte	93
 	.long	.Linfo_string239                @ DW_AT_name
 	.byte	11                              @ DW_AT_decl_file
-	.short	748                             @ DW_AT_decl_line
+	.short	749                             @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	26                              @ Abbrev [26] 0xca4:0x12 DW_TAG_subprogram
@@ -2918,7 +2918,7 @@ Periph_Init:
 	.byte	93
 	.long	.Linfo_string242                @ DW_AT_name
 	.byte	11                              @ DW_AT_decl_file
-	.short	764                             @ DW_AT_decl_line
+	.short	765                             @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	11                              @ Abbrev [11] 0xcd9:0x5 DW_TAG_const_type

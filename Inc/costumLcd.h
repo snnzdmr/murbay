@@ -52,6 +52,7 @@ typedef struct AIP{
 	uint8_t (*WriteChar) (uint8_t *,FontDef *,struct AIP *);
 	void (*SetCursor)(uint8_t,uint8_t,struct AIP *);
 	void (*WriteString)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *);
+	void (*WriteStringLen)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *,uint8_t);
 	void (*Spoint)(uint8_t,uint8_t,struct AIP *);
 	void (*WriteNumber) (uint8_t,uint8_t,FontDef *,struct AIP *);
 	void (*Cs)(uint8_t);
@@ -61,7 +62,6 @@ typedef struct AIP{
 	Ai_position AIP_currentPos;
 
 }AIP;
-
 
 //#############################################################################################
 //                                    USER FUNCTIONS
@@ -78,6 +78,7 @@ static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p);
 static uint8_t AIP_writeChar(uint8_t *_chr,FontDef *Font,AIP *p);
 static void AIP_SetCursor(uint8_t _x,uint8_t _y,AIP *p);
 static void AIP_WriteString(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p);
+static void AIP_WriteStringLen(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p,uint8_t _len) ;
 static void AIP_Spoint(uint8_t _id,uint8_t _val,AIP *p);
 static void AIP_writeNumber(uint8_t _number,uint8_t _state,FontDef *Font,AIP *p);
 

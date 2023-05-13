@@ -73,4 +73,5 @@
   ..\..\..\..\Library\StdDriver\inc\scuart.h \
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
   ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h \
-  ..\Inc\costumLcd.h ..\Inc\font.h ..\Inc\app.h
+  ..\Inc\costumLcd.h ..\Inc\font.h ..\Inc\app.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h

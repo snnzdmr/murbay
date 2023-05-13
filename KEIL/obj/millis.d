@@ -1,4 +1,4 @@
-./obj/int_handler.o: ..\int_handler.c ..\scale_v1.h \
+./obj/millis.o: ..\src\millis.c ..\Inc\millis.h ..\scale_v1.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \
@@ -72,5 +72,4 @@
   ..\..\..\..\Library\StdDriver\inc\sc.h \
   ..\..\..\..\Library\StdDriver\inc\scuart.h \
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
-  ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h \
-  ..\Inc\millis.h
+  ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h

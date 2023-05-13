@@ -4737,6 +4737,7 @@ void UART2_Init()
 
     ((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFO = (((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFO & ~ (0xful << (4))) | (0x0ul << (4));
 
+
 }
 void WDT_Init(void)
 {
