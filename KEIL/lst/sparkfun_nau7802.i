@@ -202,9 +202,54 @@ typedef enum
 } NAU7802_Cal_Status;
 
 
+typedef struct SCALE{
+  _Bool (*begin)(void);
+  _Bool (*isConnected)(void);
+  _Bool (*available)(void);
+  int32_t (*getReading)(void);
+  int32_t (*getAverage)(uint8_t);
+
+  void (*calculateZeroOffset)(uint8_t);
+  void (*setZeroOffset)(int32_t);
+  int32_t (*getZeroOffset)(void);
+
+  void (*calculateCalibrationFactor)(float, uint8_t);
+  void (*setCalibrationFactor)(float);
+  float (*getCalibrationFactor)(void);
+
+  float (*getWeight)(_Bool, uint8_t);
+
+  _Bool (*setGain)(uint8_t gainValue);
+  _Bool (*setLDO)(uint8_t ldoValue);
+  _Bool (*setSampleRate)(uint8_t rate);
+  _Bool (*setChannel)(uint8_t channelNumber);
+
+  _Bool (*calibrateAFE)(void);
+  void (*beginCalibrateAFE)(void);
+  _Bool (*waitForCalibrateAFE)(uint32_t);
+  NAU7802_Cal_Status (*calAFEStatus)(void);
+
+  _Bool (*reset)(void);
+
+  _Bool (*powerUp)(void);
+  _Bool (*powerDown)(void);
+
+  _Bool (*setIntPolarityHigh)(void);
+  _Bool (*setIntPolarityLow)(void);
+
+  uint8_t (*getRevisionCode)(void);
+
+  _Bool (*setBit)(uint8_t, uint8_t);
+  _Bool (*clearBit)(uint8_t, uint8_t);
+  _Bool (*getBit)(uint8_t, uint8_t);
+
+  uint8_t (*getRegister)(uint8_t);
+  _Bool (*setRegister)(uint8_t, uint8_t);
+}SCALE;
+
+ SCALE *newScaleObj();
   _Bool NAU7802_begin();
   _Bool NAU7802_isConnected();
-
   _Bool NAU7802_available();
   int32_t NAU7802_getReading();
   int32_t NAU7802_getAverage(uint8_t samplesToTake);
@@ -250,7 +295,7 @@ typedef enum
 
 
 
-# 1 "..\\scale_v1.h" 1
+# 1 "..\\scale_v2.h" 1
 
 
 
@@ -580,7 +625,7 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 10 "..\\scale_v1.h" 2
+# 10 "..\\scale_v2.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 1 3
 # 58 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
 extern __attribute__((__nothrow__)) void *memcpy(void * __restrict ,
@@ -697,7 +742,7 @@ extern __attribute__((__nothrow__)) void _membitmovehl(void * , const void * , i
 extern __attribute__((__nothrow__)) void _membitmovehb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-# 11 "..\\scale_v1.h" 2
+# 11 "..\\scale_v2.h" 2
 # 1 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 1
 # 13 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h"
 # 1 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 1
@@ -4186,21 +4231,277 @@ void TK_ClearTKIF(void);
 void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 660 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 2
 # 14 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 2
-# 12 "..\\scale_v1.h" 2
+# 12 "..\\scale_v2.h" 2
 # 1 "../periph_conf.h" 1
-# 13 "..\\scale_v1.h" 2
+# 13 "..\\scale_v2.h" 2
 # 5 "..\\Inc/millis.h" 2
 
 void wdt_tickCounter(void);
 
 int64_t millis(void);
 # 25 "../src/SparkFun_NAU7802.c" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
+# 91 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+    typedef unsigned short wchar_t;
 
+
+
+
+typedef struct div_t { int quot, rem; } div_t;
+
+typedef struct ldiv_t { long int quot, rem; } ldiv_t;
+
+
+typedef struct lldiv_t { long long quot, rem; } lldiv_t;
+# 139 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int __aeabi_MB_CUR_MAX(void);
+# 158 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) double atof(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) int atoi(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) long int atol(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) long long atoll(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) double strtod(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+# 206 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) float strtof(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+extern __attribute__((__nothrow__)) long double strtold(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+
+
+
+
+extern __attribute__((__nothrow__)) long int strtol(const char * __restrict ,
+                        char ** __restrict , int ) __attribute__((__nonnull__(1)));
+# 243 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) unsigned long int strtoul(const char * __restrict ,
+                                       char ** __restrict , int ) __attribute__((__nonnull__(1)));
+# 275 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) long long strtoll(const char * __restrict ,
+                                  char ** __restrict , int )
+                          __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) unsigned long long strtoull(const char * __restrict ,
+                                            char ** __restrict , int )
+                                   __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int rand(void);
+# 303 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) void srand(unsigned int );
+# 313 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+struct _rand_state { int __x[57]; };
+extern __attribute__((__nothrow__)) int _rand_r(struct _rand_state *);
+extern __attribute__((__nothrow__)) void _srand_r(struct _rand_state *, unsigned int);
+struct _ANSI_rand_state { int __x[1]; };
+extern __attribute__((__nothrow__)) int _ANSI_rand_r(struct _ANSI_rand_state *);
+extern __attribute__((__nothrow__)) void _ANSI_srand_r(struct _ANSI_rand_state *, unsigned int);
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *calloc(size_t , size_t );
+
+
+
+
+
+extern __attribute__((__nothrow__)) void free(void * );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *malloc(size_t );
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *realloc(void * , size_t );
+# 374 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+typedef int (*__heapprt)(void *, char const *, ...);
+extern __attribute__((__nothrow__)) void __heapstats(int (* )(void * ,
+                                           char const * , ...),
+                        void * ) __attribute__((__nonnull__(1)));
+# 390 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int __heapvalid(int (* )(void * ,
+                                           char const * , ...),
+                       void * , int ) __attribute__((__nonnull__(1)));
+# 411 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void abort(void);
+# 422 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int atexit(void (* )(void)) __attribute__((__nonnull__(1)));
+# 444 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void exit(int );
+# 460 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void _Exit(int );
+# 471 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) char *getenv(const char * ) __attribute__((__nonnull__(1)));
+# 484 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int system(const char * );
+# 497 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern void *bsearch(const void * , const void * ,
+              size_t , size_t ,
+              int (* )(const void *, const void *)) __attribute__((__nonnull__(1,2,5)));
+# 532 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern void qsort(void * , size_t , size_t ,
+           int (* )(const void *, const void *)) __attribute__((__nonnull__(1,4)));
+# 560 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) int abs(int );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) div_t div(int , int );
+# 579 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) long int labs(long int );
+# 589 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) ldiv_t ldiv(long int , long int );
+# 610 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) long long llabs(long long );
+# 620 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) lldiv_t lldiv(long long , long long );
+# 644 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+typedef struct __sdiv32by16 { long quot, rem; } __sdiv32by16;
+typedef struct __udiv32by16 { unsigned long quot, rem; } __udiv32by16;
+
+typedef struct __sdiv64by32 { long rem, quot; } __sdiv64by32;
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv32by16 __rt_sdiv32by16(
+     int ,
+     short int );
+
+
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __udiv32by16 __rt_udiv32by16(
+     unsigned int ,
+     unsigned short );
+
+
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv64by32 __rt_sdiv64by32(
+     int , unsigned int ,
+     int );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) unsigned int __fp_status(unsigned int , unsigned int );
+# 705 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int mblen(const char * , size_t );
+# 720 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int mbtowc(wchar_t * __restrict ,
+                   const char * __restrict , size_t );
+# 739 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int wctomb(char * , wchar_t );
+# 761 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) size_t mbstowcs(wchar_t * __restrict ,
+                      const char * __restrict , size_t ) __attribute__((__nonnull__(2)));
+# 779 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) size_t wcstombs(char * __restrict ,
+                      const wchar_t * __restrict , size_t ) __attribute__((__nonnull__(2)));
+# 798 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) void __use_realtime_heap(void);
+extern __attribute__((__nothrow__)) void __use_realtime_division(void);
+extern __attribute__((__nothrow__)) void __use_two_region_memory(void);
+extern __attribute__((__nothrow__)) void __use_no_heap(void);
+extern __attribute__((__nothrow__)) void __use_no_heap_region(void);
+
+extern __attribute__((__nothrow__)) char const *__C_library_version_string(void);
+extern __attribute__((__nothrow__)) int __C_library_version_number(void);
+# 26 "../src/SparkFun_NAU7802.c" 2
 
 
 int32_t _zeroOffset;
 float _calibrationFactor;
 # 39 "../src/SparkFun_NAU7802.c"
+SCALE *newScaleObj(){
+ SCALE *p = (SCALE *)malloc(sizeof(SCALE));
+ if(p == 0){
+
+
+
+  while(1);
+ }else{
+
+
+
+
+ }
+
+ p->begin = & NAU7802_begin;
+ p->isConnected = & NAU7802_isConnected;
+ p->available = & NAU7802_available;
+ p->getReading = & NAU7802_getReading;
+ p->getAverage = & NAU7802_getAverage;
+ p->calculateZeroOffset = & NAU7802_calculateZeroOffset;
+ p->setZeroOffset = & NAU7802_setZeroOffset;
+ p->getZeroOffset = & NAU7802_getZeroOffset;
+ p->calculateCalibrationFactor = & NAU7802_calculateCalibrationFactor;
+ p->setCalibrationFactor = & NAU7802_setCalibrationFactor;
+ p->getCalibrationFactor = & NAU7802_getCalibrationFactor;
+ p->getWeight = & NAU7802_getWeight;
+ p->setGain = & NAU7802_setGain;
+ p->setLDO = & NAU7802_setLDO;
+ p->setSampleRate = & NAU7802_setSampleRate;
+ p->setChannel = & NAU7802_setChannel;
+ p->calibrateAFE = & NAU7802_calibrateAFE;
+ p->beginCalibrateAFE = & NAU7802_beginCalibrateAFE;
+ p->waitForCalibrateAFE = & NAU7802_waitForCalibrateAFE;
+ p->calAFEStatus = & NAU7802_calAFEStatus;
+ p->reset = & NAU7802_reset;
+ p->powerUp = & NAU7802_powerUp;
+ p->powerDown = & NAU7802_powerDown;
+ p->setIntPolarityHigh = & NAU7802_setIntPolarityHigh;
+ p->setIntPolarityLow = & NAU7802_setIntPolarityLow;
+ p->getRevisionCode = & NAU7802_getRevisionCode;
+ p->setBit = & NAU7802_setBit;
+ p->clearBit = & NAU7802_clearBit;
+ p->getBit = & NAU7802_getBit;
+ p->getRegister = & NAU7802_getRegister;
+ p->setRegister = & NAU7802_setRegister;
+ return p;
+
+}
+
 _Bool NAU7802_begin()
 {
 

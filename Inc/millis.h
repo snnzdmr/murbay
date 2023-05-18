@@ -1,7 +1,7 @@
 #ifndef __MILLIS__
 #define __MILLIS__
 
-#include "scale_v1.h"
+#include "scale_v2.h"
 
 void wdt_tickCounter(void);
 

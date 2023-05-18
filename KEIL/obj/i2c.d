@@ -1,6 +1,4 @@
-./obj/millis.o: ..\src\millis.c ..\Inc\millis.h ..\scale_v2.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+./obj/i2c.o: ..\..\..\..\Library\StdDriver\src\i2c.c \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\M251.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
@@ -72,4 +70,4 @@
   ..\..\..\..\Library\StdDriver\inc\sc.h \
   ..\..\..\..\Library\StdDriver\inc\scuart.h \
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
-  ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h
+  ..\..\..\..\Library\StdDriver\inc\tk.h

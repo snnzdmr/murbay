@@ -1,6 +1,6 @@
 #include "Inc/menu.h"
 #include "Inc/costumLcd.h"
-#include "scale_v1.h"
+#include "scale_v2.h"
 #include <stdlib.h>
 #include "Inc/app.h"
 #include "Inc/keypad.h"

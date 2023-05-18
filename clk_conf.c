@@ -1,7 +1,7 @@
 /****************************************************************************
  * @file     clk_conf.c
  * @version  V0.42
- * @Date     2023/05/05-05:46:25
+ * @Date     2023/05/18-12:01:26
  * @brief    NuMicro generated code file
  *
  * SPDX-License-Identifier: Apache-2.0
@@ -21,6 +21,7 @@ PCLK0:24MHz
 PCLK1:24MHz
 Enabled-Module Frequencies:
 FMCIDLE=Bus Clock(HCLK):24MHz/Engine Clock:48MHz
+I2C1=Bus Clock(PCLK1):24MHz
 ISP=Bus Clock(HCLK):24MHz
 SPI0=Bus Clock(PCLK1):24MHz/Engine Clock:24MHz
 TMR0=Bus Clock(PCLK0):24MHz/Engine Clock:48MHz
@@ -30,7 +31,7 @@ WDT=Bus Clock(PCLK0):24MHz/Engine Clock:38.4kHz
 WWDT=Bus Clock(PCLK0):24MHz/Engine Clock:11.7188kHz
 ********************/
 
-#include "scale_v1.h"
+#include "scale_v2.h"
 
 /*
  * @brief This function updates clock registers to fulfill the configuration
@@ -53,7 +54,7 @@ void Clock_Init(void)
     //CLK->CLKSEL2  = (CLK->CLKSEL2  & ~(0x7000033FUL)) | 0x2000032BUL;
     //CLK->CLKSEL3  = (CLK->CLKSEL3  & ~(0x07000003UL)) | 0x04000003UL;
     //CLK->AHBCLK   = (CLK->AHBCLK   & ~(0x0000808EUL)) | 0x00008004UL;
-    //CLK->APBCLK0  = (CLK->APBCLK0  & ~(0x180733FFUL)) | 0x0004200DUL;
+    //CLK->APBCLK0  = (CLK->APBCLK0  & ~(0x180733FFUL)) | 0x0004220DUL;
     //CLK->APBCLK1  = (CLK->APBCLK1  & ~(0xC00F1701UL)) | 0x00000000UL;
     //CLK->CLKOCTL  = (CLK->CLKOCTL  & ~(0x0000007FUL)) | 0x00000000UL;
     //SysTick->CTRL = (SysTick->CTRL & ~(0x00000005UL)) | 0x00000000UL;
@@ -73,6 +74,7 @@ void Clock_Init(void)
 
     /* Enable IP clock */
     CLK_EnableModuleClock(FMCIDLE_MODULE);
+    CLK_EnableModuleClock(I2C1_MODULE);
     CLK_EnableModuleClock(ISP_MODULE);
     CLK_EnableModuleClock(SPI0_MODULE);
     CLK_EnableModuleClock(TMR0_MODULE);

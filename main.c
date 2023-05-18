@@ -3,12 +3,12 @@
  * @version  V1.01
  * $Revision: 1 $
  * $Date: 2019/05/02 8:05p $
- * @brief    scale_v1 Sample
+ * @brief    scale_v2 Sample
  * @note
  * Copyright (C) 2011 Nuvoton Technology Corp. All rights reserved.
  *
  ******************************************************************************/
-#include "scale_v1.h"
+#include "scale_v2.h"
 #include <stdint.h>
 #include "Inc/costumLcd.h"
 #include "Inc/app.h"

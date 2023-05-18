@@ -2,7 +2,7 @@
   ..\Inc\SparkFun_NAU7802.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\Inc\millis.h \
-  ..\scale_v1.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  ..\scale_v2.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\M251.h \
@@ -74,4 +74,5 @@
   ..\..\..\..\Library\StdDriver\inc\sc.h \
   ..\..\..\..\Library\StdDriver\inc\scuart.h \
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
-  ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h
+  ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h

@@ -1,7 +1,7 @@
 ./obj/keypad.o: ..\src\keypad.c ..\Inc\keypad.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\scale_v1.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\scale_v2.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \

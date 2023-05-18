@@ -19,7 +19,7 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"timer_pwm.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/timer_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/timer_reg.h"
 	.section	.text.TPWM_ConfigOutputFreqAndDuty,"ax",%progbits
 	.hidden	TPWM_ConfigOutputFreqAndDuty    @ -- Begin function TPWM_ConfigOutputFreqAndDuty
 	.globl	TPWM_ConfigOutputFreqAndDuty
@@ -29,7 +29,7 @@
 	.thumb_func
 TPWM_ConfigOutputFreqAndDuty:
 .Lfunc_begin0:
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/StdDriver/src/timer_pwm.c"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/src/timer_pwm.c"
 	.loc	3 37 0                          @ ../../../../Library/StdDriver/src/timer_pwm.c:37:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -1015,7 +1015,7 @@ TPWM_DisableTrigger:
 .Linfo_string1:
 	.asciz	"../../../../Library/StdDriver/src\\timer_pwm.c" @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=114
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=114
 .Linfo_string3:
 	.asciz	"CTL"                           @ string offset=162
 .Linfo_string4:

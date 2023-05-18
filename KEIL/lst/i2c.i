@@ -1,12 +1,10 @@
-# 1 "../periph_conf.c"
+# 1 "../../../../Library/StdDriver/src/i2c.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 375 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "../periph_conf.c" 2
-# 10 "../periph_conf.c"
-# 1 "../scale_v2.h" 1
+# 1 "../../../../Library/StdDriver/src/i2c.c" 2
 
 
 
@@ -15,445 +13,6 @@
 
 
 
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 1 3
-# 53 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-    typedef unsigned int size_t;
-# 68 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-    typedef __builtin_va_list __va_list;
-# 87 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-typedef struct __fpos_t_struct {
-    unsigned long long int __pos;
-
-
-
-
-
-    struct {
-        unsigned int __state1, __state2;
-    } __mbstate;
-} fpos_t;
-# 108 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-typedef struct __FILE FILE;
-# 119 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-struct __FILE {
-    union {
-        long __FILE_alignment;
-
-
-
-        char __FILE_size[84];
-
-    } __FILE_opaque;
-};
-# 138 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern FILE __stdin, __stdout, __stderr;
-extern FILE *__aeabi_stdin, *__aeabi_stdout, *__aeabi_stderr;
-# 224 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int remove(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int rename(const char * , const char * ) __attribute__((__nonnull__(1,2)));
-# 243 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) FILE *tmpfile(void);
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) char *tmpnam(char * );
-# 265 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int fclose(FILE * ) __attribute__((__nonnull__(1)));
-# 275 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int fflush(FILE * );
-# 285 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) FILE *fopen(const char * __restrict ,
-                           const char * __restrict ) __attribute__((__nonnull__(1,2)));
-# 329 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) FILE *freopen(const char * __restrict ,
-                    const char * __restrict ,
-                    FILE * __restrict ) __attribute__((__nonnull__(2,3)));
-# 342 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) void setbuf(FILE * __restrict ,
-                    char * __restrict ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int setvbuf(FILE * __restrict ,
-                   char * __restrict ,
-                   int , size_t ) __attribute__((__nonnull__(1)));
-# 370 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int fprintf(FILE * __restrict ,
-                    const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
-# 393 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int _fprintf(FILE * __restrict ,
-                     const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int printf(const char * __restrict , ...) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int _printf(const char * __restrict , ...) __attribute__((__nonnull__(1)));
-
-
-
-
-
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int sprintf(char * __restrict , const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-
-
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int _sprintf(char * __restrict , const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int __ARM_snprintf(char * __restrict , size_t ,
-                     const char * __restrict , ...) __attribute__((__nonnull__(3)));
-
-
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int snprintf(char * __restrict , size_t ,
-                     const char * __restrict , ...) __attribute__((__nonnull__(3)));
-# 460 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int _snprintf(char * __restrict , size_t ,
-                      const char * __restrict , ...) __attribute__((__nonnull__(3)));
-
-
-
-
-
-#pragma __scanf_args
-extern __attribute__((__nothrow__)) int fscanf(FILE * __restrict ,
-                    const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
-# 503 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-#pragma __scanf_args
-extern __attribute__((__nothrow__)) int _fscanf(FILE * __restrict ,
-                     const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-#pragma __scanf_args
-extern __attribute__((__nothrow__)) int scanf(const char * __restrict , ...) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-
-
-#pragma __scanf_args
-extern __attribute__((__nothrow__)) int _scanf(const char * __restrict , ...) __attribute__((__nonnull__(1)));
-
-
-
-
-
-#pragma __scanf_args
-extern __attribute__((__nothrow__)) int sscanf(const char * __restrict ,
-                    const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
-# 541 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-#pragma __scanf_args
-extern __attribute__((__nothrow__)) int _sscanf(const char * __restrict ,
-                     const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int vfscanf(FILE * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) int vscanf(const char * __restrict , __va_list) __attribute__((__nonnull__(1)));
-extern __attribute__((__nothrow__)) int vsscanf(const char * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
-
-extern __attribute__((__nothrow__)) int _vfscanf(FILE * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) int _vscanf(const char * __restrict , __va_list) __attribute__((__nonnull__(1)));
-extern __attribute__((__nothrow__)) int _vsscanf(const char * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) int __ARM_vsscanf(const char * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
-
-extern __attribute__((__nothrow__)) int vprintf(const char * __restrict , __va_list ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int _vprintf(const char * __restrict , __va_list ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-extern __attribute__((__nothrow__)) int vfprintf(FILE * __restrict ,
-                    const char * __restrict , __va_list ) __attribute__((__nonnull__(1,2)));
-# 584 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int vsprintf(char * __restrict ,
-                     const char * __restrict , __va_list ) __attribute__((__nonnull__(1,2)));
-# 594 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int __ARM_vsnprintf(char * __restrict , size_t ,
-                     const char * __restrict , __va_list ) __attribute__((__nonnull__(3)));
-
-extern __attribute__((__nothrow__)) int vsnprintf(char * __restrict , size_t ,
-                     const char * __restrict , __va_list ) __attribute__((__nonnull__(3)));
-# 609 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int _vsprintf(char * __restrict ,
-                      const char * __restrict , __va_list ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-extern __attribute__((__nothrow__)) int _vfprintf(FILE * __restrict ,
-                     const char * __restrict , __va_list ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-extern __attribute__((__nothrow__)) int _vsnprintf(char * __restrict , size_t ,
-                      const char * __restrict , __va_list ) __attribute__((__nonnull__(3)));
-# 635 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-#pragma __printf_args
-extern __attribute__((__nothrow__)) int __ARM_asprintf(char ** , const char * __restrict , ...) __attribute__((__nonnull__(2)));
-extern __attribute__((__nothrow__)) int __ARM_vasprintf(char ** , const char * __restrict , __va_list ) __attribute__((__nonnull__(2)));
-# 649 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int fgetc(FILE * ) __attribute__((__nonnull__(1)));
-# 659 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) char *fgets(char * __restrict , int ,
-                    FILE * __restrict ) __attribute__((__nonnull__(1,3)));
-# 673 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int fputc(int , FILE * ) __attribute__((__nonnull__(2)));
-# 683 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int fputs(const char * __restrict , FILE * __restrict ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int getc(FILE * ) __attribute__((__nonnull__(1)));
-# 704 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-    extern __attribute__((__nothrow__)) int (getchar)(void);
-# 713 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) char *gets(char * ) __attribute__((__nonnull__(1)));
-# 725 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int putc(int , FILE * ) __attribute__((__nonnull__(2)));
-# 737 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-    extern __attribute__((__nothrow__)) int (putchar)(int );
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int puts(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int ungetc(int , FILE * ) __attribute__((__nonnull__(2)));
-# 778 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) size_t fread(void * __restrict ,
-                    size_t , size_t , FILE * __restrict ) __attribute__((__nonnull__(1,4)));
-# 794 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) size_t __fread_bytes_avail(void * __restrict ,
-                    size_t , FILE * __restrict ) __attribute__((__nonnull__(1,3)));
-# 810 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) size_t fwrite(const void * __restrict ,
-                    size_t , size_t , FILE * __restrict ) __attribute__((__nonnull__(1,4)));
-# 822 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int fgetpos(FILE * __restrict , fpos_t * __restrict ) __attribute__((__nonnull__(1,2)));
-# 833 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int fseek(FILE * , long int , int ) __attribute__((__nonnull__(1)));
-# 850 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int fsetpos(FILE * __restrict , const fpos_t * __restrict ) __attribute__((__nonnull__(1,2)));
-# 863 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) long int ftell(FILE * ) __attribute__((__nonnull__(1)));
-# 877 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) void rewind(FILE * ) __attribute__((__nonnull__(1)));
-# 886 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) void clearerr(FILE * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int feof(FILE * ) __attribute__((__nonnull__(1)));
-
-
-
-
-extern __attribute__((__nothrow__)) int ferror(FILE * ) __attribute__((__nonnull__(1)));
-
-
-
-
-extern __attribute__((__nothrow__)) void perror(const char * );
-# 917 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
-extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnull__(1)));
-
-
-
-extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
-extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 10 "../scale_v2.h" 2
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 1 3
-# 58 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) void *memcpy(void * __restrict ,
-                    const void * __restrict , size_t ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) void *memmove(void * ,
-                    const void * , size_t ) __attribute__((__nonnull__(1,2)));
-# 77 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) char *strcpy(char * __restrict , const char * __restrict ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) char *strncpy(char * __restrict , const char * __restrict , size_t ) __attribute__((__nonnull__(1,2)));
-# 93 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) char *strcat(char * __restrict , const char * __restrict ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) char *strncat(char * __restrict , const char * __restrict , size_t ) __attribute__((__nonnull__(1,2)));
-# 117 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) int memcmp(const void * , const void * , size_t ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int strcmp(const char * , const char * ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int strncmp(const char * , const char * , size_t ) __attribute__((__nonnull__(1,2)));
-# 141 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) int strcasecmp(const char * , const char * ) __attribute__((__nonnull__(1,2)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int strncasecmp(const char * , const char * , size_t ) __attribute__((__nonnull__(1,2)));
-# 158 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) int strcoll(const char * , const char * ) __attribute__((__nonnull__(1,2)));
-# 169 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) size_t strxfrm(char * __restrict , const char * __restrict , size_t ) __attribute__((__nonnull__(2)));
-# 193 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) void *memchr(const void * , int , size_t ) __attribute__((__nonnull__(1)));
-# 209 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) char *strchr(const char * , int ) __attribute__((__nonnull__(1)));
-# 218 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) size_t strcspn(const char * , const char * ) __attribute__((__nonnull__(1,2)));
-# 232 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) char *strpbrk(const char * , const char * ) __attribute__((__nonnull__(1,2)));
-# 247 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) char *strrchr(const char * , int ) __attribute__((__nonnull__(1)));
-# 257 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) size_t strspn(const char * , const char * ) __attribute__((__nonnull__(1,2)));
-# 270 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) char *strstr(const char * , const char * ) __attribute__((__nonnull__(1,2)));
-# 280 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) char *strtok(char * __restrict , const char * __restrict ) __attribute__((__nonnull__(2)));
-extern __attribute__((__nothrow__)) char *_strtok_r(char * , const char * , char ** ) __attribute__((__nonnull__(2,3)));
-# 321 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) void *memset(void * , int , size_t ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-extern __attribute__((__nothrow__)) char *strerror(int );
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) size_t strlen(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) size_t strlcpy(char * , const char * , size_t ) __attribute__((__nonnull__(1,2)));
-# 362 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) size_t strlcat(char * , const char * , size_t ) __attribute__((__nonnull__(1,2)));
-# 388 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
-extern __attribute__((__nothrow__)) void _membitcpybl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitcpybb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitcpyhl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitcpyhb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitcpywl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitcpywb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitmovebl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitmovebb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitmovehl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitmovehb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitmovewl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-extern __attribute__((__nothrow__)) void _membitmovewb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-# 11 "../scale_v2.h" 2
 # 1 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 1
 # 13 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h"
 # 1 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 1
@@ -3997,785 +3556,1232 @@ void TK_ClearTKIF(void);
 void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 660 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 2
 # 14 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 2
-# 12 "../scale_v2.h" 2
-# 1 "../periph_conf.h" 1
-# 13 "../scale_v2.h" 2
-# 11 "../periph_conf.c" 2
+# 10 "../../../../Library/StdDriver/src/i2c.c" 2
+# 19 "../../../../Library/StdDriver/src/i2c.c"
+int32_t g_I2C_i32ErrCode = 0;
+# 38 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_Open(I2C_T *i2c, uint32_t u32BusClock)
+{
+    uint32_t u32Div;
+    uint32_t u32Pclk;
 
-void FMC_Init()
+    if (i2c == ((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)))
+    {
+        u32Pclk = CLK_GetPCLK1Freq();
+    }
+    else
+    {
+        u32Pclk = CLK_GetPCLK0Freq();
+    }
+
+    u32Div = (uint32_t)(((u32Pclk * 10U) / (u32BusClock * 4U) + 5U) / 10U - 1U);
+    i2c->CLKDIV = u32Div;
+
+
+    i2c->CTL0 |= (0x1ul << (6));
+
+    return (u32Pclk / ((u32Div + 1U) << 2U));
+}
+# 72 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_Close(I2C_T *i2c)
 {
 
+    if ((uint32_t)i2c == ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x40000UL))
+    {
+        ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->IPRST1 |= (0x1ul << (8));
+        ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->IPRST1 &= ~(0x1ul << (8));
+    }
+    else if ((uint32_t)i2c == ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL))
+    {
+        ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->IPRST1 |= (0x1ul << (9));
+        ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->IPRST1 &= ~(0x1ul << (9));
+    }
 
-    FMC_Open();
+
+    i2c->CTL0 &= ~(0x1ul << (6));
+}
+# 100 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_ClearTimeoutFlag(I2C_T *i2c)
+{
+    i2c->TOCTL |= (0x1ul << (0));
+}
+# 119 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_Trigger(I2C_T *i2c, uint8_t u8Start, uint8_t u8Stop, uint8_t u8Si, uint8_t u8Ack)
+{
+    uint32_t u32Reg = 0U;
+
+    if (u8Start)
+    {
+        u32Reg |= 0x20UL;
+    }
+
+    if (u8Stop)
+    {
+        u32Reg |= 0x10UL;
+    }
+
+    if (u8Si)
+    {
+        u32Reg |= 0x08UL;
+    }
+
+    if (u8Ack)
+    {
+        u32Reg |= 0x04UL;
+    }
+
+    i2c->CTL0 = (i2c->CTL0 & ~0x3CU) | u32Reg;
+}
+# 156 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_DisableInt(I2C_T *i2c)
+{
+    i2c->CTL0 &= ~(0x1ul << (7));
+}
+# 171 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_EnableInt(I2C_T *i2c)
+{
+    i2c->CTL0 |= (0x1ul << (7));
+}
+# 185 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_GetBusClockFreq(I2C_T *i2c)
+{
+    uint32_t u32Divider = i2c->CLKDIV;
+    uint32_t u32Pclk;
+
+    if (i2c == ((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)))
+    {
+        u32Pclk = CLK_GetPCLK1Freq();
+    }
+    else
+    {
+        u32Pclk = CLK_GetPCLK0Freq();
+    }
+
+    return (u32Pclk / ((u32Divider + 1U) << 2U));
+}
+# 212 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_SetBusClockFreq(I2C_T *i2c, uint32_t u32BusClock)
+{
+    uint32_t u32Div;
+    uint32_t u32Pclk;
+
+    if (i2c == ((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)))
+    {
+        u32Pclk = CLK_GetPCLK1Freq();
+    }
+    else
+    {
+        u32Pclk = CLK_GetPCLK0Freq();
+    }
+
+    u32Div = (uint32_t)(((u32Pclk * 10U) / (u32BusClock * 4U) + 5U) / 10U - 1U);
+    i2c->CLKDIV = u32Div;
+
+    return (u32Pclk / ((u32Div + 1U) << 2U));
+}
+# 241 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_GetIntFlag(I2C_T *i2c)
+{
+    return ((i2c->CTL0 & (0x1ul << (3))) == (0x1ul << (3)) ? 1U : 0U);
+}
+# 255 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_GetStatus(I2C_T *i2c)
+{
+    return (i2c->STATUS0);
+}
+# 269 "../../../../Library/StdDriver/src/i2c.c"
+uint8_t I2C_GetData(I2C_T *i2c)
+{
+    return (uint8_t)(i2c->DAT);
+}
+# 284 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SetData(I2C_T *i2c, uint8_t u8Data)
+{
+    i2c->DAT = u8Data;
+}
+# 303 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SetSlaveAddr(I2C_T *i2c, uint8_t u8SlaveNo, uint16_t u16SlaveAddr, uint8_t u8GCMode)
+{
+    switch (u8SlaveNo)
+    {
+        case 1:
+            i2c->ADDR1 = ((uint32_t)u16SlaveAddr << 1U) | u8GCMode;
+            break;
+
+        case 2:
+            i2c->ADDR2 = ((uint32_t)u16SlaveAddr << 1U) | u8GCMode;
+            break;
+
+        case 3:
+            i2c->ADDR3 = ((uint32_t)u16SlaveAddr << 1U) | u8GCMode;
+            break;
+
+        case 0:
+        default:
+            i2c->ADDR0 = ((uint32_t)u16SlaveAddr << 1U) | u8GCMode;
+            break;
+    }
+}
+# 338 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SetSlaveAddrMask(I2C_T *i2c, uint8_t u8SlaveNo, uint16_t u16SlaveAddrMask)
+{
+    switch (u8SlaveNo)
+    {
+        case 1:
+            i2c->ADDRMSK1 = (uint32_t)u16SlaveAddrMask << 1U;
+            break;
+
+        case 2:
+            i2c->ADDRMSK2 = (uint32_t)u16SlaveAddrMask << 1U;
+            break;
+
+        case 3:
+            i2c->ADDRMSK3 = (uint32_t)u16SlaveAddrMask << 1U;
+            break;
+
+        case 0:
+        default:
+            i2c->ADDRMSK0 = (uint32_t)u16SlaveAddrMask << 1U;
+            break;
+    }
+}
+# 373 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_EnableTimeout(I2C_T *i2c, uint8_t u8LongTimeout)
+{
+    if (u8LongTimeout)
+    {
+        i2c->TOCTL |= (0x1ul << (1));
+    }
+    else
+    {
+        i2c->TOCTL &= ~(0x1ul << (1));
+    }
+
+    i2c->TOCTL |= (0x1ul << (2));
+}
+# 397 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_DisableTimeout(I2C_T *i2c)
+{
+    i2c->TOCTL &= ~(0x1ul << (2));
+}
+# 412 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_EnableWakeup(I2C_T *i2c)
+{
+    i2c->WKCTL |= (0x1ul << (0));
+}
+# 427 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_DisableWakeup(I2C_T *i2c)
+{
+    i2c->WKCTL &= ~(0x1ul << (0));
+}
+# 442 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_SMBusGetStatus(I2C_T *i2c)
+{
+    return (i2c->BUSSTS);
+}
+# 458 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SMBusClearInterruptFlag(I2C_T *i2c, uint8_t u8SMBusIntFlag)
+{
+    i2c->BUSSTS = u8SMBusIntFlag;
+}
+# 474 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SMBusSetPacketByteCount(I2C_T *i2c, uint32_t u32PktSize)
+{
+    i2c->PKTSIZE = u32PktSize;
+}
+# 490 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SMBusOpen(I2C_T *i2c, uint8_t u8HostDevice)
+{
+
+    i2c->BUSCTL &= ~((0x1ul << (3)) | (0x1ul << (2)));
 
 
-    (((FMC_T *) (((uint32_t)0x40000000UL) + 0x0C000UL))->ISPCTL |= (0x1ul << (4)));
+    if (u8HostDevice == (uint8_t)1)
+    {
+        i2c->BUSCTL |= ((0x1ul << (3)) | (0x1ul << (7)));
+    }
+    else
+    {
+        i2c->BUSCTL |= ((0x1ul << (2)) | (0x1ul << (7)));
+    }
+}
+# 516 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SMBusClose(I2C_T *i2c)
+{
+
+    i2c->BUSCTL = 0x00U;
+}
+# 533 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SMBusPECTxEnable(I2C_T *i2c, uint8_t u8PECTxEn)
+{
+    i2c->BUSCTL &= ~(0x1ul << (8));
+
+    if (u8PECTxEn)
+    {
+        i2c->BUSCTL |= ((0x1ul << (1)) | (0x1ul << (8)));
+    }
+    else
+    {
+        i2c->BUSCTL |= (0x1ul << (1));
+    }
+}
+# 557 "../../../../Library/StdDriver/src/i2c.c"
+uint8_t I2C_SMBusGetPECValue(I2C_T *i2c)
+{
+    return (uint8_t)i2c->PKTCRC;
+}
+# 575 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SMBusIdleTimeout(I2C_T *i2c, uint32_t us, uint32_t u32Hclk)
+{
+    uint32_t u32Div, u32Hclk_kHz;
+
+    i2c->BUSCTL |= (0x1ul << (9));
+    u32Hclk_kHz = u32Hclk / 1000U;
+    u32Div = (((us * u32Hclk_kHz) / 1000U) >> 2U) - 1U;
+
+    if (u32Div > 255U)
+    {
+        i2c->BUSTOUT = 0xFFU;
+    }
+    else
+    {
+        i2c->BUSTOUT = u32Div;
+    }
 
 }
-
-
-
-void GPIO_Init()
+# 608 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SMBusTimeout(I2C_T *i2c, uint32_t ms, uint32_t u32Pclk)
 {
-    const uint32_t u32RegDefault = 0;
+    uint32_t u32Div, u32Pclk_kHz;
 
+    i2c->BUSCTL &= ~(0x1ul << (9));
 
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->MODE =
 
-        (0x1UL << (6)) |
+    i2c->TOCTL &= ~(0x1ul << (2));
+    u32Pclk_kHz = u32Pclk / 1000U;
+    u32Div = ((ms * u32Pclk_kHz) / (16U * 1024U)) - 1U;
 
-        (0x1UL << (8)) |
+    if (u32Div <= 0xFFU)
+    {
+        i2c->BUSTOUT = u32Div;
+    }
+    else
+    {
 
-        (0x1UL << (10)) |
-
-        (0x1UL << (12)) |
-
-        (0x1UL << (14)) |
-
-        (0x0UL << (24)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->DINOFF =
-
-        (0 << (19)) |
-
-        (0 << (20)) |
-
-        (0 << (21)) |
-
-        (0 << (22)) |
-
-        (0 << (23)) |
-
-        (0 << (28)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->DOUT =
-
-        (1 << (3)) |
-
-        (1 << (4)) |
-
-        (1 << (5)) |
-
-        (1 << (6)) |
-
-        (1 << (7)) |
-
-        (1 << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->DATMSK =
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (6)) |
-
-        (0 << (7)) |
-
-        (0 << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->DBEN =
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (6)) |
-
-        (0 << (7)) |
-
-        (0 << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->INTTYPE =
-
-        (0UL << (3)) |
-
-        (0UL << (4)) |
-
-        (0UL << (5)) |
-
-        (0UL << (6)) |
-
-        (0UL << (7)) |
-
-        (0UL << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->INTEN =
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (6)) |
-
-        (0 << (7)) |
-
-        (0 << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->INTEN |=
-
-        (0 << (19)) |
-
-        (0 << (20)) |
-
-        (0 << (21)) |
-
-        (0 << (22)) |
-
-        (0 << (23)) |
-
-        (0 << (28)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->SLEWCTL =
-
-        (0x0UL << (6)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (10)) |
-
-        (0x0UL << (12)) |
-
-        (0x0UL << (14)) |
-
-        (0x0UL << (24)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->PUSEL =
-
-        (0x0UL << (6)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (10)) |
-
-        (0x0UL << (12)) |
-
-        (0x0UL << (14)) |
-
-        (0x2UL << (24)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->MODE =
-
-        (0x1UL << (4)) |
-
-        (0x1UL << (8)) |
-
-        (0x1UL << (10)) |
-
-        (0x1UL << (14)) |
-
-        (0x1UL << (16)) |
-
-        (0x1UL << (18)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->DINOFF =
-
-        (0 << (18)) |
-
-        (0 << (20)) |
-
-        (0 << (21)) |
-
-        (0 << (23)) |
-
-        (0 << (24)) |
-
-        (0 << (25)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->DOUT =
-
-        (1 << (2)) |
-
-        (1 << (4)) |
-
-        (1 << (5)) |
-
-        (1 << (7)) |
-
-        (1 << (8)) |
-
-        (1 << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->DATMSK =
-
-        (0 << (2)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (7)) |
-
-        (0 << (8)) |
-
-        (0 << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->DBEN =
-
-        (0 << (2)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (7)) |
-
-        (0 << (8)) |
-
-        (0 << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->INTTYPE =
-
-        (0UL << (2)) |
-
-        (0UL << (4)) |
-
-        (0UL << (5)) |
-
-        (0UL << (7)) |
-
-        (0UL << (8)) |
-
-        (0UL << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->INTEN =
-
-        (0 << (2)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (7)) |
-
-        (0 << (8)) |
-
-        (0 << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->INTEN |=
-
-        (0 << (18)) |
-
-        (0 << (20)) |
-
-        (0 << (21)) |
-
-        (0 << (23)) |
-
-        (0 << (24)) |
-
-        (0 << (25)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->SLEWCTL =
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (10)) |
-
-        (0x0UL << (14)) |
-
-        (0x0UL << (16)) |
-
-        (0x0UL << (18)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->PUSEL =
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (10)) |
-
-        (0x0UL << (14)) |
-
-        (0x0UL << (16)) |
-
-        (0x0UL << (18)) |
-
-        u32RegDefault;
-
-    (((GPIO_DBCTL_T *) (((uint32_t)0x40000000UL) + 0x04440UL))->DBCTL &= ~((0x1UL << ((((uint32_t)((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL)) - (uint32_t)(((uint32_t)0x40000000UL) + 0x04000UL)) / 0x40) + 16))));
-
-    __NVIC_EnableIRQ(GPB_IRQn);
-
-    __NVIC_EnableIRQ(EINT0_IRQn);
-
-    __NVIC_EnableIRQ(EINT1_IRQn);
-
-    __NVIC_EnableIRQ(EINT3_IRQn);
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->MODE =
-
-        (0x0UL << (0)) |
-
-        (0x0UL << (2)) |
-
-        (0x1UL << (4)) |
-
-        (0x0UL << (6)) |
-
-        (0x0UL << (8)) |
-
-        (0x1UL << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->DINOFF =
-
-        (0 << (16)) |
-
-        (0 << (17)) |
-
-        (0 << (18)) |
-
-        (0 << (19)) |
-
-        (0 << (20)) |
-
-        (0 << (22)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->DOUT =
-
-        (1 << (0)) |
-
-        (1 << (1)) |
-
-        (1 << (2)) |
-
-        (1 << (3)) |
-
-        (1 << (4)) |
-
-        (1 << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->DATMSK =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->DBEN =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->INTTYPE =
-
-        (0UL << (0)) |
-
-        (0UL << (1)) |
-
-        (0UL << (2)) |
-
-        (0UL << (3)) |
-
-        (0UL << (4)) |
-
-        (0UL << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->INTEN =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->INTEN |=
-
-        (1 << (16)) |
-
-        (0 << (17)) |
-
-        (0 << (18)) |
-
-        (0 << (19)) |
-
-        (0 << (20)) |
-
-        (0 << (22)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->SLEWCTL =
-
-        (0x0UL << (0)) |
-
-        (0x0UL << (2)) |
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (6)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->PUSEL =
-
-        (0x2UL << (0)) |
-
-        (0x2UL << (2)) |
-
-        (0x0UL << (4)) |
-
-        (0x2UL << (6)) |
-
-        (0x2UL << (8)) |
-
-        (0x0UL << (12)) |
-
-        u32RegDefault;
-
-    (((GPIO_DBCTL_T *) (((uint32_t)0x40000000UL) + 0x04440UL))->DBCTL &= ~((0x1UL << ((((uint32_t)((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL)) - (uint32_t)(((uint32_t)0x40000000UL) + 0x04000UL)) / 0x40) + 16))));
-
-    __NVIC_EnableIRQ(GPC_IRQn);
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->MODE =
-
-        (0x0UL << (0)) |
-
-        (0x0UL << (2)) |
-
-        (0x1UL << (4)) |
-
-        (0x1UL << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->DINOFF =
-
-        (0 << (16)) |
-
-        (0 << (17)) |
-
-        (0 << (18)) |
-
-        (0 << (19)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->DOUT =
-
-        (1 << (0)) |
-
-        (1 << (1)) |
-
-        (1 << (2)) |
-
-        (1 << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->DATMSK =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->DBEN =
-
-        (0 << (0)) |
-
-        (1 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->INTTYPE =
-
-        (0UL << (0)) |
-
-        (0UL << (1)) |
-
-        (0UL << (2)) |
-
-        (0UL << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->INTEN =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->INTEN |=
-
-        (0 << (16)) |
-
-        (1 << (17)) |
-
-        (0 << (18)) |
-
-        (0 << (19)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->SLEWCTL =
-
-        (0x0UL << (0)) |
-
-        (0x0UL << (2)) |
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->PUSEL =
-
-        (0x2UL << (0)) |
-
-        (0x2UL << (2)) |
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (6)) |
-
-        u32RegDefault;
-
-    (((GPIO_DBCTL_T *) (((uint32_t)0x40000000UL) + 0x04440UL))->DBCTL &= ~((0x1UL << ((((uint32_t)((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL)) - (uint32_t)(((uint32_t)0x40000000UL) + 0x04000UL)) / 0x40) + 16))));
-
-    __NVIC_EnableIRQ(GPD_IRQn);
+        i2c->TOCTL |= (0x1ul << (2));
+        i2c->BUSTOUT = (((ms * u32Pclk_kHz) / (16U * 1024U * 4U)) - 1U) & 0xFFU;
+    }
 
 }
-void I2C1_Init()
+# 646 "../../../../Library/StdDriver/src/i2c.c"
+void I2C_SMBusClockLoTimeout(I2C_T *i2c, uint32_t ms, uint32_t u32Pclk)
 {
-    I2C_Open(((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)), 400000);
+    uint32_t u32Div, u32Pclk_kHz;
 
+    i2c->BUSCTL &= ~(0x1ul << (9));
+
+
+    i2c->TOCTL &= ~(0x1ul << (2));
+    u32Pclk_kHz = u32Pclk / 1000U;
+    u32Div = ((ms * u32Pclk_kHz) / (16U * 1024U)) - 1U;
+
+    if (u32Div <= 0xFFU)
+    {
+        i2c->CLKTOUT = u32Div;
+    }
+    else
+    {
+
+        i2c->TOCTL |= (0x1ul << (2));
+        i2c->CLKTOUT = (((ms * u32Pclk_kHz) / (16U * 1024U * 4U)) - 1U) & 0xFFU;
+    }
 }
-
-
-
-void SPII2S0_Init()
+# 683 "../../../../Library/StdDriver/src/i2c.c"
+uint8_t I2C_WriteByte(I2C_T *i2c, uint8_t u8SlaveAddr, uint8_t data)
 {
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Ctrl = 0U;
 
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
 
-    SPI_Open(((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL)), (0x0UL), ((0x1ul << (3)) | (0x1ul << (2))), 8, 1000000);
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
 
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                u8Err = 1u;
+                break;
+            }
+        }
 
-    ((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL))->SSCTL = (((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL))->SSCTL & (~(0x1ul << (2)))) | (0x0UL);
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
 
+            case 0x18:
+                ((i2c)->DAT = (data));
+                break;
 
-    ((((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL)))->CTL &= ~(0x1ul << (13)));
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
 
+            case 0x28:
+                u8Ctrl = 0x18UL;
+                u8Xfering = 0U;
+                break;
 
-    SPI_SetFIFO(((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL)), 0, 0);
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
 
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return (u8Err | u8Xfering);
 }
-void TIMER0_Init()
+# 756 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_WriteMultiBytes(I2C_T *i2c, uint8_t u8SlaveAddr, uint8_t data[], uint32_t u32wLen)
 {
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Ctrl = 0U;
+    uint32_t u32txLen = 0U;
 
-    TIMER_Open(((TIMER_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x10000UL)), (1UL << (27)), 1);
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
 
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
 
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
 
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
 
+            case 0x18:
+            case 0x28:
+                if (u32txLen < u32wLen)
+                    ((i2c)->DAT = (data[u32txLen++]));
+                else
+                {
+                    u8Ctrl = 0x18UL;
+                    u8Xfering = 0U;
+                }
 
+                break;
 
-    TIMER_EnableInt(((TIMER_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x10000UL)));
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
 
-    __NVIC_EnableIRQ(TMR0_IRQn);
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
 
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return u32txLen;
 }
-
-void TIMER1_Init()
+# 833 "../../../../Library/StdDriver/src/i2c.c"
+uint8_t I2C_WriteByteOneReg(I2C_T *i2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, uint8_t data)
 {
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Ctrl = 0U;
+    uint32_t u32txLen = 0U;
 
-    TIMER_Open(((TIMER_T *) (((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x10000UL) + 0x100UL)), (1UL << (27)), 1);
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
 
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
 
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
 
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
 
+            case 0x18:
+                ((i2c)->DAT = (u8DataAddr));
+                break;
 
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
 
-    TIMER_EnableInt(((TIMER_T *) (((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x10000UL) + 0x100UL)));
+            case 0x28:
+                if (u32txLen < 1U)
+                {
+                    ((i2c)->DAT = (data));
+                    u32txLen++;
+                }
+                else
+                {
+                    u8Ctrl = 0x18UL;
+                    u8Xfering = 0U;
+                }
 
-    __NVIC_EnableIRQ(TMR1_IRQn);
+                break;
 
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return (u8Err | u8Xfering);
 }
-void UART2_Init()
+# 917 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_WriteMultiBytesOneReg(I2C_T *i2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, uint8_t data[], uint32_t u32wLen)
 {
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Ctrl = 0U;
+    uint32_t u32txLen = 0U;
 
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
 
-    UART_Open(((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL)), 115200);
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
 
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
 
-    ((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFO = (((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFO & ~ (0xful << (4))) | (0x0ul << (4));
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
 
+            case 0x18:
+                ((i2c)->DAT = (u8DataAddr));
+                break;
+
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x28:
+                if (u32txLen < u32wLen)
+                    ((i2c)->DAT = (data[u32txLen++]));
+                else
+                {
+                    u8Ctrl = 0x18UL;
+                    u8Xfering = 0U;
+                }
+
+                break;
+
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return u32txLen;
 }
-void WDT_Init(void)
+# 997 "../../../../Library/StdDriver/src/i2c.c"
+uint8_t I2C_WriteByteTwoRegs(I2C_T *i2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, uint8_t data)
 {
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Addr = 1U, u8Ctrl = 0U;
+    uint32_t u32txLen = 0U;
 
-    SYS_UnlockReg();
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
 
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
 
-    WDT_Open(((0UL << (8))), ((3UL << (0))), (0), (0));
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
 
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
 
-    WDT_EnableInt();
+            case 0x18:
+                ((i2c)->DAT = ((uint8_t)((u16DataAddr & 0xFF00U) >> 8U)));
+                break;
 
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1;
+                break;
 
-    __NVIC_EnableIRQ(WDT_IRQn);
+            case 0x28:
+                if (u8Addr)
+                {
+                    ((i2c)->DAT = ((uint8_t)(u16DataAddr & 0xFFU)));
+                    u8Addr = 0U;
+                }
+                else if ((u32txLen < 1U) && (u8Addr == 0U))
+                {
+                    ((i2c)->DAT = (data));
+                    u32txLen++;
+                }
+                else
+                {
+                    u8Ctrl = 0x18UL;
+                    u8Xfering = 0U;
+                }
 
+                break;
+
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return (u8Err | u8Xfering);
 }
-
-void Periph_Init(void)
+# 1086 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_WriteMultiBytesTwoRegs(I2C_T *i2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, uint8_t data[], uint32_t u32wLen)
 {
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Addr = 1U, u8Ctrl = 0U;
+    uint32_t u32txLen = 0U;
 
-    UART2_Init();
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
 
-    GPIO_Init();
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
 
-    I2C1_Init();
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
 
-    SPII2S0_Init() ;
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
 
-    TIMER0_Init();
+            case 0x18:
+                ((i2c)->DAT = ((uint8_t)((u16DataAddr & 0xFF00U) >> 8U)));
+                break;
 
-    TIMER1_Init();
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
 
-    WDT_Init();
+            case 0x28:
+                if (u8Addr)
+                {
+                    ((i2c)->DAT = ((uint8_t)(u16DataAddr & 0xFFU)));
+                    u8Addr = 0U;
+                }
+                else if ((u32txLen < u32wLen) && (u8Addr == 0U))
+                {
+                    ((i2c)->DAT = (data[u32txLen++]));
+                }
+                else
+                {
+                    u8Ctrl = 0x18UL;
+                    u8Xfering = 0U;
+                }
 
-    FMC_Init();
+                break;
 
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return u32txLen;
+}
+# 1169 "../../../../Library/StdDriver/src/i2c.c"
+uint8_t I2C_ReadByte(I2C_T *i2c, uint8_t u8SlaveAddr)
+{
+    uint8_t u8Xfering = 1U, u8Err = 0U, rdata = 0U, u8Ctrl = 0U;
+
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
+
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
+
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
+
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)((u8SlaveAddr << 1U) | 0x01U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x40:
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x48:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x58:
+                rdata = (uint8_t) ((i2c)->DAT);
+                u8Ctrl = 0x18UL;
+                u8Xfering = 0U;
+                break;
+
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    if (u8Err)
+    {
+        rdata = 0U;
+    }
+
+    return rdata;
+}
+# 1245 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_ReadMultiBytes(I2C_T *i2c, uint8_t u8SlaveAddr, uint8_t rdata[], uint32_t u32rLen)
+{
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Ctrl = 0U;
+    uint32_t u32rxLen = 0U;
+
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
+
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
+
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
+
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)((u8SlaveAddr << 1U) | 0x01U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x40:
+                u8Ctrl = 0x0CUL;
+                break;
+
+            case 0x48:
+                u8Ctrl = 0x18UL;
+                u8Err = 1;
+                break;
+
+            case 0x50:
+                rdata[u32rxLen++] = (uint8_t) ((i2c)->DAT);
+
+                if (u32rxLen < (u32rLen - 1))
+                {
+                    u8Ctrl = 0x0CUL;
+                }
+                else
+                {
+                    u8Ctrl = 0x08UL;
+                }
+
+                break;
+
+            case 0x58:
+                rdata[u32rxLen++] = (uint8_t) ((i2c)->DAT);
+                u8Ctrl = 0x18UL;
+                u8Xfering = 0U;
+                break;
+
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return u32rxLen;
+}
+# 1332 "../../../../Library/StdDriver/src/i2c.c"
+uint8_t I2C_ReadByteOneReg(I2C_T *i2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr)
+{
+    uint8_t u8Xfering = 1U, u8Err = 0U, rdata = 0U, u8Ctrl = 0U;
+
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
+
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
+
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
+
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x18:
+                ((i2c)->DAT = (u8DataAddr));
+                break;
+
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x28:
+                u8Ctrl = 0x28UL;
+                break;
+
+            case 0x10:
+                ((i2c)->DAT = ((uint8_t)((u8SlaveAddr << 1U) | 0x01U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x40:
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x48:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x58:
+                rdata = (uint8_t) ((i2c)->DAT);
+                u8Ctrl = 0x18UL;
+                u8Xfering = 0U;
+                break;
+
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    if (u8Err)
+    {
+        rdata = 0U;
+    }
+
+    return rdata;
+}
+# 1429 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_ReadMultiBytesOneReg(I2C_T *i2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, uint8_t rdata[], uint32_t u32rLen)
+{
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Ctrl = 0U;
+    uint32_t u32rxLen = 0U;
+
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
+
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
+
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
+
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x18:
+                ((i2c)->DAT = (u8DataAddr));
+                break;
+
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x28:
+                u8Ctrl = 0x28UL;
+                break;
+
+            case 0x10:
+                ((i2c)->DAT = ((uint8_t)((u8SlaveAddr << 1U) | 0x01U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x40:
+                u8Ctrl = 0x0CUL;
+                break;
+
+            case 0x48:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x50:
+                rdata[u32rxLen++] = (uint8_t) ((i2c)->DAT);
+
+                if (u32rxLen < (u32rLen - 1U))
+                {
+                    u8Ctrl = 0x0CUL;
+                }
+                else
+                {
+                    u8Ctrl = 0x08UL;
+                }
+
+                break;
+
+            case 0x58:
+                rdata[u32rxLen++] = (uint8_t) ((i2c)->DAT);
+                u8Ctrl = 0x18UL;
+                u8Xfering = 0U;
+                break;
+
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return u32rxLen;
+}
+# 1534 "../../../../Library/StdDriver/src/i2c.c"
+uint8_t I2C_ReadByteTwoRegs(I2C_T *i2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr)
+{
+    uint8_t u8Xfering = 1U, u8Err = 0U, rdata = 0U, u8Addr = 1U, u8Ctrl = 0U;
+
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
+
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
+
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
+
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x18:
+                ((i2c)->DAT = ((uint8_t)((u16DataAddr & 0xFF00U) >> 8U)));
+                break;
+
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x28:
+                if (u8Addr)
+                {
+                    ((i2c)->DAT = ((uint8_t)(u16DataAddr & 0xFFU)));
+                    u8Addr = 0U;
+                }
+                else
+                {
+                    u8Ctrl = 0x28UL;
+                }
+
+                break;
+
+            case 0x10:
+                ((i2c)->DAT = ((uint8_t)((u8SlaveAddr << 1U) | 0x01U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x40:
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x48:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x58:
+                rdata = (uint8_t) ((i2c)->DAT);
+                u8Ctrl = 0x18UL;
+                u8Xfering = 0U;
+                break;
+
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    if (u8Err)
+    {
+        rdata = 0U;
+    }
+
+    return rdata;
+}
+# 1640 "../../../../Library/StdDriver/src/i2c.c"
+uint32_t I2C_ReadMultiBytesTwoRegs(I2C_T *i2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, uint8_t rdata[], uint32_t u32rLen)
+{
+    uint8_t u8Xfering = 1U, u8Err = 0U, u8Addr = 1U, u8Ctrl = 0U;
+    uint32_t u32rxLen = 0U;
+
+    g_I2C_i32ErrCode = 0;
+    ((i2c)->CTL0 = ((i2c)->CTL0 & ~(0x1ul << (3))) | (0x1ul << (5)));
+
+    while (u8Xfering && (u8Err == 0U))
+    {
+        uint32_t u32TimeOutCount = SystemCoreClock;
+        while(!((i2c)->CTL0 & (0x1ul << (3))))
+        {
+            u32TimeOutCount--;
+
+            if (u32TimeOutCount == 0)
+            {
+                g_I2C_i32ErrCode = (-1L);
+                break;
+            }
+        }
+
+        switch (((i2c)->STATUS0))
+        {
+            case 0x08:
+                ((i2c)->DAT = ((uint8_t)(u8SlaveAddr << 1U | 0x00U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x18:
+                ((i2c)->DAT = ((uint8_t)((u16DataAddr & 0xFF00U) >> 8U)));
+                break;
+
+            case 0x20:
+            case 0x30:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x28:
+                if (u8Addr)
+                {
+                    ((i2c)->DAT = ((uint8_t)(u16DataAddr & 0xFFU)));
+                    u8Addr = 0U;
+                }
+                else
+                {
+                    u8Ctrl = 0x28UL;
+                }
+
+                break;
+
+            case 0x10:
+                ((i2c)->DAT = ((uint8_t)((u8SlaveAddr << 1U) | 0x01U)));
+                u8Ctrl = 0x08UL;
+                break;
+
+            case 0x40:
+                u8Ctrl = 0x0CUL;
+                break;
+
+            case 0x48:
+                u8Ctrl = 0x18UL;
+                u8Err = 1U;
+                break;
+
+            case 0x50:
+                rdata[u32rxLen++] = (uint8_t) ((i2c)->DAT);
+
+                if (u32rxLen < (u32rLen - 1U))
+                {
+                    u8Ctrl = 0x0CUL;
+                }
+                else
+                {
+                    u8Ctrl = 0x08UL;
+                }
+
+                break;
+
+            case 0x58:
+                rdata[u32rxLen++] = (uint8_t) ((i2c)->DAT);
+                u8Ctrl = 0x18UL;
+                u8Xfering = 0U;
+                break;
+
+            case 0x38:
+            default:
+                ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (0x18UL));
+                u8Ctrl = 0x08UL;
+                u8Err = 1U;
+                break;
+        }
+
+        ((i2c)->CTL0 = ((i2c)->CTL0 & ~0x3c) | (u8Ctrl));
+    }
+
+    return u32rxLen;
 }

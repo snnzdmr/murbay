@@ -5,8 +5,8 @@
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
 # 1 "../pin_conf.c" 2
-# 112 "../pin_conf.c"
-# 1 "../scale_v1.h" 1
+# 118 "../pin_conf.c"
+# 1 "../scale_v2.h" 1
 
 
 
@@ -336,7 +336,7 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 10 "../scale_v1.h" 2
+# 10 "../scale_v2.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 1 3
 # 58 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
 extern __attribute__((__nothrow__)) void *memcpy(void * __restrict ,
@@ -453,7 +453,7 @@ extern __attribute__((__nothrow__)) void _membitmovehl(void * , const void * , i
 extern __attribute__((__nothrow__)) void _membitmovehb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-# 11 "../scale_v1.h" 2
+# 11 "../scale_v2.h" 2
 # 1 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 1
 # 13 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h"
 # 1 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 1
@@ -3997,10 +3997,10 @@ void TK_ClearTKIF(void);
 void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 660 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 2
 # 14 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 2
-# 12 "../scale_v1.h" 2
+# 12 "../scale_v2.h" 2
 # 1 "../periph_conf.h" 1
-# 13 "../scale_v1.h" 2
-# 113 "../pin_conf.c" 2
+# 13 "../scale_v2.h" 2
+# 119 "../pin_conf.c" 2
 
 
 
@@ -4009,12 +4009,12 @@ void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 
 void Pin_Init(void)
 {
-# 131 "../pin_conf.c"
-    ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->GPA_MFPH = (0x00UL<<(16));
+# 137 "../pin_conf.c"
+    ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->GPA_MFPH = (0x04UL<<(20)) | (0x00UL<<(16));
     ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->GPA_MFPL = (0x00UL<<(28)) | (0x00UL<<(24)) | (0x00UL<<(20)) | (0x00UL<<(16)) | (0x00UL<<(12)) | (0x04UL<<(8)) |
                     (0x04UL<<(4)) | (0x04UL<<(0));
     ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->GPB_MFPH = (0x00UL<<(4)) | (0x00UL<<(0));
-    ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->GPB_MFPL = (0x00UL<<(28)) | (0x00UL<<(20)) | (0x00UL<<(16)) | (0x00UL<<(8)) | (0x07UL<<(0));
+    ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->GPB_MFPL = (0x00UL<<(28)) | (0x00UL<<(20)) | (0x00UL<<(16)) | (0x04UL<<(12)) | (0x00UL<<(8)) | (0x07UL<<(0));
     ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->GPC_MFPH = 0x00000000;
     ((SYS_T *) (((uint32_t)0x40000000UL) + 0x00000UL))->GPC_MFPL = (0x00UL<<(24)) | (0x08UL<<(20)) | (0x00UL<<(16)) | (0x00UL<<(12)) | (0x00UL<<(8)) | (0x00UL<<(4)) |
                     (0x00UL<<(0));

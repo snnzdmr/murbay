@@ -19,8 +19,8 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"uart.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/uart_reg.h"
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/uart_reg.h"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
 	.section	.text.UART_ClearIntFlag,"ax",%progbits
 	.hidden	UART_ClearIntFlag               @ -- Begin function UART_ClearIntFlag
 	.globl	UART_ClearIntFlag
@@ -30,7 +30,7 @@
 	.thumb_func
 UART_ClearIntFlag:
 .Lfunc_begin0:
-	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/StdDriver/src/uart.c"
+	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/src/uart.c"
 	.loc	4 42 0                          @ ../../../../Library/StdDriver/src/uart.c:42:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -3412,7 +3412,7 @@ UART_SelectSingleWireMode:
 .Linfo_string1:
 	.asciz	"../../../../Library/StdDriver/src\\uart.c" @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=109
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=109
 .Linfo_string3:
 	.asciz	"DAT"                           @ string offset=157
 .Linfo_string4:

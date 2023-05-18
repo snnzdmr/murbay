@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     scale_v1.h
+ * @file     scale_v2.h
  * @version  V1.00
  * @Date     2019/03/28-12:06:28
  * @brief    NuMicro generated code file

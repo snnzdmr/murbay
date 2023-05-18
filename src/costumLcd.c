@@ -1,6 +1,6 @@
 
 #include "Inc/costumLcd.h"
-#include "scale_v1.h"
+#include "scale_v2.h"
 #include <stdlib.h>
 
 

@@ -1,6 +1,6 @@
 ./obj/menu.o: ..\src\menu.c ..\Inc\menu.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\Inc\costumLcd.h \
-  ..\Inc\font.h ..\scale_v1.h \
+  ..\Inc\font.h ..\scale_v2.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \

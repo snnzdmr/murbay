@@ -19,7 +19,7 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"main.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/sys_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/sys_reg.h"
 	.section	.text.System_Init,"ax",%progbits
 	.hidden	System_Init                     @ -- Begin function System_Init
 	.globl	System_Init
@@ -29,7 +29,7 @@
 	.thumb_func
 System_Init:
 .Lfunc_begin0:
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../main.c"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../main.c"
 	.loc	3 25 0                          @ ../main.c:25:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -67,7 +67,7 @@ System_Init:
 	.thumb_func
 SYS_UnlockReg:
 .Lfunc_begin1:
-	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/StdDriver/inc\\sys.h"
+	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/inc\\sys.h"
 	.loc	4 1348 0                        @ ../../../../Library/StdDriver/inc\sys.h:1348:0
 	.fnstart
 	.cfi_startproc
@@ -932,7 +932,7 @@ __ARM_use_no_argv:
 .Linfo_string1:
 	.asciz	"..\\main.c"                    @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=78
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=78
 .Linfo_string3:
 	.asciz	"PDID"                          @ string offset=126
 .Linfo_string4:

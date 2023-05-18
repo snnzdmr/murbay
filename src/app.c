@@ -1,6 +1,6 @@
 #include "Inc/app.h"
 #include "Inc/keypad.h"
-#include "Inc/menu.h"
+#include "Inc/SparkFun_NAU7802.h"
 #include <stdlib.h>
 //#############################################################################################
 //                               GLOBAL VARIABLE & DEFINITONS
@@ -14,6 +14,7 @@ Params _param2;
 Params _param3;
 MENU_Params m_Param;
 KEYPAD * p_KeypadObj;
+SCALE  * p_ScaleObj;
 MENU   * p_MenuObj;
 node * currentNode;
 FontDef *p_CurrentFont;
@@ -62,6 +63,12 @@ void APP_Init(){
 	/****************************************/
  	p_KeypadObj = newKeyPadObj();
   p_KeypadObj->Init(KEYPAD_COLUMN_SIZE,KEYPAD_ROW_SIZE);
+	/****************************************/
+	
+	/****************************************/
+	p_ScaleObj = newScaleObj();
+	p_ScaleObj->begin();
+	
 	/****************************************/
 	p_MenuObj = newMenuObj();
 	p_MenuObj->Init();
@@ -112,6 +119,112 @@ void APP_SettingsHandle(){
 		}
 	}
 }
+
+float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
+	static uint8_t _id=0;
+	static float total  = 0;
+	float templateValue = 0;
+	uint8_t buffer[7]="";
+	static uint8_t tempArray[7]={0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+	uint8_t len=0;
+	switch(pressedKey){
+			case 'c':
+				_id=0;
+			  total=0;
+			  memset(&tempArray[0],0x00,7);
+					switch(p_MenuParam->decimalPoint){
+						case dp_0:
+							p->WriteString(0,0,(uint8_t *)"     0",&font_small,p);
+							break;
+						case dp_0_0:
+							p->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p);
+							break;
+						case dp_0_00:
+							p->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p);
+							break;
+						case dp_0_000:
+							p->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p);
+							break;
+						case dp_0_0000:
+							p->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p);
+							break;
+					}
+				p->UpdateScreen(p);
+				break;
+			case 'z':
+				break;
+			case 't':
+				break;
+			case 'q':
+				break;
+			case 's':
+				break;
+			case 'p':
+				break;
+			case 'u':
+				break;
+			case 'm':
+				break;
+			case 'C': //CH
+				break;
+			case '.': //CH
+					total = total * 100;
+					switch(p_MenuParam->decimalPoint){
+						case dp_0:
+							if(total > 999999){total = total / 100;}
+							break;
+						case dp_0_0:
+							if(total > 99999){total = total / 100;}
+							break;
+						case dp_0_00:
+							if(total > 9999){total = total / 100;}
+							break;
+						case dp_0_000:
+							if(total > 999){total = total / 100;}
+							break;
+						case dp_0_0000:
+							if(total > 99){total = total / 100;}
+							break;
+					}
+				// break; break olmayacak ! 
+			default:
+				if( _id<6){
+					if(pressedKey != '.'){
+						_id++;			
+						templateValue = (pressedKey-'0'); //
+						templateValue = templateValue / (_pow(10,p_MenuParam->decimalPoint));
+						total = (total*10) + templateValue;
+					}
+					memset(&tempArray[0],0x00,7);
+					switch(p_MenuParam->decimalPoint){
+						case dp_0:
+							len = sprintf((char*)(&tempArray[0]),"%d",(int)total);len+=1;
+							break;
+						case dp_0_0:
+							len = sprintf((char*)(&tempArray[0]),"%.1f",total);
+							break;
+						case dp_0_00:
+							len = sprintf((char*)(&tempArray[0]),"%.2f",total);
+							break;
+						case dp_0_000:
+							len = sprintf((char*)(&tempArray[0]),"%.3f",total);
+							break;
+						case dp_0_0000:
+							len = sprintf((char*)(&tempArray[0]),"%.4f",total);
+							break;
+					}
+					for(int i=0;i<(7-len);i++){
+						buffer[i]  =0x20; // add padding
+					}
+					strncat((char *)buffer,(const char *)tempArray,len);								
+					p->WriteString(0,0,&buffer[0],&font_small,p);
+					p->UpdateScreen(p);
+				}
+				break;
+		}
+		return atof((const char *)tempArray);
+}
+
 float customValueInput(char pressedKey,AIP *p){
 		static uint8_t pointCounter=0;
 		static uint8_t _id=0;
@@ -171,14 +284,51 @@ float customValueInput(char pressedKey,AIP *p){
 		return atof((const char *)tempArray);
 }
 
-float setPrice(char pressedKey,AIP *p){
-	return customValueInput(pressedKey,p);
+float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
+	if(p_MenuParam->FixFloat == ff_float){
+		return customValueInput(pressedKey,p);
+	}
+	else if(p_MenuParam->FixFloat == ff_fix){
+		return customValueInputFix(pressedKey,p,p_MenuParam);
+	}
+	else{
+		return -1;
+	}
 }
-void APP_ShowTotal(float _totatl,float _wight){
-	char array[20]="";
-	sprintf(&array[0],"%f",(_totatl*_wight));
+void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){	
+	uint8_t array[10]="";
+	uint8_t buffer[7]="";
+	int len=0;
+	float totalPrices = 0;
+	totalPrices = _price * _wight;
+	switch(p_MenuParam->decimalPoint){
+		case dp_0:
+			if(totalPrices > 999999){totalPrices=9999999;}
+			len = sprintf((char*)(&array[0]),"%d",(int)(totalPrices));len+=1;
+			break;
+		case dp_0_0:
+			if(totalPrices > 99999){totalPrices=99999.9;}
+			len = sprintf((char*)(&array[0]),"%.1f",totalPrices);
+			break;
+		case dp_0_00:
+			if(totalPrices > 9999){totalPrices=9999.99;}
+			len = sprintf((char*)(&array[0]),"%.2f",totalPrices);
+			break;
+		case dp_0_000:
+			if(totalPrices > 999){totalPrices=999.999;}
+			len = sprintf((char*)(&array[0]),"%.3f",totalPrices);
+			break;
+		case dp_0_0000:
+			if(totalPrices > 99){totalPrices=99.9999;}
+			len = sprintf((char*)(&array[0]),"%.4f",totalPrices);
+			break;
+	}
+	for(int i=0;i<(7-len);i++){
+		buffer[i]  =0x20; // add padding
+	}
+	strncat((char *)buffer,(const char *)array,len);
 	
-	p_LcdObj_S3->WriteString(0,0,(uint8_t *)array,&font_small,p_LcdObj_S3);
+	p_LcdObj_S3->WriteString(0,0,(uint8_t *)buffer,&font_small,p_LcdObj_S3);
 	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 }
 void APP_Handle(){
@@ -187,16 +337,18 @@ void APP_Handle(){
 	uint8_t longPres=0;
 	float weight=0;
 	float total = 0;
-	ret = APP_StartScreen();
+	
+	m_Param.decimalPoint = dp_0_00;
+	ret = APP_StartScreen(&m_Param);
 	if(ret){ // settings handle
 		APP_SettingsHandle();
 	}
 	while(1){
-		APP_Show_Weight(&weight);
+		APP_Show_Weight(&weight,&m_Param);
 		pressedKey = p_KeypadObj->Scan(&longPres);
 		if(pressedKey > -1 && longPres == 0){
-			total = setPrice((char)pressedKey,p_LcdObj_S2);
-			APP_ShowTotal(total,weight);
+			total = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
+			APP_ShowTotal(total,weight,&m_Param);
 		}
 		
 		if(pressedKey > -1 && longPres == 1){
@@ -250,7 +402,7 @@ void  SCREEN_3_AIP_CSPin(uint8_t _val){
 	PB9=_val;	
 }
 //#############################################################################################
-uint8_t APP_StartScreen(){
+uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
 	
 #if (LOG_STATE)
      printf("Start Screen Runing ...\n");
@@ -375,13 +527,37 @@ uint8_t APP_StartScreen(){
 	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 	CLK_SysTickLongDelay(START_SCREEN_SPEED);
 	
-	p_LcdObj_S1->ClearScreen(p_LcdObj_S1);
+
+	switch(p_MenuParam->decimalPoint){
+		case dp_0:
+			p_LcdObj_S1->WriteString(0,0,(uint8_t *)"     0",&font_small,p_LcdObj_S1);
+			p_LcdObj_S2->WriteString(0,0,(uint8_t *)"     0",&font_small,p_LcdObj_S2);
+			p_LcdObj_S3->WriteString(0,0,(uint8_t *)"     0",&font_small,p_LcdObj_S3);
+			break;
+		case dp_0_0:
+			p_LcdObj_S2->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p_LcdObj_S1);
+			p_LcdObj_S2->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p_LcdObj_S2);
+			p_LcdObj_S3->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p_LcdObj_S3);
+			break;
+		case dp_0_00:
+			p_LcdObj_S1->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p_LcdObj_S1);
+			p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p_LcdObj_S2);
+			p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p_LcdObj_S3);
+			break;
+		case dp_0_000:
+			p_LcdObj_S1->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p_LcdObj_S1);
+			p_LcdObj_S2->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p_LcdObj_S2);
+			p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p_LcdObj_S3);
+			break;
+		case dp_0_0000:
+			p_LcdObj_S1->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p_LcdObj_S1);
+			p_LcdObj_S2->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p_LcdObj_S2);
+			p_LcdObj_S3->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p_LcdObj_S3);
+			break;
+	}
+	
 	p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-	
-	p_LcdObj_S2->ClearScreen(p_LcdObj_S2);
 	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-	
-	p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
 	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 	
 	char pressedKey=0;
@@ -421,11 +597,38 @@ void APP_All_Point_High(uint8_t selScreen){
 //#############################################################################################
 //                                           MEAUSERE 
 //#############################################################################################
-bool APP_GetMeasure(float *_weight){
+bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
 	bool stable=false;
-	*_weight = 123456; 
+	int tempVal =0;
+	*_weight = 12.3456; 
+	float x=0;
 	stable=true;
+	
+	switch(p_MenuParam->decimalPoint){
+		case dp_0:
+			break;
+		case dp_0_0:
+			tempVal = (*_weight)*10;
+			x = tempVal*0.1;
+			break;
+		case dp_0_00:
+			tempVal = (*_weight)*100;
+			x = tempVal*0.01;
+			break;
+		case dp_0_000:
+			tempVal = (*_weight)*1000;
+			x = tempVal*0.001;
+			break;
+		case dp_0_0000:
+			tempVal = (*_weight)*10000;
+			x =  tempVal*0.0001;
+			break;
+	}
+	*_weight = x;
 	return stable;
+
+	
+	
 }
 
 
@@ -434,26 +637,65 @@ bool APP_GetMeasure(float *_weight){
 //                                           -------- 
 //#############################################################################################
 
-bool APP_Show_Weight(float *_weight){
-	char array[10]="";
+bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam){
+	uint8_t array[10]="";
 	bool stable=false;
-	stable = APP_GetMeasure(_weight);
+	uint8_t buffer[7]="";
+	int len = 0;
+	stable = APP_GetMeasure(_weight,p_MenuParam);
+	
+	switch(p_MenuParam->decimalPoint){
+		case dp_0:
+			if((*_weight) > 999999){(*_weight) =999999;}
+			len = sprintf((char*)(&array[0]),"%d",(int)(*_weight));len+=1;
+			break;
+		case dp_0_0:
+			if((*_weight) > 99999){(*_weight) =99999;}
+			len = sprintf((char*)(&array[0]),"%.1f",(*_weight));
+			break;
+		case dp_0_00:
+			if((*_weight) > 9999){(*_weight) =9999.9999;}
+			len = sprintf((char*)(&array[0]),"%.2f",(*_weight));
+			break;
+		case dp_0_000:
+			if((*_weight) > 999){(*_weight) =999.999;}
+			len = sprintf((char*)(&array[0]),"%.3f",(*_weight));
+			break;
+		case dp_0_0000:
+			if((*_weight) > 99){(*_weight) =99.9999;}
+			len = sprintf((char*)(&array[0]),"%.4f",(*_weight));
+			break;
+	}
+	for(int i=0;i<(7-len);i++){
+		buffer[i]  =0x20; // add padding
+	}
+	strncat((char *)buffer,(const char *)array,len);
+
+	p_LcdObj_S1->WriteString(0,0,(uint8_t *)buffer,&font_small,p_LcdObj_S1);
+	p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
 	if(stable){
 		p_LcdObj_S1->Spoint(16,1,p_LcdObj_S1); // stable icon on 
+	  p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
 	}
 	else{
 		p_LcdObj_S1->Spoint(16,0,p_LcdObj_S1); // stable icon off 
+	  p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
 	}
-	sprintf(&array[0],"%f",*_weight);
-	p_LcdObj_S1->WriteString(0,0,(uint8_t *)array,&font_small,p_LcdObj_S1);
-	p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
 	
 	return stable;
 }
 
 
+uint32_t _pow(uint32_t x,uint32_t y){
+	uint32_t retVal=1;
+	for(int i=0;i<y;i++){
+		retVal *= x;
+	}
+	return retVal;
+}
 
 
+	
 //#############################################################################################
 //                                           END
 //#############################################################################################

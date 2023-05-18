@@ -18,9 +18,9 @@
 	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"costumLcd.c"
-	.file	1 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "..\\Inc/costumLcd.h"
+	.file	1 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "..\\Inc/costumLcd.h"
 	.file	2 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/spi_reg.h"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/spi_reg.h"
 	.section	.text.SCREEN_1_AIP_ResetPin,"ax",%progbits
 	.hidden	SCREEN_1_AIP_ResetPin           @ -- Begin function SCREEN_1_AIP_ResetPin
 	.weak	SCREEN_1_AIP_ResetPin
@@ -30,7 +30,7 @@
 	.thumb_func
 SCREEN_1_AIP_ResetPin:
 .Lfunc_begin0:
-	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../src/costumLcd.c"
+	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../src/costumLcd.c"
 	.loc	4 13 0                          @ ../src/costumLcd.c:13:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -3758,7 +3758,7 @@ __arm_cp.22_2:
 .Linfo_string1:
 	.asciz	"../src\\costumLcd.c"           @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=87
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=87
 .Linfo_string3:
 	.asciz	"Init"                          @ string offset=135
 .Linfo_string4:

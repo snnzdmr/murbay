@@ -7,7 +7,7 @@
  * @copyright (C) 2021 Nuvoton Technology Corp. All rights reserved.
  ******************************************************************************/
 
-#include "scale_v1.h"
+#include "scale_v2.h"
 
 void FMC_Init()
 {
@@ -685,6 +685,11 @@ void GPIO_Init()
     NVIC_EnableIRQ(GPD_IRQn);
 
 }
+void I2C1_Init()
+{
+    I2C_Open(I2C1, 400000);
+
+}
 /*--------------------------------------------------------------------------------------------*/
 /* SPII2S                                                                                     */
 /*--------------------------------------------------------------------------------------------*/
@@ -717,7 +722,7 @@ void TIMER0_Init()
     TIMER_EnableInt(TIMER0);
 
     NVIC_EnableIRQ(TMR0_IRQn);
-	
+
 }
 
 void TIMER1_Init()
@@ -743,7 +748,6 @@ void UART2_Init()
 
     /* RX FIFO Interrupt Trigger Level */
     UART2->FIFO = (UART2->FIFO & ~ UART_FIFO_RFITL_Msk) | UART_FIFO_RFITL_1BYTE;
-	
 
 }
 void WDT_Init(void)
@@ -768,6 +772,8 @@ void Periph_Init(void)
     UART2_Init();
 
     GPIO_Init();
+
+    I2C1_Init();
 
     SPII2S0_Init() ;
 

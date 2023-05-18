@@ -1,4 +1,4 @@
-./obj/main.o: ..\main.c ..\scale_v1.h \
+./obj/main.o: ..\main.c ..\scale_v2.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \
@@ -73,5 +73,5 @@
   ..\..\..\..\Library\StdDriver\inc\scuart.h \
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
   ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h \
-  ..\Inc\costumLcd.h ..\Inc\font.h ..\Inc\app.h \
+  ..\Inc\costumLcd.h ..\Inc\font.h ..\Inc\app.h ..\Inc\menu.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h

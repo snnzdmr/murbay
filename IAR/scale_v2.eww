@@ -2,7 +2,7 @@
 
 <workspace>
   <project>
-    <path>$WS_DIR$\scale_v1.ewp</path>
+    <path>$WS_DIR$\scale_v2.ewp</path>
   </project>
   <batchBuild/>
 </workspace>

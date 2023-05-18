@@ -19,7 +19,7 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"clk_conf.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
 	.section	.text.Clock_Init,"ax",%progbits
 	.hidden	Clock_Init                      @ -- Begin function Clock_Init
 	.globl	Clock_Init
@@ -29,8 +29,8 @@
 	.thumb_func
 Clock_Init:
 .Lfunc_begin0:
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../clk_conf.c"
-	.loc	3 41 0                          @ ../clk_conf.c:41:0
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../clk_conf.c"
+	.loc	3 42 0                          @ ../clk_conf.c:42:0
 	.fnstart
 	.cfi_sections .debug_frame
 	.cfi_startproc
@@ -45,85 +45,88 @@ Clock_Init:
 	.cfi_def_cfa_offset 40
 	ldr	r0, __arm_cp.0_0
 .Ltmp0:
-	.loc	3 63 5 prologue_end             @ ../clk_conf.c:63:5
+	.loc	3 64 5 prologue_end             @ ../clk_conf.c:64:5
 	bl	CLK_EnableXtalRC
 	movs	r0, #89
-	.loc	3 66 5                          @ ../clk_conf.c:66:5
+	.loc	3 67 5                          @ ../clk_conf.c:67:5
 	bl	CLK_WaitClockReady
 	movs	r1, #0
-	.loc	3 69 5                          @ ../clk_conf.c:69:5
+	.loc	3 70 5                          @ ../clk_conf.c:70:5
 	str	r1, [sp, #28]                   @ 4-byte Spill
 	mov	r0, r1
 	bl	CLK_SetHCLK
 	ldr	r0, [sp, #28]                   @ 4-byte Reload
 	ldr	r1, __arm_cp.0_1
-	.loc	3 72 18                         @ ../clk_conf.c:72:18
+	.loc	3 73 18                         @ ../clk_conf.c:73:18
 	str	r0, [r1]
 	movs	r0, #15
-	.loc	3 75 5                          @ ../clk_conf.c:75:5
-	bl	CLK_EnableModuleClock
-	movs	r0, #2
 	.loc	3 76 5                          @ ../clk_conf.c:76:5
 	bl	CLK_EnableModuleClock
 	ldr	r0, __arm_cp.0_2
 	.loc	3 77 5                          @ ../clk_conf.c:77:5
-	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	CLK_EnableModuleClock
+	movs	r0, #2
+	.loc	3 78 5                          @ ../clk_conf.c:78:5
 	bl	CLK_EnableModuleClock
 	ldr	r0, __arm_cp.0_3
-	.loc	3 78 5                          @ ../clk_conf.c:78:5
-	str	r0, [sp, #8]                    @ 4-byte Spill
+	.loc	3 79 5                          @ ../clk_conf.c:79:5
+	str	r0, [sp, #4]                    @ 4-byte Spill
 	bl	CLK_EnableModuleClock
 	ldr	r0, __arm_cp.0_4
-	.loc	3 79 5                          @ ../clk_conf.c:79:5
-	str	r0, [sp, #12]                   @ 4-byte Spill
+	.loc	3 80 5                          @ ../clk_conf.c:80:5
+	str	r0, [sp, #8]                    @ 4-byte Spill
 	bl	CLK_EnableModuleClock
 	ldr	r0, __arm_cp.0_5
-	.loc	3 80 5                          @ ../clk_conf.c:80:5
+	.loc	3 81 5                          @ ../clk_conf.c:81:5
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	CLK_EnableModuleClock
+	ldr	r0, __arm_cp.0_6
+	.loc	3 82 5                          @ ../clk_conf.c:82:5
 	str	r0, [sp, #16]                   @ 4-byte Spill
 	bl	CLK_EnableModuleClock
 	movs	r0, #43
 	lsls	r0, r0, #25
-	.loc	3 81 5                          @ ../clk_conf.c:81:5
+	.loc	3 83 5                          @ ../clk_conf.c:83:5
 	str	r0, [sp, #20]                   @ 4-byte Spill
 	bl	CLK_EnableModuleClock
-	ldr	r0, __arm_cp.0_6
-	.loc	3 82 5                          @ ../clk_conf.c:82:5
+	ldr	r0, __arm_cp.0_7
+	.loc	3 84 5                          @ ../clk_conf.c:84:5
 	str	r0, [sp, #24]                   @ 4-byte Spill
 	bl	CLK_EnableModuleClock
 	ldr	r0, [sp, #4]                    @ 4-byte Reload
 	ldr	r2, [sp, #28]                   @ 4-byte Reload
 	movs	r1, #32
-	.loc	3 85 5                          @ ../clk_conf.c:85:5
+	.loc	3 87 5                          @ ../clk_conf.c:87:5
 	bl	CLK_SetModuleClock
 	ldr	r0, [sp, #8]                    @ 4-byte Reload
 	ldr	r2, [sp, #28]                   @ 4-byte Reload
 	movw	r1, #1792
-	.loc	3 86 5                          @ ../clk_conf.c:86:5
+	.loc	3 88 5                          @ ../clk_conf.c:88:5
 	bl	CLK_SetModuleClock
 	ldr	r0, [sp, #12]                   @ 4-byte Reload
 	ldr	r2, [sp, #28]                   @ 4-byte Reload
 	movw	r1, #28672
-	.loc	3 87 5                          @ ../clk_conf.c:87:5
+	.loc	3 89 5                          @ ../clk_conf.c:89:5
 	bl	CLK_SetModuleClock
 	ldr	r0, [sp, #16]                   @ 4-byte Reload
 	ldr	r2, [sp, #28]                   @ 4-byte Reload
 	movs	r1, #1
 	lsls	r1, r1, #26
-	.loc	3 88 5                          @ ../clk_conf.c:88:5
+	.loc	3 90 5                          @ ../clk_conf.c:90:5
 	bl	CLK_SetModuleClock
 	ldr	r0, [sp, #20]                   @ 4-byte Reload
 	ldr	r2, [sp, #28]                   @ 4-byte Reload
 	movs	r1, #3
-	.loc	3 89 5                          @ ../clk_conf.c:89:5
+	.loc	3 91 5                          @ ../clk_conf.c:91:5
 	bl	CLK_SetModuleClock
 	ldr	r0, [sp, #24]                   @ 4-byte Reload
 	ldr	r2, [sp, #28]                   @ 4-byte Reload
 	movs	r1, #8
-	.loc	3 90 5                          @ ../clk_conf.c:90:5
+	.loc	3 92 5                          @ ../clk_conf.c:92:5
 	bl	CLK_SetModuleClock
-	.loc	3 94 5                          @ ../clk_conf.c:94:5
-	bl	SystemCoreClockUpdate
 	.loc	3 96 5                          @ ../clk_conf.c:96:5
+	bl	SystemCoreClockUpdate
+	.loc	3 98 5                          @ ../clk_conf.c:98:5
 	add	sp, #32
 	pop	{r7, pc}
 .Ltmp1:
@@ -139,25 +142,29 @@ __arm_cp.0_1:
 .Lcpi_end1:
 	.size	__arm_cp.0_1, .Lcpi_end1-__arm_cp.0_1
 __arm_cp.0_2:
-	.long	1715470349                      @ 0x6640000d
+	.long	1073741833                      @ 0x40000009
 .Lcpi_end2:
 	.size	__arm_cp.0_2, .Lcpi_end2-__arm_cp.0_2
 __arm_cp.0_3:
-	.long	1585446914                      @ 0x5e800002
+	.long	1715470349                      @ 0x6640000d
 .Lcpi_end3:
 	.size	__arm_cp.0_3, .Lcpi_end3-__arm_cp.0_3
 __arm_cp.0_4:
-	.long	1589641219                      @ 0x5ec00003
+	.long	1585446914                      @ 0x5e800002
 .Lcpi_end4:
 	.size	__arm_cp.0_4, .Lcpi_end4-__arm_cp.0_4
 __arm_cp.0_5:
-	.long	2139896850                      @ 0x7f8c3c12
+	.long	1589641219                      @ 0x5ec00003
 .Lcpi_end5:
 	.size	__arm_cp.0_5, .Lcpi_end5-__arm_cp.0_5
 __arm_cp.0_6:
-	.long	1444937728                      @ 0x56200000
+	.long	2139896850                      @ 0x7f8c3c12
 .Lcpi_end6:
 	.size	__arm_cp.0_6, .Lcpi_end6-__arm_cp.0_6
+__arm_cp.0_7:
+	.long	1444937728                      @ 0x56200000
+.Lcpi_end7:
+	.size	__arm_cp.0_7, .Lcpi_end7-__arm_cp.0_7
 .Lfunc_end0:
 	.size	Clock_Init, .Lfunc_end0-Clock_Init
 	.cfi_endproc
@@ -566,7 +573,7 @@ __arm_cp.0_6:
 	.byte	93
 	.long	.Linfo_string36                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
-	.byte	40                              @ DW_AT_decl_line
+	.byte	41                              @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	0                               @ End Of Children Mark
@@ -577,7 +584,7 @@ __arm_cp.0_6:
 .Linfo_string1:
 	.asciz	"..\\clk_conf.c"                @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=82
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=82
 .Linfo_string3:
 	.asciz	"PWRCTL"                        @ string offset=130
 .Linfo_string4:

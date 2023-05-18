@@ -22,7 +22,7 @@
 
 #include "Inc/SparkFun_NAU7802.h"
 #include "Inc/millis.h"
-
+#include <stdlib.h>
 #define  NAU7802_SLAVE_ADDR      0x2A; //Default unshifted 7-bit address of the NAU7802
 //y = mx+b
 int32_t _zeroOffset;      //This is b
@@ -35,6 +35,55 @@ float _calibrationFactor; //This is m. User provides this number so that we can 
 //If initialize is true (or not specified), default init and calibration is performed
 //If initialize is false, then it's up to the caller to initalize and calibrate
 //Returns true upon completion
+
+SCALE *newScaleObj(){
+	SCALE *p = (SCALE *)malloc(sizeof(SCALE));
+	if(p == NULL){
+#if (LOG_STATE)
+printf("Memory Allocation Failed (SCALE)\n");
+#endif
+		while(1);
+	}else{
+#if (LOG_STATE)
+printf("Memory Allocation Successful. (SCALE) %d bytes used ! \n",sizeof(KEYPAD));
+#endif
+		
+	}
+	
+	p->begin                       = & NAU7802_begin;
+	p->isConnected                 = & NAU7802_isConnected;
+	p->available                   = & NAU7802_available;
+	p->getReading                  = & NAU7802_getReading;
+	p->getAverage                  = & NAU7802_getAverage;
+	p->calculateZeroOffset         = & NAU7802_calculateZeroOffset;
+	p->setZeroOffset               = & NAU7802_setZeroOffset;
+	p->getZeroOffset               = & NAU7802_getZeroOffset;
+	p->calculateCalibrationFactor  = & NAU7802_calculateCalibrationFactor;
+	p->setCalibrationFactor        = & NAU7802_setCalibrationFactor;
+	p->getCalibrationFactor        = & NAU7802_getCalibrationFactor;
+	p->getWeight                   = & NAU7802_getWeight;
+	p->setGain                     = & NAU7802_setGain;
+	p->setLDO                      = & NAU7802_setLDO;
+	p->setSampleRate               = & NAU7802_setSampleRate;
+	p->setChannel                  = & NAU7802_setChannel;
+	p->calibrateAFE                = & NAU7802_calibrateAFE;
+	p->beginCalibrateAFE           = & NAU7802_beginCalibrateAFE;
+	p->waitForCalibrateAFE         = & NAU7802_waitForCalibrateAFE;
+	p->calAFEStatus                = & NAU7802_calAFEStatus;
+	p->reset                       = & NAU7802_reset;
+	p->powerUp                     = & NAU7802_powerUp;
+	p->powerDown                   = & NAU7802_powerDown;
+	p->setIntPolarityHigh          = & NAU7802_setIntPolarityHigh;
+	p->setIntPolarityLow           = & NAU7802_setIntPolarityLow;
+	p->getRevisionCode             = & NAU7802_getRevisionCode;
+	p->setBit                      = & NAU7802_setBit;
+	p->clearBit                    = & NAU7802_clearBit;
+	p->getBit                      = & NAU7802_getBit;
+	p->getRegister                 = & NAU7802_getRegister;
+	p->setRegister                 = & NAU7802_setRegister;
+	return p;
+	
+}
 
 bool NAU7802_begin()
 {

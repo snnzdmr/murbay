@@ -19,7 +19,7 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"pin_conf.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/sys_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/sys_reg.h"
 	.section	.text.Pin_Init,"ax",%progbits
 	.hidden	Pin_Init                        @ -- Begin function Pin_Init
 	.globl	Pin_Init
@@ -29,47 +29,48 @@
 	.thumb_func
 Pin_Init:
 .Lfunc_begin0:
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../pin_conf.c"
-	.loc	3 120 0                         @ ../pin_conf.c:120:0
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../pin_conf.c"
+	.loc	3 126 0                         @ ../pin_conf.c:126:0
 	.fnstart
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	ldr	r1, __arm_cp.0_0
-	movs	r0, #0
-.Ltmp0:
-	.loc	3 131 19 prologue_end           @ ../pin_conf.c:131:19
-	str	r0, [r1]
-	ldr	r2, __arm_cp.0_1
-	ldr	r1, __arm_cp.0_2
-	.loc	3 132 19                        @ ../pin_conf.c:132:19
-	str	r1, [r2]
-	ldr	r1, __arm_cp.0_3
-	.loc	3 134 19                        @ ../pin_conf.c:134:19
-	str	r0, [r1]
-	ldr	r2, __arm_cp.0_4
-	movs	r1, #7
-	.loc	3 135 19                        @ ../pin_conf.c:135:19
-	str	r1, [r2]
-	ldr	r1, __arm_cp.0_5
-	.loc	3 136 19                        @ ../pin_conf.c:136:19
-	str	r0, [r1]
 	movs	r1, #1
-	lsls	r1, r1, #23
-	ldr	r2, __arm_cp.0_6
-	.loc	3 137 19                        @ ../pin_conf.c:137:19
-	str	r1, [r2]
-	ldr	r1, __arm_cp.0_7
-	.loc	3 139 19                        @ ../pin_conf.c:139:19
-	str	r0, [r1]
-	ldr	r1, __arm_cp.0_8
+	lsls	r0, r1, #22
+	ldr	r2, __arm_cp.0_0
+.Ltmp0:
+	.loc	3 137 19 prologue_end           @ ../pin_conf.c:137:19
+	str	r0, [r2]
+	ldr	r2, __arm_cp.0_1
+	ldr	r0, __arm_cp.0_2
+	.loc	3 138 19                        @ ../pin_conf.c:138:19
+	str	r0, [r2]
+	ldr	r2, __arm_cp.0_3
+	movs	r0, #0
 	.loc	3 140 19                        @ ../pin_conf.c:140:19
+	str	r0, [r2]
+	ldr	r3, __arm_cp.0_4
+	ldr	r2, __arm_cp.0_5
+	.loc	3 141 19                        @ ../pin_conf.c:141:19
+	str	r2, [r3]
+	ldr	r2, __arm_cp.0_6
+	.loc	3 142 19                        @ ../pin_conf.c:142:19
+	str	r0, [r2]
+	lsls	r1, r1, #23
+	ldr	r2, __arm_cp.0_7
+	.loc	3 143 19                        @ ../pin_conf.c:143:19
+	str	r1, [r2]
+	ldr	r1, __arm_cp.0_8
+	.loc	3 145 19                        @ ../pin_conf.c:145:19
 	str	r0, [r1]
 	ldr	r1, __arm_cp.0_9
-	ldr	r0, __arm_cp.0_10
-	.loc	3 141 19                        @ ../pin_conf.c:141:19
+	.loc	3 146 19                        @ ../pin_conf.c:146:19
 	str	r0, [r1]
-	.loc	3 143 5                         @ ../pin_conf.c:143:5
+	ldr	r1, __arm_cp.0_10
+	ldr	r0, __arm_cp.0_11
+	.loc	3 147 19                        @ ../pin_conf.c:147:19
+	str	r0, [r1]
+	.loc	3 149 5                         @ ../pin_conf.c:149:5
 	bx	lr
 .Ltmp1:
 	.p2align	2
@@ -96,29 +97,33 @@ __arm_cp.0_4:
 .Lcpi_end4:
 	.size	__arm_cp.0_4, .Lcpi_end4-__arm_cp.0_4
 __arm_cp.0_5:
-	.long	1073741892                      @ 0x40000044
+	.long	16391                           @ 0x4007
 .Lcpi_end5:
 	.size	__arm_cp.0_5, .Lcpi_end5-__arm_cp.0_5
 __arm_cp.0_6:
-	.long	1073741888                      @ 0x40000040
+	.long	1073741892                      @ 0x40000044
 .Lcpi_end6:
 	.size	__arm_cp.0_6, .Lcpi_end6-__arm_cp.0_6
 __arm_cp.0_7:
-	.long	1073741900                      @ 0x4000004c
+	.long	1073741888                      @ 0x40000040
 .Lcpi_end7:
 	.size	__arm_cp.0_7, .Lcpi_end7-__arm_cp.0_7
 __arm_cp.0_8:
-	.long	1073741896                      @ 0x40000048
+	.long	1073741900                      @ 0x4000004c
 .Lcpi_end8:
 	.size	__arm_cp.0_8, .Lcpi_end8-__arm_cp.0_8
 __arm_cp.0_9:
-	.long	1073741912                      @ 0x40000058
+	.long	1073741896                      @ 0x40000048
 .Lcpi_end9:
 	.size	__arm_cp.0_9, .Lcpi_end9-__arm_cp.0_9
 __arm_cp.0_10:
-	.long	43758                           @ 0xaaee
+	.long	1073741912                      @ 0x40000058
 .Lcpi_end10:
 	.size	__arm_cp.0_10, .Lcpi_end10-__arm_cp.0_10
+__arm_cp.0_11:
+	.long	43758                           @ 0xaaee
+.Lcpi_end11:
+	.size	__arm_cp.0_11, .Lcpi_end11-__arm_cp.0_11
 .Lfunc_end0:
 	.size	Pin_Init, .Lfunc_end0-Pin_Init
 	.cfi_endproc
@@ -710,7 +715,7 @@ __arm_cp.0_10:
 	.byte	93
 	.long	.Linfo_string60                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
-	.byte	119                             @ DW_AT_decl_line
+	.byte	125                             @ DW_AT_decl_line
                                         @ DW_AT_prototyped
                                         @ DW_AT_external
 	.byte	0                               @ End Of Children Mark
@@ -721,7 +726,7 @@ __arm_cp.0_10:
 .Linfo_string1:
 	.asciz	"..\\pin_conf.c"                @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=82
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=82
 .Linfo_string3:
 	.asciz	"PDID"                          @ string offset=130
 .Linfo_string4:

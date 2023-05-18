@@ -1,5 +1,5 @@
 ./obj/app.o: ..\src\app.c ..\Inc\app.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\scale_v1.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\scale_v2.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \
@@ -73,6 +73,7 @@
   ..\..\..\..\Library\StdDriver\inc\scuart.h \
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
   ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h \
-  ..\Inc\costumLcd.h ..\Inc\font.h \
+  ..\Inc\costumLcd.h ..\Inc\font.h ..\Inc\menu.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\Inc\keypad.h \
-  ..\Inc\menu.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h
+  ..\Inc\SparkFun_NAU7802.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h

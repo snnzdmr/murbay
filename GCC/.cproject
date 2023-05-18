@@ -41,7 +41,7 @@
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1396871541" name="Print size" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize" value="true" valueType="boolean" />
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.architecture.1619563126" name="Architecture" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.architecture" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.arch.armv8-m-base" valueType="enumerated" />
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform.1431590075" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform" />
-							<builder buildPath="${workspace_loc:/scale_v1}/Release" id="ilg.gnuarmeclipse.managedbuild.cross.builder.268928092" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder" />
+							<builder buildPath="${workspace_loc:/scale_v2}/Release" id="ilg.gnuarmeclipse.managedbuild.cross.builder.268928092" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder" />
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.1267397851" name="Cross ARM GNU Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.686207293" name="Use preprocessor" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" value="true" valueType="boolean" />
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.212887177" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input" />
@@ -151,10 +151,10 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders" />
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/scale_v1" />
+			<resource resourceType="PROJECT" workspacePath="/scale_v2" />
 		</configuration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="scale_v1.null.531500838" name="scale_v1" />
+		<project id="scale_v2.null.531500838" name="scale_v2" />
 	</storageModule>
 </cproject>

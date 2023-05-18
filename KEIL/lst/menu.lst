@@ -18,8 +18,8 @@
 	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"menu.c"
-	.file	1 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "..\\Inc/menu.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../src/menu.c"
+	.file	1 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "..\\Inc/menu.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../src/menu.c"
 	.file	3 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
 	.section	.text.build,"ax",%progbits
 	.hidden	build                           @ -- Begin function build
@@ -8853,7 +8853,7 @@ f11_rs232:
 .Linfo_string1:
 	.asciz	"../src\\menu.c"                @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=82
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=82
 .Linfo_string3:
 	.asciz	"currentResolution"             @ string offset=130
 .Linfo_string4:

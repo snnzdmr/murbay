@@ -65,7 +65,7 @@ typedef unsigned int uintptr_t;
 typedef signed long long intmax_t;
 typedef unsigned long long uintmax_t;
 # 6 "..\\Inc/app.h" 2
-# 1 "..\\scale_v1.h" 1
+# 1 "..\\scale_v2.h" 1
 
 
 
@@ -395,7 +395,7 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 10 "..\\scale_v1.h" 2
+# 10 "..\\scale_v2.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 1 3
 # 58 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
 extern __attribute__((__nothrow__)) void *memcpy(void * __restrict ,
@@ -512,7 +512,7 @@ extern __attribute__((__nothrow__)) void _membitmovehl(void * , const void * , i
 extern __attribute__((__nothrow__)) void _membitmovehb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-# 11 "..\\scale_v1.h" 2
+# 11 "..\\scale_v2.h" 2
 # 1 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 1
 # 13 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h"
 # 1 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 1
@@ -4001,9 +4001,9 @@ void TK_ClearTKIF(void);
 void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 660 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 2
 # 14 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 2
-# 12 "..\\scale_v1.h" 2
+# 12 "..\\scale_v2.h" 2
 # 1 "../periph_conf.h" 1
-# 13 "..\\scale_v1.h" 2
+# 13 "..\\scale_v2.h" 2
 # 7 "..\\Inc/app.h" 2
 # 1 "..\\Inc/costumLcd.h" 1
 
@@ -4188,51 +4188,6 @@ void SCREEN_3_AIP_ResetPin(uint8_t _val);
 void SCREEN_3_AIP_A0Pin(uint8_t _val);
 void SCREEN_3_AIP_CSPin(uint8_t _val);
 # 8 "..\\Inc/app.h" 2
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
-# 9 "..\\Inc/app.h" 2
-# 23 "..\\Inc/app.h"
-void ISR_timer();
-
-void APP_Init();
-void APP_SetBatteryLevel(uint8_t _level,AIP *p);
-void APP_SettingsHandle();
-void APP_Handle();
-uint8_t APP_StartScreen();
-void APP_All_Point_High(uint8_t selScreen);
-_Bool APP_GetMeasure(float *_weight);
-_Bool APP_Show_Weight(float *_weight);
-
-
- float customValueInput(char pressedKey,AIP *p);
-# 2 "../src/app.c" 2
-# 1 "..\\Inc/keypad.h" 1
-# 37 "..\\Inc/keypad.h"
-typedef struct
-{
- uint8_t ColumnSize;
- uint8_t RowSize;
- uint16_t LastKey;
-
-}KeyPad_t;
-
-typedef struct KEYPAD{
- void (*Init)(uint8_t,uint8_t);
- int16_t (*Scan)(uint8_t *);
- void (*setColumnPin)(uint8_t);
- void (*resetAllColumnPins)(void);
- int8_t (*ReadRowPin)(uint8_t);
-}KEYPAD;
-# 60 "..\\Inc/keypad.h"
-KEYPAD *newKeyPadObj();
-static void Init(uint8_t _columnSize,uint8_t _rowSize);
-static int16_t Scan(uint8_t *_longPress);
-
-
-
-static void setColumnPin(uint8_t _sel);
-static void resetAllColumnPins(void);
-static int8_t readRowPin(uint8_t _sel);
-# 3 "../src/app.c" 2
 # 1 "..\\Inc/menu.h" 1
 
 
@@ -4376,6 +4331,278 @@ void shw_f7b_off();
 void f7_Saved();
 void shw_f9a();
 void shw_f10a();
+# 9 "..\\Inc/app.h" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
+# 10 "..\\Inc/app.h" 2
+# 24 "..\\Inc/app.h"
+void ISR_timer();
+
+void APP_Init();
+void APP_SetBatteryLevel(uint8_t _level,AIP *p);
+void APP_SettingsHandle();
+void APP_Handle();
+uint8_t APP_StartScreen(MENU_Params *p_MenuParam);
+void APP_All_Point_High(uint8_t selScreen);
+_Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
+_Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
+
+
+float customValueInput(char pressedKey,AIP *p);
+uint32_t _pow(uint32_t x,uint32_t y);
+# 2 "../src/app.c" 2
+# 1 "..\\Inc/keypad.h" 1
+# 37 "..\\Inc/keypad.h"
+typedef struct
+{
+ uint8_t ColumnSize;
+ uint8_t RowSize;
+ uint16_t LastKey;
+
+}KeyPad_t;
+
+typedef struct KEYPAD{
+ void (*Init)(uint8_t,uint8_t);
+ int16_t (*Scan)(uint8_t *);
+ void (*setColumnPin)(uint8_t);
+ void (*resetAllColumnPins)(void);
+ int8_t (*ReadRowPin)(uint8_t);
+}KEYPAD;
+# 60 "..\\Inc/keypad.h"
+KEYPAD *newKeyPadObj();
+static void Init(uint8_t _columnSize,uint8_t _rowSize);
+static int16_t Scan(uint8_t *_longPress);
+
+
+
+static void setColumnPin(uint8_t _sel);
+static void resetAllColumnPins(void);
+static int8_t readRowPin(uint8_t _sel);
+# 3 "../src/app.c" 2
+# 1 "..\\Inc/SparkFun_NAU7802.h" 1
+# 29 "..\\Inc/SparkFun_NAU7802.h"
+typedef enum
+{
+  NAU7802_PU_CTRL = 0x00,
+  NAU7802_CTRL1,
+  NAU7802_CTRL2,
+  NAU7802_OCAL1_B2,
+  NAU7802_OCAL1_B1,
+  NAU7802_OCAL1_B0,
+  NAU7802_GCAL1_B3,
+  NAU7802_GCAL1_B2,
+  NAU7802_GCAL1_B1,
+  NAU7802_GCAL1_B0,
+  NAU7802_OCAL2_B2,
+  NAU7802_OCAL2_B1,
+  NAU7802_OCAL2_B0,
+  NAU7802_GCAL2_B3,
+  NAU7802_GCAL2_B2,
+  NAU7802_GCAL2_B1,
+  NAU7802_GCAL2_B0,
+  NAU7802_I2C_CONTROL,
+  NAU7802_ADCO_B2,
+  NAU7802_ADCO_B1,
+  NAU7802_ADCO_B0,
+  NAU7802_ADC = 0x15,
+  NAU7802_OTP_B1,
+  NAU7802_OTP_B0,
+  NAU7802_PGA = 0x1B,
+  NAU7802_PGA_PWR = 0x1C,
+  NAU7802_DEVICE_REV = 0x1F,
+} Scale_Registers;
+
+
+typedef enum
+{
+  NAU7802_PU_CTRL_RR = 0,
+  NAU7802_PU_CTRL_PUD,
+  NAU7802_PU_CTRL_PUA,
+  NAU7802_PU_CTRL_PUR,
+  NAU7802_PU_CTRL_CS,
+  NAU7802_PU_CTRL_CR,
+  NAU7802_PU_CTRL_OSCS,
+  NAU7802_PU_CTRL_AVDDS,
+} PU_CTRL_Bits;
+
+
+typedef enum
+{
+  NAU7802_CTRL1_GAIN = 2,
+  NAU7802_CTRL1_VLDO = 5,
+  NAU7802_CTRL1_DRDY_SEL = 6,
+  NAU7802_CTRL1_CRP = 7,
+} CTRL1_Bits;
+
+
+typedef enum
+{
+  NAU7802_CTRL2_CALMOD = 0,
+  NAU7802_CTRL2_CALS = 2,
+  NAU7802_CTRL2_CAL_ERROR = 3,
+  NAU7802_CTRL2_CRS = 4,
+  NAU7802_CTRL2_CHS = 7,
+} CTRL2_Bits;
+
+
+typedef enum
+{
+  NAU7802_PGA_CHP_DIS = 0,
+  NAU7802_PGA_INV = 3,
+  NAU7802_PGA_BYPASS_EN,
+  NAU7802_PGA_OUT_EN,
+  NAU7802_PGA_LDOMODE,
+  NAU7802_PGA_RD_OTP_SEL,
+} PGA_Bits;
+
+
+typedef enum
+{
+  NAU7802_PGA_PWR_PGA_CURR = 0,
+  NAU7802_PGA_PWR_ADC_CURR = 2,
+  NAU7802_PGA_PWR_MSTR_BIAS_CURR = 4,
+  NAU7802_PGA_PWR_PGA_CAP_EN = 7,
+} PGA_PWR_Bits;
+
+
+typedef enum
+{
+  NAU7802_LDO_2V4 = 0b111,
+  NAU7802_LDO_2V7 = 0b110,
+  NAU7802_LDO_3V0 = 0b101,
+  NAU7802_LDO_3V3 = 0b100,
+  NAU7802_LDO_3V6 = 0b011,
+  NAU7802_LDO_3V9 = 0b010,
+  NAU7802_LDO_4V2 = 0b001,
+  NAU7802_LDO_4V5 = 0b000,
+} NAU7802_LDO_Values;
+
+
+typedef enum
+{
+  NAU7802_GAIN_128 = 0b111,
+  NAU7802_GAIN_64 = 0b110,
+  NAU7802_GAIN_32 = 0b101,
+  NAU7802_GAIN_16 = 0b100,
+  NAU7802_GAIN_8 = 0b011,
+  NAU7802_GAIN_4 = 0b010,
+  NAU7802_GAIN_2 = 0b001,
+  NAU7802_GAIN_1 = 0b000,
+} NAU7802_Gain_Values;
+
+
+typedef enum
+{
+  NAU7802_SPS_320 = 0b111,
+  NAU7802_SPS_80 = 0b011,
+  NAU7802_SPS_40 = 0b010,
+  NAU7802_SPS_20 = 0b001,
+  NAU7802_SPS_10 = 0b000,
+} NAU7802_SPS_Values;
+
+
+typedef enum
+{
+  NAU7802_CHANNEL_1 = 0,
+  NAU7802_CHANNEL_2 = 1,
+} NAU7802_Channels;
+
+
+typedef enum
+{
+  NAU7802_CAL_SUCCESS = 0,
+  NAU7802_CAL_IN_PROGRESS = 1,
+  NAU7802_CAL_FAILURE = 2,
+} NAU7802_Cal_Status;
+
+
+typedef struct SCALE{
+  _Bool (*begin)(void);
+  _Bool (*isConnected)(void);
+  _Bool (*available)(void);
+  int32_t (*getReading)(void);
+  int32_t (*getAverage)(uint8_t);
+
+  void (*calculateZeroOffset)(uint8_t);
+  void (*setZeroOffset)(int32_t);
+  int32_t (*getZeroOffset)(void);
+
+  void (*calculateCalibrationFactor)(float, uint8_t);
+  void (*setCalibrationFactor)(float);
+  float (*getCalibrationFactor)(void);
+
+  float (*getWeight)(_Bool, uint8_t);
+
+  _Bool (*setGain)(uint8_t gainValue);
+  _Bool (*setLDO)(uint8_t ldoValue);
+  _Bool (*setSampleRate)(uint8_t rate);
+  _Bool (*setChannel)(uint8_t channelNumber);
+
+  _Bool (*calibrateAFE)(void);
+  void (*beginCalibrateAFE)(void);
+  _Bool (*waitForCalibrateAFE)(uint32_t);
+  NAU7802_Cal_Status (*calAFEStatus)(void);
+
+  _Bool (*reset)(void);
+
+  _Bool (*powerUp)(void);
+  _Bool (*powerDown)(void);
+
+  _Bool (*setIntPolarityHigh)(void);
+  _Bool (*setIntPolarityLow)(void);
+
+  uint8_t (*getRevisionCode)(void);
+
+  _Bool (*setBit)(uint8_t, uint8_t);
+  _Bool (*clearBit)(uint8_t, uint8_t);
+  _Bool (*getBit)(uint8_t, uint8_t);
+
+  uint8_t (*getRegister)(uint8_t);
+  _Bool (*setRegister)(uint8_t, uint8_t);
+}SCALE;
+
+ SCALE *newScaleObj();
+  _Bool NAU7802_begin();
+  _Bool NAU7802_isConnected();
+  _Bool NAU7802_available();
+  int32_t NAU7802_getReading();
+  int32_t NAU7802_getAverage(uint8_t samplesToTake);
+
+  void NAU7802_calculateZeroOffset(uint8_t averageAmount);
+  void NAU7802_setZeroOffset(int32_t newZeroOffset);
+  int32_t NAU7802_getZeroOffset();
+
+  void NAU7802_calculateCalibrationFactor(float weightOnScale, uint8_t averageAmount);
+  void NAU7802_setCalibrationFactor(float calFactor);
+  float NAU7802_getCalibrationFactor();
+
+  float NAU7802_getWeight(_Bool allowNegativeWeights, uint8_t samplesToTake);
+
+  _Bool NAU7802_setGain(uint8_t gainValue);
+  _Bool NAU7802_setLDO(uint8_t ldoValue);
+  _Bool NAU7802_setSampleRate(uint8_t rate);
+  _Bool NAU7802_setChannel(uint8_t channelNumber);
+
+  _Bool NAU7802_calibrateAFE();
+  void NAU7802_beginCalibrateAFE();
+  _Bool NAU7802_waitForCalibrateAFE(uint32_t timeout_ms);
+  NAU7802_Cal_Status NAU7802_calAFEStatus();
+
+  _Bool NAU7802_reset();
+
+  _Bool NAU7802_powerUp();
+  _Bool NAU7802_powerDown();
+
+  _Bool NAU7802_setIntPolarityHigh();
+  _Bool NAU7802_setIntPolarityLow();
+
+  uint8_t NAU7802_getRevisionCode();
+
+  _Bool NAU7802_setBit(uint8_t bitNumber, uint8_t registerAddress);
+  _Bool NAU7802_clearBit(uint8_t bitNumber, uint8_t registerAddress);
+  _Bool NAU7802_getBit(uint8_t bitNumber, uint8_t registerAddress);
+
+  uint8_t NAU7802_getRegister(uint8_t registerAddress);
+  _Bool NAU7802_setRegister(uint8_t registerAddress, uint8_t value);
 # 4 "../src/app.c" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
 # 91 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
@@ -4597,6 +4824,7 @@ Params _param2;
 Params _param3;
 MENU_Params m_Param;
 KEYPAD * p_KeypadObj;
+SCALE * p_ScaleObj;
 MENU * p_MenuObj;
 node * currentNode;
 FontDef *p_CurrentFont;
@@ -4645,6 +4873,12 @@ void APP_Init(){
 
   p_KeypadObj = newKeyPadObj();
   p_KeypadObj->Init(5,4);
+
+
+
+ p_ScaleObj = newScaleObj();
+ p_ScaleObj->begin();
+
 
  p_MenuObj = newMenuObj();
  p_MenuObj->Init();
@@ -4695,6 +4929,112 @@ void APP_SettingsHandle(){
   }
  }
 }
+
+float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
+ static uint8_t _id=0;
+ static float total = 0;
+ float templateValue = 0;
+ uint8_t buffer[7]="";
+ static uint8_t tempArray[7]={0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+ uint8_t len=0;
+ switch(pressedKey){
+   case 'c':
+    _id=0;
+     total=0;
+     memset(&tempArray[0],0x00,7);
+     switch(p_MenuParam->decimalPoint){
+      case dp_0:
+       p->WriteString(0,0,(uint8_t *)"     0",&font_small,p);
+       break;
+      case dp_0_0:
+       p->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p);
+       break;
+      case dp_0_00:
+       p->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p);
+       break;
+      case dp_0_000:
+       p->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p);
+       break;
+      case dp_0_0000:
+       p->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p);
+       break;
+     }
+    p->UpdateScreen(p);
+    break;
+   case 'z':
+    break;
+   case 't':
+    break;
+   case 'q':
+    break;
+   case 's':
+    break;
+   case 'p':
+    break;
+   case 'u':
+    break;
+   case 'm':
+    break;
+   case 'C':
+    break;
+   case '.':
+     total = total * 100;
+     switch(p_MenuParam->decimalPoint){
+      case dp_0:
+       if(total > 999999){total = total / 100;}
+       break;
+      case dp_0_0:
+       if(total > 99999){total = total / 100;}
+       break;
+      case dp_0_00:
+       if(total > 9999){total = total / 100;}
+       break;
+      case dp_0_000:
+       if(total > 999){total = total / 100;}
+       break;
+      case dp_0_0000:
+       if(total > 99){total = total / 100;}
+       break;
+     }
+
+   default:
+    if( _id<6){
+     if(pressedKey != '.'){
+      _id++;
+      templateValue = (pressedKey-'0');
+      templateValue = templateValue / (_pow(10,p_MenuParam->decimalPoint));
+      total = (total*10) + templateValue;
+     }
+     memset(&tempArray[0],0x00,7);
+     switch(p_MenuParam->decimalPoint){
+      case dp_0:
+       len = sprintf((char*)(&tempArray[0]),"%d",(int)total);len+=1;
+       break;
+      case dp_0_0:
+       len = sprintf((char*)(&tempArray[0]),"%.1f",total);
+       break;
+      case dp_0_00:
+       len = sprintf((char*)(&tempArray[0]),"%.2f",total);
+       break;
+      case dp_0_000:
+       len = sprintf((char*)(&tempArray[0]),"%.3f",total);
+       break;
+      case dp_0_0000:
+       len = sprintf((char*)(&tempArray[0]),"%.4f",total);
+       break;
+     }
+     for(int i=0;i<(7-len);i++){
+      buffer[i] =0x20;
+     }
+     strncat((char *)buffer,(const char *)tempArray,len);
+     p->WriteString(0,0,&buffer[0],&font_small,p);
+     p->UpdateScreen(p);
+    }
+    break;
+  }
+  return atof((const char *)tempArray);
+}
+
 float customValueInput(char pressedKey,AIP *p){
   static uint8_t pointCounter=0;
   static uint8_t _id=0;
@@ -4754,14 +5094,51 @@ float customValueInput(char pressedKey,AIP *p){
   return atof((const char *)tempArray);
 }
 
-float setPrice(char pressedKey,AIP *p){
- return customValueInput(pressedKey,p);
+float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
+ if(p_MenuParam->FixFloat == ff_float){
+  return customValueInput(pressedKey,p);
+ }
+ else if(p_MenuParam->FixFloat == ff_fix){
+  return customValueInputFix(pressedKey,p,p_MenuParam);
+ }
+ else{
+  return -1;
+ }
 }
-void APP_ShowTotal(float _totatl,float _wight){
- char array[20]="";
- sprintf(&array[0],"%f",(_totatl*_wight));
+void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){
+ uint8_t array[10]="";
+ uint8_t buffer[7]="";
+ int len=0;
+ float totalPrices = 0;
+ totalPrices = _price * _wight;
+ switch(p_MenuParam->decimalPoint){
+  case dp_0:
+   if(totalPrices > 999999){totalPrices=9999999;}
+   len = sprintf((char*)(&array[0]),"%d",(int)(totalPrices));len+=1;
+   break;
+  case dp_0_0:
+   if(totalPrices > 99999){totalPrices=99999.9;}
+   len = sprintf((char*)(&array[0]),"%.1f",totalPrices);
+   break;
+  case dp_0_00:
+   if(totalPrices > 9999){totalPrices=9999.99;}
+   len = sprintf((char*)(&array[0]),"%.2f",totalPrices);
+   break;
+  case dp_0_000:
+   if(totalPrices > 999){totalPrices=999.999;}
+   len = sprintf((char*)(&array[0]),"%.3f",totalPrices);
+   break;
+  case dp_0_0000:
+   if(totalPrices > 99){totalPrices=99.9999;}
+   len = sprintf((char*)(&array[0]),"%.4f",totalPrices);
+   break;
+ }
+ for(int i=0;i<(7-len);i++){
+  buffer[i] =0x20;
+ }
+ strncat((char *)buffer,(const char *)array,len);
 
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)array,&font_small,p_LcdObj_S3);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)buffer,&font_small,p_LcdObj_S3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 }
 void APP_Handle(){
@@ -4770,16 +5147,18 @@ void APP_Handle(){
  uint8_t longPres=0;
  float weight=0;
  float total = 0;
- ret = APP_StartScreen();
+
+ m_Param.decimalPoint = dp_0_00;
+ ret = APP_StartScreen(&m_Param);
  if(ret){
   APP_SettingsHandle();
  }
  while(1){
-  APP_Show_Weight(&weight);
+  APP_Show_Weight(&weight,&m_Param);
   pressedKey = p_KeypadObj->Scan(&longPres);
   if(pressedKey > -1 && longPres == 0){
-   total = setPrice((char)pressedKey,p_LcdObj_S2);
-   APP_ShowTotal(total,weight);
+   total = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
+   APP_ShowTotal(total,weight,&m_Param);
   }
 
   if(pressedKey > -1 && longPres == 1){
@@ -4833,7 +5212,7 @@ void SCREEN_3_AIP_CSPin(uint8_t _val){
  (*((volatile uint32_t *)(((((uint32_t)0x40000000UL) + 0x04800UL)+(0x40*(1))) + ((9)<<2))))=_val;
 }
 
-uint8_t APP_StartScreen(){
+uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
 
 
 
@@ -4848,7 +5227,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"999999",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"888888",&font_small,p_LcdObj_S1);
@@ -4860,7 +5239,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"888888",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"777777",&font_small,p_LcdObj_S1);
@@ -4872,7 +5251,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"777777",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"666666",&font_small,p_LcdObj_S1);
@@ -4884,7 +5263,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"666666",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"555555",&font_small,p_LcdObj_S1);
@@ -4896,7 +5275,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"555555",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"444444",&font_small,p_LcdObj_S1);
@@ -4908,7 +5287,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"444444",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"333333",&font_small,p_LcdObj_S1);
@@ -4920,7 +5299,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"333333",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"222222",&font_small,p_LcdObj_S1);
@@ -4932,7 +5311,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"222222",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"111111",&font_small,p_LcdObj_S1);
@@ -4944,7 +5323,7 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"111111",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"000000",&font_small,p_LcdObj_S1);
@@ -4956,15 +5335,39 @@ uint8_t APP_StartScreen(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"000000",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(200000);
+ CLK_SysTickLongDelay(100000);
 
- p_LcdObj_S1->ClearScreen(p_LcdObj_S1);
+
+ switch(p_MenuParam->decimalPoint){
+  case dp_0:
+   p_LcdObj_S1->WriteString(0,0,(uint8_t *)"     0",&font_small,p_LcdObj_S1);
+   p_LcdObj_S2->WriteString(0,0,(uint8_t *)"     0",&font_small,p_LcdObj_S2);
+   p_LcdObj_S3->WriteString(0,0,(uint8_t *)"     0",&font_small,p_LcdObj_S3);
+   break;
+  case dp_0_0:
+   p_LcdObj_S2->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p_LcdObj_S1);
+   p_LcdObj_S2->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p_LcdObj_S2);
+   p_LcdObj_S3->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p_LcdObj_S3);
+   break;
+  case dp_0_00:
+   p_LcdObj_S1->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p_LcdObj_S1);
+   p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p_LcdObj_S2);
+   p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p_LcdObj_S3);
+   break;
+  case dp_0_000:
+   p_LcdObj_S1->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p_LcdObj_S1);
+   p_LcdObj_S2->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p_LcdObj_S2);
+   p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p_LcdObj_S3);
+   break;
+  case dp_0_0000:
+   p_LcdObj_S1->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p_LcdObj_S1);
+   p_LcdObj_S2->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p_LcdObj_S2);
+   p_LcdObj_S3->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p_LcdObj_S3);
+   break;
+ }
+
  p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-
- p_LcdObj_S2->ClearScreen(p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
-
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 
  char pressedKey=0;
@@ -5004,11 +5407,38 @@ void APP_All_Point_High(uint8_t selScreen){
 
 
 
-_Bool APP_GetMeasure(float *_weight){
+_Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
  _Bool stable=0;
- *_weight = 123456;
+ int tempVal =0;
+ *_weight = 12.3456;
+ float x=0;
  stable=1;
+
+ switch(p_MenuParam->decimalPoint){
+  case dp_0:
+   break;
+  case dp_0_0:
+   tempVal = (*_weight)*10;
+   x = tempVal*0.1;
+   break;
+  case dp_0_00:
+   tempVal = (*_weight)*100;
+   x = tempVal*0.01;
+   break;
+  case dp_0_000:
+   tempVal = (*_weight)*1000;
+   x = tempVal*0.001;
+   break;
+  case dp_0_0000:
+   tempVal = (*_weight)*10000;
+   x = tempVal*0.0001;
+   break;
+ }
+ *_weight = x;
  return stable;
+
+
+
 }
 
 
@@ -5017,19 +5447,59 @@ _Bool APP_GetMeasure(float *_weight){
 
 
 
-_Bool APP_Show_Weight(float *_weight){
- char array[10]="";
+_Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam){
+ uint8_t array[10]="";
  _Bool stable=0;
- stable = APP_GetMeasure(_weight);
+ uint8_t buffer[7]="";
+ int len = 0;
+ stable = APP_GetMeasure(_weight,p_MenuParam);
+
+ switch(p_MenuParam->decimalPoint){
+  case dp_0:
+   if((*_weight) > 999999){(*_weight) =999999;}
+   len = sprintf((char*)(&array[0]),"%d",(int)(*_weight));len+=1;
+   break;
+  case dp_0_0:
+   if((*_weight) > 99999){(*_weight) =99999;}
+   len = sprintf((char*)(&array[0]),"%.1f",(*_weight));
+   break;
+  case dp_0_00:
+   if((*_weight) > 9999){(*_weight) =9999.9999;}
+   len = sprintf((char*)(&array[0]),"%.2f",(*_weight));
+   break;
+  case dp_0_000:
+   if((*_weight) > 999){(*_weight) =999.999;}
+   len = sprintf((char*)(&array[0]),"%.3f",(*_weight));
+   break;
+  case dp_0_0000:
+   if((*_weight) > 99){(*_weight) =99.9999;}
+   len = sprintf((char*)(&array[0]),"%.4f",(*_weight));
+   break;
+ }
+ for(int i=0;i<(7-len);i++){
+  buffer[i] =0x20;
+ }
+ strncat((char *)buffer,(const char *)array,len);
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)buffer,&font_small,p_LcdObj_S1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
  if(stable){
   p_LcdObj_S1->Spoint(16,1,p_LcdObj_S1);
+   p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
  }
  else{
   p_LcdObj_S1->Spoint(16,0,p_LcdObj_S1);
+   p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
  }
- sprintf(&array[0],"%f",*_weight);
- p_LcdObj_S1->WriteString(0,0,(uint8_t *)array,&font_small,p_LcdObj_S1);
- p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
 
  return stable;
+}
+
+
+uint32_t _pow(uint32_t x,uint32_t y){
+ uint32_t retVal=1;
+ for(int i=0;i<y;i++){
+  retVal *= x;
+ }
+ return retVal;
 }

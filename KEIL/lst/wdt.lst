@@ -19,7 +19,7 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"wdt.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/wdt_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/wdt_reg.h"
 	.section	.text.WDT_Open,"ax",%progbits
 	.hidden	WDT_Open                        @ -- Begin function WDT_Open
 	.globl	WDT_Open
@@ -29,7 +29,7 @@
 	.thumb_func
 WDT_Open:
 .Lfunc_begin0:
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/StdDriver/src/wdt.c"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/src/wdt.c"
 	.loc	3 55 0                          @ ../../../../Library/StdDriver/src/wdt.c:55:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -317,7 +317,7 @@ __arm_cp.0_1:
 .Linfo_string1:
 	.asciz	"../../../../Library/StdDriver/src\\wdt.c" @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=108
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=108
 .Linfo_string3:
 	.asciz	"CTL"                           @ string offset=156
 .Linfo_string4:

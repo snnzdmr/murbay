@@ -1,7 +1,7 @@
 #include "Inc/keypad.h"
 #include<stdlib.h>
 
-#include "scale_v1.h"
+#include "scale_v2.h"
 
 //#############################################################################################
 //                               GLOBAL VARIABLE & DEFINITONS

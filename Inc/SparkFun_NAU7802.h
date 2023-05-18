@@ -160,10 +160,55 @@ typedef enum
   NAU7802_CAL_FAILURE = 2,
 } NAU7802_Cal_Status;
 
-                                              //Default constructor
+
+typedef struct SCALE{   
+  bool (*begin)(void);
+  bool (*isConnected)(void);                                    //Returns true if device acks at the I2C address
+  bool (*available)(void);                          //Returns true if Cycle Ready bit is set (conversion is complete)
+  int32_t (*getReading)(void);                      //Returns 24-bit reading. Assumes CR Cycle Ready bit (ADC conversion complete) has been checked by .available()
+  int32_t (*getAverage)(uint8_t); //Return the average of a given number of readings
+
+  void (*calculateZeroOffset)(uint8_t); //Also called taring. Call this with nothing on the scale
+  void (*setZeroOffset)(int32_t);           //Sets the internal variable. Useful for users who are loading values from NVM.
+  int32_t (*getZeroOffset)(void);                             //Ask library for this value. Useful for storing value into NVM.
+
+  void (*calculateCalibrationFactor)(float, uint8_t); //Call this with the value of the thing on the scale. Sets the calibration factor based on the weight on scale and zero offset.
+  void (*setCalibrationFactor)(float);                                      //Pass a known calibration factor into library. Helpful if users is loading settings from NVM.
+  float (*getCalibrationFactor)(void);                                                    //Ask library for this value. Useful for storing value into NVM.
+
+  float (*getWeight)(bool, uint8_t); //Once you've set zero offset and cal factor, you can ask the library to do the calculations for you.
+
+  bool (*setGain)(uint8_t gainValue);        //Set the gain. x1, 2, 4, 8, 16, 32, 64, 128 are available
+  bool (*setLDO)(uint8_t ldoValue);          //Set the onboard Low-Drop-Out voltage regulator to a given value. 2.4, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5V are avaialable
+  bool (*setSampleRate)(uint8_t rate);       //Set the readings per second. 10, 20, 40, 80, and 320 samples per second is available
+  bool (*setChannel)(uint8_t channelNumber); //Select between 1 and 2
+
+  bool (*calibrateAFE)(void);                              //Synchronous calibration of the analog front end of the NAU7802. Returns true if CAL_ERR bit is 0 (no error)
+  void (*beginCalibrateAFE)(void);                         //Begin asynchronous calibration of the analog front end of the NAU7802. Poll for completion with calAFEStatus() or wait with waitForCalibrateAFE().
+  bool (*waitForCalibrateAFE)(uint32_t); //Wait for asynchronous AFE calibration to complete with optional timeout.
+  NAU7802_Cal_Status (*calAFEStatus)(void);                //Check calibration status.
+
+  bool (*reset)(void);//Resets all registers to Power Of Defaults
+
+  bool (*powerUp)(void);  //Power up digital and analog sections of scale, ~2mA
+  bool (*powerDown)(void);//Puts scale into low-power 200nA mode
+
+  bool (*setIntPolarityHigh)(void);//Set Int pin to be high when data is ready (default)
+  bool (*setIntPolarityLow)(void); //Set Int pin to be low when data is ready
+
+  uint8_t (*getRevisionCode)(void);//Get the revision code of this IC. Always 0x0F.
+
+  bool (*setBit)(uint8_t, uint8_t);   //Mask & set a given bit within a register
+  bool (*clearBit)(uint8_t, uint8_t); //Mask & clear a given bit within a register
+  bool (*getBit)(uint8_t, uint8_t);   //Return a given bit within a register
+
+  uint8_t (*getRegister)(uint8_t);             //Get contents of a register
+  bool (*setRegister)(uint8_t, uint8_t);
+}SCALE;
+  
+	SCALE *newScaleObj();	
   bool NAU7802_begin(); //Check communication and initialize sensor
   bool NAU7802_isConnected();                                      //Returns true if device acks at the I2C address
-
   bool NAU7802_available();                          //Returns true if Cycle Ready bit is set (conversion is complete)
   int32_t NAU7802_getReading();                      //Returns 24-bit reading. Assumes CR Cycle Ready bit (ADC conversion complete) has been checked by .available()
   int32_t NAU7802_getAverage(uint8_t samplesToTake); //Return the average of a given number of readings
@@ -204,6 +249,5 @@ typedef enum
 
   uint8_t NAU7802_getRegister(uint8_t registerAddress);             //Get contents of a register
   bool NAU7802_setRegister(uint8_t registerAddress, uint8_t value); //Send a given value to be written to given address. Return true if successful
-
 
 #endif

@@ -19,8 +19,8 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"timer.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/timer_reg.h"
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/timer_reg.h"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
 	.section	.text.TIMER_Open,"ax",%progbits
 	.hidden	TIMER_Open                      @ -- Begin function TIMER_Open
 	.globl	TIMER_Open
@@ -30,7 +30,7 @@
 	.thumb_func
 TIMER_Open:
 .Lfunc_begin0:
-	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/StdDriver/src/timer.c"
+	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/src/timer.c"
 	.loc	4 43 0                          @ ../../../../Library/StdDriver/src/timer.c:43:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -2673,7 +2673,7 @@ __arm_cp.13_0:
 .Linfo_string1:
 	.asciz	"../../../../Library/StdDriver/src\\timer.c" @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=110
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=110
 .Linfo_string3:
 	.asciz	"CTL"                           @ string offset=158
 .Linfo_string4:

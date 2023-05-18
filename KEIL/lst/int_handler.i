@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "../int_handler.c" 2
 # 11 "../int_handler.c"
-# 1 "../scale_v1.h" 1
+# 1 "../scale_v2.h" 1
 
 
 
@@ -336,7 +336,7 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 10 "../scale_v1.h" 2
+# 10 "../scale_v2.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 1 3
 # 58 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
 extern __attribute__((__nothrow__)) void *memcpy(void * __restrict ,
@@ -453,7 +453,7 @@ extern __attribute__((__nothrow__)) void _membitmovehl(void * , const void * , i
 extern __attribute__((__nothrow__)) void _membitmovehb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-# 11 "../scale_v1.h" 2
+# 11 "../scale_v2.h" 2
 # 1 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 1
 # 13 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h"
 # 1 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 1
@@ -3997,18 +3997,18 @@ void TK_ClearTKIF(void);
 void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 660 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 2
 # 14 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 2
-# 12 "../scale_v1.h" 2
+# 12 "../scale_v2.h" 2
 # 1 "../periph_conf.h" 1
-# 13 "../scale_v1.h" 2
+# 13 "../scale_v2.h" 2
 # 12 "../int_handler.c" 2
 # 1 "../Inc/millis.h" 1
 
 
 
-# 1 "..\\scale_v1.h" 1
-# 12 "..\\scale_v1.h"
+# 1 "..\\scale_v2.h" 1
+# 12 "..\\scale_v2.h"
 # 1 "../periph_conf.h" 1
-# 13 "..\\scale_v1.h" 2
+# 13 "..\\scale_v2.h" 2
 # 5 "../Inc/millis.h" 2
 
 void wdt_tickCounter(void);

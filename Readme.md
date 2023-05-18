@@ -3,6 +3,10 @@
 
 
 
+## V1.2
+
+- i2c geçici olarak rs232 pinleri ile değiştirildi sadece 4 numara 
+
 
 
 ## V1.1
@@ -11,7 +15,6 @@
 - Buzzer yok donanım olarak
 - Led kontrol yok donanım olarak
 - Geliştime status ledi donanım olarak yok 
-- Uart pinleri donanım alarak yok
 - Extern kullanıldı. İlerleyen süreçte extern lerden kurtarılması gerek .
 
 

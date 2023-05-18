@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>scale_v1</TargetName>
+      <TargetName>scale_v2</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\obj\</OutputDirectory>
-          <OutputName>scale_v1</OutputName>
+          <OutputName>scale_v2</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -415,6 +415,11 @@
               <FilePath>..\..\..\..\Library\StdDriver\src\gpio.c</FilePath>
             </File>
             <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Library\StdDriver\src\i2c.c</FilePath>
+            </File>
+            <File>
               <FileName>retarget.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\Library\StdDriver\src\retarget.c</FilePath>
@@ -497,6 +502,46 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>src</GroupName>
+          <Files>
+            <File>
+              <FileName>app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\app.c</FilePath>
+            </File>
+            <File>
+              <FileName>costumLcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\costumLcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>keypad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\keypad.c</FilePath>
+            </File>
+            <File>
+              <FileName>menu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>millis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\millis.c</FilePath>
+            </File>
+            <File>
+              <FileName>SparkFun_NAU7802.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SparkFun_NAU7802.c</FilePath>
+            </File>
+            <File>
+              <FileName>test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\test.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Inc</GroupName>
           <Files>
             <File>
@@ -520,11 +565,6 @@
               <FilePath>..\Inc\keypad.h</FilePath>
             </File>
             <File>
-              <FileName>test.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Inc\test.h</FilePath>
-            </File>
-            <File>
               <FileName>menu.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\menu.h</FilePath>
@@ -539,45 +579,10 @@
               <FileType>5</FileType>
               <FilePath>..\Inc\SparkFun_NAU7802.h</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>src</GroupName>
-          <Files>
             <File>
-              <FileName>app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\app.c</FilePath>
-            </File>
-            <File>
-              <FileName>costumLcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\costumLcd.c</FilePath>
-            </File>
-            <File>
-              <FileName>keypad.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\keypad.c</FilePath>
-            </File>
-            <File>
-              <FileName>test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\test.c</FilePath>
-            </File>
-            <File>
-              <FileName>menu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\menu.c</FilePath>
-            </File>
-            <File>
-              <FileName>millis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\millis.c</FilePath>
-            </File>
-            <File>
-              <FileName>SparkFun_NAU7802.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SparkFun_NAU7802.c</FilePath>
+              <FileName>test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\test.h</FilePath>
             </File>
           </Files>
         </Group>

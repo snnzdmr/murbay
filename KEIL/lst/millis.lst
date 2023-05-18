@@ -19,7 +19,7 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"millis.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../src/millis.c"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../src/millis.c"
 	.section	.text.wdt_tickCounter,"ax",%progbits
 	.hidden	wdt_tickCounter                 @ -- Begin function wdt_tickCounter
 	.globl	wdt_tickCounter
@@ -360,7 +360,7 @@ s_u32TickCnt:
 .Linfo_string1:
 	.asciz	"../src\\millis.c"              @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=84
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=84
 .Linfo_string3:
 	.asciz	"s_u32TickCnt"                  @ string offset=132
 .Linfo_string4:

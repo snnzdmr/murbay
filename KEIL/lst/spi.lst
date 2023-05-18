@@ -19,9 +19,9 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"spi.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/spi_reg.h"
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
-	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/sys_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/spi_reg.h"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
+	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/sys_reg.h"
 	.section	.text.SPI_Open,"ax",%progbits
 	.hidden	SPI_Open                        @ -- Begin function SPI_Open
 	.globl	SPI_Open
@@ -31,7 +31,7 @@
 	.thumb_func
 SPI_Open:
 .Lfunc_begin0:
-	.file	5 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/StdDriver/src/spi.c"
+	.file	5 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/src/spi.c"
 	.loc	5 48 0                          @ ../../../../Library/StdDriver/src/spi.c:48:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -6362,7 +6362,7 @@ SPII2S_SetFIFO:
 .Linfo_string1:
 	.asciz	"../../../../Library/StdDriver/src\\spi.c" @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=108
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=108
 .Linfo_string3:
 	.asciz	"CTL"                           @ string offset=156
 .Linfo_string4:

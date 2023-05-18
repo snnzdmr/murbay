@@ -610,7 +610,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>scale_v1.srec</state>
+          <state>scale_v2.srec</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -665,7 +665,7 @@
         </option>
         <option>
           <name>IlinkOutputFile</name>
-          <state>scale_v1.out</state>
+          <state>scale_v2.out</state>
         </option>
         <option>
           <name>IlinkDebugInfoEnable</name>
@@ -1578,7 +1578,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>scale_v1.srec</state>
+          <state>scale_v2.srec</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -1633,7 +1633,7 @@
         </option>
         <option>
           <name>IlinkOutputFile</name>
-          <state>scale_v1.out</state>
+          <state>scale_v2.out</state>
         </option>
         <option>
           <name>IlinkDebugInfoEnable</name>
@@ -1956,6 +1956,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\gpio.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\i2c.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\retarget.c</name>

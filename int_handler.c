@@ -8,7 +8,7 @@
  ******************************************************************************/
 
 /*!<Includes */
-#include "scale_v1.h"
+#include "scale_v2.h"
 #include "Inc/millis.h"
 void GPB_IRQHandler(void)
 {

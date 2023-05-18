@@ -386,7 +386,7 @@ void SCREEN_3_AIP_ResetPin(uint8_t _val);
 void SCREEN_3_AIP_A0Pin(uint8_t _val);
 void SCREEN_3_AIP_CSPin(uint8_t _val);
 # 3 "../src/menu.c" 2
-# 1 "..\\scale_v1.h" 1
+# 1 "..\\scale_v2.h" 1
 
 
 
@@ -716,7 +716,7 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 10 "..\\scale_v1.h" 2
+# 10 "..\\scale_v2.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 1 3
 # 58 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
 extern __attribute__((__nothrow__)) void *memcpy(void * __restrict ,
@@ -833,7 +833,7 @@ extern __attribute__((__nothrow__)) void _membitmovehl(void * , const void * , i
 extern __attribute__((__nothrow__)) void _membitmovehb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-# 11 "..\\scale_v1.h" 2
+# 11 "..\\scale_v2.h" 2
 # 1 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 1
 # 13 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h"
 # 1 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 1
@@ -4322,9 +4322,9 @@ void TK_ClearTKIF(void);
 void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 660 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 2
 # 14 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 2
-# 12 "..\\scale_v1.h" 2
+# 12 "..\\scale_v2.h" 2
 # 1 "../periph_conf.h" 1
-# 13 "..\\scale_v1.h" 2
+# 13 "..\\scale_v2.h" 2
 # 4 "../src/menu.c" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
 # 91 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
@@ -4540,28 +4540,30 @@ extern __attribute__((__nothrow__)) int __C_library_version_number(void);
 
 
 
-# 1 "..\\scale_v1.h" 1
-# 12 "..\\scale_v1.h"
+# 1 "..\\scale_v2.h" 1
+# 12 "..\\scale_v2.h"
 # 1 "../periph_conf.h" 1
-# 13 "..\\scale_v1.h" 2
+# 13 "..\\scale_v2.h" 2
 # 7 "..\\Inc/app.h" 2
 
+
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
-# 9 "..\\Inc/app.h" 2
-# 23 "..\\Inc/app.h"
+# 10 "..\\Inc/app.h" 2
+# 24 "..\\Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
 void APP_SetBatteryLevel(uint8_t _level,AIP *p);
 void APP_SettingsHandle();
 void APP_Handle();
-uint8_t APP_StartScreen();
+uint8_t APP_StartScreen(MENU_Params *p_MenuParam);
 void APP_All_Point_High(uint8_t selScreen);
-_Bool APP_GetMeasure(float *_weight);
-_Bool APP_Show_Weight(float *_weight);
+_Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
+_Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
 
 
- float customValueInput(char pressedKey,AIP *p);
+float customValueInput(char pressedKey,AIP *p);
+uint32_t _pow(uint32_t x,uint32_t y);
 # 6 "../src/menu.c" 2
 # 1 "..\\Inc/keypad.h" 1
 # 37 "..\\Inc/keypad.h"

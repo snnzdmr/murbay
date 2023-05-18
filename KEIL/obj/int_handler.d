@@ -1,4 +1,4 @@
-./obj/int_handler.o: ..\int_handler.c ..\scale_v1.h \
+./obj/int_handler.o: ..\int_handler.c ..\scale_v2.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h \

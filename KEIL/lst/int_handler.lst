@@ -19,9 +19,9 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"int_handler.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/gpio_reg.h"
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/timer_reg.h"
-	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/wdt_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/gpio_reg.h"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/timer_reg.h"
+	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/wdt_reg.h"
 	.section	.text.GPB_IRQHandler,"ax",%progbits
 	.hidden	GPB_IRQHandler                  @ -- Begin function GPB_IRQHandler
 	.globl	GPB_IRQHandler
@@ -31,7 +31,7 @@
 	.thumb_func
 GPB_IRQHandler:
 .Lfunc_begin0:
-	.file	5 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../int_handler.c"
+	.file	5 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../int_handler.c"
 	.loc	5 14 0                          @ ../int_handler.c:14:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -504,7 +504,7 @@ __arm_cp.6_0:
 	.thumb_func
 TIMER_GetIntFlag:
 .Lfunc_begin7:
-	.file	6 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" "../../../../Library/StdDriver/inc\\timer.h"
+	.file	6 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/inc\\timer.h"
 	.loc	6 408 0 is_stmt 1               @ ../../../../Library/StdDriver/inc\timer.h:408:0
 	.fnstart
 	.cfi_startproc
@@ -1475,7 +1475,7 @@ __arm_cp.10_2:
 .Linfo_string1:
 	.asciz	"..\\int_handler.c"             @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v1\\KEIL" @ string offset=85
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=85
 .Linfo_string3:
 	.asciz	"MODE"                          @ string offset=133
 .Linfo_string4:
