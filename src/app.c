@@ -2,6 +2,7 @@
 #include "Inc/keypad.h"
 #include "Inc/SparkFun_NAU7802.h"
 #include <stdlib.h>
+#include "Inc/eeproom.h"
 //#############################################################################################
 //                               GLOBAL VARIABLE & DEFINITONS
 //#############################################################################################
@@ -13,6 +14,7 @@ Params _param1;
 Params _param2;
 Params _param3;
 MENU_Params m_Param;
+workVariable _workVariable,*ptrWorkVariable;
 KEYPAD * p_KeypadObj;
 SCALE  * p_ScaleObj;
 MENU   * p_MenuObj;
@@ -31,6 +33,9 @@ FontDef font_small = {
 
 //#############################################################################################
 void APP_Init(){
+	readFlashMemoryInformation(&m_Param);
+	_workVariable.p_menuParams = &m_Param;
+	ptrWorkVariable =&_workVariable;
 	/****************************************/
 	_param1.A0 	  = &SCREEN_1_AIP_A0Pin;
 	_param1.Reset = &SCREEN_1_AIP_ResetPin;
@@ -68,6 +73,9 @@ void APP_Init(){
 	/****************************************/
 	p_ScaleObj = newScaleObj();
 	p_ScaleObj->begin();
+	p_ScaleObj->setZeroOffset(ptrWorkVariable->p_menuParams->ZeroOffset);
+	p_ScaleObj->setCalibrationFactor(ptrWorkVariable->p_menuParams->calibrationFactor);
+	p_ScaleObj->calibrateAFE();
 	
 	/****************************************/
 	p_MenuObj = newMenuObj();
@@ -154,6 +162,9 @@ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
 			case 'z':
 				break;
 			case 't':
+				p_ScaleObj->calculateZeroOffset(64);
+				p_MenuParam->ZeroOffset = p_ScaleObj->getZeroOffset();
+				writeFlashMemoryInformation(p_MenuParam);
 				break;
 			case 'q':
 				break;
@@ -194,6 +205,9 @@ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
 						templateValue = (pressedKey-'0'); //
 						templateValue = templateValue / (_pow(10,p_MenuParam->decimalPoint));
 						total = (total*10) + templateValue;
+					}
+					else{
+						_id+=2;	
 					}
 					memset(&tempArray[0],0x00,7);
 					switch(p_MenuParam->decimalPoint){
@@ -307,19 +321,19 @@ void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){
 			len = sprintf((char*)(&array[0]),"%d",(int)(totalPrices));len+=1;
 			break;
 		case dp_0_0:
-			if(totalPrices > 99999){totalPrices=99999.9;}
+			if(totalPrices > 99999){totalPrices=0.0;}
 			len = sprintf((char*)(&array[0]),"%.1f",totalPrices);
 			break;
 		case dp_0_00:
-			if(totalPrices > 9999){totalPrices=9999.99;}
+			if(totalPrices > 9999){totalPrices=0.00;}
 			len = sprintf((char*)(&array[0]),"%.2f",totalPrices);
 			break;
 		case dp_0_000:
-			if(totalPrices > 999){totalPrices=999.999;}
+			if(totalPrices > 999){totalPrices=0.000;}
 			len = sprintf((char*)(&array[0]),"%.3f",totalPrices);
 			break;
 		case dp_0_0000:
-			if(totalPrices > 99){totalPrices=99.9999;}
+			if(totalPrices > 99){totalPrices=0.0000;}
 			len = sprintf((char*)(&array[0]),"%.4f",totalPrices);
 			break;
 	}
@@ -600,10 +614,12 @@ void APP_All_Point_High(uint8_t selScreen){
 bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
 	bool stable=false;
 	int tempVal =0;
-	*_weight = 12.3456; 
 	float x=0;
 	stable=true;
-	
+	if(p_ScaleObj->available() == true){
+			 *_weight  =  p_ScaleObj->getWeight(true,10); 
+	}
+			
 	switch(p_MenuParam->decimalPoint){
 		case dp_0:
 			break;

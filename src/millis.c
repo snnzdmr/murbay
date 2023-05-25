@@ -9,7 +9,7 @@ void wdt_tickCounter(void){
 }
 
 volatile int64_t SysTickCounter(){
-	return s_u32TickCnt*417; // 38.4 khz wdt clock ayarlara bakarsan 417us de bir interrupta giriyor
+	return s_u32TickCnt*(0.417); // 38.4 khz wdt clock ayarlara bakarsan 417us de bir interrupta giriyor
 }
 int64_t millis(void){
 	return SysTickCounter();

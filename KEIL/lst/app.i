@@ -4265,6 +4265,8 @@ typedef struct RS232_Params{
 }RS232_Params;
 
 typedef struct MENU_Params{
+ float calibrationFactor;
+ int32_t ZeroOffset;
  uint8_t resolution;
  uint8_t capacity;
  uint8_t decimalPoint;
@@ -4298,6 +4300,8 @@ void shw_f8();
 void shw_gravity();
 void shw_reset();
 void shw_rs232();
+
+void f0_Saved();
 void shw_f1a_3000();
 void shw_f1b_6000();
 void shw_f1c_dual1();
@@ -4334,7 +4338,15 @@ void shw_f10a();
 # 9 "..\\Inc/app.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
 # 10 "..\\Inc/app.h" 2
-# 24 "..\\Inc/app.h"
+
+
+
+
+
+typedef struct workVariable{
+ MENU_Params *p_menuParams;
+}workVariable;
+# 28 "..\\Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
@@ -4812,6 +4824,22 @@ extern __attribute__((__nothrow__)) void __use_no_heap_region(void);
 extern __attribute__((__nothrow__)) char const *__C_library_version_string(void);
 extern __attribute__((__nothrow__)) int __C_library_version_number(void);
 # 5 "../src/app.c" 2
+# 1 "..\\Inc/eeproom.h" 1
+
+
+
+# 1 "..\\scale_v2.h" 1
+# 12 "..\\scale_v2.h"
+# 1 "../periph_conf.h" 1
+# 13 "..\\scale_v2.h" 2
+# 5 "..\\Inc/eeproom.h" 2
+# 31 "..\\Inc/eeproom.h"
+void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len);
+_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]);
+void writeFlashMemoryInformation(MENU_Params *p_MenuParam);
+void readFlashMemoryInformation(MENU_Params *p_MenuParam);
+void InitFactorySetting(MENU_Params *p_MenuParam);
+# 6 "../src/app.c" 2
 
 
 
@@ -4823,6 +4851,7 @@ Params _param1;
 Params _param2;
 Params _param3;
 MENU_Params m_Param;
+workVariable _workVariable,*ptrWorkVariable;
 KEYPAD * p_KeypadObj;
 SCALE * p_ScaleObj;
 MENU * p_MenuObj;
@@ -4841,6 +4870,9 @@ FontDef font_small = {
 
 
 void APP_Init(){
+ readFlashMemoryInformation(&m_Param);
+ _workVariable.p_menuParams = &m_Param;
+ ptrWorkVariable =&_workVariable;
 
  _param1.A0 = &SCREEN_1_AIP_A0Pin;
  _param1.Reset = &SCREEN_1_AIP_ResetPin;
@@ -4878,6 +4910,9 @@ void APP_Init(){
 
  p_ScaleObj = newScaleObj();
  p_ScaleObj->begin();
+ p_ScaleObj->setZeroOffset(ptrWorkVariable->p_menuParams->ZeroOffset);
+ p_ScaleObj->setCalibrationFactor(ptrWorkVariable->p_menuParams->calibrationFactor);
+ p_ScaleObj->calibrateAFE();
 
 
  p_MenuObj = newMenuObj();
@@ -4964,6 +4999,9 @@ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
    case 'z':
     break;
    case 't':
+    p_ScaleObj->calculateZeroOffset(64);
+    p_MenuParam->ZeroOffset = p_ScaleObj->getZeroOffset();
+    writeFlashMemoryInformation(p_MenuParam);
     break;
    case 'q':
     break;
@@ -5004,6 +5042,9 @@ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
       templateValue = (pressedKey-'0');
       templateValue = templateValue / (_pow(10,p_MenuParam->decimalPoint));
       total = (total*10) + templateValue;
+     }
+     else{
+      _id+=2;
      }
      memset(&tempArray[0],0x00,7);
      switch(p_MenuParam->decimalPoint){
@@ -5117,19 +5158,19 @@ void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){
    len = sprintf((char*)(&array[0]),"%d",(int)(totalPrices));len+=1;
    break;
   case dp_0_0:
-   if(totalPrices > 99999){totalPrices=99999.9;}
+   if(totalPrices > 99999){totalPrices=0.0;}
    len = sprintf((char*)(&array[0]),"%.1f",totalPrices);
    break;
   case dp_0_00:
-   if(totalPrices > 9999){totalPrices=9999.99;}
+   if(totalPrices > 9999){totalPrices=0.00;}
    len = sprintf((char*)(&array[0]),"%.2f",totalPrices);
    break;
   case dp_0_000:
-   if(totalPrices > 999){totalPrices=999.999;}
+   if(totalPrices > 999){totalPrices=0.000;}
    len = sprintf((char*)(&array[0]),"%.3f",totalPrices);
    break;
   case dp_0_0000:
-   if(totalPrices > 99){totalPrices=99.9999;}
+   if(totalPrices > 99){totalPrices=0.0000;}
    len = sprintf((char*)(&array[0]),"%.4f",totalPrices);
    break;
  }
@@ -5227,7 +5268,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"999999",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"888888",&font_small,p_LcdObj_S1);
@@ -5239,7 +5280,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"888888",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"777777",&font_small,p_LcdObj_S1);
@@ -5251,7 +5292,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"777777",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"666666",&font_small,p_LcdObj_S1);
@@ -5263,7 +5304,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"666666",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"555555",&font_small,p_LcdObj_S1);
@@ -5275,7 +5316,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"555555",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"444444",&font_small,p_LcdObj_S1);
@@ -5287,7 +5328,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"444444",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"333333",&font_small,p_LcdObj_S1);
@@ -5299,7 +5340,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"333333",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"222222",&font_small,p_LcdObj_S1);
@@ -5311,7 +5352,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"222222",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"111111",&font_small,p_LcdObj_S1);
@@ -5323,7 +5364,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"111111",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  p_LcdObj_S1->WriteString(0,0,(uint8_t *)"000000",&font_small,p_LcdObj_S1);
@@ -5335,7 +5376,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"000000",&font_small,p_LcdObj_S3);
  APP_All_Point_High(3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
- CLK_SysTickLongDelay(100000);
+ CLK_SysTickLongDelay(200000);
 
 
  switch(p_MenuParam->decimalPoint){
@@ -5410,9 +5451,11 @@ void APP_All_Point_High(uint8_t selScreen){
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
  _Bool stable=0;
  int tempVal =0;
- *_weight = 12.3456;
  float x=0;
  stable=1;
+ if(p_ScaleObj->available() == 1){
+    *_weight = p_ScaleObj->getWeight(1,10);
+ }
 
  switch(p_MenuParam->decimalPoint){
   case dp_0:

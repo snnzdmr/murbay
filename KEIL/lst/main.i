@@ -4274,6 +4274,8 @@ typedef struct RS232_Params{
 }RS232_Params;
 
 typedef struct MENU_Params{
+ float calibrationFactor;
+ int32_t ZeroOffset;
  uint8_t resolution;
  uint8_t capacity;
  uint8_t decimalPoint;
@@ -4307,6 +4309,8 @@ void shw_f8();
 void shw_gravity();
 void shw_reset();
 void shw_rs232();
+
+void f0_Saved();
 void shw_f1a_3000();
 void shw_f1b_6000();
 void shw_f1c_dual1();
@@ -4343,7 +4347,15 @@ void shw_f10a();
 # 9 "../Inc/app.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
 # 10 "../Inc/app.h" 2
-# 24 "../Inc/app.h"
+
+
+
+
+
+typedef struct workVariable{
+ MENU_Params *p_menuParams;
+}workVariable;
+# 28 "../Inc/app.h"
 void ISR_timer();
 
 void APP_Init();

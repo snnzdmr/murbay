@@ -2,8 +2,11 @@
 #include "Inc/costumLcd.h"
 #include "scale_v2.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include "Inc/app.h"
 #include "Inc/keypad.h"
+#include "Inc/SparkFun_NAU7802.h"
+#include "Inc/eeproom.h"
 
 extern AIP     * p_LcdObj_S1;
 extern AIP     * p_LcdObj_S2;
@@ -11,7 +14,7 @@ extern AIP     * p_LcdObj_S3;
 extern KEYPAD  * p_KeypadObj;
 extern FontDef *p_CurrentFont;
 extern MENU_Params m_Param;
-
+extern SCALE  *p_ScaleObj;
 
 
 RESOLUTION 		currentResolution;
@@ -73,7 +76,7 @@ void build(node *currentNode,void (*_DoWorkDisplay)(void),node *_enter,node *_ex
 
 
 node root;
-node f0_cal;
+node f0_cal,f0_save;
 node f1_resolution, f1a_3000,f1b_6000,f1c_dual1,f1d_dual2,f1_save;
 node f2_capacity, f2a_3,f2b_6,f2c_15,f2d_30,f2_save;
 node f3_decimalPoint,f3a,f3b,f3c,f3d,f3e,f3_save;
@@ -115,7 +118,7 @@ static void Menu_Init(){
 	// enter exit   up down 
 	// First layer
 	build(&root,&shw_mainScreen,&f0_cal,0,0,0);
-	build(&f0_cal,&shw_calibration,0,&root,&f11_rs232,&f1_resolution);
+	build(&f0_cal,&shw_calibration,&f0_save,&root,&f11_rs232,&f1_resolution);
 	build(&f1_resolution,&shw_resolution,&f1a_3000,&root,&f0_cal,&f2_capacity);
 	build(&f2_capacity,&shw_capacity,&f2a_3,&root,&f1_resolution,&f3_decimalPoint);
 	build(&f3_decimalPoint,&shw_decimalPoint,&f3a,&root,&f2_capacity,&f4_fixFloat);
@@ -131,6 +134,7 @@ static void Menu_Init(){
 	// enter exit   up down 
 	// second layer 
 	//  F0 branches
+	build(&f0_save,&f0_Saved,0,&f0_cal,0,0);
 
 	//  F1 branches
 	build(&f1a_3000,&shw_f1a_3000,&f1_save,&f1_resolution,&f1d_dual2,&f1b_6000);
@@ -176,8 +180,6 @@ static void Menu_Init(){
 	build(&f10a,&shw_f10a,0,&f10_reset,0,0);
 	
 }
-
-
 void shw_mainScreen(){
 #if (LOG_STATE)
 	printf("main screen\n");
@@ -195,6 +197,7 @@ void shw_mainScreen(){
 	
 }
 void shw_calibration(){
+	char array[10]="";
 #if (LOG_STATE)
 	printf("shw_calibration \n");
 #endif
@@ -205,7 +208,8 @@ void shw_calibration(){
 	p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   CAL",p_CurrentFont,p_LcdObj_S2);
 	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
 	
-	p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
+	sprintf((char*)(&array[0]),"%f",m_Param.calibrationFactor);
+	p_LcdObj_S3->WriteString(0,0,(uint8_t *)array,p_CurrentFont,p_LcdObj_S3);
 	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 	
 }
@@ -441,6 +445,14 @@ void shw_rs232(){
 	p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
 	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 }
+
+void f0_Saved(){
+  p_ScaleObj->calculateCalibrationFactor(1.00, 64);
+	m_Param.calibrationFactor = p_ScaleObj->getCalibrationFactor();
+	p_ScaleObj->calibrateAFE();
+	writeFlashMemoryInformation(&m_Param);
+}
+
 void shw_f1a_3000(){
 			p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  3000",p_CurrentFont,p_LcdObj_S3);
 			p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);

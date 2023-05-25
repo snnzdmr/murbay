@@ -4448,11 +4448,16 @@ extern __attribute__((__nothrow__)) void __use_no_heap_region(void);
 extern __attribute__((__nothrow__)) char const *__C_library_version_string(void);
 extern __attribute__((__nothrow__)) int __C_library_version_number(void);
 # 26 "../src/SparkFun_NAU7802.c" 2
+# 1 "..\\scale_v2.h" 1
+# 12 "..\\scale_v2.h"
+# 1 "../periph_conf.h" 1
+# 13 "..\\scale_v2.h" 2
+# 27 "../src/SparkFun_NAU7802.c" 2
 
 
 int32_t _zeroOffset;
 float _calibrationFactor;
-# 39 "../src/SparkFun_NAU7802.c"
+# 40 "../src/SparkFun_NAU7802.c"
 SCALE *newScaleObj(){
  SCALE *p = (SCALE *)malloc(sizeof(SCALE));
  if(p == 0){
@@ -4523,7 +4528,7 @@ _Bool NAU7802_begin()
 
  result &= NAU7802_setGain(NAU7802_GAIN_128);
 
- result &= NAU7802_setSampleRate(NAU7802_SPS_80);
+ result &= NAU7802_setSampleRate(NAU7802_SPS_40);
 
  result &= NAU7802_setRegister(NAU7802_ADC, 0x30);
 
@@ -4554,7 +4559,7 @@ _Bool NAU7802_available()
 _Bool NAU7802_calibrateAFE()
 {
   NAU7802_beginCalibrateAFE();
-  return NAU7802_waitForCalibrateAFE(1000);
+  return NAU7802_waitForCalibrateAFE(2000);
 }
 
 
@@ -4704,13 +4709,13 @@ uint8_t NAU7802_getRevisionCode()
 int32_t NAU7802_getReading()
 {
 
+    uint32_t rawValue = ((uint32_t)I2C_ReadByteOneReg(((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)),0x2A, NAU7802_ADCO_B2))<<16;
+    rawValue |= ((uint32_t)I2C_ReadByteOneReg(((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)),0x2A, NAU7802_ADCO_B1))<<8;
+    rawValue |= (uint32_t)I2C_ReadByteOneReg(((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)),0x2A, NAU7802_ADCO_B0);
+    int32_t shiftedValue = ((int32_t)rawValue)<<8;
+    int32_t value = shiftedValue>>8;
 
-
-
-
-
-
-    return (1);
+    return (value);
 }
 
 
@@ -4729,8 +4734,9 @@ int32_t NAU7802_getAverage(uint8_t averageAmount)
       if (++samplesAquired == averageAmount)
         break;
     }
-    if (millis() - startTime > 1000)
+    if (millis() - startTime > 2000){
       return (0);
+  }
     CLK_SysTickDelay(1*1000);
   }
   total /= averageAmount;
@@ -4832,14 +4838,14 @@ _Bool NAU7802_getBit(uint8_t bitNumber, uint8_t registerAddress)
 
 uint8_t NAU7802_getRegister(uint8_t registerAddress)
 {
-   return 1;
+   return I2C_ReadByteOneReg(((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)),0x2A, registerAddress);
 }
 
 
 
 _Bool NAU7802_setRegister(uint8_t registerAddress, uint8_t value)
 {
-
+ I2C_WriteByteOneReg(((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)),0x2A,registerAddress, value);
  return 1;
 
 }

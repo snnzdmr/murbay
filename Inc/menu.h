@@ -74,6 +74,8 @@ typedef struct RS232_Params{
 }RS232_Params;
 	
 typedef struct MENU_Params{
+	float calibrationFactor;
+	int32_t ZeroOffset;
 	uint8_t resolution;
 	uint8_t capacity;
 	uint8_t decimalPoint;
@@ -107,6 +109,8 @@ void shw_f8();
 void shw_gravity();
 void shw_reset();
 void shw_rs232();
+
+void f0_Saved();
 void shw_f1a_3000();
 void shw_f1b_6000();
 void shw_f1c_dual1();

@@ -1,12 +1,15 @@
-# 1 "../periph_conf.c"
+# 1 "../src/eeproom.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 375 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "../periph_conf.c" 2
-# 10 "../periph_conf.c"
-# 1 "../scale_v2.h" 1
+# 1 "../src/eeproom.c" 2
+# 1 "..\\Inc/eeproom.h" 1
+
+
+
+# 1 "..\\scale_v2.h" 1
 
 
 
@@ -336,7 +339,7 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 10 "../scale_v2.h" 2
+# 10 "..\\scale_v2.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 1 3
 # 58 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
 extern __attribute__((__nothrow__)) void *memcpy(void * __restrict ,
@@ -453,7 +456,7 @@ extern __attribute__((__nothrow__)) void _membitmovehl(void * , const void * , i
 extern __attribute__((__nothrow__)) void _membitmovehb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
 extern __attribute__((__nothrow__)) void _membitmovewb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
-# 11 "../scale_v2.h" 2
+# 11 "..\\scale_v2.h" 2
 # 1 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 1
 # 13 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h"
 # 1 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 1
@@ -3997,785 +4000,480 @@ void TK_ClearTKIF(void);
 void TK_ConfigPowerDown(uint8_t u8Sensitivity);
 # 660 "../../../../Library/Device/Nuvoton/M251/Include/M251.h" 2
 # 14 "../../../../Library/Device/Nuvoton/M251/Include\\NuMicro.h" 2
-# 12 "../scale_v2.h" 2
+# 12 "..\\scale_v2.h" 2
 # 1 "../periph_conf.h" 1
-# 13 "../scale_v2.h" 2
-# 11 "../periph_conf.c" 2
+# 13 "..\\scale_v2.h" 2
+# 5 "..\\Inc/eeproom.h" 2
+# 1 "..\\Inc/app.h" 1
 
-void FMC_Init()
+
+
+
+
+# 1 "..\\scale_v2.h" 1
+# 12 "..\\scale_v2.h"
+# 1 "../periph_conf.h" 1
+# 13 "..\\scale_v2.h" 2
+# 7 "..\\Inc/app.h" 2
+# 1 "..\\Inc/costumLcd.h" 1
+
+
+
+
+
+
+# 1 "..\\Inc/font.h" 1
+
+
+
+
+
+static const unsigned short fontArray[] = {
+        0x00, 0x00, 0x00,
+        0x02, 0x07, 0x06,
+        0x04, 0x00, 0x04,
+        0x00, 0x02, 0x00,
+        0x00, 0x02, 0x00,
+        0x00, 0x02, 0x00,
+        0x00, 0x02, 0x00,
+        0x04, 0x00, 0x00,
+        0x06, 0x05, 0x00,
+        0x00, 0x05, 0x06,
+        0x00, 0x02, 0x00,
+        0x00, 0x02, 0x00,
+        0x00, 0x02, 0x00,
+        0x00, 0x02, 0x00,
+        0x00, 0x02, 0x00,
+        0x02, 0x02, 0x04,
+        0x06, 0x05, 0x06,
+        0x00, 0x00, 0x06,
+        0x02, 0x07, 0x04,
+        0x00, 0x07, 0x06,
+        0x04, 0x02, 0x06,
+        0x04, 0x07, 0x02,
+        0x06, 0x07, 0x02,
+        0x00, 0x04, 0x06,
+        0x06, 0x07, 0x06,
+        0x04, 0x07, 0x06,
+        0x00, 0x03, 0x00,
+        0x02, 0x00, 0x06,
+        0x00, 0x02, 0x00,
+        0x00, 0x03, 0x00,
+        0x00, 0x02, 0x00,
+        0x04, 0x04, 0x06,
+        0x00, 0x02, 0x00,
+        0x06, 0x06, 0x06,
+        0x06, 0x07, 0x06,
+        0x06, 0x05, 0x00,
+        0x06, 0x05, 0x06,
+        0x06, 0x07, 0x00,
+        0x06, 0x06, 0x00,
+        0x06, 0x07, 0x02,
+        0x06, 0x02, 0x06,
+        0x00, 0x00, 0x06,
+        0x00, 0x01, 0x06,
+        0x06, 0x02, 0x06,
+        0x06, 0x01, 0x00,
+        0x00, 0x02, 0x00,
+        0x02, 0x02, 0x02,
+        0x02, 0x03, 0x02,
+        0x06, 0x06, 0x04,
+        0x00, 0x02, 0x00,
+        0x02, 0x02, 0x00,
+        0x04, 0x07, 0x02,
+        0x06, 0x01, 0x00,
+        0x02, 0x01, 0x02,
+        0x02, 0x01, 0x02,
+        0x00, 0x02, 0x00,
+        0x06, 0x02, 0x06,
+        0x04, 0x02, 0x06,
+        0x02, 0x07, 0x04,
+        0x06, 0x05, 0x00,
+        0x04, 0x02, 0x02,
+        0x00, 0x05, 0x06,
+        0x04, 0x04, 0x04,
+        0x00, 0x01, 0x00,
+        0x04, 0x00, 0x00,
+        0x02, 0x07, 0x06,
+        0x06, 0x03, 0x02,
+        0x02, 0x03, 0x00,
+        0x02, 0x03, 0x06,
+        0x06, 0x07, 0x00,
+        0x06, 0x06, 0x00,
+        0x04, 0x07, 0x06,
+        0x06, 0x02, 0x02,
+        0x00, 0x00, 0x06,
+        0x00, 0x01, 0x06,
+        0x06, 0x02, 0x06,
+        0x00, 0x00, 0x06,
+        0x00, 0x02, 0x00,
+        0x02, 0x02, 0x02,
+        0x02, 0x03, 0x02,
+        0x06, 0x06, 0x04,
+        0x04, 0x06, 0x06,
+        0x02, 0x02, 0x00,
+        0x04, 0x07, 0x02,
+        0x06, 0x01, 0x00,
+        0x02, 0x01, 0x02,
+        0x02, 0x01, 0x02,
+        0x00, 0x02, 0x00,
+        0x06, 0x02, 0x06,
+        0x04, 0x03, 0x06,
+        0x02, 0x07, 0x04,
+        0x06, 0x05, 0x00,
+        0x00, 0x00, 0x00,
+        0x00, 0x05, 0x06,
+        0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00
+};
+# 8 "..\\Inc/costumLcd.h" 2
+# 25 "..\\Inc/costumLcd.h"
+typedef struct FontDef{
+ const uint8_t FontWidth;
+ uint8_t FontHeight;
+ const uint16_t *data;
+} FontDef;
+
+typedef struct Ai_position{
+ uint8_t x_pos;
+ uint8_t y_pos;
+
+}Ai_position;
+
+typedef struct Params{
+ void (*Cs)(uint8_t);
+ void (*Reset)(uint8_t);
+ void (*A0)(uint8_t);
+ uint8_t ramB[(19*4/4)];
+}Params;
+
+typedef struct AIP{
+
+ void (*Init)(struct AIP *);
+ void (*WriteData)(uint8_t *,uint8_t,struct AIP *);
+ void (*WriteCommand)(uint8_t,struct AIP *);
+ void (*ClearScreen)(struct AIP *);
+ void (*UpdateScreen)(struct AIP *);
+ void (*DrawPixel)(uint8_t,uint8_t,uint8_t,struct AIP *);
+ uint8_t (*WriteChar) (uint8_t *,FontDef *,struct AIP *);
+ void (*SetCursor)(uint8_t,uint8_t,struct AIP *);
+ void (*WriteString)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *);
+ void (*WriteStringLen)(uint8_t, uint8_t,uint8_t *, FontDef *,struct AIP *,uint8_t);
+ void (*Spoint)(uint8_t,uint8_t,struct AIP *);
+ void (*WriteNumber) (uint8_t,uint8_t,FontDef *,struct AIP *);
+ void (*Cs)(uint8_t);
+ void (*Reset)(uint8_t);
+ void (*A0)(uint8_t);
+ uint8_t * ptrRam;
+ Ai_position AIP_currentPos;
+
+}AIP;
+
+
+
+
+
+AIP *newLCDObj(Params *_params);
+static uint8_t spi_transfer(uint8_t *_data);
+static void AIP_Init(AIP *p);
+static void AIP_writeData(uint8_t *data,uint8_t len,AIP *p);
+static void AIP_writeCommand(uint8_t _cmd,AIP *p);
+static void AIP_ClearScreen(AIP *p);
+static void AIP_UpdateScreen(AIP *p);
+static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p);
+static uint8_t AIP_writeChar(uint8_t *_chr,FontDef *Font,AIP *p);
+static void AIP_SetCursor(uint8_t _x,uint8_t _y,AIP *p);
+static void AIP_WriteString(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p);
+static void AIP_WriteStringLen(uint8_t x, uint8_t y,uint8_t * str, FontDef *Font,AIP *p,uint8_t _len) ;
+static void AIP_Spoint(uint8_t _id,uint8_t _val,AIP *p);
+static void AIP_writeNumber(uint8_t _number,uint8_t _state,FontDef *Font,AIP *p);
+
+void SCREEN_1_AIP_ResetPin(uint8_t _val);
+void SCREEN_1_AIP_A0Pin(uint8_t _val);
+void SCREEN_1_AIP_CSPin(uint8_t _val);
+void SCREEN_2_AIP_ResetPin(uint8_t _val);
+void SCREEN_2_AIP_A0Pin(uint8_t _val);
+void SCREEN_2_AIP_CSPin(uint8_t _val);
+void SCREEN_3_AIP_ResetPin(uint8_t _val);
+void SCREEN_3_AIP_A0Pin(uint8_t _val);
+void SCREEN_3_AIP_CSPin(uint8_t _val);
+# 8 "..\\Inc/app.h" 2
+# 1 "..\\Inc/menu.h" 1
+
+
+
+
+
+
+
+
+typedef struct node
 {
+ void (*DoWorkDisplay)(void);
+ struct node *enter;
+ struct node *exit;
+ struct node *up;
+ struct node *down;
+}node;
 
 
-    FMC_Open();
+typedef struct MENU{
+ void (*Init)();
+ void (*Enter)(node **);
+ void (*Exit)(node **);
+ void (*Up)(node **);
+ void (*Down)(node **);
+ node *currentNode;
+}MENU;
+
+typedef enum RESOLUTION{
+ r3000=0,
+ r6000,
+ rDual1,
+ rDual2
+}RESOLUTION;
+
+typedef enum CAPACITY{
+ c3kg=0,
+ c6kg,
+ c15kg,
+ c30kg
+}CAPACITY;
+
+typedef enum DECIMAL_POINT{
+ dp_0=0,
+ dp_0_0,
+ dp_0_00,
+ dp_0_000,
+ dp_0_0000
+}DECIMAL_POINT;
+typedef enum FIX_FLOAT{
+ ff_fix=0,
+ ff_float,
+}FIX_FLOAT;
+typedef enum SPEED{
+ sp_slow=0,
+ sp_medium,
+ sp_fast
+}SPEED;
+typedef enum MIN_COIN{
+ mc_1=0,
+ mc_2,
+ mc_5,
+ mc_10
+}MIN_COIN;
+typedef enum MULTI_TARE{
+ mt_on=0,
+ mt_off
+}MULTI_TARE;
+
+typedef struct RS232_Params{
+ uint32_t baudrate;
+ uint8_t parity;
+ uint8_t stop;
+ uint8_t word;
+}RS232_Params;
+
+typedef struct MENU_Params{
+ float calibrationFactor;
+ int32_t ZeroOffset;
+ uint8_t resolution;
+ uint8_t capacity;
+ uint8_t decimalPoint;
+ uint8_t FixFloat;
+ uint8_t speed;
+ uint8_t minCoin;
+ uint8_t multiTare;
+ uint32_t isn;
+ float gravity;
+ uint8_t factoryReset;
+ RS232_Params rs232Param;
+}MENU_Params;
+
+MENU *newMenuObj();
+static void Enter(node **currentNode);
+static void Exit(node **currentNode);
+static void Up(node **currentNode);
+static void Down(node **currentNode);
+static void Menu_Init();
+
+void shw_mainScreen();
+void shw_calibration();
+void shw_resolution();
+void shw_capacity();
+void shw_decimalPoint();
+void shw_fixFloat();
+void shw_speed();
+void shw_minCoin();
+void shw_multiTare();
+void shw_f8();
+void shw_gravity();
+void shw_reset();
+void shw_rs232();
+
+void f0_Saved();
+void shw_f1a_3000();
+void shw_f1b_6000();
+void shw_f1c_dual1();
+void shw_f1d_dual2();
+void f1_Saved();
+void shw_f2a_3();
+void shw_f2b_6();
+void shw_f2c_15();
+void shw_f2d_30();
+void f2_Saved();
+void shw_f3a();
+void shw_f3b();
+void shw_f3c();
+void shw_f3d();
+void shw_f3e();
+void f3_Saved();
+void shw_f4a_fix();
+void shw_f4b_flot();
+void f4_Saved();
+void shw_f5a_slow();
+void shw_f5b_normal();
+void shw_f5c_fast();
+void f5_Saved();
+void shw_f6a_1();
+void shw_f6b_2();
+void shw_f6c_5();
+void shw_f6d_10();
+void f6_Saved();
+void shw_f7a_on();
+void shw_f7b_off();
+void f7_Saved();
+void shw_f9a();
+void shw_f10a();
+# 9 "..\\Inc/app.h" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
+# 10 "..\\Inc/app.h" 2
 
 
-    (((FMC_T *) (((uint32_t)0x40000000UL) + 0x0C000UL))->ISPCTL |= (0x1ul << (4)));
 
+
+
+typedef struct workVariable{
+ MENU_Params *p_menuParams;
+}workVariable;
+# 28 "..\\Inc/app.h"
+void ISR_timer();
+
+void APP_Init();
+void APP_SetBatteryLevel(uint8_t _level,AIP *p);
+void APP_SettingsHandle();
+void APP_Handle();
+uint8_t APP_StartScreen(MENU_Params *p_MenuParam);
+void APP_All_Point_High(uint8_t selScreen);
+_Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
+_Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
+
+
+float customValueInput(char pressedKey,AIP *p);
+uint32_t _pow(uint32_t x,uint32_t y);
+# 6 "..\\Inc/eeproom.h" 2
+# 31 "..\\Inc/eeproom.h"
+void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len);
+_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]);
+void writeFlashMemoryInformation(MENU_Params *p_MenuParam);
+void readFlashMemoryInformation(MENU_Params *p_MenuParam);
+void InitFactorySetting(MENU_Params *p_MenuParam);
+# 2 "../src/eeproom.c" 2
+# 18 "../src/eeproom.c"
+void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len){
+    uint8_t i=0;
+
+  SYS_UnlockReg();
+  FMC_Open();
+  (((FMC_T *) (((uint32_t)0x40000000UL) + 0x0C000UL))->ISPCTL |= (0x1ul << (3)));
+  FMC_Erase(_address);
+   FMC_Write(_address,_len);
+    for(i=0;i<_len;i++){
+    _address+=4;
+        FMC_Write(_address,_array[i]);
+
+
+
+    }
+  (((FMC_T *) (((uint32_t)0x40000000UL) + 0x0C000UL))->ISPCTL &= ~(0x1ul << (3)));
+  FMC_Close();
+  SYS_LockReg();
+}
+_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]){
+
+  SYS_UnlockReg();
+  FMC_Open();
+  (((FMC_T *) (((uint32_t)0x40000000UL) + 0x0C000UL))->ISPCTL |= (0x1ul << (3)));
+    uint32_t _len=FMC_Read(_address);
+
+
+
+  if(_len != 20){
+   return 0;
+  }
+    uint8_t i=0;
+    for ( i = 0; i < _len; i++)
+    {
+   _address+=4;
+   _buffer[i] = FMC_Read(_address);
+
+
+
+    }
+  FMC_Close();
+
+  return 1;
 }
 
 
-
-void GPIO_Init()
-{
-    const uint32_t u32RegDefault = 0;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->MODE =
-
-        (0x1UL << (6)) |
-
-        (0x1UL << (8)) |
-
-        (0x1UL << (10)) |
-
-        (0x1UL << (12)) |
-
-        (0x1UL << (14)) |
-
-        (0x0UL << (24)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->DINOFF =
-
-        (0 << (19)) |
-
-        (0 << (20)) |
-
-        (0 << (21)) |
-
-        (0 << (22)) |
-
-        (0 << (23)) |
-
-        (0 << (28)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->DOUT =
-
-        (1 << (3)) |
-
-        (1 << (4)) |
-
-        (1 << (5)) |
-
-        (1 << (6)) |
-
-        (1 << (7)) |
-
-        (1 << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->DATMSK =
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (6)) |
-
-        (0 << (7)) |
-
-        (0 << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->DBEN =
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (6)) |
-
-        (0 << (7)) |
-
-        (0 << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->INTTYPE =
-
-        (0UL << (3)) |
-
-        (0UL << (4)) |
-
-        (0UL << (5)) |
-
-        (0UL << (6)) |
-
-        (0UL << (7)) |
-
-        (0UL << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->INTEN =
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (6)) |
-
-        (0 << (7)) |
-
-        (0 << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->INTEN |=
-
-        (0 << (19)) |
-
-        (0 << (20)) |
-
-        (0 << (21)) |
-
-        (0 << (22)) |
-
-        (0 << (23)) |
-
-        (0 << (28)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->SLEWCTL =
-
-        (0x0UL << (6)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (10)) |
-
-        (0x0UL << (12)) |
-
-        (0x0UL << (14)) |
-
-        (0x0UL << (24)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04000UL))->PUSEL =
-
-        (0x0UL << (6)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (10)) |
-
-        (0x0UL << (12)) |
-
-        (0x0UL << (14)) |
-
-        (0x2UL << (24)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->MODE =
-
-        (0x1UL << (4)) |
-
-        (0x1UL << (8)) |
-
-        (0x1UL << (10)) |
-
-        (0x1UL << (14)) |
-
-        (0x1UL << (16)) |
-
-        (0x1UL << (18)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->DINOFF =
-
-        (0 << (18)) |
-
-        (0 << (20)) |
-
-        (0 << (21)) |
-
-        (0 << (23)) |
-
-        (0 << (24)) |
-
-        (0 << (25)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->DOUT =
-
-        (1 << (2)) |
-
-        (1 << (4)) |
-
-        (1 << (5)) |
-
-        (1 << (7)) |
-
-        (1 << (8)) |
-
-        (1 << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->DATMSK =
-
-        (0 << (2)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (7)) |
-
-        (0 << (8)) |
-
-        (0 << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->DBEN =
-
-        (0 << (2)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (7)) |
-
-        (0 << (8)) |
-
-        (0 << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->INTTYPE =
-
-        (0UL << (2)) |
-
-        (0UL << (4)) |
-
-        (0UL << (5)) |
-
-        (0UL << (7)) |
-
-        (0UL << (8)) |
-
-        (0UL << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->INTEN =
-
-        (0 << (2)) |
-
-        (0 << (4)) |
-
-        (0 << (5)) |
-
-        (0 << (7)) |
-
-        (0 << (8)) |
-
-        (0 << (9)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->INTEN |=
-
-        (0 << (18)) |
-
-        (0 << (20)) |
-
-        (0 << (21)) |
-
-        (0 << (23)) |
-
-        (0 << (24)) |
-
-        (0 << (25)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->SLEWCTL =
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (10)) |
-
-        (0x0UL << (14)) |
-
-        (0x0UL << (16)) |
-
-        (0x0UL << (18)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL))->PUSEL =
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (10)) |
-
-        (0x0UL << (14)) |
-
-        (0x0UL << (16)) |
-
-        (0x0UL << (18)) |
-
-        u32RegDefault;
-
-    (((GPIO_DBCTL_T *) (((uint32_t)0x40000000UL) + 0x04440UL))->DBCTL &= ~((0x1UL << ((((uint32_t)((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04040UL)) - (uint32_t)(((uint32_t)0x40000000UL) + 0x04000UL)) / 0x40) + 16))));
-
-    __NVIC_EnableIRQ(GPB_IRQn);
-
-    __NVIC_EnableIRQ(EINT0_IRQn);
-
-    __NVIC_EnableIRQ(EINT1_IRQn);
-
-    __NVIC_EnableIRQ(EINT3_IRQn);
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->MODE =
-
-        (0x0UL << (0)) |
-
-        (0x0UL << (2)) |
-
-        (0x1UL << (4)) |
-
-        (0x0UL << (6)) |
-
-        (0x0UL << (8)) |
-
-        (0x1UL << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->DINOFF =
-
-        (0 << (16)) |
-
-        (0 << (17)) |
-
-        (0 << (18)) |
-
-        (0 << (19)) |
-
-        (0 << (20)) |
-
-        (0 << (22)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->DOUT =
-
-        (1 << (0)) |
-
-        (1 << (1)) |
-
-        (1 << (2)) |
-
-        (1 << (3)) |
-
-        (1 << (4)) |
-
-        (1 << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->DATMSK =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->DBEN =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->INTTYPE =
-
-        (0UL << (0)) |
-
-        (0UL << (1)) |
-
-        (0UL << (2)) |
-
-        (0UL << (3)) |
-
-        (0UL << (4)) |
-
-        (0UL << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->INTEN =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        (0 << (4)) |
-
-        (0 << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->INTEN |=
-
-        (1 << (16)) |
-
-        (0 << (17)) |
-
-        (0 << (18)) |
-
-        (0 << (19)) |
-
-        (0 << (20)) |
-
-        (0 << (22)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->SLEWCTL =
-
-        (0x0UL << (0)) |
-
-        (0x0UL << (2)) |
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (6)) |
-
-        (0x0UL << (8)) |
-
-        (0x0UL << (12)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL))->PUSEL =
-
-        (0x2UL << (0)) |
-
-        (0x2UL << (2)) |
-
-        (0x0UL << (4)) |
-
-        (0x2UL << (6)) |
-
-        (0x2UL << (8)) |
-
-        (0x0UL << (12)) |
-
-        u32RegDefault;
-
-    (((GPIO_DBCTL_T *) (((uint32_t)0x40000000UL) + 0x04440UL))->DBCTL &= ~((0x1UL << ((((uint32_t)((GPIO_T *) (((uint32_t)0x40000000UL) + 0x04080UL)) - (uint32_t)(((uint32_t)0x40000000UL) + 0x04000UL)) / 0x40) + 16))));
-
-    __NVIC_EnableIRQ(GPC_IRQn);
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->MODE =
-
-        (0x0UL << (0)) |
-
-        (0x0UL << (2)) |
-
-        (0x1UL << (4)) |
-
-        (0x1UL << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->DINOFF =
-
-        (0 << (16)) |
-
-        (0 << (17)) |
-
-        (0 << (18)) |
-
-        (0 << (19)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->DOUT =
-
-        (1 << (0)) |
-
-        (1 << (1)) |
-
-        (1 << (2)) |
-
-        (1 << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->DATMSK =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->DBEN =
-
-        (0 << (0)) |
-
-        (1 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->INTTYPE =
-
-        (0UL << (0)) |
-
-        (0UL << (1)) |
-
-        (0UL << (2)) |
-
-        (0UL << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->INTEN =
-
-        (0 << (0)) |
-
-        (0 << (1)) |
-
-        (0 << (2)) |
-
-        (0 << (3)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->INTEN |=
-
-        (0 << (16)) |
-
-        (1 << (17)) |
-
-        (0 << (18)) |
-
-        (0 << (19)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->SLEWCTL =
-
-        (0x0UL << (0)) |
-
-        (0x0UL << (2)) |
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (6)) |
-
-        u32RegDefault;
-
-
-    ((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL))->PUSEL =
-
-        (0x2UL << (0)) |
-
-        (0x2UL << (2)) |
-
-        (0x0UL << (4)) |
-
-        (0x0UL << (6)) |
-
-        u32RegDefault;
-
-    (((GPIO_DBCTL_T *) (((uint32_t)0x40000000UL) + 0x04440UL))->DBCTL &= ~((0x1UL << ((((uint32_t)((GPIO_T *) (((uint32_t)0x40000000UL) + 0x040C0UL)) - (uint32_t)(((uint32_t)0x40000000UL) + 0x04000UL)) / 0x40) + 16))));
-
-    __NVIC_EnableIRQ(GPD_IRQn);
-
+void writeFlashMemoryInformation(MENU_Params *p_MenuParam){
+ uint32_t _buffer[20 +1];
+ _buffer[0] = p_MenuParam->resolution;
+ _buffer[1] = p_MenuParam->capacity;
+ _buffer[2] = p_MenuParam->decimalPoint;
+ _buffer[3] = p_MenuParam->FixFloat;
+ _buffer[4] = p_MenuParam->speed;
+ _buffer[5] = p_MenuParam->minCoin;
+ _buffer[6] = p_MenuParam->multiTare;
+ _buffer[7] = p_MenuParam->isn;
+ _buffer[8] = p_MenuParam->gravity;
+ _buffer[9] = p_MenuParam->calibrationFactor;
+ _buffer[10] = p_MenuParam->ZeroOffset;
+
+  eeprom_write_array((uint32_t)0x19404,&_buffer[0],20);
 }
-void I2C1_Init()
-{
-    I2C_Open(((I2C_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x41000UL)), 400000);
+void readFlashMemoryInformation(MENU_Params *p_MenuParam){
+ uint32_t _buffer[20 +1];
+ if(eeprom_read_array((uint32_t)0x19404,&_buffer[0]) == 1){
+  p_MenuParam->resolution = _buffer[0];
+  p_MenuParam->capacity = _buffer[1];
+  p_MenuParam->decimalPoint = _buffer[2];
+  p_MenuParam->FixFloat = _buffer[3];
+  p_MenuParam->speed = _buffer[4];
+  p_MenuParam->minCoin = _buffer[5];
+  p_MenuParam->multiTare = _buffer[6];
+  p_MenuParam->isn = _buffer[7];
+  p_MenuParam->gravity = _buffer[8];
+  p_MenuParam->calibrationFactor = _buffer[9];
+  p_MenuParam->ZeroOffset = _buffer[10];
 
+ }
+ else{
+  InitFactorySetting(p_MenuParam);
+ }
 }
+void InitFactorySetting(MENU_Params *p_MenuParam){
+  p_MenuParam->resolution = r3000;
+  p_MenuParam->capacity = c3kg;
+  p_MenuParam->decimalPoint = dp_0_0;
+  p_MenuParam->FixFloat = ff_fix;
+  p_MenuParam->speed = sp_medium;
+  p_MenuParam->minCoin = mc_1;
+  p_MenuParam->multiTare = mt_on;
+  p_MenuParam->isn = 1234567;
+  p_MenuParam->gravity = 9.789;
+  p_MenuParam->calibrationFactor = 1000;
+  p_MenuParam->ZeroOffset = 0;
 
-
-
-void SPII2S0_Init()
-{
-
-
-    SPI_Open(((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL)), (0x0UL), ((0x1ul << (3)) | (0x1ul << (2))), 8, 2000000);
-
-
-    ((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL))->SSCTL = (((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL))->SSCTL & (~(0x1ul << (2)))) | (0x0UL);
-
-
-    ((((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL)))->CTL &= ~(0x1ul << (13)));
-
-
-    SPI_SetFIFO(((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL)), 0, 0);
-
-}
-void TIMER0_Init()
-{
-
-    TIMER_Open(((TIMER_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x10000UL)), (1UL << (27)), 1);
-
-
-
-
-
-
-    TIMER_EnableInt(((TIMER_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x10000UL)));
-
-    __NVIC_EnableIRQ(TMR0_IRQn);
-
-}
-
-void TIMER1_Init()
-{
-
-    TIMER_Open(((TIMER_T *) (((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x10000UL) + 0x100UL)), (1UL << (27)), 1);
-
-
-
-
-
-
-    TIMER_EnableInt(((TIMER_T *) (((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x10000UL) + 0x100UL)));
-
-    __NVIC_EnableIRQ(TMR1_IRQn);
-
-}
-void UART2_Init()
-{
-
-
-    UART_Open(((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL)), 115200);
-
-
-    ((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFO = (((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFO & ~ (0xful << (4))) | (0x0ul << (4));
-
-}
-void WDT_Init(void)
-{
-
-    SYS_UnlockReg();
-
-
-    WDT_Open(((0UL << (8))), ((3UL << (0))), (0), (0));
-
-
-    WDT_EnableInt();
-
-
-    __NVIC_EnableIRQ(WDT_IRQn);
-
-}
-
-void Periph_Init(void)
-{
-
-    UART2_Init();
-
-    GPIO_Init();
-
-    I2C1_Init();
-
-    SPII2S0_Init() ;
-
-    TIMER0_Init();
-
-    TIMER1_Init();
-
-    WDT_Init();
-
-    FMC_Init();
-
+  writeFlashMemoryInformation(p_MenuParam);
 }

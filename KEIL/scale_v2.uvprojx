@@ -539,6 +539,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\test.c</FilePath>
             </File>
+            <File>
+              <FileName>eeproom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\eeproom.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -583,6 +588,11 @@
               <FileName>test.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\test.h</FilePath>
+            </File>
+            <File>
+              <FileName>eeproom.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\eeproom.h</FilePath>
             </File>
           </Files>
         </Group>

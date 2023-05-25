@@ -23,7 +23,8 @@
 #include "Inc/SparkFun_NAU7802.h"
 #include "Inc/millis.h"
 #include <stdlib.h>
-#define  NAU7802_SLAVE_ADDR      0x2A; //Default unshifted 7-bit address of the NAU7802
+#include "scale_v2.h"
+#define  NAU7802_SLAVE_ADDR      0x2A     //Default unshifted 7-bit address of the NAU7802
 //y = mx+b
 int32_t _zeroOffset;      //This is b
 float _calibrationFactor; //This is m. User provides this number so that we can output y when requested
@@ -106,7 +107,7 @@ bool NAU7802_begin()
 
 	result &= NAU7802_setGain(NAU7802_GAIN_128); //Set gain to 128
 
-	result &= NAU7802_setSampleRate(NAU7802_SPS_80); //Set samples per second to 10
+	result &= NAU7802_setSampleRate(NAU7802_SPS_40); //Set samples per second to 10
 
 	result &= NAU7802_setRegister(NAU7802_ADC, 0x30); //Turn off CLK_CHP. From 9.1 power on sequencing.
 
@@ -137,7 +138,7 @@ bool NAU7802_available()
 bool NAU7802_calibrateAFE()
 {
   NAU7802_beginCalibrateAFE();
-  return NAU7802_waitForCalibrateAFE(1000);
+  return NAU7802_waitForCalibrateAFE(2000);
 }
 
 //Begin asynchronous calibration of the analog front end.
@@ -286,14 +287,14 @@ uint8_t NAU7802_getRevisionCode()
 //Assumes CR Cycle Ready bit (ADC conversion complete) has been checked to be 1
 int32_t NAU7802_getReading()
 {
-/*
+
     uint32_t rawValue    = ((uint32_t)I2C_ReadByteOneReg(I2C1,NAU7802_SLAVE_ADDR, NAU7802_ADCO_B2))<<16;
     rawValue            |= ((uint32_t)I2C_ReadByteOneReg(I2C1,NAU7802_SLAVE_ADDR, NAU7802_ADCO_B1))<<8;
     rawValue            |=  (uint32_t)I2C_ReadByteOneReg(I2C1,NAU7802_SLAVE_ADDR, NAU7802_ADCO_B0);
     int32_t shiftedValue = ((int32_t)rawValue)<<8;
     int32_t value        = shiftedValue>>8;
-	*/
-    return (1); // value return
+
+    return (value); // value return
 }
 
 //Return the average of a given number of readings
@@ -312,8 +313,9 @@ int32_t NAU7802_getAverage(uint8_t averageAmount)
       if (++samplesAquired == averageAmount)
         break; //All done
     }
-    if (millis() - startTime > 1000)
+    if (millis() - startTime > 2000){
       return (0); //Timeout - Bail with error
+		}
     delay(1);
   }
   total /= averageAmount;
@@ -415,14 +417,14 @@ bool NAU7802_getBit(uint8_t bitNumber, uint8_t registerAddress)
 //Get contents of a register
 uint8_t NAU7802_getRegister(uint8_t registerAddress)
 {
-   return 1; //I2C_ReadByteOneReg(I2C1,NAU7802_SLAVE_ADDR, registerAddress);
+   return I2C_ReadByteOneReg(I2C1,NAU7802_SLAVE_ADDR, registerAddress);
 }
 
 //Send a given value to be written to given address
 //Return true if successful
 bool NAU7802_setRegister(uint8_t registerAddress, uint8_t value)
 {
-	//I2C_WriteByteOneReg(I2C1,NAU7802_SLAVE_ADDR,registerAddress, value);
+	I2C_WriteByteOneReg(I2C1,NAU7802_SLAVE_ADDR,registerAddress, value);
 	return true;
 		
 }

@@ -136,6 +136,8 @@ typedef struct RS232_Params{
 }RS232_Params;
 
 typedef struct MENU_Params{
+ float calibrationFactor;
+ int32_t ZeroOffset;
  uint8_t resolution;
  uint8_t capacity;
  uint8_t decimalPoint;
@@ -169,6 +171,8 @@ void shw_f8();
 void shw_gravity();
 void shw_reset();
 void shw_rs232();
+
+void f0_Saved();
 void shw_f1a_3000();
 void shw_f1b_6000();
 void shw_f1c_dual1();
@@ -4534,6 +4538,7 @@ extern __attribute__((__nothrow__)) void __use_no_heap_region(void);
 extern __attribute__((__nothrow__)) char const *__C_library_version_string(void);
 extern __attribute__((__nothrow__)) int __C_library_version_number(void);
 # 5 "../src/menu.c" 2
+
 # 1 "..\\Inc/app.h" 1
 
 
@@ -4549,7 +4554,15 @@ extern __attribute__((__nothrow__)) int __C_library_version_number(void);
 
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
 # 10 "..\\Inc/app.h" 2
-# 24 "..\\Inc/app.h"
+
+
+
+
+
+typedef struct workVariable{
+ MENU_Params *p_menuParams;
+}workVariable;
+# 28 "..\\Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
@@ -4564,7 +4577,7 @@ _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
 
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
-# 6 "../src/menu.c" 2
+# 7 "../src/menu.c" 2
 # 1 "..\\Inc/keypad.h" 1
 # 37 "..\\Inc/keypad.h"
 typedef struct
@@ -4592,7 +4605,249 @@ static int16_t Scan(uint8_t *_longPress);
 static void setColumnPin(uint8_t _sel);
 static void resetAllColumnPins(void);
 static int8_t readRowPin(uint8_t _sel);
-# 7 "../src/menu.c" 2
+# 8 "../src/menu.c" 2
+# 1 "..\\Inc/SparkFun_NAU7802.h" 1
+# 29 "..\\Inc/SparkFun_NAU7802.h"
+typedef enum
+{
+  NAU7802_PU_CTRL = 0x00,
+  NAU7802_CTRL1,
+  NAU7802_CTRL2,
+  NAU7802_OCAL1_B2,
+  NAU7802_OCAL1_B1,
+  NAU7802_OCAL1_B0,
+  NAU7802_GCAL1_B3,
+  NAU7802_GCAL1_B2,
+  NAU7802_GCAL1_B1,
+  NAU7802_GCAL1_B0,
+  NAU7802_OCAL2_B2,
+  NAU7802_OCAL2_B1,
+  NAU7802_OCAL2_B0,
+  NAU7802_GCAL2_B3,
+  NAU7802_GCAL2_B2,
+  NAU7802_GCAL2_B1,
+  NAU7802_GCAL2_B0,
+  NAU7802_I2C_CONTROL,
+  NAU7802_ADCO_B2,
+  NAU7802_ADCO_B1,
+  NAU7802_ADCO_B0,
+  NAU7802_ADC = 0x15,
+  NAU7802_OTP_B1,
+  NAU7802_OTP_B0,
+  NAU7802_PGA = 0x1B,
+  NAU7802_PGA_PWR = 0x1C,
+  NAU7802_DEVICE_REV = 0x1F,
+} Scale_Registers;
+
+
+typedef enum
+{
+  NAU7802_PU_CTRL_RR = 0,
+  NAU7802_PU_CTRL_PUD,
+  NAU7802_PU_CTRL_PUA,
+  NAU7802_PU_CTRL_PUR,
+  NAU7802_PU_CTRL_CS,
+  NAU7802_PU_CTRL_CR,
+  NAU7802_PU_CTRL_OSCS,
+  NAU7802_PU_CTRL_AVDDS,
+} PU_CTRL_Bits;
+
+
+typedef enum
+{
+  NAU7802_CTRL1_GAIN = 2,
+  NAU7802_CTRL1_VLDO = 5,
+  NAU7802_CTRL1_DRDY_SEL = 6,
+  NAU7802_CTRL1_CRP = 7,
+} CTRL1_Bits;
+
+
+typedef enum
+{
+  NAU7802_CTRL2_CALMOD = 0,
+  NAU7802_CTRL2_CALS = 2,
+  NAU7802_CTRL2_CAL_ERROR = 3,
+  NAU7802_CTRL2_CRS = 4,
+  NAU7802_CTRL2_CHS = 7,
+} CTRL2_Bits;
+
+
+typedef enum
+{
+  NAU7802_PGA_CHP_DIS = 0,
+  NAU7802_PGA_INV = 3,
+  NAU7802_PGA_BYPASS_EN,
+  NAU7802_PGA_OUT_EN,
+  NAU7802_PGA_LDOMODE,
+  NAU7802_PGA_RD_OTP_SEL,
+} PGA_Bits;
+
+
+typedef enum
+{
+  NAU7802_PGA_PWR_PGA_CURR = 0,
+  NAU7802_PGA_PWR_ADC_CURR = 2,
+  NAU7802_PGA_PWR_MSTR_BIAS_CURR = 4,
+  NAU7802_PGA_PWR_PGA_CAP_EN = 7,
+} PGA_PWR_Bits;
+
+
+typedef enum
+{
+  NAU7802_LDO_2V4 = 0b111,
+  NAU7802_LDO_2V7 = 0b110,
+  NAU7802_LDO_3V0 = 0b101,
+  NAU7802_LDO_3V3 = 0b100,
+  NAU7802_LDO_3V6 = 0b011,
+  NAU7802_LDO_3V9 = 0b010,
+  NAU7802_LDO_4V2 = 0b001,
+  NAU7802_LDO_4V5 = 0b000,
+} NAU7802_LDO_Values;
+
+
+typedef enum
+{
+  NAU7802_GAIN_128 = 0b111,
+  NAU7802_GAIN_64 = 0b110,
+  NAU7802_GAIN_32 = 0b101,
+  NAU7802_GAIN_16 = 0b100,
+  NAU7802_GAIN_8 = 0b011,
+  NAU7802_GAIN_4 = 0b010,
+  NAU7802_GAIN_2 = 0b001,
+  NAU7802_GAIN_1 = 0b000,
+} NAU7802_Gain_Values;
+
+
+typedef enum
+{
+  NAU7802_SPS_320 = 0b111,
+  NAU7802_SPS_80 = 0b011,
+  NAU7802_SPS_40 = 0b010,
+  NAU7802_SPS_20 = 0b001,
+  NAU7802_SPS_10 = 0b000,
+} NAU7802_SPS_Values;
+
+
+typedef enum
+{
+  NAU7802_CHANNEL_1 = 0,
+  NAU7802_CHANNEL_2 = 1,
+} NAU7802_Channels;
+
+
+typedef enum
+{
+  NAU7802_CAL_SUCCESS = 0,
+  NAU7802_CAL_IN_PROGRESS = 1,
+  NAU7802_CAL_FAILURE = 2,
+} NAU7802_Cal_Status;
+
+
+typedef struct SCALE{
+  _Bool (*begin)(void);
+  _Bool (*isConnected)(void);
+  _Bool (*available)(void);
+  int32_t (*getReading)(void);
+  int32_t (*getAverage)(uint8_t);
+
+  void (*calculateZeroOffset)(uint8_t);
+  void (*setZeroOffset)(int32_t);
+  int32_t (*getZeroOffset)(void);
+
+  void (*calculateCalibrationFactor)(float, uint8_t);
+  void (*setCalibrationFactor)(float);
+  float (*getCalibrationFactor)(void);
+
+  float (*getWeight)(_Bool, uint8_t);
+
+  _Bool (*setGain)(uint8_t gainValue);
+  _Bool (*setLDO)(uint8_t ldoValue);
+  _Bool (*setSampleRate)(uint8_t rate);
+  _Bool (*setChannel)(uint8_t channelNumber);
+
+  _Bool (*calibrateAFE)(void);
+  void (*beginCalibrateAFE)(void);
+  _Bool (*waitForCalibrateAFE)(uint32_t);
+  NAU7802_Cal_Status (*calAFEStatus)(void);
+
+  _Bool (*reset)(void);
+
+  _Bool (*powerUp)(void);
+  _Bool (*powerDown)(void);
+
+  _Bool (*setIntPolarityHigh)(void);
+  _Bool (*setIntPolarityLow)(void);
+
+  uint8_t (*getRevisionCode)(void);
+
+  _Bool (*setBit)(uint8_t, uint8_t);
+  _Bool (*clearBit)(uint8_t, uint8_t);
+  _Bool (*getBit)(uint8_t, uint8_t);
+
+  uint8_t (*getRegister)(uint8_t);
+  _Bool (*setRegister)(uint8_t, uint8_t);
+}SCALE;
+
+ SCALE *newScaleObj();
+  _Bool NAU7802_begin();
+  _Bool NAU7802_isConnected();
+  _Bool NAU7802_available();
+  int32_t NAU7802_getReading();
+  int32_t NAU7802_getAverage(uint8_t samplesToTake);
+
+  void NAU7802_calculateZeroOffset(uint8_t averageAmount);
+  void NAU7802_setZeroOffset(int32_t newZeroOffset);
+  int32_t NAU7802_getZeroOffset();
+
+  void NAU7802_calculateCalibrationFactor(float weightOnScale, uint8_t averageAmount);
+  void NAU7802_setCalibrationFactor(float calFactor);
+  float NAU7802_getCalibrationFactor();
+
+  float NAU7802_getWeight(_Bool allowNegativeWeights, uint8_t samplesToTake);
+
+  _Bool NAU7802_setGain(uint8_t gainValue);
+  _Bool NAU7802_setLDO(uint8_t ldoValue);
+  _Bool NAU7802_setSampleRate(uint8_t rate);
+  _Bool NAU7802_setChannel(uint8_t channelNumber);
+
+  _Bool NAU7802_calibrateAFE();
+  void NAU7802_beginCalibrateAFE();
+  _Bool NAU7802_waitForCalibrateAFE(uint32_t timeout_ms);
+  NAU7802_Cal_Status NAU7802_calAFEStatus();
+
+  _Bool NAU7802_reset();
+
+  _Bool NAU7802_powerUp();
+  _Bool NAU7802_powerDown();
+
+  _Bool NAU7802_setIntPolarityHigh();
+  _Bool NAU7802_setIntPolarityLow();
+
+  uint8_t NAU7802_getRevisionCode();
+
+  _Bool NAU7802_setBit(uint8_t bitNumber, uint8_t registerAddress);
+  _Bool NAU7802_clearBit(uint8_t bitNumber, uint8_t registerAddress);
+  _Bool NAU7802_getBit(uint8_t bitNumber, uint8_t registerAddress);
+
+  uint8_t NAU7802_getRegister(uint8_t registerAddress);
+  _Bool NAU7802_setRegister(uint8_t registerAddress, uint8_t value);
+# 9 "../src/menu.c" 2
+# 1 "..\\Inc/eeproom.h" 1
+
+
+
+# 1 "..\\scale_v2.h" 1
+# 12 "..\\scale_v2.h"
+# 1 "../periph_conf.h" 1
+# 13 "..\\scale_v2.h" 2
+# 5 "..\\Inc/eeproom.h" 2
+# 31 "..\\Inc/eeproom.h"
+void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len);
+_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]);
+void writeFlashMemoryInformation(MENU_Params *p_MenuParam);
+void readFlashMemoryInformation(MENU_Params *p_MenuParam);
+void InitFactorySetting(MENU_Params *p_MenuParam);
+# 10 "../src/menu.c" 2
 
 extern AIP * p_LcdObj_S1;
 extern AIP * p_LcdObj_S2;
@@ -4600,7 +4855,7 @@ extern AIP * p_LcdObj_S3;
 extern KEYPAD * p_KeypadObj;
 extern FontDef *p_CurrentFont;
 extern MENU_Params m_Param;
-
+extern SCALE *p_ScaleObj;
 
 
 RESOLUTION currentResolution;
@@ -4662,7 +4917,7 @@ void build(node *currentNode,void (*_DoWorkDisplay)(void),node *_enter,node *_ex
 
 
 node root;
-node f0_cal;
+node f0_cal,f0_save;
 node f1_resolution, f1a_3000,f1b_6000,f1c_dual1,f1d_dual2,f1_save;
 node f2_capacity, f2a_3,f2b_6,f2c_15,f2d_30,f2_save;
 node f3_decimalPoint,f3a,f3b,f3c,f3d,f3e,f3_save;
@@ -4704,7 +4959,7 @@ static void Menu_Init(){
 
 
  build(&root,&shw_mainScreen,&f0_cal,0,0,0);
- build(&f0_cal,&shw_calibration,0,&root,&f11_rs232,&f1_resolution);
+ build(&f0_cal,&shw_calibration,&f0_save,&root,&f11_rs232,&f1_resolution);
  build(&f1_resolution,&shw_resolution,&f1a_3000,&root,&f0_cal,&f2_capacity);
  build(&f2_capacity,&shw_capacity,&f2a_3,&root,&f1_resolution,&f3_decimalPoint);
  build(&f3_decimalPoint,&shw_decimalPoint,&f3a,&root,&f2_capacity,&f4_fixFloat);
@@ -4720,6 +4975,7 @@ static void Menu_Init(){
 
 
 
+ build(&f0_save,&f0_Saved,0,&f0_cal,0,0);
 
 
  build(&f1a_3000,&shw_f1a_3000,&f1_save,&f1_resolution,&f1d_dual2,&f1b_6000);
@@ -4765,8 +5021,6 @@ static void Menu_Init(){
  build(&f10a,&shw_f10a,0,&f10_reset,0,0);
 
 }
-
-
 void shw_mainScreen(){
 
 
@@ -4784,6 +5038,7 @@ void shw_mainScreen(){
 
 }
 void shw_calibration(){
+ char array[10]="";
 
 
 
@@ -4794,7 +5049,8 @@ void shw_calibration(){
  p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   CAL",p_CurrentFont,p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
 
- p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
+ sprintf((char*)(&array[0]),"%f",m_Param.calibrationFactor);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)array,p_CurrentFont,p_LcdObj_S3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 
 }
@@ -5030,6 +5286,14 @@ void shw_rs232(){
  p_LcdObj_S3->ClearScreen(p_LcdObj_S3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 }
+
+void f0_Saved(){
+  p_ScaleObj->calculateCalibrationFactor(1.00, 64);
+ m_Param.calibrationFactor = p_ScaleObj->getCalibrationFactor();
+ p_ScaleObj->calibrateAFE();
+ writeFlashMemoryInformation(&m_Param);
+}
+
 void shw_f1a_3000(){
    p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  3000",p_CurrentFont,p_LcdObj_S3);
    p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);

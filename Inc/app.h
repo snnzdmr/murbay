@@ -12,10 +12,14 @@
 //                               GLOBAL VARIABLE & DEFINITONS
 //#############################################################################################
 
+typedef struct workVariable{
+	MENU_Params	*p_menuParams;
+}workVariable;
+
 #define BATTERY_LOW				   0
 #define BATTERY_HALF			   1
 #define BATTERY_FULL			   2
-#define START_SCREEN_SPEED   100000
+#define START_SCREEN_SPEED   200000
 
 //#############################################################################################
 //                                    USER FUNCTIONS

@@ -19,7 +19,7 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"wdt.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/wdt_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/wdt_reg.h"
 	.section	.text.WDT_Open,"ax",%progbits
 	.hidden	WDT_Open                        @ -- Begin function WDT_Open
 	.globl	WDT_Open
@@ -29,7 +29,7 @@
 	.thumb_func
 WDT_Open:
 .Lfunc_begin0:
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/src/wdt.c"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../../../../Library/StdDriver/src/wdt.c"
 	.loc	3 55 0                          @ ../../../../Library/StdDriver/src/wdt.c:55:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -317,29 +317,29 @@ __arm_cp.0_1:
 .Linfo_string1:
 	.asciz	"../../../../Library/StdDriver/src\\wdt.c" @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=108
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" @ string offset=108
 .Linfo_string3:
-	.asciz	"CTL"                           @ string offset=156
+	.asciz	"CTL"                           @ string offset=153
 .Linfo_string4:
-	.asciz	"unsigned int"                  @ string offset=160
+	.asciz	"unsigned int"                  @ string offset=157
 .Linfo_string5:
-	.asciz	"uint32_t"                      @ string offset=173
+	.asciz	"uint32_t"                      @ string offset=170
 .Linfo_string6:
-	.asciz	"ALTCTL"                        @ string offset=182
+	.asciz	"ALTCTL"                        @ string offset=179
 .Linfo_string7:
-	.asciz	"RSTCNT"                        @ string offset=189
+	.asciz	"RSTCNT"                        @ string offset=186
 .Linfo_string8:
-	.asciz	"WDT_T"                         @ string offset=196
+	.asciz	"WDT_T"                         @ string offset=193
 .Linfo_string9:
-	.asciz	"WDT_Open"                      @ string offset=202
+	.asciz	"WDT_Open"                      @ string offset=199
 .Linfo_string10:
-	.asciz	"u32TimeoutInterval"            @ string offset=211
+	.asciz	"u32TimeoutInterval"            @ string offset=208
 .Linfo_string11:
-	.asciz	"u32ResetDelay"                 @ string offset=230
+	.asciz	"u32ResetDelay"                 @ string offset=227
 .Linfo_string12:
-	.asciz	"u32EnableReset"                @ string offset=244
+	.asciz	"u32EnableReset"                @ string offset=241
 .Linfo_string13:
-	.asciz	"u32EnableWakeup"               @ string offset=259
+	.asciz	"u32EnableWakeup"               @ string offset=256
 	.ident	"Component: Arm Compiler for Embedded 6.18 Tool: armclang [5e4cca00]"
 	.section	".note.GNU-stack","",%progbits
 	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals

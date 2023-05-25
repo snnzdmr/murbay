@@ -19,10 +19,10 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"retarget.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdio.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/StdDriver/src/retarget.c"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../../../../Library/StdDriver/src/retarget.c"
 	.file	3 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/M251.h"
-	.file	5 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/uart_reg.h"
+	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/M251.h"
+	.file	5 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/uart_reg.h"
 	.section	.text.SH_Return,"ax",%progbits
 	.hidden	SH_Return                       @ -- Begin function SH_Return
 	.globl	SH_Return
@@ -1574,129 +1574,129 @@ __stdin:
 .Linfo_string1:
 	.asciz	"../../../../Library/StdDriver/src\\retarget.c" @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=113
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" @ string offset=113
 .Linfo_string3:
-	.asciz	"__stdout"                      @ string offset=161
+	.asciz	"__stdout"                      @ string offset=158
 .Linfo_string4:
-	.asciz	"__FILE_opaque"                 @ string offset=170
+	.asciz	"__FILE_opaque"                 @ string offset=167
 .Linfo_string5:
-	.asciz	"__FILE_alignment"              @ string offset=184
+	.asciz	"__FILE_alignment"              @ string offset=181
 .Linfo_string6:
-	.asciz	"long"                          @ string offset=201
+	.asciz	"long"                          @ string offset=198
 .Linfo_string7:
-	.asciz	"__FILE_size"                   @ string offset=206
+	.asciz	"__FILE_size"                   @ string offset=203
 .Linfo_string8:
-	.asciz	"char"                          @ string offset=218
+	.asciz	"char"                          @ string offset=215
 .Linfo_string9:
-	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=223
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=220
 .Linfo_string10:
-	.asciz	"__FILE"                        @ string offset=243
+	.asciz	"__FILE"                        @ string offset=240
 .Linfo_string11:
-	.asciz	"FILE"                          @ string offset=250
+	.asciz	"FILE"                          @ string offset=247
 .Linfo_string12:
-	.asciz	"__stdin"                       @ string offset=255
+	.asciz	"__stdin"                       @ string offset=252
 .Linfo_string13:
-	.asciz	"g_ICE_Conneced"                @ string offset=263
+	.asciz	"g_ICE_Conneced"                @ string offset=260
 .Linfo_string14:
-	.asciz	"int"                           @ string offset=278
+	.asciz	"int"                           @ string offset=275
 .Linfo_string15:
-	.asciz	"int32_t"                       @ string offset=282
+	.asciz	"int32_t"                       @ string offset=279
 .Linfo_string16:
-	.asciz	"unsigned int"                  @ string offset=290
+	.asciz	"unsigned int"                  @ string offset=287
 .Linfo_string17:
-	.asciz	"uint32_t"                      @ string offset=303
+	.asciz	"uint32_t"                      @ string offset=300
 .Linfo_string18:
-	.asciz	"unsigned short"                @ string offset=312
+	.asciz	"unsigned short"                @ string offset=309
 .Linfo_string19:
-	.asciz	"uint16_t"                      @ string offset=327
+	.asciz	"uint16_t"                      @ string offset=324
 .Linfo_string20:
-	.asciz	"vu16"                          @ string offset=336
+	.asciz	"vu16"                          @ string offset=333
 .Linfo_string21:
-	.asciz	"DAT"                           @ string offset=341
+	.asciz	"DAT"                           @ string offset=338
 .Linfo_string22:
-	.asciz	"INTEN"                         @ string offset=345
+	.asciz	"INTEN"                         @ string offset=342
 .Linfo_string23:
-	.asciz	"FIFO"                          @ string offset=351
+	.asciz	"FIFO"                          @ string offset=348
 .Linfo_string24:
-	.asciz	"LINE"                          @ string offset=356
+	.asciz	"LINE"                          @ string offset=353
 .Linfo_string25:
-	.asciz	"MODEM"                         @ string offset=361
+	.asciz	"MODEM"                         @ string offset=358
 .Linfo_string26:
-	.asciz	"MODEMSTS"                      @ string offset=367
+	.asciz	"MODEMSTS"                      @ string offset=364
 .Linfo_string27:
-	.asciz	"FIFOSTS"                       @ string offset=376
+	.asciz	"FIFOSTS"                       @ string offset=373
 .Linfo_string28:
-	.asciz	"INTSTS"                        @ string offset=384
+	.asciz	"INTSTS"                        @ string offset=381
 .Linfo_string29:
-	.asciz	"TOUT"                          @ string offset=391
+	.asciz	"TOUT"                          @ string offset=388
 .Linfo_string30:
-	.asciz	"BAUD"                          @ string offset=396
+	.asciz	"BAUD"                          @ string offset=393
 .Linfo_string31:
-	.asciz	"IRDA"                          @ string offset=401
+	.asciz	"IRDA"                          @ string offset=398
 .Linfo_string32:
-	.asciz	"ALTCTL"                        @ string offset=406
+	.asciz	"ALTCTL"                        @ string offset=403
 .Linfo_string33:
-	.asciz	"FUNCSEL"                       @ string offset=413
+	.asciz	"FUNCSEL"                       @ string offset=410
 .Linfo_string34:
-	.asciz	"LINCTL"                        @ string offset=421
+	.asciz	"LINCTL"                        @ string offset=418
 .Linfo_string35:
-	.asciz	"LINSTS"                        @ string offset=428
+	.asciz	"LINSTS"                        @ string offset=425
 .Linfo_string36:
-	.asciz	"BRCOMP"                        @ string offset=435
+	.asciz	"BRCOMP"                        @ string offset=432
 .Linfo_string37:
-	.asciz	"WKCTL"                         @ string offset=442
+	.asciz	"WKCTL"                         @ string offset=439
 .Linfo_string38:
-	.asciz	"WKSTS"                         @ string offset=448
+	.asciz	"WKSTS"                         @ string offset=445
 .Linfo_string39:
-	.asciz	"DWKCOMP"                       @ string offset=454
+	.asciz	"DWKCOMP"                       @ string offset=451
 .Linfo_string40:
-	.asciz	"UART_T"                        @ string offset=462
+	.asciz	"UART_T"                        @ string offset=459
 .Linfo_string41:
-	.asciz	"SH_Return"                     @ string offset=469
+	.asciz	"SH_Return"                     @ string offset=466
 .Linfo_string42:
-	.asciz	"ProcessHardFault"              @ string offset=479
+	.asciz	"ProcessHardFault"              @ string offset=476
 .Linfo_string43:
-	.asciz	"DumpStack"                     @ string offset=496
+	.asciz	"DumpStack"                     @ string offset=493
 .Linfo_string44:
-	.asciz	"SendChar_ToUART"               @ string offset=506
+	.asciz	"SendChar_ToUART"               @ string offset=503
 .Linfo_string45:
-	.asciz	"SendChar"                      @ string offset=522
+	.asciz	"SendChar"                      @ string offset=519
 .Linfo_string46:
-	.asciz	"GetChar"                       @ string offset=531
+	.asciz	"GetChar"                       @ string offset=528
 .Linfo_string47:
-	.asciz	"kbhit"                         @ string offset=539
+	.asciz	"kbhit"                         @ string offset=536
 .Linfo_string48:
-	.asciz	"IsDebugFifoEmpty"              @ string offset=545
+	.asciz	"IsDebugFifoEmpty"              @ string offset=542
 .Linfo_string49:
-	.asciz	"_ttywrch"                      @ string offset=562
+	.asciz	"_ttywrch"                      @ string offset=559
 .Linfo_string50:
-	.asciz	"fputc"                         @ string offset=571
+	.asciz	"fputc"                         @ string offset=568
 .Linfo_string51:
-	.asciz	"fgetc"                         @ string offset=577
+	.asciz	"fgetc"                         @ string offset=574
 .Linfo_string52:
-	.asciz	"ferror"                        @ string offset=583
+	.asciz	"ferror"                        @ string offset=580
 .Linfo_string53:
-	.asciz	"n32In_R0"                      @ string offset=590
+	.asciz	"n32In_R0"                      @ string offset=587
 .Linfo_string54:
-	.asciz	"n32In_R1"                      @ string offset=599
+	.asciz	"n32In_R1"                      @ string offset=596
 .Linfo_string55:
-	.asciz	"pn32Out_R0"                    @ string offset=608
+	.asciz	"pn32Out_R0"                    @ string offset=605
 .Linfo_string56:
-	.asciz	"lr"                            @ string offset=619
+	.asciz	"lr"                            @ string offset=616
 .Linfo_string57:
-	.asciz	"msp"                           @ string offset=622
+	.asciz	"msp"                           @ string offset=619
 .Linfo_string58:
-	.asciz	"psp"                           @ string offset=626
+	.asciz	"psp"                           @ string offset=623
 .Linfo_string59:
-	.asciz	"sp"                            @ string offset=630
+	.asciz	"sp"                            @ string offset=627
 .Linfo_string60:
-	.asciz	"inst"                          @ string offset=633
+	.asciz	"inst"                          @ string offset=630
 .Linfo_string61:
-	.asciz	"stack"                         @ string offset=638
+	.asciz	"stack"                         @ string offset=635
 .Linfo_string62:
-	.asciz	"ch"                            @ string offset=644
+	.asciz	"ch"                            @ string offset=641
 .Linfo_string63:
-	.asciz	"stream"                        @ string offset=647
+	.asciz	"stream"                        @ string offset=644
 	.ident	"Component: Arm Compiler for Embedded 6.18 Tool: armclang [5e4cca00]"
 	.section	".note.GNU-stack","",%progbits
 	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals

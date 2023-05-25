@@ -75,4 +75,5 @@
   ..\..\..\..\Library\StdDriver\inc\lcd.h \
   ..\..\..\..\Library\StdDriver\inc\tk.h ..\periph_conf.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\Inc\app.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\Inc\keypad.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\Inc\keypad.h \
+  ..\Inc\SparkFun_NAU7802.h ..\Inc\eeproom.h

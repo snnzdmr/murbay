@@ -19,7 +19,7 @@
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"clk_conf.c"
 	.file	1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
+	.file	2 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/clk_reg.h"
 	.section	.text.Clock_Init,"ax",%progbits
 	.hidden	Clock_Init                      @ -- Begin function Clock_Init
 	.globl	Clock_Init
@@ -29,7 +29,7 @@
 	.thumb_func
 Clock_Init:
 .Lfunc_begin0:
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../clk_conf.c"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../clk_conf.c"
 	.loc	3 42 0                          @ ../clk_conf.c:42:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -584,75 +584,75 @@ __arm_cp.0_7:
 .Linfo_string1:
 	.asciz	"..\\clk_conf.c"                @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=82
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" @ string offset=82
 .Linfo_string3:
-	.asciz	"PWRCTL"                        @ string offset=130
+	.asciz	"PWRCTL"                        @ string offset=127
 .Linfo_string4:
-	.asciz	"unsigned int"                  @ string offset=137
+	.asciz	"unsigned int"                  @ string offset=134
 .Linfo_string5:
-	.asciz	"uint32_t"                      @ string offset=150
+	.asciz	"uint32_t"                      @ string offset=147
 .Linfo_string6:
-	.asciz	"AHBCLK"                        @ string offset=159
+	.asciz	"AHBCLK"                        @ string offset=156
 .Linfo_string7:
-	.asciz	"APBCLK0"                       @ string offset=166
+	.asciz	"APBCLK0"                       @ string offset=163
 .Linfo_string8:
-	.asciz	"APBCLK1"                       @ string offset=174
+	.asciz	"APBCLK1"                       @ string offset=171
 .Linfo_string9:
-	.asciz	"CLKSEL0"                       @ string offset=182
+	.asciz	"CLKSEL0"                       @ string offset=179
 .Linfo_string10:
-	.asciz	"CLKSEL1"                       @ string offset=190
+	.asciz	"CLKSEL1"                       @ string offset=187
 .Linfo_string11:
-	.asciz	"CLKSEL2"                       @ string offset=198
+	.asciz	"CLKSEL2"                       @ string offset=195
 .Linfo_string12:
-	.asciz	"CLKSEL3"                       @ string offset=206
+	.asciz	"CLKSEL3"                       @ string offset=203
 .Linfo_string13:
-	.asciz	"CLKDIV0"                       @ string offset=214
+	.asciz	"CLKDIV0"                       @ string offset=211
 .Linfo_string14:
-	.asciz	"CLKDIV1"                       @ string offset=222
+	.asciz	"CLKDIV1"                       @ string offset=219
 .Linfo_string15:
-	.asciz	"RESERVE0"                      @ string offset=230
+	.asciz	"RESERVE0"                      @ string offset=227
 .Linfo_string16:
-	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=239
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=236
 .Linfo_string17:
-	.asciz	"CLKDIV4"                       @ string offset=259
+	.asciz	"CLKDIV4"                       @ string offset=256
 .Linfo_string18:
-	.asciz	"PCLKDIV"                       @ string offset=267
+	.asciz	"PCLKDIV"                       @ string offset=264
 .Linfo_string19:
-	.asciz	"RESERVE1"                      @ string offset=275
+	.asciz	"RESERVE1"                      @ string offset=272
 .Linfo_string20:
-	.asciz	"PLLCTL"                        @ string offset=284
+	.asciz	"PLLCTL"                        @ string offset=281
 .Linfo_string21:
-	.asciz	"RESERVE2"                      @ string offset=291
+	.asciz	"RESERVE2"                      @ string offset=288
 .Linfo_string22:
-	.asciz	"STATUS"                        @ string offset=300
+	.asciz	"STATUS"                        @ string offset=297
 .Linfo_string23:
-	.asciz	"RESERVE3"                      @ string offset=307
+	.asciz	"RESERVE3"                      @ string offset=304
 .Linfo_string24:
-	.asciz	"CLKOCTL"                       @ string offset=316
+	.asciz	"CLKOCTL"                       @ string offset=313
 .Linfo_string25:
-	.asciz	"RESERVE4"                      @ string offset=324
+	.asciz	"RESERVE4"                      @ string offset=321
 .Linfo_string26:
-	.asciz	"CLKDCTL"                       @ string offset=333
+	.asciz	"CLKDCTL"                       @ string offset=330
 .Linfo_string27:
-	.asciz	"CLKDSTS"                       @ string offset=341
+	.asciz	"CLKDSTS"                       @ string offset=338
 .Linfo_string28:
-	.asciz	"CDUPB"                         @ string offset=349
+	.asciz	"CDUPB"                         @ string offset=346
 .Linfo_string29:
-	.asciz	"CDLOWB"                        @ string offset=355
+	.asciz	"CDLOWB"                        @ string offset=352
 .Linfo_string30:
-	.asciz	"RESERVE5"                      @ string offset=362
+	.asciz	"RESERVE5"                      @ string offset=359
 .Linfo_string31:
-	.asciz	"PMUCTL"                        @ string offset=371
+	.asciz	"PMUCTL"                        @ string offset=368
 .Linfo_string32:
-	.asciz	"PMUSTS"                        @ string offset=378
+	.asciz	"PMUSTS"                        @ string offset=375
 .Linfo_string33:
-	.asciz	"RESERVE6"                      @ string offset=385
+	.asciz	"RESERVE6"                      @ string offset=382
 .Linfo_string34:
-	.asciz	"HXTFSEL"                       @ string offset=394
+	.asciz	"HXTFSEL"                       @ string offset=391
 .Linfo_string35:
-	.asciz	"CLK_T"                         @ string offset=402
+	.asciz	"CLK_T"                         @ string offset=399
 .Linfo_string36:
-	.asciz	"Clock_Init"                    @ string offset=408
+	.asciz	"Clock_Init"                    @ string offset=405
 	.ident	"Component: Arm Compiler for Embedded 6.18 Tool: armclang [5e4cca00]"
 	.section	".note.GNU-stack","",%progbits
 	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals

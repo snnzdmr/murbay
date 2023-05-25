@@ -4019,7 +4019,7 @@ void wdt_tickCounter(void){
 }
 
 volatile int64_t SysTickCounter(){
- return s_u32TickCnt*417;
+ return s_u32TickCnt*(0.417);
 }
 int64_t millis(void){
  return SysTickCounter();

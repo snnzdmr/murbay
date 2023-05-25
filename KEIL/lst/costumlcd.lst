@@ -18,9 +18,9 @@
 	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
 	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
 	.file	"costumLcd.c"
-	.file	1 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "..\\Inc/costumLcd.h"
+	.file	1 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "..\\Inc/costumLcd.h"
 	.file	2 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
-	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/spi_reg.h"
+	.file	3 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../../../../Library/Device/Nuvoton/M251/Include/spi_reg.h"
 	.section	.text.SCREEN_1_AIP_ResetPin,"ax",%progbits
 	.hidden	SCREEN_1_AIP_ResetPin           @ -- Begin function SCREEN_1_AIP_ResetPin
 	.weak	SCREEN_1_AIP_ResetPin
@@ -30,7 +30,7 @@
 	.thumb_func
 SCREEN_1_AIP_ResetPin:
 .Lfunc_begin0:
-	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" "../src/costumLcd.c"
+	.file	4 "E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" "../src/costumLcd.c"
 	.loc	4 13 0                          @ ../src/costumLcd.c:13:0
 	.fnstart
 	.cfi_sections .debug_frame
@@ -3758,205 +3758,205 @@ __arm_cp.22_2:
 .Linfo_string1:
 	.asciz	"../src\\costumLcd.c"           @ string offset=68
 .Linfo_string2:
-	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\scale_v2\\KEIL" @ string offset=87
+	.asciz	"E:\\BERSY\\sdk\\SampleCode\\NuCodeGen\\Scale\\KEIL" @ string offset=87
 .Linfo_string3:
-	.asciz	"Init"                          @ string offset=135
+	.asciz	"Init"                          @ string offset=132
 .Linfo_string4:
-	.asciz	"WriteData"                     @ string offset=140
+	.asciz	"WriteData"                     @ string offset=137
 .Linfo_string5:
-	.asciz	"unsigned char"                 @ string offset=150
+	.asciz	"unsigned char"                 @ string offset=147
 .Linfo_string6:
-	.asciz	"uint8_t"                       @ string offset=164
+	.asciz	"uint8_t"                       @ string offset=161
 .Linfo_string7:
-	.asciz	"WriteCommand"                  @ string offset=172
+	.asciz	"WriteCommand"                  @ string offset=169
 .Linfo_string8:
-	.asciz	"ClearScreen"                   @ string offset=185
+	.asciz	"ClearScreen"                   @ string offset=182
 .Linfo_string9:
-	.asciz	"UpdateScreen"                  @ string offset=197
+	.asciz	"UpdateScreen"                  @ string offset=194
 .Linfo_string10:
-	.asciz	"DrawPixel"                     @ string offset=210
+	.asciz	"DrawPixel"                     @ string offset=207
 .Linfo_string11:
-	.asciz	"WriteChar"                     @ string offset=220
+	.asciz	"WriteChar"                     @ string offset=217
 .Linfo_string12:
-	.asciz	"FontWidth"                     @ string offset=230
+	.asciz	"FontWidth"                     @ string offset=227
 .Linfo_string13:
-	.asciz	"FontHeight"                    @ string offset=240
+	.asciz	"FontHeight"                    @ string offset=237
 .Linfo_string14:
-	.asciz	"data"                          @ string offset=251
+	.asciz	"data"                          @ string offset=248
 .Linfo_string15:
-	.asciz	"unsigned short"                @ string offset=256
+	.asciz	"unsigned short"                @ string offset=253
 .Linfo_string16:
-	.asciz	"uint16_t"                      @ string offset=271
+	.asciz	"uint16_t"                      @ string offset=268
 .Linfo_string17:
-	.asciz	"FontDef"                       @ string offset=280
+	.asciz	"FontDef"                       @ string offset=277
 .Linfo_string18:
-	.asciz	"SetCursor"                     @ string offset=288
+	.asciz	"SetCursor"                     @ string offset=285
 .Linfo_string19:
-	.asciz	"WriteString"                   @ string offset=298
+	.asciz	"WriteString"                   @ string offset=295
 .Linfo_string20:
-	.asciz	"WriteStringLen"                @ string offset=310
+	.asciz	"WriteStringLen"                @ string offset=307
 .Linfo_string21:
-	.asciz	"Spoint"                        @ string offset=325
+	.asciz	"Spoint"                        @ string offset=322
 .Linfo_string22:
-	.asciz	"WriteNumber"                   @ string offset=332
+	.asciz	"WriteNumber"                   @ string offset=329
 .Linfo_string23:
-	.asciz	"Cs"                            @ string offset=344
+	.asciz	"Cs"                            @ string offset=341
 .Linfo_string24:
-	.asciz	"Reset"                         @ string offset=347
+	.asciz	"Reset"                         @ string offset=344
 .Linfo_string25:
-	.asciz	"A0"                            @ string offset=353
+	.asciz	"A0"                            @ string offset=350
 .Linfo_string26:
-	.asciz	"ptrRam"                        @ string offset=356
+	.asciz	"ptrRam"                        @ string offset=353
 .Linfo_string27:
-	.asciz	"AIP_currentPos"                @ string offset=363
+	.asciz	"AIP_currentPos"                @ string offset=360
 .Linfo_string28:
-	.asciz	"x_pos"                         @ string offset=378
+	.asciz	"x_pos"                         @ string offset=375
 .Linfo_string29:
-	.asciz	"y_pos"                         @ string offset=384
+	.asciz	"y_pos"                         @ string offset=381
 .Linfo_string30:
-	.asciz	"Ai_position"                   @ string offset=390
+	.asciz	"Ai_position"                   @ string offset=387
 .Linfo_string31:
-	.asciz	"AIP"                           @ string offset=402
+	.asciz	"AIP"                           @ string offset=399
 .Linfo_string32:
-	.asciz	"CTL"                           @ string offset=406
+	.asciz	"CTL"                           @ string offset=403
 .Linfo_string33:
-	.asciz	"unsigned int"                  @ string offset=410
+	.asciz	"unsigned int"                  @ string offset=407
 .Linfo_string34:
-	.asciz	"uint32_t"                      @ string offset=423
+	.asciz	"uint32_t"                      @ string offset=420
 .Linfo_string35:
-	.asciz	"CLKDIV"                        @ string offset=432
+	.asciz	"CLKDIV"                        @ string offset=429
 .Linfo_string36:
-	.asciz	"SSCTL"                         @ string offset=439
+	.asciz	"SSCTL"                         @ string offset=436
 .Linfo_string37:
-	.asciz	"PDMACTL"                       @ string offset=445
+	.asciz	"PDMACTL"                       @ string offset=442
 .Linfo_string38:
-	.asciz	"FIFOCTL"                       @ string offset=453
+	.asciz	"FIFOCTL"                       @ string offset=450
 .Linfo_string39:
-	.asciz	"STATUS"                        @ string offset=461
+	.asciz	"STATUS"                        @ string offset=458
 .Linfo_string40:
-	.asciz	"STATUS2"                       @ string offset=468
+	.asciz	"STATUS2"                       @ string offset=465
 .Linfo_string41:
-	.asciz	"RESERVE0"                      @ string offset=476
+	.asciz	"RESERVE0"                      @ string offset=473
 .Linfo_string42:
-	.asciz	"TX"                            @ string offset=485
+	.asciz	"TX"                            @ string offset=482
 .Linfo_string43:
-	.asciz	"RESERVE1"                      @ string offset=488
+	.asciz	"RESERVE1"                      @ string offset=485
 .Linfo_string44:
-	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=497
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=494
 .Linfo_string45:
-	.asciz	"RX"                            @ string offset=517
+	.asciz	"RX"                            @ string offset=514
 .Linfo_string46:
-	.asciz	"RESERVE2"                      @ string offset=520
+	.asciz	"RESERVE2"                      @ string offset=517
 .Linfo_string47:
-	.asciz	"I2SCTL"                        @ string offset=529
+	.asciz	"I2SCTL"                        @ string offset=526
 .Linfo_string48:
-	.asciz	"I2SCLK"                        @ string offset=536
+	.asciz	"I2SCLK"                        @ string offset=533
 .Linfo_string49:
-	.asciz	"I2SSTS"                        @ string offset=543
+	.asciz	"I2SSTS"                        @ string offset=540
 .Linfo_string50:
-	.asciz	"SPI_T"                         @ string offset=550
+	.asciz	"SPI_T"                         @ string offset=547
 .Linfo_string51:
-	.asciz	"SCREEN_1_AIP_ResetPin"         @ string offset=556
+	.asciz	"SCREEN_1_AIP_ResetPin"         @ string offset=553
 .Linfo_string52:
-	.asciz	"SCREEN_1_AIP_A0Pin"            @ string offset=578
+	.asciz	"SCREEN_1_AIP_A0Pin"            @ string offset=575
 .Linfo_string53:
-	.asciz	"SCREEN_1_AIP_CSPin"            @ string offset=597
+	.asciz	"SCREEN_1_AIP_CSPin"            @ string offset=594
 .Linfo_string54:
-	.asciz	"SCREEN_2_AIP_ResetPin"         @ string offset=616
+	.asciz	"SCREEN_2_AIP_ResetPin"         @ string offset=613
 .Linfo_string55:
-	.asciz	"SCREEN_2_AIP_A0Pin"            @ string offset=638
+	.asciz	"SCREEN_2_AIP_A0Pin"            @ string offset=635
 .Linfo_string56:
-	.asciz	"SCREEN_2_AIP_CSPin"            @ string offset=657
+	.asciz	"SCREEN_2_AIP_CSPin"            @ string offset=654
 .Linfo_string57:
-	.asciz	"SCREEN_3_AIP_ResetPin"         @ string offset=676
+	.asciz	"SCREEN_3_AIP_ResetPin"         @ string offset=673
 .Linfo_string58:
-	.asciz	"SCREEN_3_AIP_A0Pin"            @ string offset=698
+	.asciz	"SCREEN_3_AIP_A0Pin"            @ string offset=695
 .Linfo_string59:
-	.asciz	"SCREEN_3_AIP_CSPin"            @ string offset=717
+	.asciz	"SCREEN_3_AIP_CSPin"            @ string offset=714
 .Linfo_string60:
-	.asciz	"newLCDObj"                     @ string offset=736
+	.asciz	"newLCDObj"                     @ string offset=733
 .Linfo_string61:
-	.asciz	"AIP_Init"                      @ string offset=746
+	.asciz	"AIP_Init"                      @ string offset=743
 .Linfo_string62:
-	.asciz	"AIP_writeData"                 @ string offset=755
+	.asciz	"AIP_writeData"                 @ string offset=752
 .Linfo_string63:
-	.asciz	"AIP_writeCommand"              @ string offset=769
+	.asciz	"AIP_writeCommand"              @ string offset=766
 .Linfo_string64:
-	.asciz	"AIP_ClearScreen"               @ string offset=786
+	.asciz	"AIP_ClearScreen"               @ string offset=783
 .Linfo_string65:
-	.asciz	"AIP_UpdateScreen"              @ string offset=802
+	.asciz	"AIP_UpdateScreen"              @ string offset=799
 .Linfo_string66:
-	.asciz	"AIP_draw_pixel"                @ string offset=819
+	.asciz	"AIP_draw_pixel"                @ string offset=816
 .Linfo_string67:
-	.asciz	"AIP_writeChar"                 @ string offset=834
+	.asciz	"AIP_writeChar"                 @ string offset=831
 .Linfo_string68:
-	.asciz	"AIP_SetCursor"                 @ string offset=848
+	.asciz	"AIP_SetCursor"                 @ string offset=845
 .Linfo_string69:
-	.asciz	"AIP_WriteString"               @ string offset=862
+	.asciz	"AIP_WriteString"               @ string offset=859
 .Linfo_string70:
-	.asciz	"AIP_WriteStringLen"            @ string offset=878
+	.asciz	"AIP_WriteStringLen"            @ string offset=875
 .Linfo_string71:
-	.asciz	"AIP_Spoint"                    @ string offset=897
+	.asciz	"AIP_Spoint"                    @ string offset=894
 .Linfo_string72:
-	.asciz	"AIP_writeNumber"               @ string offset=908
+	.asciz	"AIP_writeNumber"               @ string offset=905
 .Linfo_string73:
-	.asciz	"spi_transfer"                  @ string offset=924
+	.asciz	"spi_transfer"                  @ string offset=921
 .Linfo_string74:
-	.asciz	"_val"                          @ string offset=937
+	.asciz	"_val"                          @ string offset=934
 .Linfo_string75:
-	.asciz	"_params"                       @ string offset=942
+	.asciz	"_params"                       @ string offset=939
 .Linfo_string76:
-	.asciz	"ramB"                          @ string offset=950
+	.asciz	"ramB"                          @ string offset=947
 .Linfo_string77:
-	.asciz	"Params"                        @ string offset=955
+	.asciz	"Params"                        @ string offset=952
 .Linfo_string78:
-	.asciz	"p"                             @ string offset=962
+	.asciz	"p"                             @ string offset=959
 .Linfo_string79:
-	.asciz	"len"                           @ string offset=964
+	.asciz	"len"                           @ string offset=961
 .Linfo_string80:
-	.asciz	"i"                             @ string offset=968
+	.asciz	"i"                             @ string offset=965
 .Linfo_string81:
-	.asciz	"int"                           @ string offset=970
+	.asciz	"int"                           @ string offset=967
 .Linfo_string82:
-	.asciz	"_cmd"                          @ string offset=974
+	.asciz	"_cmd"                          @ string offset=971
 .Linfo_string83:
-	.asciz	"_temp"                         @ string offset=979
+	.asciz	"_temp"                         @ string offset=976
 .Linfo_string84:
-	.asciz	"x"                             @ string offset=985
+	.asciz	"x"                             @ string offset=982
 .Linfo_string85:
-	.asciz	"y"                             @ string offset=987
+	.asciz	"y"                             @ string offset=984
 .Linfo_string86:
-	.asciz	"color"                         @ string offset=989
+	.asciz	"color"                         @ string offset=986
 .Linfo_string87:
-	.asciz	"_chr"                          @ string offset=995
+	.asciz	"_chr"                          @ string offset=992
 .Linfo_string88:
-	.asciz	"Font"                          @ string offset=1000
+	.asciz	"Font"                          @ string offset=997
 .Linfo_string89:
-	.asciz	"c"                             @ string offset=1005
+	.asciz	"c"                             @ string offset=1002
 .Linfo_string90:
-	.asciz	"j"                             @ string offset=1007
+	.asciz	"j"                             @ string offset=1004
 .Linfo_string91:
-	.asciz	"_x"                            @ string offset=1009
+	.asciz	"_x"                            @ string offset=1006
 .Linfo_string92:
-	.asciz	"_y"                            @ string offset=1012
+	.asciz	"_y"                            @ string offset=1009
 .Linfo_string93:
-	.asciz	"str"                           @ string offset=1015
+	.asciz	"str"                           @ string offset=1012
 .Linfo_string94:
-	.asciz	"counter"                       @ string offset=1019
+	.asciz	"counter"                       @ string offset=1016
 .Linfo_string95:
-	.asciz	"_len"                          @ string offset=1027
+	.asciz	"_len"                          @ string offset=1024
 .Linfo_string96:
-	.asciz	"_id"                           @ string offset=1032
+	.asciz	"_id"                           @ string offset=1029
 .Linfo_string97:
-	.asciz	"_number"                       @ string offset=1036
+	.asciz	"_number"                       @ string offset=1033
 .Linfo_string98:
-	.asciz	"_state"                        @ string offset=1044
+	.asciz	"_state"                        @ string offset=1041
 .Linfo_string99:
-	.asciz	"_chrVal"                       @ string offset=1051
+	.asciz	"_chrVal"                       @ string offset=1048
 .Linfo_string100:
-	.asciz	"_data"                         @ string offset=1059
+	.asciz	"_data"                         @ string offset=1056
 .Linfo_string101:
-	.asciz	"_buf"                          @ string offset=1065
+	.asciz	"_buf"                          @ string offset=1062
 	.ident	"Component: Arm Compiler for Embedded 6.18 Tool: armclang [5e4cca00]"
 	.section	".note.GNU-stack","",%progbits
 	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
