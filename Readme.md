@@ -3,6 +3,8 @@
 
 
 
+## V1.3
+- kg olarak okuma gerçekleştirildi !
 ## V1.2
 
 - i2c geçici olarak rs232 pinleri ile değiştirildi sadece 4 numara 
