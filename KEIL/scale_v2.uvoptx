@@ -144,7 +144,7 @@
           <Type>0</Type>
           <LineNumber>317</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>15312</Address>
+          <Address>15320</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -160,7 +160,7 @@
           <Type>0</Type>
           <LineNumber>180</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>16286</Address>
+          <Address>16294</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -174,18 +174,34 @@
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>450</LineNumber>
+          <LineNumber>5</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>21748</Address>
+          <Address>0</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\src\app.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>452</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
           <Filename>..\src\menu.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\scale_v2\../src/menu.c\450</Expression>
+          <Expression></Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -202,7 +218,7 @@
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>weight</ItemText>
+          <ItemText>_weight</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
@@ -218,6 +234,11 @@
           <count>5</count>
           <WinNumber>1</WinNumber>
           <ItemText>m_Param</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tempVal,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

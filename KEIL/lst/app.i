@@ -4301,7 +4301,12 @@ void shw_gravity();
 void shw_reset();
 void shw_rs232();
 
+void shw_f0_unload();
+void shw_f0_capload();
 void f0_Saved();
+
+
+
 void shw_f1a_3000();
 void shw_f1b_6000();
 void shw_f1c_dual1();
@@ -4964,7 +4969,6 @@ void APP_SettingsHandle(){
   }
  }
 }
-
 float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
  static uint8_t _id=0;
  static float total = 0;
@@ -5189,19 +5193,17 @@ void APP_Handle(){
  float weight=0;
  float total = 0;
 
- m_Param.decimalPoint = dp_0_00;
  ret = APP_StartScreen(&m_Param);
  if(ret){
   APP_SettingsHandle();
  }
  while(1){
   APP_Show_Weight(&weight,&m_Param);
+  APP_ShowTotal(total,weight,&m_Param);
   pressedKey = p_KeypadObj->Scan(&longPres);
   if(pressedKey > -1 && longPres == 0){
    total = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
-   APP_ShowTotal(total,weight,&m_Param);
   }
-
   if(pressedKey > -1 && longPres == 1){
    longPres=0;
   }
@@ -5448,36 +5450,202 @@ void APP_All_Point_High(uint8_t selScreen){
 
 
 
+void calculate_2gr(float *_weight,MENU_Params *p_MenuParam){
+ uint64_t tempVal=0;
+ switch(p_MenuParam->decimalPoint){
+ case dp_0:
+  tempVal = (*_weight);
+  if(tempVal%2 != 0) {
+   tempVal++;
+  }
+   (*_weight) = tempVal;
+  break;
+ case dp_0_0:
+  tempVal = (*_weight)*10;
+  if(tempVal%2 != 0) {
+   tempVal++;
+  }
+   (*_weight) = tempVal * 0.1;
+  break;
+ case dp_0_00:
+  tempVal = (*_weight)*100;
+  if(tempVal%2 != 0) {
+   tempVal++;
+  }
+   (*_weight) = tempVal * 0.01;
+  break;
+ case dp_0_000:
+  tempVal = (*_weight)*1000;
+  if(tempVal%2 != 0) {
+   tempVal++;
+  }
+   (*_weight) = tempVal * 0.001;
+  break;
+ case dp_0_0000:
+  tempVal = (*_weight)*10000;
+  if(tempVal%2 != 0) {
+   tempVal++;
+  }
+   (*_weight) = tempVal * 0.0001;
+  break;
+ }
+}
+void calculate_5gr(float *_weight,MENU_Params *p_MenuParam){
+ uint8_t mod =0;
+ uint64_t tempVal=0;
+ switch(p_MenuParam->decimalPoint){
+ case dp_0:
+  tempVal = (*_weight);
+  mod = tempVal%5 ;
+  if(mod > 2) {
+   tempVal+=(5-mod);
+  }
+  else if(mod <= 2 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+   (*_weight) = tempVal;
+  break;
+ case dp_0_0:
+  tempVal = (*_weight)*10;
+  mod = tempVal%5 ;
+  if(mod > 2) {
+   tempVal+=(5-mod);
+  }
+  else if(mod <= 2 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+   (*_weight) = tempVal * 0.1;
+  break;
+ case dp_0_00:
+  tempVal = (*_weight)*100;
+  mod = tempVal%5 ;
+  if(mod > 2) {
+   tempVal+=(5-mod);
+  }
+  else if(mod <= 2 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+  (*_weight) = tempVal * 0.01;
+  break;
+ case dp_0_000:
+  tempVal = (*_weight)*1000;
+  mod = tempVal%5 ;
+  if(mod > 2) {
+   tempVal+=(5-mod);
+  }
+  else if(mod <= 2 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+   (*_weight) = tempVal * 0.001;
+  break;
+ case dp_0_0000:
+  tempVal = (*_weight)*10000;
+  mod = tempVal%5 ;
+  if(mod > 2) {
+   tempVal+=(5-mod);
+  }
+  else if(mod <= 2 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+   (*_weight) = tempVal * 0.0001;
+  break;
+ }
+
+}
+void calculate_10gr(float *_weight,MENU_Params *p_MenuParam){
+ uint8_t mod =0;
+ uint64_t tempVal=0;
+ switch(p_MenuParam->decimalPoint){
+ case dp_0:
+  tempVal = (*_weight);
+  mod = tempVal%10 ;
+  if(mod > 5) {
+   tempVal+=(10-mod);
+  }
+  else if(mod <= 5 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+   (*_weight) = tempVal;
+  break;
+ case dp_0_0:
+  tempVal = (*_weight)*10;
+  mod = tempVal%10 ;
+  if(mod > 5) {
+   tempVal+=(10-mod);
+  }
+  else if(mod <= 5 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+   (*_weight) = tempVal * 0.1;
+  break;
+ case dp_0_00:
+  tempVal = (*_weight)*100;
+  mod = tempVal%10 ;
+  if(mod > 5) {
+   tempVal+=(10-mod);
+  }
+  else if(mod <= 5 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+  (*_weight) = tempVal * 0.01;
+  break;
+ case dp_0_000:
+  tempVal = (*_weight)*1000;
+  mod = tempVal%10 ;
+  if(mod > 5) {
+   tempVal+=(10-mod);
+  }
+  else if(mod <= 5 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+   (*_weight) = tempVal * 0.001;
+  break;
+ case dp_0_0000:
+  tempVal = (*_weight)*10000;
+  mod = tempVal%10 ;
+  if(mod > 5) {
+   tempVal+=(10-mod);
+  }
+  else if(mod <= 5 && mod >0 ){
+   tempVal-=mod;
+  }
+  else{
+  }
+   (*_weight) = tempVal * 0.0001;
+  break;
+ }
+
+}
+
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
+ static float lastVal =0;
  _Bool stable=0;
- int tempVal =0;
- float x=0;
- stable=1;
+ uint8_t x=0;
+ stable=0;
  if(p_ScaleObj->available() == 1){
     *_weight = p_ScaleObj->getWeight(1,10);
  }
 
- switch(p_MenuParam->decimalPoint){
-  case dp_0:
-   break;
-  case dp_0_0:
-   tempVal = (*_weight)*10;
-   x = tempVal*0.1;
-   break;
-  case dp_0_00:
-   tempVal = (*_weight)*100;
-   x = tempVal*0.01;
-   break;
-  case dp_0_000:
-   tempVal = (*_weight)*1000;
-   x = tempVal*0.001;
-   break;
-  case dp_0_0000:
-   tempVal = (*_weight)*10000;
-   x = tempVal*0.0001;
-   break;
- }
- *_weight = x;
+ calculate_10gr(_weight,p_MenuParam);
+
  return stable;
 
 
@@ -5499,23 +5667,23 @@ _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam){
 
  switch(p_MenuParam->decimalPoint){
   case dp_0:
-   if((*_weight) > 999999){(*_weight) =999999;}
+   if((*_weight) > 999999.9999){(*_weight) =999999.9999;}
    len = sprintf((char*)(&array[0]),"%d",(int)(*_weight));len+=1;
    break;
   case dp_0_0:
-   if((*_weight) > 99999){(*_weight) =99999;}
+   if((*_weight) > 99999.9999){(*_weight) =99999.9999;}
    len = sprintf((char*)(&array[0]),"%.1f",(*_weight));
    break;
   case dp_0_00:
-   if((*_weight) > 9999){(*_weight) =9999.9999;}
+   if((*_weight) > 9999.9999){(*_weight) =9999.9999;}
    len = sprintf((char*)(&array[0]),"%.2f",(*_weight));
    break;
   case dp_0_000:
-   if((*_weight) > 999){(*_weight) =999.999;}
+   if((*_weight) > 999.9999){(*_weight) =999.9999;}
    len = sprintf((char*)(&array[0]),"%.3f",(*_weight));
    break;
   case dp_0_0000:
-   if((*_weight) > 99){(*_weight) =99.9999;}
+   if((*_weight) > 99.9999){(*_weight) =99.9999;}
    len = sprintf((char*)(&array[0]),"%.4f",(*_weight));
    break;
  }

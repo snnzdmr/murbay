@@ -3954,17 +3954,17 @@ uint32_t ProcessHardFault(uint32_t lr, uint32_t msp, uint32_t psp)
 # 260 "../../../../Library/StdDriver/src/retarget.c"
 void SendChar_ToUART(int ch)
 {
-    while (((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFOSTS & (0x1ul << (23))) {}
+    while (((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x30000UL))->FIFOSTS & (0x1ul << (23))) {}
 
     if ((char)ch == '\n')
     {
-        ((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->DAT = '\r';
+        ((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x30000UL))->DAT = '\r';
 
-        while (((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFOSTS & (0x1ul << (23))) {}
+        while (((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x30000UL))->FIFOSTS & (0x1ul << (23))) {}
 
     }
 
-    ((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->DAT = (uint32_t)ch;
+    ((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x30000UL))->DAT = (uint32_t)ch;
 }
 # 351 "../../../../Library/StdDriver/src/retarget.c"
 __attribute__((weak)) void SendChar(int ch)
@@ -3979,9 +3979,9 @@ char GetChar(void)
 # 449 "../../../../Library/StdDriver/src/retarget.c"
     while (1)
     {
-        if ((((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFOSTS & (0x1ul << (14))) == 0U)
+        if ((((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x30000UL))->FIFOSTS & (0x1ul << (14))) == 0U)
         {
-            return ((char)((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->DAT);
+            return ((char)((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x30000UL))->DAT);
         }
     }
 
@@ -3990,12 +3990,12 @@ char GetChar(void)
 # 471 "../../../../Library/StdDriver/src/retarget.c"
 int kbhit(void)
 {
-    return !((((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFOSTS & (0x1ul << (14))) == 0U);
+    return !((((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x30000UL))->FIFOSTS & (0x1ul << (14))) == 0U);
 }
 # 487 "../../../../Library/StdDriver/src/retarget.c"
 int IsDebugFifoEmpty(void)
 {
-    return ((((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x32000UL))->FIFOSTS & (0x1ul << (28))) != 0U);
+    return ((((UART_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x30000UL))->FIFOSTS & (0x1ul << (28))) != 0U);
 }
 # 502 "../../../../Library/StdDriver/src/retarget.c"
 void _ttywrch(int ch)

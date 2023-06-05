@@ -4311,7 +4311,12 @@ void shw_gravity();
 void shw_reset();
 void shw_rs232();
 
+void shw_f0_unload();
+void shw_f0_capload();
 void f0_Saved();
+
+
+
 void shw_f1a_3000();
 void shw_f1b_6000();
 void shw_f1c_dual1();

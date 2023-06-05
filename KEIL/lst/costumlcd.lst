@@ -558,7 +558,7 @@ AIP_Init:
 	bl	AIP_writeCommand
 	.loc	4 106 25 is_stmt 1              @ ../src/costumLcd.c:106:25
 	ldr	r1, [sp, #12]
-	movs	r0, #159
+	movs	r0, #141
 	.loc	4 106 3 is_stmt 0               @ ../src/costumLcd.c:106:3
 	bl	AIP_writeCommand
 	.loc	4 107 25 is_stmt 1              @ ../src/costumLcd.c:107:25
@@ -601,20 +601,20 @@ AIP_Init:
 	movs	r0, #240
 	.loc	4 114 3 is_stmt 0               @ ../src/costumLcd.c:114:3
 	bl	AIP_writeCommand
-	.loc	4 115 25 is_stmt 1              @ ../src/costumLcd.c:115:25
-	ldr	r1, [sp, #12]
-	movs	r0, #175
-	.loc	4 115 3 is_stmt 0               @ ../src/costumLcd.c:115:3
-	bl	AIP_writeCommand
-	.loc	4 116 26 is_stmt 1              @ ../src/costumLcd.c:116:26
+	.loc	4 115 26 is_stmt 1              @ ../src/costumLcd.c:115:26
 	ldr	r1, [sp, #12]
 	movs	r0, #0
-	.loc	4 116 4 is_stmt 0               @ ../src/costumLcd.c:116:4
+	.loc	4 115 4 is_stmt 0               @ ../src/costumLcd.c:115:4
 	bl	AIP_writeCommand
-	.loc	4 117 27 is_stmt 1              @ ../src/costumLcd.c:117:27
+	.loc	4 116 27 is_stmt 1              @ ../src/costumLcd.c:116:27
 	ldr	r1, [sp, #12]
 	movs	r0, #16
-	.loc	4 117 5 is_stmt 0               @ ../src/costumLcd.c:117:5
+	.loc	4 116 5 is_stmt 0               @ ../src/costumLcd.c:116:5
+	bl	AIP_writeCommand
+	.loc	4 117 25 is_stmt 1              @ ../src/costumLcd.c:117:25
+	ldr	r1, [sp, #12]
+	movs	r0, #175
+	.loc	4 117 3 is_stmt 0               @ ../src/costumLcd.c:117:3
 	bl	AIP_writeCommand
 	.loc	4 130 1 is_stmt 1               @ ../src/costumLcd.c:130:1
 	add	sp, #16

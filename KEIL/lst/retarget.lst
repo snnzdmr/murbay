@@ -301,11 +301,11 @@ SendChar_ToUART:
 @ %bb.9:
 	.loc	2 0 1 is_stmt 0                 @ ../../../../Library/StdDriver/src/retarget.c:0:1
 __arm_cp.3_0:
-	.long	1074208792                      @ 0x40072018
+	.long	1074200600                      @ 0x40070018
 .Lcpi_end3:
 	.size	__arm_cp.3_0, .Lcpi_end3-__arm_cp.3_0
 __arm_cp.3_1:
-	.long	1074208768                      @ 0x40072000
+	.long	1074200576                      @ 0x40070000
 .Lcpi_end4:
 	.size	__arm_cp.3_1, .Lcpi_end4-__arm_cp.3_1
 .Lfunc_end3:
@@ -396,11 +396,11 @@ GetChar:
 @ %bb.4:
 	.loc	2 0 5 is_stmt 0                 @ ../../../../Library/StdDriver/src/retarget.c:0:5
 __arm_cp.5_0:
-	.long	1074208792                      @ 0x40072018
+	.long	1074200600                      @ 0x40070018
 .Lcpi_end5:
 	.size	__arm_cp.5_0, .Lcpi_end5-__arm_cp.5_0
 __arm_cp.5_1:
-	.long	1074208768                      @ 0x40072000
+	.long	1074200576                      @ 0x40070000
 .Lcpi_end6:
 	.size	__arm_cp.5_1, .Lcpi_end6-__arm_cp.5_1
 .Lfunc_end5:
@@ -438,7 +438,7 @@ kbhit:
 @ %bb.1:
 	.loc	2 0 5                           @ ../../../../Library/StdDriver/src/retarget.c:0:5
 __arm_cp.6_0:
-	.long	1074208792                      @ 0x40072018
+	.long	1074200600                      @ 0x40070018
 .Lcpi_end7:
 	.size	__arm_cp.6_0, .Lcpi_end7-__arm_cp.6_0
 .Lfunc_end6:
@@ -477,7 +477,7 @@ IsDebugFifoEmpty:
 @ %bb.1:
 	.loc	2 0 5                           @ ../../../../Library/StdDriver/src/retarget.c:0:5
 __arm_cp.7_0:
-	.long	1074208792                      @ 0x40072018
+	.long	1074200600                      @ 0x40070018
 .Lcpi_end8:
 	.size	__arm_cp.7_0, .Lcpi_end8-__arm_cp.7_0
 .Lfunc_end7:

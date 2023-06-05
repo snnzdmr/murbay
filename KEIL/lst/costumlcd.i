@@ -4492,7 +4492,7 @@ static void AIP_Init(AIP *p){
   AIP_writeCommand(0xa0,p);
   AIP_writeCommand(0xc0,p);
   AIP_writeCommand(0xa4,p);
-  AIP_writeCommand(0x9f,p);
+  AIP_writeCommand(0x8d,p);
   AIP_writeCommand(0xA6,p);
   AIP_writeCommand(0xB0,p);
   AIP_writeCommand(0xf1,p);
@@ -4501,9 +4501,9 @@ static void AIP_Init(AIP *p){
   AIP_writeCommand(0x60,p);
   AIP_writeCommand(0xa4,p);
   AIP_writeCommand(0xf0,p);
-  AIP_writeCommand(0xaf,p);
    AIP_writeCommand(0x00,p);
     AIP_writeCommand(0x10,p);
+  AIP_writeCommand(0xaf,p);
 # 130 "../src/costumLcd.c"
 }
 

@@ -172,7 +172,12 @@ void shw_gravity();
 void shw_reset();
 void shw_rs232();
 
+void shw_f0_unload();
+void shw_f0_capload();
 void f0_Saved();
+
+
+
 void shw_f1a_3000();
 void shw_f1b_6000();
 void shw_f1c_dual1();
@@ -4917,7 +4922,7 @@ void build(node *currentNode,void (*_DoWorkDisplay)(void),node *_enter,node *_ex
 
 
 node root;
-node f0_cal,f0_save;
+node f0_cal,f0_unload,f0_capload,f0_save;
 node f1_resolution, f1a_3000,f1b_6000,f1c_dual1,f1d_dual2,f1_save;
 node f2_capacity, f2a_3,f2b_6,f2c_15,f2d_30,f2_save;
 node f3_decimalPoint,f3a,f3b,f3c,f3d,f3e,f3_save;
@@ -4959,7 +4964,7 @@ static void Menu_Init(){
 
 
  build(&root,&shw_mainScreen,&f0_cal,0,0,0);
- build(&f0_cal,&shw_calibration,&f0_save,&root,&f11_rs232,&f1_resolution);
+ build(&f0_cal,&shw_calibration,&f0_unload,&root,&f11_rs232,&f1_resolution);
  build(&f1_resolution,&shw_resolution,&f1a_3000,&root,&f0_cal,&f2_capacity);
  build(&f2_capacity,&shw_capacity,&f2a_3,&root,&f1_resolution,&f3_decimalPoint);
  build(&f3_decimalPoint,&shw_decimalPoint,&f3a,&root,&f2_capacity,&f4_fixFloat);
@@ -4975,6 +4980,8 @@ static void Menu_Init(){
 
 
 
+ build(&f0_unload,&shw_f0_unload,&f0_capload,&f0_cal,0,0);
+ build(&f0_capload,&shw_f0_capload,&f0_save,&f0_unload,0,0);
  build(&f0_save,&f0_Saved,0,&f0_cal,0,0);
 
 
@@ -5287,12 +5294,51 @@ void shw_rs232(){
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 }
 
+void shw_f0_unload(){
+
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"UNLOAd",p_CurrentFont,p_LcdObj_S1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"      ",p_CurrentFont,p_LcdObj_S2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"      ",p_CurrentFont,p_LcdObj_S3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+
+}
+
+void shw_f0_capload(){
+
+
+ p_ScaleObj->calculateZeroOffset(64);
+ m_Param.ZeroOffset = p_ScaleObj->getZeroOffset();
+ writeFlashMemoryInformation(&m_Param);
+
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)"CAP LOAd",p_CurrentFont,p_LcdObj_S1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+
+
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   1kg",p_CurrentFont,p_LcdObj_S2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ float weight;
+ while(!APP_GetMeasure(&weight,&m_Param)){
+ }
+
+
+}
 void f0_Saved(){
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ m_Param.resolution = currentResolution;
+
+
   p_ScaleObj->calculateCalibrationFactor(1.00, 64);
  m_Param.calibrationFactor = p_ScaleObj->getCalibrationFactor();
  p_ScaleObj->calibrateAFE();
  writeFlashMemoryInformation(&m_Param);
+
 }
+
 
 void shw_f1a_3000(){
    p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  3000",p_CurrentFont,p_LcdObj_S3);
@@ -5376,6 +5422,7 @@ void f3_Saved(){
  p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
  m_Param.decimalPoint = currentDecimalPoint;
+ writeFlashMemoryInformation(&m_Param);
 
 }
 void shw_f4a_fix(){

@@ -370,7 +370,7 @@ I (..\..\..\..\Library\StdDriver\inc\sc.h)(0x5FAE5B86)
 I (..\..\..\..\Library\StdDriver\inc\scuart.h)(0x61B04A14)
 I (..\..\..\..\Library\StdDriver\inc\lcd.h)(0x61E900B6)
 I (..\..\..\..\Library\StdDriver\inc\tk.h)(0x61E900E0)
-F (..\..\..\..\Library\StdDriver\src\retarget.c)(0x64596405)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/retarget.o -MD)
+F (..\..\..\..\Library\StdDriver\src\retarget.c)(0x64709DDB)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/retarget.o -MD)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
 I (..\..\..\..\Library\Device\Nuvoton\M251\Include\NuMicro.h)(0x5FAE5B60)
 I (..\..\..\..\Library\Device\Nuvoton\M251\Include\M251.h)(0x61075F00)
@@ -1037,7 +1037,7 @@ I (..\periph_conf.h)(0x6465E96F)
 I (..\Inc\costumLcd.h)(0x645AF210)
 I (..\Inc\font.h)(0x640354FC)
 I (..\Inc\app.h)(0x646F8DC7)
-I (..\Inc\menu.h)(0x646F8F53)
+I (..\Inc\menu.h)(0x647DC4A5)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x6252A726)
 F (..\clk_conf.c)(0x6465E96F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/clk_conf.o -MD)
 I (..\scale_v2.h)(0x6465E96F)
@@ -1348,7 +1348,7 @@ I (..\..\..\..\Library\StdDriver\inc\lcd.h)(0x61E900B6)
 I (..\..\..\..\Library\StdDriver\inc\tk.h)(0x61E900E0)
 I (..\periph_conf.h)(0x6465E96F)
 I (..\Inc\millis.h)(0x6465E9D5)
-F (..\src\app.c)(0x646F9523)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/app.o -MD)
+F (..\src\app.c)(0x647DF2B0)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/app.o -MD)
 I (..\Inc\app.h)(0x646F8DC7)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6252A728)
 I (..\scale_v2.h)(0x6465E96F)
@@ -1428,13 +1428,13 @@ I (..\..\..\..\Library\StdDriver\inc\tk.h)(0x61E900E0)
 I (..\periph_conf.h)(0x6465E96F)
 I (..\Inc\costumLcd.h)(0x645AF210)
 I (..\Inc\font.h)(0x640354FC)
-I (..\Inc\menu.h)(0x646F8F53)
+I (..\Inc\menu.h)(0x647DC4A5)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x6252A726)
 I (..\Inc\keypad.h)(0x6464C271)
 I (..\Inc\SparkFun_NAU7802.h)(0x646F8540)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x6252A726)
 I (..\Inc\eeproom.h)(0x646F90B8)
-F (..\src\costumLcd.c)(0x6465E9D8)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/costumlcd.o -MD)
+F (..\src\costumLcd.c)(0x647DB7F6)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/costumlcd.o -MD)
 I (..\Inc\costumLcd.h)(0x645AF210)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6252A728)
 I (..\Inc\font.h)(0x640354FC)
@@ -1594,8 +1594,8 @@ I (..\..\..\..\Library\StdDriver\inc\scuart.h)(0x61B04A14)
 I (..\..\..\..\Library\StdDriver\inc\lcd.h)(0x61E900B6)
 I (..\..\..\..\Library\StdDriver\inc\tk.h)(0x61E900E0)
 I (..\periph_conf.h)(0x6465E96F)
-F (..\src\menu.c)(0x646F9363)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/menu.o -MD)
-I (..\Inc\menu.h)(0x646F8F53)
+F (..\src\menu.c)(0x647DD572)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../../Library/CMSIS/Include -I ../../../../Library/Device/Nuvoton/M251/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/SmartcardLib/Include -I ../-IC:/Users/sinan/AppData/Local/Arm/Packs/Nuvoton/NuMicro_DFP/1.3.17/Device/M251/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="537" -D__HXT="24000000ul" -D__LXT="0ul"-o ./obj/menu.o -MD)
+I (..\Inc\menu.h)(0x647DC4A5)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6252A728)
 I (..\Inc\costumLcd.h)(0x645AF210)
 I (..\Inc\font.h)(0x640354FC)
@@ -1922,13 +1922,13 @@ I (..\periph_conf.h)(0x6465E96F)
 I (..\Inc\app.h)(0x646F8DC7)
 I (..\Inc\costumLcd.h)(0x645AF210)
 I (..\Inc\font.h)(0x640354FC)
-I (..\Inc\menu.h)(0x646F8F53)
+I (..\Inc\menu.h)(0x647DC4A5)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x6252A726)
 F (..\Inc\app.h)(0x646F8DC7)()
 F (..\Inc\costumLcd.h)(0x645AF210)()
 F (..\Inc\font.h)(0x640354FC)()
 F (..\Inc\keypad.h)(0x6464C271)()
-F (..\Inc\menu.h)(0x646F8F53)()
+F (..\Inc\menu.h)(0x647DC4A5)()
 F (..\Inc\millis.h)(0x6465E9D5)()
 F (..\Inc\SparkFun_NAU7802.h)(0x646F8540)()
 F (..\Inc\test.h)(0x63EB0053)()

@@ -103,7 +103,7 @@ static void AIP_Init(AIP *p){
 		AIP_writeCommand(0xa0,p);		//MX=0   	SEG0-SEG95
 		AIP_writeCommand(0xc0,p);		//MY=0          COM0-COM4    	
 		AIP_writeCommand(0xa4,p);		//0xA5 All point on
-		AIP_writeCommand(0x9f,p);		//4V
+		AIP_writeCommand(0x8d,p);		//4V
 		AIP_writeCommand(0xA6,p);		// normal display 
 		AIP_writeCommand(0xB0,p);		// page address 0
 		AIP_writeCommand(0xf1,p);		// enter extended command mode 
@@ -112,9 +112,9 @@ static void AIP_Init(AIP *p){
 		AIP_writeCommand(0x60,p);	//	1/4DUTY
 		AIP_writeCommand(0xa4,p);	//	1/3BIAS
 		AIP_writeCommand(0xf0,p);	//  exit external command mode 
-		AIP_writeCommand(0xaf,p);	//	display on
 	  AIP_writeCommand(0x00,p); //  low column address
     AIP_writeCommand(0x10,p); //   high column address
+		AIP_writeCommand(0xaf,p);	//	display on
 #if (LOG_STATE)
      printf("- SEG0-SEG95 \n"
             "- COM0-COM4 \n"

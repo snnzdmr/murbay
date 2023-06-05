@@ -1,0 +1,16 @@
+"plu mode : Kayıt" 
+
+1- fiyatı gir 
+2- PLU ya basılı tut
+3- 0-9 arasında bir sayı gir , hangi konuma kaydedilecek 
+bitti
+
+
+"plu mode : re-call"
+
+1- PLU ya bas (basılı tutma ! )
+2- 0-9 dan 9 a konumu gir hangi kayıtlı fiyat ile çarpacaksın.
+
+bitti
+ 
+
