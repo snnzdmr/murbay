@@ -1,7 +1,8 @@
 # Murbay terazi kodu 
 
 
-
+## V1.3.1
+- 2g 5g 10 gr stepler eklendi
 
 ## V1.3
 - kg olarak okuma gerçekleştirildi !
