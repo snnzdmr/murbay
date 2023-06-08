@@ -70,7 +70,7 @@ static int16_t Scan(uint8_t *_longPress){
 					ret = keyboardMatris[r][c];
 					while(readRowPin(r)){
 						longPresCounter++;
-						if(longPresCounter > 1000000){
+						if(longPresCounter > 500000){
 							*_longPress=1;
 							return ret;
 						}

@@ -13,7 +13,7 @@
 #define FAC_VAL_ISN     									1234567
 #define FAC_VAL_GRAVITY 									9.789
 #define FAC_VAL_ZERO_OFSET								0
-#define FAC_VAL_CAL_FAC										1000
+#define FAC_VAL_CAL_FAC										216903
 
 void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len){
     uint8_t i=0;
@@ -34,7 +34,7 @@ void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len){
 		FMC_Close();
 		SYS_LockReg();
 }
-bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]){
+bool eeprom_read_array(uint32_t _address,uint32_t _buffer[],uint8_t lngth){
 	
 		SYS_UnlockReg();
 		FMC_Open();
@@ -43,7 +43,7 @@ bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]){
 #if (PRINT_ON_OF)
 	  printf("lennnnnnnnnnnnnn : %d\n",(int)_len);
 #endif
-		if(_len != SAVE_EEPROOM_COMPANENT_SIZE){
+		if(_len != lngth){
 			return false;
 		}
     uint8_t i=0;
@@ -79,7 +79,7 @@ void writeFlashMemoryInformation(MENU_Params *p_MenuParam){
 }
 void readFlashMemoryInformation(MENU_Params *p_MenuParam){
 	uint32_t _buffer[SAVE_EEPROOM_COMPANENT_SIZE+1];
-	if(eeprom_read_array((uint32_t)EEPROM_ADDRESS_START,&_buffer[0]) == true){
+	if(eeprom_read_array((uint32_t)EEPROM_ADDRESS_START,&_buffer[0],SAVE_EEPROOM_COMPANENT_SIZE) == true){
 		p_MenuParam->resolution        = _buffer[0];
 		p_MenuParam->capacity          = _buffer[1];
 		p_MenuParam->decimalPoint      = _buffer[2];
@@ -112,3 +112,14 @@ void InitFactorySetting(MENU_Params *p_MenuParam){
 	
 		writeFlashMemoryInformation(p_MenuParam);
 }
+
+
+
+void writePluArray(uint32_t *_array){
+	eeprom_write_array(EEPROM_PLU_SAVE_ADDRESS,_array,PLU_LEN);
+}
+void readPluArray(uint32_t *_array){
+	eeprom_read_array(EEPROM_PLU_SAVE_ADDRESS,_array,PLU_LEN);
+}
+
+

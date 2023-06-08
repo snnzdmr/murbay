@@ -4528,7 +4528,12 @@ static void AIP_writeCommand(uint8_t _cmd,AIP *p){
 
 
 static void AIP_ClearScreen(AIP *p){
- memset(p->ptrRam,0x00,(19*4/4));
+
+ p->ptrRam[0] = (p->ptrRam[0] & 0x09) ;
+ p->ptrRam[1] = (p->ptrRam[0] & 0x08) ;
+ p->ptrRam[2] = (p->ptrRam[0] & 0x09) ;
+
+ memset(p->ptrRam+3,0x00,(19*4/4)-3);
   AIP_SetCursor(0,0,p);
 }
 
@@ -4541,10 +4546,6 @@ static void AIP_UpdateScreen(AIP *p){
  AIP_writeCommand(0x00,p);
  AIP_writeCommand(0x10,p);
  AIP_writeData(p->ptrRam,(19*4/4),p);
- uint8_t _temp[20]="";
- for(int i =0;i<19;i++){
-  _temp[i] = p->ptrRam[i];
- }
 }
 
 static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p){
@@ -4553,8 +4554,9 @@ static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p){
  }
     if(color == 1) {
         p->ptrRam[x] |= 1<<(y%4);
-    } else {
-         p->ptrRam[x] &= ~(1<<(y%4));
+    }
+  else {
+      p->ptrRam[x] &= ~(1<<(y%4));
     }
 }
 

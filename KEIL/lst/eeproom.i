@@ -4252,9 +4252,9 @@ typedef enum FIX_FLOAT{
  ff_float,
 }FIX_FLOAT;
 typedef enum SPEED{
- sp_slow=0,
+ sp_fast=1,
  sp_medium,
- sp_fast
+ sp_slow
 }SPEED;
 typedef enum MIN_COIN{
  mc_1=0,
@@ -4266,6 +4266,13 @@ typedef enum MULTI_TARE{
  mt_on=0,
  mt_off
 }MULTI_TARE;
+
+typedef enum LIGHT{
+ light_on=0,
+ light_off,
+ light_auto
+}LIGHT;
+
 
 typedef struct RS232_Params{
  uint32_t baudrate;
@@ -4284,6 +4291,7 @@ typedef struct MENU_Params{
  uint8_t speed;
  uint8_t minCoin;
  uint8_t multiTare;
+ uint8_t light;
  uint32_t isn;
  float gravity;
  uint8_t factoryReset;
@@ -4350,6 +4358,13 @@ void shw_f7b_off();
 void f7_Saved();
 void shw_f9a();
 void shw_f10a();
+
+
+void shw_light();
+void shw_f12a_auto();
+void shw_f12b_on();
+void shw_f12c_off();
+void f12_Saved();
 # 9 "..\\Inc/app.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
 # 10 "..\\Inc/app.h" 2
@@ -4360,8 +4375,13 @@ void shw_f10a();
 
 typedef struct workVariable{
  MENU_Params *p_menuParams;
+ uint32_t PLU_Buffer[100];
+ _Bool saveButtonFlag;
+ _Bool unitButtonFlag;
+ _Bool stableFlag;
+ _Bool oneShotMeasure;
 }workVariable;
-# 28 "..\\Inc/app.h"
+# 33 "..\\Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
@@ -4373,16 +4393,20 @@ void APP_All_Point_High(uint8_t selScreen);
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
 _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
 
-
+ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam);
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
 # 6 "..\\Inc/eeproom.h" 2
-# 31 "..\\Inc/eeproom.h"
+# 33 "..\\Inc/eeproom.h"
 void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len);
-_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]);
+_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[],uint8_t lngth);
 void writeFlashMemoryInformation(MENU_Params *p_MenuParam);
 void readFlashMemoryInformation(MENU_Params *p_MenuParam);
 void InitFactorySetting(MENU_Params *p_MenuParam);
+
+
+void writePluArray(uint32_t *_array);
+void readPluArray(uint32_t *_array);
 # 2 "../src/eeproom.c" 2
 # 18 "../src/eeproom.c"
 void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len){
@@ -4404,7 +4428,7 @@ void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len){
   FMC_Close();
   SYS_LockReg();
 }
-_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]){
+_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[],uint8_t lngth){
 
   SYS_UnlockReg();
   FMC_Open();
@@ -4413,7 +4437,7 @@ _Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]){
 
 
 
-  if(_len != 20){
+  if(_len != lngth){
    return 0;
   }
     uint8_t i=0;
@@ -4449,7 +4473,7 @@ void writeFlashMemoryInformation(MENU_Params *p_MenuParam){
 }
 void readFlashMemoryInformation(MENU_Params *p_MenuParam){
  uint32_t _buffer[20 +1];
- if(eeprom_read_array((uint32_t)0x19404,&_buffer[0]) == 1){
+ if(eeprom_read_array((uint32_t)0x19404,&_buffer[0],20) == 1){
   p_MenuParam->resolution = _buffer[0];
   p_MenuParam->capacity = _buffer[1];
   p_MenuParam->decimalPoint = _buffer[2];
@@ -4477,8 +4501,17 @@ void InitFactorySetting(MENU_Params *p_MenuParam){
   p_MenuParam->multiTare = mt_on;
   p_MenuParam->isn = 1234567;
   p_MenuParam->gravity = 9.789;
-  p_MenuParam->calibrationFactor = 1000;
+  p_MenuParam->calibrationFactor = 216903;
   p_MenuParam->ZeroOffset = 0;
 
   writeFlashMemoryInformation(p_MenuParam);
+}
+
+
+
+void writePluArray(uint32_t *_array){
+ eeprom_write_array(0x1a404,_array,100);
+}
+void readPluArray(uint32_t *_array){
+ eeprom_read_array(0x1a404,_array,100);
 }

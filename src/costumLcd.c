@@ -150,7 +150,12 @@ static void AIP_writeCommand(uint8_t _cmd,AIP *p){
 //#############################################################################################
 
 static void AIP_ClearScreen(AIP *p){
-	memset(p->ptrRam,0x00,BUFF_SIZE);
+	
+	p->ptrRam[0] =  (p->ptrRam[0] & 0x09) ;  // battery isaretleri icin 
+	p->ptrRam[1] =  (p->ptrRam[0] & 0x08) ;  // battery isaretleri icin 
+	p->ptrRam[2] =  (p->ptrRam[0] & 0x09) ;  // battery isaretleri icin 
+	
+	memset(p->ptrRam+3,0x00,BUFF_SIZE-3);
   AIP_SetCursor(0,0,p);
 }
 //#############################################################################################
@@ -163,10 +168,6 @@ static void AIP_UpdateScreen(AIP *p){
 	AIP_writeCommand(0x00,p); //---set low column address
 	AIP_writeCommand(0x10,p); //---set high column address
 	AIP_writeData(p->ptrRam,BUFF_SIZE,p); // hata alinirsa page kismina bak ,
-	uint8_t _temp[20]="";
-	for(int i =0;i<19;i++){
-		_temp[i] = p->ptrRam[i];
-	}
 }
 //#############################################################################################
 static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p){
@@ -175,8 +176,9 @@ static void AIP_draw_pixel(uint8_t x,uint8_t y,uint8_t color,AIP *p){
 	}
     if(color == 1) {
         p->ptrRam[x] |= 1<<(y%4);
-    } else {  
-         p->ptrRam[x] &= ~(1<<(y%4)); 
+    } 
+		else {  
+					 p->ptrRam[x] &= ~(1<<(y%4)); 
     }
 }
 //#############################################################################################

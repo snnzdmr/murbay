@@ -51,9 +51,9 @@ typedef enum FIX_FLOAT{
 	ff_float,
 }FIX_FLOAT;
 typedef enum SPEED{
-	sp_slow=0,
+	sp_fast=1,
 	sp_medium,
-	sp_fast
+	sp_slow
 }SPEED;
 typedef enum MIN_COIN{
 	mc_1=0,
@@ -65,6 +65,13 @@ typedef enum MULTI_TARE{
 	mt_on=0,
 	mt_off
 }MULTI_TARE;
+
+typedef enum LIGHT{
+	light_on=0,
+	light_off,
+	light_auto
+}LIGHT;
+
 
 typedef struct RS232_Params{
 	uint32_t baudrate;
@@ -83,6 +90,7 @@ typedef struct MENU_Params{
 	uint8_t speed;
 	uint8_t minCoin;
 	uint8_t multiTare;
+	uint8_t light;
 	uint32_t isn;
 	float gravity;
 	uint8_t factoryReset;
@@ -149,4 +157,13 @@ void shw_f7b_off();
 void f7_Saved();
 void shw_f9a();
 void shw_f10a();
+
+
+void shw_light();
+void shw_f12a_auto();
+void shw_f12b_on();
+void shw_f12c_off();
+void f12_Saved();
+
+
 #endif

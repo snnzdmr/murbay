@@ -113,9 +113,9 @@ typedef enum FIX_FLOAT{
  ff_float,
 }FIX_FLOAT;
 typedef enum SPEED{
- sp_slow=0,
+ sp_fast=1,
  sp_medium,
- sp_fast
+ sp_slow
 }SPEED;
 typedef enum MIN_COIN{
  mc_1=0,
@@ -127,6 +127,13 @@ typedef enum MULTI_TARE{
  mt_on=0,
  mt_off
 }MULTI_TARE;
+
+typedef enum LIGHT{
+ light_on=0,
+ light_off,
+ light_auto
+}LIGHT;
+
 
 typedef struct RS232_Params{
  uint32_t baudrate;
@@ -145,6 +152,7 @@ typedef struct MENU_Params{
  uint8_t speed;
  uint8_t minCoin;
  uint8_t multiTare;
+ uint8_t light;
  uint32_t isn;
  float gravity;
  uint8_t factoryReset;
@@ -211,6 +219,13 @@ void shw_f7b_off();
 void f7_Saved();
 void shw_f9a();
 void shw_f10a();
+
+
+void shw_light();
+void shw_f12a_auto();
+void shw_f12b_on();
+void shw_f12c_off();
+void f12_Saved();
 # 2 "../src/menu.c" 2
 # 1 "..\\Inc/costumLcd.h" 1
 
@@ -4566,8 +4581,13 @@ extern __attribute__((__nothrow__)) int __C_library_version_number(void);
 
 typedef struct workVariable{
  MENU_Params *p_menuParams;
+ uint32_t PLU_Buffer[100];
+ _Bool saveButtonFlag;
+ _Bool unitButtonFlag;
+ _Bool stableFlag;
+ _Bool oneShotMeasure;
 }workVariable;
-# 28 "..\\Inc/app.h"
+# 33 "..\\Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
@@ -4579,7 +4599,7 @@ void APP_All_Point_High(uint8_t selScreen);
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
 _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
 
-
+ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam);
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
 # 7 "../src/menu.c" 2
@@ -4846,12 +4866,16 @@ typedef struct SCALE{
 # 1 "../periph_conf.h" 1
 # 13 "..\\scale_v2.h" 2
 # 5 "..\\Inc/eeproom.h" 2
-# 31 "..\\Inc/eeproom.h"
+# 33 "..\\Inc/eeproom.h"
 void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len);
-_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]);
+_Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[],uint8_t lngth);
 void writeFlashMemoryInformation(MENU_Params *p_MenuParam);
 void readFlashMemoryInformation(MENU_Params *p_MenuParam);
 void InitFactorySetting(MENU_Params *p_MenuParam);
+
+
+void writePluArray(uint32_t *_array);
+void readPluArray(uint32_t *_array);
 # 10 "../src/menu.c" 2
 
 extern AIP * p_LcdObj_S1;
@@ -4870,7 +4894,7 @@ FIX_FLOAT currnetFixFloat;
 SPEED currentSpeed;
 MIN_COIN currentMinCoin;
 MULTI_TARE currentMultiTare;
-
+LIGHT currentLight;
 
 
 
@@ -4934,7 +4958,7 @@ node f8;
 node f9_gravity,f9a;
 node f10_reset,f10a;
 node f11_rs232;
-
+node f12_light,f12a_auto,f12b_on,f12c_off,f12_save;
 
 MENU *newMenuObj(){
  MENU *p = (MENU *)malloc(sizeof(MENU));
@@ -4964,7 +4988,7 @@ static void Menu_Init(){
 
 
  build(&root,&shw_mainScreen,&f0_cal,0,0,0);
- build(&f0_cal,&shw_calibration,&f0_unload,&root,&f11_rs232,&f1_resolution);
+ build(&f0_cal,&shw_calibration,&f0_unload,&root,&f12_light,&f1_resolution);
  build(&f1_resolution,&shw_resolution,&f1a_3000,&root,&f0_cal,&f2_capacity);
  build(&f2_capacity,&shw_capacity,&f2a_3,&root,&f1_resolution,&f3_decimalPoint);
  build(&f3_decimalPoint,&shw_decimalPoint,&f3a,&root,&f2_capacity,&f4_fixFloat);
@@ -4975,7 +4999,8 @@ static void Menu_Init(){
  build(&f8,&shw_f8,0,&root,&f7_multiTare,&f9_gravity);
  build(&f9_gravity,&shw_gravity,&f9a,&root,&f8,&f10_reset);
  build(&f10_reset,&shw_reset,&f10a,&root,&f9_gravity,&f11_rs232);
- build(&f11_rs232,&shw_rs232,0,&root,&f10_reset,&f0_cal);
+ build(&f11_rs232,&shw_rs232,0,&root,&f10_reset,&f12_light);
+ build(&f12_light,&shw_light,&f12a_auto,&root,&f11_rs232,&f0_cal);
 
 
 
@@ -5026,6 +5051,14 @@ static void Menu_Init(){
  build(&f9a,&shw_f9a,0,&f9_gravity,0,0);
 
  build(&f10a,&shw_f10a,0,&f10_reset,0,0);
+
+
+
+ build(&f12a_auto,&shw_f12a_auto,&f12_save,&root,&f12c_off,&f12b_on);
+ build(&f12b_on,&shw_f12b_on,&f12_save,&root,&f12a_auto,&f12c_off);
+ build(&f12c_off,&shw_f12c_off,&f12_save,&root,&f12b_on,&f12a_auto);
+ build(&f12_save,&f12_Saved,0,&root,0,0);
+
 
 }
 void shw_mainScreen(){
@@ -5358,13 +5391,13 @@ void shw_f1c_dual1(){
 void shw_f1d_dual2(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)" dual2",p_CurrentFont,p_LcdObj_S3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-   currentResolution = rDual2;
+ currentResolution = rDual2;
 }
 void f1_Saved(){
  p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
  m_Param.resolution = currentResolution;
-
+ writeFlashMemoryInformation(&m_Param);
 }
 
 void shw_f2a_3(){
@@ -5391,7 +5424,7 @@ void f2_Saved(){
  p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
  m_Param.capacity = currentCapacity;
-
+ writeFlashMemoryInformation(&m_Param);
 }
 void shw_f3a(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"     0",p_CurrentFont,p_LcdObj_S3);
@@ -5440,6 +5473,7 @@ void f4_Saved(){
  p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
  m_Param.FixFloat = currnetFixFloat;
+ writeFlashMemoryInformation(&m_Param);
 
 }
 void shw_f5a_slow(){
@@ -5461,6 +5495,7 @@ void f5_Saved(){
  p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
  m_Param.speed = currentSpeed;
+ writeFlashMemoryInformation(&m_Param);
 
 }
 void shw_f6a_1(){
@@ -5487,6 +5522,7 @@ void f6_Saved(){
  p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
  m_Param.minCoin = currentMinCoin;
+ writeFlashMemoryInformation(&m_Param);
 
 }
 void shw_f7a_on(){
@@ -5504,6 +5540,7 @@ void f7_Saved(){
  p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
  p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
  m_Param.multiTare = currentMultiTare;
+ writeFlashMemoryInformation(&m_Param);
 
 }
 void shw_f9a(){
@@ -5526,4 +5563,42 @@ void shw_f9a(){
 void shw_f10a(){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)"rest",p_CurrentFont,p_LcdObj_S3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+}
+
+
+
+void shw_light(){
+ p_LcdObj_S1->WriteString(0,0,(uint8_t *)" bLSEt",p_CurrentFont,p_LcdObj_S1);
+ p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+
+
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)"  mode",p_CurrentFont,p_LcdObj_S2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"      ",p_CurrentFont,p_LcdObj_S3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+
+}
+void shw_f12a_auto(){
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  AUto",p_CurrentFont,p_LcdObj_S3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ currentLight = light_auto;
+}
+
+void shw_f12b_on(){
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"    on",p_CurrentFont,p_LcdObj_S3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ currentLight = light_on;
+}
+void shw_f12c_off(){
+ p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   off",p_CurrentFont,p_LcdObj_S3);
+ p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ currentLight = light_off;
+
+}
+void f12_Saved(){
+ p_LcdObj_S2->WriteString(0,0,(uint8_t *)" saved",p_CurrentFont,p_LcdObj_S2);
+ p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+ m_Param.light = currentLight;
+ writeFlashMemoryInformation(&m_Param);
 }

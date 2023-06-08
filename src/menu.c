@@ -24,7 +24,7 @@ FIX_FLOAT			currnetFixFloat;
 SPEED					currentSpeed;
 MIN_COIN			currentMinCoin;
 MULTI_TARE		currentMultiTare;
-
+LIGHT       	currentLight;
 //#############################################################################################
 //															Menü ROOT Fonks
 //#############################################################################################
@@ -88,7 +88,7 @@ node f8;
 node f9_gravity,f9a;
 node f10_reset,f10a;
 node f11_rs232;
-
+node f12_light,f12a_auto,f12b_on,f12c_off,f12_save;
 
 MENU *newMenuObj(){
 	MENU *p = (MENU *)malloc(sizeof(MENU));
@@ -118,7 +118,7 @@ static void Menu_Init(){
 	// enter exit   up down 
 	// First layer
 	build(&root,&shw_mainScreen,&f0_cal,0,0,0);
-	build(&f0_cal,&shw_calibration,&f0_unload,&root,&f11_rs232,&f1_resolution);
+	build(&f0_cal,&shw_calibration,&f0_unload,&root,&f12_light,&f1_resolution);
 	build(&f1_resolution,&shw_resolution,&f1a_3000,&root,&f0_cal,&f2_capacity);
 	build(&f2_capacity,&shw_capacity,&f2a_3,&root,&f1_resolution,&f3_decimalPoint);
 	build(&f3_decimalPoint,&shw_decimalPoint,&f3a,&root,&f2_capacity,&f4_fixFloat);
@@ -129,7 +129,8 @@ static void Menu_Init(){
 	build(&f8,&shw_f8,0,&root,&f7_multiTare,&f9_gravity);
 	build(&f9_gravity,&shw_gravity,&f9a,&root,&f8,&f10_reset);
 	build(&f10_reset,&shw_reset,&f10a,&root,&f9_gravity,&f11_rs232);
-	build(&f11_rs232,&shw_rs232,0,&root,&f10_reset,&f0_cal);
+	build(&f11_rs232,&shw_rs232,0,&root,&f10_reset,&f12_light);
+	build(&f12_light,&shw_light,&f12a_auto,&root,&f11_rs232,&f0_cal);
 	
 	// enter exit   up down 
 	// second layer 
@@ -180,6 +181,14 @@ static void Menu_Init(){
 	build(&f9a,&shw_f9a,0,&f9_gravity,0,0);
 	//  F10 branches      
 	build(&f10a,&shw_f10a,0,&f10_reset,0,0);
+	//  F11 branches     
+	
+	//  F12 branches    
+	build(&f12a_auto,&shw_f12a_auto,&f12_save,&root,&f12c_off,&f12b_on);
+	build(&f12b_on,&shw_f12b_on,&f12_save,&root,&f12a_auto,&f12c_off);
+	build(&f12c_off,&shw_f12c_off,&f12_save,&root,&f12b_on,&f12a_auto);
+	build(&f12_save,&f12_Saved,0,&root,0,0);
+  
 	
 }
 void shw_mainScreen(){
@@ -512,13 +521,13 @@ void shw_f1c_dual1(){
 void shw_f1d_dual2(){
 	p_LcdObj_S3->WriteString(0,0,(uint8_t *)" dual2",p_CurrentFont,p_LcdObj_S3);
 	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
-			currentResolution = rDual2;
+	currentResolution = rDual2;
 }
 void f1_Saved(){
 	p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
 	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
 	m_Param.resolution = currentResolution;
-	
+	writeFlashMemoryInformation(&m_Param);
 }
 
 void shw_f2a_3(){
@@ -545,7 +554,7 @@ void f2_Saved(){
 	p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
 	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
 	m_Param.capacity = currentCapacity;
-	
+	writeFlashMemoryInformation(&m_Param);
 }
 void shw_f3a(){
 	p_LcdObj_S3->WriteString(0,0,(uint8_t *)"     0",p_CurrentFont,p_LcdObj_S3);
@@ -594,6 +603,7 @@ void f4_Saved(){
 	p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
 	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
 	m_Param.FixFloat = currnetFixFloat;
+	writeFlashMemoryInformation(&m_Param);
 	
 }
 void shw_f5a_slow(){
@@ -615,6 +625,7 @@ void f5_Saved(){
 	p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
 	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
 	m_Param.speed = currentSpeed;
+	writeFlashMemoryInformation(&m_Param);
 	
 }
 void shw_f6a_1(){
@@ -641,6 +652,7 @@ void f6_Saved(){
 	p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
 	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
 	m_Param.minCoin = currentMinCoin;
+	writeFlashMemoryInformation(&m_Param);
 	
 }
 void shw_f7a_on(){
@@ -658,6 +670,7 @@ void f7_Saved(){
 	p_LcdObj_S2->WriteString(0,0,(uint8_t *)" SAVEd ",p_CurrentFont,p_LcdObj_S2);
 	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
 	m_Param.multiTare = currentMultiTare;
+	writeFlashMemoryInformation(&m_Param);
 	
 }
 void shw_f9a(){
@@ -684,7 +697,41 @@ void shw_f10a(){
 
 
 
+void shw_light(){
+	p_LcdObj_S1->WriteString(0,0,(uint8_t *)" bLSEt",p_CurrentFont,p_LcdObj_S1);
+	p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+	
+	
+	p_LcdObj_S2->WriteString(0,0,(uint8_t *)"  mode",p_CurrentFont,p_LcdObj_S2);
+	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+	
+	p_LcdObj_S3->WriteString(0,0,(uint8_t *)"      ",p_CurrentFont,p_LcdObj_S3);
+	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+	
+}
+void shw_f12a_auto(){
+	p_LcdObj_S3->WriteString(0,0,(uint8_t *)"  AUto",p_CurrentFont,p_LcdObj_S3);
+	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+	currentLight = light_auto;
+}
 
+void shw_f12b_on(){
+	p_LcdObj_S3->WriteString(0,0,(uint8_t *)"    on",p_CurrentFont,p_LcdObj_S3);
+	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+	currentLight = light_on;
+}
+void shw_f12c_off(){
+	p_LcdObj_S3->WriteString(0,0,(uint8_t *)"   off",p_CurrentFont,p_LcdObj_S3);
+	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+	currentLight = light_off;
+	
+}
+void f12_Saved(){
+	p_LcdObj_S2->WriteString(0,0,(uint8_t *)" saved",p_CurrentFont,p_LcdObj_S2);
+	p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+	m_Param.light = currentLight;
+	writeFlashMemoryInformation(&m_Param);
+}
 
 
 

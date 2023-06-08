@@ -4251,9 +4251,9 @@ typedef enum FIX_FLOAT{
  ff_float,
 }FIX_FLOAT;
 typedef enum SPEED{
- sp_slow=0,
+ sp_fast=1,
  sp_medium,
- sp_fast
+ sp_slow
 }SPEED;
 typedef enum MIN_COIN{
  mc_1=0,
@@ -4265,6 +4265,13 @@ typedef enum MULTI_TARE{
  mt_on=0,
  mt_off
 }MULTI_TARE;
+
+typedef enum LIGHT{
+ light_on=0,
+ light_off,
+ light_auto
+}LIGHT;
+
 
 typedef struct RS232_Params{
  uint32_t baudrate;
@@ -4283,6 +4290,7 @@ typedef struct MENU_Params{
  uint8_t speed;
  uint8_t minCoin;
  uint8_t multiTare;
+ uint8_t light;
  uint32_t isn;
  float gravity;
  uint8_t factoryReset;
@@ -4349,6 +4357,13 @@ void shw_f7b_off();
 void f7_Saved();
 void shw_f9a();
 void shw_f10a();
+
+
+void shw_light();
+void shw_f12a_auto();
+void shw_f12b_on();
+void shw_f12c_off();
+void f12_Saved();
 # 9 "../Inc/app.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
 # 10 "../Inc/app.h" 2
@@ -4359,8 +4374,13 @@ void shw_f10a();
 
 typedef struct workVariable{
  MENU_Params *p_menuParams;
+ uint32_t PLU_Buffer[100];
+ _Bool saveButtonFlag;
+ _Bool unitButtonFlag;
+ _Bool stableFlag;
+ _Bool oneShotMeasure;
 }workVariable;
-# 28 "../Inc/app.h"
+# 33 "../Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
@@ -4372,7 +4392,7 @@ void APP_All_Point_High(uint8_t selScreen);
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
 _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
 
-
+ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam);
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
 # 15 "../main.c" 2

@@ -4690,7 +4690,7 @@ void SPII2S0_Init()
 {
 
 
-    SPI_Open(((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL)), (0x0UL), ((0x1ul << (3)) | (0x1ul << (2))), 8, 2000000);
+    SPI_Open(((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL)), (0x0UL), ((0x1ul << (3)) | (0x1ul << (2))), 8, 20000000);
 
 
     ((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL))->SSCTL = (((SPI_T *) ((((uint32_t)0x40000000UL) + 0x00040000UL) + 0x21000UL))->SSCTL & (~(0x1ul << (2)))) | (0x0UL);

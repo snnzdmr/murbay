@@ -34,8 +34,11 @@ FontDef font_small = {
 //#############################################################################################
 void APP_Init(){
 	readFlashMemoryInformation(&m_Param);
+	readPluArray(_workVariable.PLU_Buffer);
 	_workVariable.p_menuParams = &m_Param;
 	ptrWorkVariable =&_workVariable;
+	ptrWorkVariable->saveButtonFlag =false;
+	
 	/****************************************/
 	_param1.A0 	  = &SCREEN_1_AIP_A0Pin;
 	_param1.Reset = &SCREEN_1_AIP_ResetPin;
@@ -100,7 +103,205 @@ void APP_SetBatteryLevel(uint8_t _level,AIP *p){
 			p->Spoint(2,1,p);
 			break;
 	}
+	p->UpdateScreen(p);
 }
+void APP_setSaveButtonIcon(bool _state,AIP *p){
+	if(_state == true){
+			p->Spoint(4,1,p);
+	}
+	else{
+			p->Spoint(4,0,p);
+	}
+	p->UpdateScreen(p);
+}
+void APP_setuNITButtonIcon(bool _state,AIP *p){
+	if(_state == true){
+			p->Spoint(6,1,p);
+	}
+	else{
+			p->Spoint(6,0,p);
+	}
+	p->UpdateScreen(p);
+}
+void APP_setStableIcon(bool _state,AIP *p){
+	if(_state == true){
+			p->Spoint(8,1,p);
+	}
+	else{
+			p->Spoint(8,0,p);
+	}
+	p->UpdateScreen(p);
+}
+
+void APP_PointsHandle(){ // Ekrana surekli basman gerek 
+	if(ptrWorkVariable->saveButtonFlag == false){
+			APP_setSaveButtonIcon(false,p_LcdObj_S1);
+	}
+	else{
+			APP_setSaveButtonIcon(true,p_LcdObj_S1);
+	}
+	if(ptrWorkVariable->unitButtonFlag  == false){
+		APP_setuNITButtonIcon(false,p_LcdObj_S1);
+	}
+	else{
+		APP_setuNITButtonIcon(true,p_LcdObj_S1);
+	}
+	if(ptrWorkVariable->stableFlag  == false){
+		APP_setStableIcon(false,p_LcdObj_S1);
+	}
+	else{
+		APP_setStableIcon(true,p_LcdObj_S1);
+	}
+	
+	
+}
+
+void pluSave(float val,float _id){
+	if(_id >99 && _id <0){
+		return;
+	}
+	else{
+		ptrWorkVariable->PLU_Buffer[(int)_id] = ((uint32_t)(val*100000));
+		writePluArray(ptrWorkVariable->PLU_Buffer);
+	}
+	
+}
+float reCall(float _id){
+	char buffer[10] = "";
+	uint8_t retBuffer[10] = "";
+	float ret =0;
+	uint8_t len = 0;
+	if(_id >99 && _id <0){
+		return 0;
+	}
+	else{
+		ret = (ptrWorkVariable->PLU_Buffer[(int)_id] /100000.0);
+		switch(ptrWorkVariable->p_menuParams->decimalPoint){
+			case dp_0:
+				len = sprintf(&buffer[0],"%.0f",ret);
+			  len++;
+				break;
+			case dp_0_0:
+				len = sprintf(&buffer[0],"%.1f",ret);
+				break;
+			case dp_0_00:
+				len = sprintf(&buffer[0],"%.2f",ret);
+				break;
+			case dp_0_000:
+				len = sprintf(&buffer[0],"%.3f",ret);
+				break;
+			case dp_0_0000:
+				len = sprintf(&buffer[0],"%.4f",ret);
+				break;
+		}
+		
+		for(int i=0;i<7-len;i++){
+			retBuffer[i]  =0x20; // padding
+		}
+		strncat((char *)retBuffer,(const char *)buffer,len);					
+					
+			p_LcdObj_S2->WriteString(0,0,&retBuffer[0],&font_small,p_LcdObj_S2);
+			p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+		return  ret;
+	}
+	
+}
+
+float LoadPluHandler(MENU_Params *p_MenuParam){
+			float _id =0;
+			uint8_t longPres=0;
+			int16_t _pressedKey=0;
+			uint8_t t_decPoint =0;
+				customValueInputFix('c',p_LcdObj_S2,p_MenuParam); 
+				p_LcdObj_S1->WriteString(0,0,(uint8_t *)"LoAd",&font_small,p_LcdObj_S1);
+				p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+			
+				p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   pos",&font_small,p_LcdObj_S2);
+				p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+			
+				p_LcdObj_S3->WriteString(0,0,(uint8_t *)"ps0-99",&font_small,p_LcdObj_S3);
+				p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+	
+	
+				t_decPoint =p_MenuParam->decimalPoint;
+				p_MenuParam->decimalPoint = dp_0;
+				while(1){
+				_pressedKey = p_KeypadObj->Scan(&longPres);
+					if(_pressedKey > -1 && _pressedKey != 's' && _pressedKey != 'p'){
+						_id = customValueInputFix(_pressedKey,p_LcdObj_S2,p_MenuParam);
+					}
+					else if(_pressedKey == 's'){
+						p_MenuParam->decimalPoint = t_decPoint;
+						customValueInputFix('c',p_LcdObj_S2,p_MenuParam); 
+						ptrWorkVariable->oneShotMeasure =true;
+						return reCall(_id);
+					}
+					else if(_pressedKey == 'c'){
+						p_MenuParam->decimalPoint = t_decPoint;
+						customValueInputFix('c',p_LcdObj_S2,p_MenuParam);
+						ptrWorkVariable->oneShotMeasure =true; 
+						return 0;
+					}
+				}
+	
+}
+
+void longPressHandler(char pressedKey,float _val,MENU_Params *p_MenuParam){	
+			float _id =0;
+			uint8_t longPres=0;
+			int16_t _pressedKey=0;
+			uint8_t t_decPoint =0;
+		switch(pressedKey){
+		case 'c':
+			break;
+		case 'z':
+			break;
+		case 't':
+			break;
+		case 'q':
+			break;
+		case 's':
+			break;
+		case 'p': // plu 
+		
+				customValueInputFix('c',p_LcdObj_S2,p_MenuParam); 
+				p_LcdObj_S1->WriteString(0,0,(uint8_t *)"save",&font_small,p_LcdObj_S1);
+				p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
+			
+				p_LcdObj_S2->WriteString(0,0,(uint8_t *)"   pos",&font_small,p_LcdObj_S2);
+				p_LcdObj_S2->UpdateScreen(p_LcdObj_S2);
+			
+				p_LcdObj_S3->WriteString(0,0,(uint8_t *)"ps0-99",&font_small,p_LcdObj_S3);
+				p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+				t_decPoint =p_MenuParam->decimalPoint;
+				p_MenuParam->decimalPoint = dp_0;
+				while(1){
+				_pressedKey = p_KeypadObj->Scan(&longPres);
+					if(_pressedKey > -1 && _pressedKey != 's' && _pressedKey != 'p'){
+						_id = customValueInputFix(_pressedKey,p_LcdObj_S2,p_MenuParam);
+					}
+					else if(_pressedKey == 's'){
+						pluSave(_val,_id) ;
+						break;;
+					}
+				}
+						
+			p_MenuParam->decimalPoint = t_decPoint;
+			customValueInputFix('c',p_LcdObj_S2,p_MenuParam); 
+			break;
+		case 'u':
+			break;
+		case 'm':
+			break;
+		case 'C': //CH
+			break;
+		case '.':
+			break;
+		default:
+			break;
+	}
+}
+
 //#############################################################################################
 void APP_SettingsHandle(){
 	uint8_t longPres=0;
@@ -168,10 +369,22 @@ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
 			case 'q':
 				break;
 			case 's':
+				if(ptrWorkVariable->saveButtonFlag == true){
+					ptrWorkVariable->saveButtonFlag = false;
+				}
+				else{
+					ptrWorkVariable->saveButtonFlag = true;
+				}
 				break;
 			case 'p':
 				break;
 			case 'u':
+				if(ptrWorkVariable->unitButtonFlag  == true){
+					ptrWorkVariable->unitButtonFlag = false;
+				}
+				else{
+					ptrWorkVariable->unitButtonFlag = true;
+				}
 				break;
 			case 'm':
 				break;
@@ -258,10 +471,22 @@ float customValueInput(char pressedKey,AIP *p){
 			case 'q':
 				break;
 			case 's':
+				if(ptrWorkVariable->saveButtonFlag == true){
+					ptrWorkVariable->saveButtonFlag = false;
+				}
+				else{
+					ptrWorkVariable->saveButtonFlag = true;
+				}
 				break;
 			case 'p':
 				break;
 			case 'u':
+				if(ptrWorkVariable->unitButtonFlag  == true){
+					ptrWorkVariable->unitButtonFlag = false;
+				}
+				else{
+					ptrWorkVariable->unitButtonFlag = true;
+				}
 				break;
 			case 'm':
 				break;
@@ -289,8 +514,6 @@ float customValueInput(char pressedKey,AIP *p){
 					p->WriteString(0,0,&buffer[0],&font_small,p);
 					p->UpdateScreen(p);
 					
-					
-					
 				}
 				break;
 		}
@@ -309,11 +532,16 @@ float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
 	}
 }
 void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){	
+	static float lastTotalPrices =0;
 	uint8_t array[10]="";
 	uint8_t buffer[7]="";
 	int len=0;
 	float totalPrices = 0;
 	totalPrices = _price * _wight;
+	if(totalPrices == lastTotalPrices){
+		return;
+	}
+	lastTotalPrices = totalPrices;
 	switch(p_MenuParam->decimalPoint){
 		case dp_0:
 			if(totalPrices > 999999){totalPrices=9999999;}
@@ -350,24 +578,31 @@ void APP_Handle(){
 	uint8_t longPres=0;
 	float weight=0;
 	float total = 0;
-	
 	ret = APP_StartScreen(&m_Param);
 	if(ret){ // settings handle
 		APP_SettingsHandle();
+		setPrice((char)'c',p_LcdObj_S2,&m_Param);
 	}
+		APP_SetBatteryLevel(2,p_LcdObj_S1);
+		APP_SetBatteryLevel(2,p_LcdObj_S2);
+		APP_SetBatteryLevel(2,p_LcdObj_S3);
 	while(1){
+		APP_PointsHandle();
 		APP_Show_Weight(&weight,&m_Param);
 		APP_ShowTotal(total,weight,&m_Param);
 		pressedKey = p_KeypadObj->Scan(&longPres);
 		if(pressedKey > -1 && longPres == 0){
 			total = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
+			if(pressedKey == 'p'){
+				total = LoadPluHandler(&m_Param);
+			}
 		}
 		if(pressedKey > -1 && longPres == 1){
-			longPres=0;
+			longPres=0;	
+			longPressHandler(pressedKey,total,&m_Param);
+			total=0;
 		}
-	}
-		
-	
+	}	
 }
 
 //#############################################################################################
@@ -794,17 +1029,31 @@ void calculate_10gr(float *_weight,MENU_Params *p_MenuParam){
 }
 
 bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
-	static float lastVal =0;
-	bool stable=false;
 	uint8_t x=0;
-	stable=false;
+	static uint16_t counter =0;
+	static float lastWeight =0;
 	if(p_ScaleObj->available() == true){
-			 *_weight  =  p_ScaleObj->getWeight(true,10); 
+			 *_weight  =  p_ScaleObj->getWeight(true,8); 
 	}
-	
-	calculate_10gr(_weight,p_MenuParam);
-	
-	return stable;
+	if(*_weight <= 0 && ptrWorkVariable->saveButtonFlag == false){
+		setPrice('c',p_LcdObj_S2,p_MenuParam);
+	}
+	calculate_5gr(_weight,p_MenuParam);
+	if(ptrWorkVariable->oneShotMeasure == true){
+		ptrWorkVariable->oneShotMeasure = false;
+		return false;
+	}
+	if(*_weight == lastWeight){
+		counter++;
+		if(counter >(200*p_MenuParam->speed )  ){
+			ptrWorkVariable->stableFlag =true;
+			counter=0;
+		}
+		return true;
+	}
+	lastWeight = 	*_weight;
+	ptrWorkVariable->stableFlag =false;
+	return false;
 
 	
 	
@@ -818,11 +1067,11 @@ bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
 
 bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam){
 	uint8_t array[10]="";
-	bool stable=false;
 	uint8_t buffer[7]="";
 	int len = 0;
-	stable = APP_GetMeasure(_weight,p_MenuParam);
-	
+	if(APP_GetMeasure(_weight,p_MenuParam)){
+		return false;
+	}
 	switch(p_MenuParam->decimalPoint){
 		case dp_0:
 			if((*_weight) > 999999.9999){(*_weight) =999999.9999;}
@@ -852,16 +1101,8 @@ bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam){
 
 	p_LcdObj_S1->WriteString(0,0,(uint8_t *)buffer,&font_small,p_LcdObj_S1);
 	p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-	if(stable){
-		p_LcdObj_S1->Spoint(16,1,p_LcdObj_S1); // stable icon on 
-	  p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-	}
-	else{
-		p_LcdObj_S1->Spoint(16,0,p_LcdObj_S1); // stable icon off 
-	  p_LcdObj_S1->UpdateScreen(p_LcdObj_S1);
-	}
 	
-	return stable;
+	return false;
 }
 
 

@@ -631,7 +631,7 @@ SPII2S0_Init:
 @ %bb.1:
 	.loc	12 0 1 is_stmt 0                @ ../periph_conf.c:0:1
 __arm_cp.4_0:
-	.long	2000000                         @ 0x1e8480
+	.long	20000000                        @ 0x1312d00
 .Lcpi_end46:
 	.size	__arm_cp.4_0, .Lcpi_end46-__arm_cp.4_0
 __arm_cp.4_1:

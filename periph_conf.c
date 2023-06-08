@@ -697,7 +697,7 @@ void SPII2S0_Init()
 {
 
     /* This function make SPI module be ready to transfer */
-    SPI_Open(SPI0, SPI_MASTER, SPI_MODE_3, 8, 2000000);
+    SPI_Open(SPI0, SPI_MASTER, SPI_MODE_3, 8, 20000000);
 
     /* Select SS level */
     SPI0->SSCTL = (SPI0->SSCTL & (~SPI_SSCTL_SSACTPOL_Msk)) | SPI_SS_ACTIVE_LOW;

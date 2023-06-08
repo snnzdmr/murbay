@@ -424,7 +424,7 @@ __arm_cp.2_3:
 .Lcpi_end9:
 	.size	__arm_cp.2_3, .Lcpi_end9-__arm_cp.2_3
 __arm_cp.2_4:
-	.long	1000001                         @ 0xf4241
+	.long	500001                          @ 0x7a121
 .Lcpi_end10:
 	.size	__arm_cp.2_4, .Lcpi_end10-__arm_cp.2_4
 .Lfunc_end2:

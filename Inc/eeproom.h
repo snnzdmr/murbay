@@ -4,8 +4,10 @@
 #include "scale_v2.h"
 #include "Inc/app.h"
 #include "Inc/menu.h"
-#define SAVE_EEPROOM_COMPANENT_SIZE				20
+#define SAVE_EEPROOM_COMPANENT_SIZE											20
+#define PLU_LEN																					100
 #define EEPROM_ADDRESS_START                            0x19404
+#define EEPROM_PLU_SAVE_ADDRESS                         0x1a404
 
 
 #define FAC_VAL_RESOLUTION								r3000
@@ -29,9 +31,13 @@
 
 
 void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len);
-bool eeprom_read_array(uint32_t _address,uint32_t _buffer[]);
+bool eeprom_read_array(uint32_t _address,uint32_t _buffer[],uint8_t lngth);
 void writeFlashMemoryInformation(MENU_Params *p_MenuParam);
 void readFlashMemoryInformation(MENU_Params *p_MenuParam);
 void InitFactorySetting(MENU_Params *p_MenuParam);
+
+
+void writePluArray(uint32_t *_array);
+void readPluArray(uint32_t *_array);
 
 #endif

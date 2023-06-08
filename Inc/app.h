@@ -14,6 +14,11 @@
 
 typedef struct workVariable{
 	MENU_Params	*p_menuParams;
+	uint32_t PLU_Buffer[100];
+	bool saveButtonFlag;
+	bool unitButtonFlag;
+	bool stableFlag;
+	bool oneShotMeasure;
 }workVariable;
 
 #define BATTERY_LOW				   0
@@ -36,7 +41,7 @@ void APP_All_Point_High(uint8_t selScreen);
 bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
 bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
 
- 
+ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam);
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
 //#############################################################################################
