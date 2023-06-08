@@ -1,5 +1,10 @@
 # Murbay terazi kodu 
 
+## V1.3.2
+- Plu eklendi 
+- save tusu aktif
+- unit tuşu katif
+- pil seçim aktif 
 
 ## V1.3.1
 - 2g 5g 10 gr stepler eklendi
