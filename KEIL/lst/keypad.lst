@@ -816,7 +816,7 @@ keyboardMatris:
 	.ascii	"0.czt"
 	.ascii	"123qs"
 	.ascii	"456pu"
-	.ascii	"789mC"
+	.ascii	"789mh"
 	.size	keyboardMatris, 20
 
 	.hidden	KeyPad                          @ @KeyPad

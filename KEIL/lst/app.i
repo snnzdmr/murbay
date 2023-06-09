@@ -4444,8 +4444,9 @@ typedef struct workVariable{
  _Bool unitButtonFlag;
  _Bool stableFlag;
  _Bool oneShotMeasure;
+ _Bool qytFlag;
 }workVariable;
-# 33 "..\\Inc/app.h"
+# 34 "..\\Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
@@ -4456,7 +4457,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam);
 void APP_All_Point_High(uint8_t selScreen);
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
 _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
-void APP_ShowTotal(float _price,MENU_Params *p_MenuParam);
+void APP_ShowTotal(float _price,MENU_Params *p_MenuParam,AIP *p);
 void calculate_2gr(float *_weight,MENU_Params *p_MenuParam);
 void calculate_5gr(float *_weight,MENU_Params *p_MenuParam);
 void calculate_10gr(float *_weight,MENU_Params *p_MenuParam);
@@ -4464,6 +4465,9 @@ void calculate_10gr(float *_weight,MENU_Params *p_MenuParam);
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
 float _abs(float x);
+float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam);
+void tare(MENU_Params *p_MenuParam);
+void clearPriceScreen(AIP *p,MENU_Params *p_MenuParam);
 # 2 "../src/app.c" 2
 # 1 "..\\Inc/keypad.h" 1
 # 37 "..\\Inc/keypad.h"
@@ -4969,12 +4973,21 @@ FontDef font_small = {
  .FontHeight=3,
  .data=&fontArray[0],
 };
+float g_totalPrice = 0;
 
 
 
 
 
-
+void mPlusHandler(float _price,MENU_Params *p_MenuParam){
+ if(p_MenuParam->rs232Param.mode == tpup && p_MenuParam->rs232Param.mode == lp50){
+  g_totalPrice+=_price;
+  clearPriceScreen(p_LcdObj_S2,&m_Param);
+  tare(p_MenuParam);
+  APP_ShowTotal(g_totalPrice,p_MenuParam,p_LcdObj_S3);
+  CLK_SysTickLongDelay(2000000);
+ }
+}
 
 void APP_Init(){
  readFlashMemoryInformation(&m_Param);
@@ -5097,6 +5110,9 @@ void APP_PointsHandle(){
   APP_setStableIcon(1,p_LcdObj_S1);
  }
 
+ APP_SetBatteryLevel(0,p_LcdObj_S1);
+ APP_SetBatteryLevel(1,p_LcdObj_S2);
+ APP_SetBatteryLevel(2,p_LcdObj_S3);
 
 }
 
@@ -5226,7 +5242,10 @@ void longPressHandler(char pressedKey,float _val,MENU_Params *p_MenuParam){
      }
      else if(_pressedKey == 's'){
       pluSave(_val,_id) ;
-      break;;
+      break;
+     }
+     else if(_pressedKey == 'c'){
+      break;
      }
     }
 
@@ -5260,6 +5279,44 @@ float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
 
 
 
+void CH_Handle(MENU_Params *p_MenuParam){
+ int16_t pressedKey=0;
+ uint8_t longPres=0;
+ float price = 0;
+ APP_ShowTotal(g_totalPrice,&m_Param,p_LcdObj_S1);
+ while(1){
+  if(pressedKey > -1 && longPres == 0 && pressedKey != 't'){
+   price = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
+   APP_ShowTotal(g_totalPrice-price,&m_Param,p_LcdObj_S3);
+  }
+  if(pressedKey > -1 && longPres == 0 && pressedKey == 't'){
+   setPrice((char)'c',p_LcdObj_S2,&m_Param);
+   break;
+  }
+ }
+}
+
+void clearPriceScreen(AIP *p,MENU_Params *p_MenuParam){
+  switch(p_MenuParam->decimalPoint){
+   case dp_0:
+    p->WriteString(0,0,(uint8_t *)"     0",&font_small,p);
+    break;
+   case dp_0_0:
+    p->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p);
+    break;
+   case dp_0_00:
+    p->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p);
+    break;
+   case dp_0_000:
+    p->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p);
+    break;
+   case dp_0_0000:
+    p->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p);
+    break;
+  }
+ p->UpdateScreen(p);
+
+}
 void APP_SettingsHandle(){
  uint8_t longPres=0;
  char pressedKey=0;
@@ -5297,31 +5354,13 @@ float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
     _id=0;
      total=0;
      memset(&tempArray[0],0x00,7);
-     switch(p_MenuParam->decimalPoint){
-      case dp_0:
-       p->WriteString(0,0,(uint8_t *)"     0",&font_small,p);
-       break;
-      case dp_0_0:
-       p->WriteString(0,0,(uint8_t *)"    0.0",&font_small,p);
-       break;
-      case dp_0_00:
-       p->WriteString(0,0,(uint8_t *)"   0.00",&font_small,p);
-       break;
-      case dp_0_000:
-       p->WriteString(0,0,(uint8_t *)"  0.000",&font_small,p);
-       break;
-      case dp_0_0000:
-       p->WriteString(0,0,(uint8_t *)" 0.0000",&font_small,p);
-       break;
-     }
-    p->UpdateScreen(p);
+    clearPriceScreen(p,p_MenuParam);
+    g_totalPrice = 0;
     break;
    case 'z':
     break;
    case 't':
-    p_ScaleObj->calculateZeroOffset(64);
-    p_MenuParam->ZeroOffset = p_ScaleObj->getZeroOffset();
-    writeFlashMemoryInformation(p_MenuParam);
+    tare(p_MenuParam);
     break;
    case 'q':
     break;
@@ -5417,6 +5456,7 @@ float customValueInput(char pressedKey,AIP *p){
    case 'c':
     pointCounter = 0;
     _id=0;
+    g_totalPrice = 0;
     memset(&tempArray[0],0x00,7);
     p->WriteString(0,0,(uint8_t *)"      ",&font_small,p);
     p->UpdateScreen(p);
@@ -5424,6 +5464,7 @@ float customValueInput(char pressedKey,AIP *p){
    case 'z':
     break;
    case 't':
+    tare(&m_Param);
     break;
    case 'q':
     break;
@@ -5478,36 +5519,61 @@ float customValueInput(char pressedKey,AIP *p){
 }
 
 
-void APP_ShowTotal(float _price,MENU_Params *p_MenuParam){
- static float lastTotalPrices =0;
+void APP_ShowTotal(float _price,MENU_Params *p_MenuParam,AIP *p){
+ static float lastTotalPrice =0;
  uint8_t array[10]="";
  uint8_t buffer[7]="";
  int len=0;
- float totalPrices = _price;
- if(totalPrices == lastTotalPrices){
+ float totalPrice = _price;
+ if(totalPrice == lastTotalPrice){
   return;
  }
- lastTotalPrices = totalPrices;
+ lastTotalPrice = totalPrice;
  switch(p_MenuParam->decimalPoint){
   case dp_0:
-   if(totalPrices > 999999){totalPrices=9999999;}
-   len = sprintf((char*)(&array[0]),"%d",(int)(totalPrices));len+=1;
+   if(totalPrice > 999999 || totalPrice<0 ){
+    len = sprintf((char*)(&array[0]),"------");
+    len+=1;
+   }
+   else{
+    len = sprintf((char*)(&array[0]),"%d",(int)(totalPrice));len+=1;
+   }
    break;
   case dp_0_0:
-   if(totalPrices > 99999){totalPrices=0.0;}
-   len = sprintf((char*)(&array[0]),"%.1f",totalPrices);
+   if(totalPrice > 99999 || totalPrice<0){
+   len = sprintf((char*)(&array[0]),"------");
+    len+=1;
+   }
+   else{
+    len = sprintf((char*)(&array[0]),"%.1f",totalPrice);
+   }
    break;
   case dp_0_00:
-   if(totalPrices > 9999){totalPrices=0.00;}
-   len = sprintf((char*)(&array[0]),"%.2f",totalPrices);
+   if(totalPrice > 9999 || totalPrice<0){
+    len = sprintf((char*)(&array[0]),"------");
+    len+=1;
+   }
+   else{
+    len = sprintf((char*)(&array[0]),"%.2f",totalPrice);
+   }
    break;
   case dp_0_000:
-   if(totalPrices > 999){totalPrices=0.000;}
-   len = sprintf((char*)(&array[0]),"%.3f",totalPrices);
+   if(totalPrice > 999 || totalPrice<0){
+    len = sprintf((char*)(&array[0]),"------");
+    len+=1;
+   }
+   else{
+    len = sprintf((char*)(&array[0]),"%.3f",totalPrice);
+   }
    break;
   case dp_0_0000:
-   if(totalPrices > 99){totalPrices=0.0000;}
-   len = sprintf((char*)(&array[0]),"%.4f",totalPrices);
+   if(totalPrice > 99 || totalPrice<0){
+    len = sprintf((char*)(&array[0]),"------");
+    len+=1;
+   }
+   else{
+    len = sprintf((char*)(&array[0]),"%.4f",totalPrice);
+   }
    break;
  }
  for(int i=0;i<(7-len);i++){
@@ -5515,8 +5581,8 @@ void APP_ShowTotal(float _price,MENU_Params *p_MenuParam){
  }
  strncat((char *)buffer,(const char *)array,len);
 
- p_LcdObj_S3->WriteString(0,0,(uint8_t *)buffer,&font_small,p_LcdObj_S3);
- p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
+ p->WriteString(0,0,(uint8_t *)buffer,&font_small,p);
+ p->UpdateScreen(p);
 }
 
 _Bool waitClearKey(char _chr){
@@ -5533,31 +5599,48 @@ void APP_Handle(){
  int16_t pressedKey=0;
  uint8_t longPres=0;
  float weight=0;
- float prices = 0;
+ float price = 0;
  ret = APP_StartScreen(&m_Param);
  if(ret){
   APP_SettingsHandle();
-  setPrice((char)'c',p_LcdObj_S2,&m_Param);
+  clearPriceScreen(p_LcdObj_S2,&m_Param);
  }
-  APP_SetBatteryLevel(2,p_LcdObj_S1);
-  APP_SetBatteryLevel(2,p_LcdObj_S2);
-  APP_SetBatteryLevel(2,p_LcdObj_S3);
  while(1){
   APP_PointsHandle();
   APP_Show_Weight(&weight,&m_Param);
-  APP_ShowTotal((prices*weight),&m_Param);
+  APP_ShowTotal((price*weight),&m_Param,p_LcdObj_S3);
   pressedKey = p_KeypadObj->Scan(&longPres);
   if(pressedKey > -1 && longPres == 0){
-   prices = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
-   if(pressedKey == 'p'){
-    prices = LoadPluHandler(&m_Param);
+   if(ptrWorkVariable->qytFlag == 1){
+    weight = setPrice((char)pressedKey,p_LcdObj_S1,&m_Param);
+   }else{
+    price = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
    }
-
+   switch(pressedKey){
+    case 'p':
+     price = LoadPluHandler(&m_Param);
+     break;
+    case 'm':
+     mPlusHandler((price*weight),&m_Param);
+     setPrice((char)'c',p_LcdObj_S2,&m_Param);
+     break;
+    case 'h':
+     CH_Handle(&m_Param);
+     break;
+    case 'q':
+     if(ptrWorkVariable->qytFlag == 1){
+      ptrWorkVariable->qytFlag =0;
+     }
+     else{
+      ptrWorkVariable->qytFlag =1;
+     }
+     break;
+   }
   }
   if(pressedKey > -1 && longPres == 1){
    longPres=0;
-   longPressHandler(pressedKey,prices,&m_Param);
-   prices=0;
+   longPressHandler(pressedKey,price,&m_Param);
+   price=0;
   }
  }
 }
@@ -5800,6 +5883,11 @@ void APP_All_Point_High(uint8_t selScreen){
 
 
 
+void tare(MENU_Params *p_MenuParam){
+  p_ScaleObj->calculateZeroOffset(64);
+  p_MenuParam->ZeroOffset = p_ScaleObj->getZeroOffset();
+  writeFlashMemoryInformation(p_MenuParam);
+}
 float setMeasuereModelSelect(float *_weight,MENU_Params *p_MenuParam){
  float fark;
  switch(p_MenuParam->model){
@@ -6126,29 +6214,51 @@ _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam){
  uint8_t array[10]="";
  uint8_t buffer[7]="";
  int len = 0;
+ if(ptrWorkVariable->qytFlag == 1){
+  return 0;
+ }
  if(APP_GetMeasure(_weight,p_MenuParam)){
   return 0;
  }
  switch(p_MenuParam->decimalPoint){
   case dp_0:
-   if((*_weight) > 999999.9999){(*_weight) =999999.9999;}
-   len = sprintf((char*)(&array[0]),"%d",(int)(*_weight));len+=1;
+   if((*_weight) > 999999.9999){
+     len = sprintf((char*)(&array[0]),"--ol--");len+=1;
+   }
+   else{
+    len = sprintf((char*)(&array[0]),"%d",(int)(*_weight));len+=1;
+   }
    break;
   case dp_0_0:
-   if((*_weight) > 99999.9999){(*_weight) =99999.9999;}
+   if((*_weight) > 99999.9999){
+     len = sprintf((char*)(&array[0]),"--ol--");len+=1;
+   }
+   else{
    len = sprintf((char*)(&array[0]),"%.1f",(*_weight));
+   }
    break;
   case dp_0_00:
-   if((*_weight) > 9999.9999){(*_weight) =9999.9999;}
+   if((*_weight) > 9999.9999){
+     len = sprintf((char*)(&array[0]),"--ol--");len+=1;
+   }
+   else{
    len = sprintf((char*)(&array[0]),"%.2f",(*_weight));
+   }
    break;
   case dp_0_000:
-   if((*_weight) > 999.9999){(*_weight) =999.9999;}
+   if((*_weight) > 999.9999){
+     len = sprintf((char*)(&array[0]),"--ol--");len+=1;
+   }
+   else{
    len = sprintf((char*)(&array[0]),"%.3f",(*_weight));
+   }
    break;
   case dp_0_0000:
-   if((*_weight) > 99.9999){(*_weight) =99.9999;}
-   len = sprintf((char*)(&array[0]),"%.4f",(*_weight));
+   if((*_weight) > 99.9999){
+     len = sprintf((char*)(&array[0]),"--ol--");len+=1;
+   }
+   else{
+    len = sprintf((char*)(&array[0]),"%.4f",(*_weight));}
    break;
  }
  for(int i=0;i<(7-len);i++){

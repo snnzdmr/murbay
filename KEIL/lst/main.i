@@ -4453,8 +4453,9 @@ typedef struct workVariable{
  _Bool unitButtonFlag;
  _Bool stableFlag;
  _Bool oneShotMeasure;
+ _Bool qytFlag;
 }workVariable;
-# 33 "../Inc/app.h"
+# 34 "../Inc/app.h"
 void ISR_timer();
 
 void APP_Init();
@@ -4465,7 +4466,7 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam);
 void APP_All_Point_High(uint8_t selScreen);
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
 _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
-void APP_ShowTotal(float _price,MENU_Params *p_MenuParam);
+void APP_ShowTotal(float _price,MENU_Params *p_MenuParam,AIP *p);
 void calculate_2gr(float *_weight,MENU_Params *p_MenuParam);
 void calculate_5gr(float *_weight,MENU_Params *p_MenuParam);
 void calculate_10gr(float *_weight,MENU_Params *p_MenuParam);
@@ -4473,6 +4474,9 @@ void calculate_10gr(float *_weight,MENU_Params *p_MenuParam);
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
 float _abs(float x);
+float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam);
+void tare(MENU_Params *p_MenuParam);
+void clearPriceScreen(AIP *p,MENU_Params *p_MenuParam);
 # 15 "../main.c" 2
 
 
