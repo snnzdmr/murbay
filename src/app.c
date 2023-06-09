@@ -288,6 +288,7 @@ void longPressHandler(char pressedKey,float _val,MENU_Params *p_MenuParam){
 						
 			p_MenuParam->decimalPoint = t_decPoint;
 			customValueInputFix('c',p_LcdObj_S2,p_MenuParam); 
+						ptrWorkVariable->oneShotMeasure =true;
 			break;
 		case 'u':
 			break;
@@ -301,6 +302,18 @@ void longPressHandler(char pressedKey,float _val,MENU_Params *p_MenuParam){
 			break;
 	}
 }
+float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
+	if(p_MenuParam->FixFloat == ff_float){
+		return customValueInput(pressedKey,p);
+	}
+	else if(p_MenuParam->FixFloat == ff_fix){
+		return customValueInputFix(pressedKey,p,p_MenuParam);
+	}
+	else{
+		return -1;
+	}
+}
+
 
 //#############################################################################################
 void APP_SettingsHandle(){
@@ -520,24 +533,13 @@ float customValueInput(char pressedKey,AIP *p){
 		return atof((const char *)tempArray);
 }
 
-float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
-	if(p_MenuParam->FixFloat == ff_float){
-		return customValueInput(pressedKey,p);
-	}
-	else if(p_MenuParam->FixFloat == ff_fix){
-		return customValueInputFix(pressedKey,p,p_MenuParam);
-	}
-	else{
-		return -1;
-	}
-}
-void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){	
+
+void APP_ShowTotal(float _price,MENU_Params *p_MenuParam){	
 	static float lastTotalPrices =0;
 	uint8_t array[10]="";
 	uint8_t buffer[7]="";
 	int len=0;
-	float totalPrices = 0;
-	totalPrices = _price * _wight;
+	float totalPrices = _price;
 	if(totalPrices == lastTotalPrices){
 		return;
 	}
@@ -572,12 +574,22 @@ void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){
 	p_LcdObj_S3->WriteString(0,0,(uint8_t *)buffer,&font_small,p_LcdObj_S3);
 	p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 }
+
+bool waitClearKey(char _chr){
+		int16_t pressedKey=0;
+		uint8_t longPres=0;
+		pressedKey = p_KeypadObj->Scan(&longPres);
+		if(pressedKey == _chr){
+			return true;
+		}
+		return false;
+}
 void APP_Handle(){
 	uint8_t ret = 0;
 	int16_t pressedKey=0;
 	uint8_t longPres=0;
 	float weight=0;
-	float total = 0;
+	float prices = 0;
 	ret = APP_StartScreen(&m_Param);
 	if(ret){ // settings handle
 		APP_SettingsHandle();
@@ -589,18 +601,19 @@ void APP_Handle(){
 	while(1){
 		APP_PointsHandle();
 		APP_Show_Weight(&weight,&m_Param);
-		APP_ShowTotal(total,weight,&m_Param);
+		APP_ShowTotal((prices*weight),&m_Param);
 		pressedKey = p_KeypadObj->Scan(&longPres);
 		if(pressedKey > -1 && longPres == 0){
-			total = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
+			prices = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
 			if(pressedKey == 'p'){
-				total = LoadPluHandler(&m_Param);
+				prices = LoadPluHandler(&m_Param);
 			}
+			
 		}
 		if(pressedKey > -1 && longPres == 1){
 			longPres=0;	
-			longPressHandler(pressedKey,total,&m_Param);
-			total=0;
+			longPressHandler(pressedKey,prices,&m_Param);
+			prices=0;
 		}
 	}	
 }
@@ -843,6 +856,104 @@ void APP_All_Point_High(uint8_t selScreen){
 //#############################################################################################
 //                                           MEAUSERE 
 //#############################################################################################
+float setMeasuereModelSelect(float *_weight,MENU_Params *p_MenuParam){
+	float fark;
+	switch(p_MenuParam->model){
+		case model_1:
+			switch(p_MenuParam->capacity ){
+				case c3kg: // 1 gram
+					fark = 0.001;
+					break;
+				case c6kg: // 2 gram
+					calculate_2gr(_weight,p_MenuParam);
+					fark = 0.002;
+					break;
+				case c15kg: // 5 gram
+					calculate_5gr(_weight,p_MenuParam);
+					fark = 0.005;
+					break;
+				case c30kg: // 10 gram
+					calculate_10gr(_weight,p_MenuParam);
+					fark = 0.010;
+					break;
+			}
+			break;
+		case model_2:
+			switch(p_MenuParam->capacity ){
+				case c3kg: // 1 gram
+					fark = 0.001;
+					break;
+				case c6kg: // 2 gram
+					if(*_weight<=3.000){
+						fark = 0.001;
+					}
+					else{
+						calculate_2gr(_weight,p_MenuParam);
+						fark = 0.002;
+					}
+					break;
+				case c15kg: // 5 gram
+					if(*_weight<=6.000){
+						calculate_2gr(_weight,p_MenuParam);
+						fark = 0.002;
+					}
+					else{
+						calculate_5gr(_weight,p_MenuParam);
+						fark = 0.005;
+					}
+					break;
+				case c30kg: // 10 gram
+					if(*_weight<=15.000){
+						calculate_5gr(_weight,p_MenuParam);
+						fark = 0.005;
+					}
+					else{
+						calculate_10gr(_weight,p_MenuParam);
+						fark = 0.010;
+					}
+					break;
+			}
+			break;
+		case model_3:
+			switch(p_MenuParam->capacity ){
+				case c3kg: // 1 gram
+					fark = 0.001;
+					break;
+				case c6kg: // 2 gram
+					fark = 0.001;
+					break;
+				case c15kg: // 5 gram
+					if(*_weight<=3.000){
+						fark = 0.001;
+					}
+					else if(*_weight<=6.000){
+						calculate_2gr(_weight,p_MenuParam);
+						fark = 0.002;
+					}
+					else{
+						calculate_5gr(_weight,p_MenuParam);
+						fark = 0.005;
+					}
+					break;
+				case c30kg: // 10 gram
+					if(*_weight<=6.000){
+						calculate_2gr(_weight,p_MenuParam);
+						fark = 0.002;
+					}
+					else if(*_weight<=15.000){
+						calculate_5gr(_weight,p_MenuParam);
+						fark = 0.005;
+					}
+					else{
+						calculate_10gr(_weight,p_MenuParam);
+						fark = 0.010;
+					}
+					break;
+			}
+			break;
+	}
+	return fark;
+}
 void calculate_2gr(float *_weight,MENU_Params *p_MenuParam){
 	uint64_t tempVal=0;
 	switch(p_MenuParam->decimalPoint){
@@ -1030,6 +1141,7 @@ void calculate_10gr(float *_weight,MENU_Params *p_MenuParam){
 
 bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
 	uint8_t x=0;
+	float fark =0;
 	static uint16_t counter =0;
 	static float lastWeight =0;
 	if(p_ScaleObj->available() == true){
@@ -1038,12 +1150,13 @@ bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
 	if(*_weight <= 0 && ptrWorkVariable->saveButtonFlag == false){
 		setPrice('c',p_LcdObj_S2,p_MenuParam);
 	}
-	calculate_5gr(_weight,p_MenuParam);
-	if(ptrWorkVariable->oneShotMeasure == true){
+		
+	fark = setMeasuereModelSelect(_weight,p_MenuParam);
+	if(ptrWorkVariable->oneShotMeasure == true){   // bu flag 1 olursa ekrana tekrar son olcumu basmaya zorlarsin. son iki ölçüm ayni olsada 
 		ptrWorkVariable->oneShotMeasure = false;
 		return false;
 	}
-	if(*_weight == lastWeight){
+	if(_abs((*_weight)-lastWeight) <= fark ){   // fark modlara göre belirlenen  gramdan kucuk esit mi 
 		counter++;
 		if(counter >(200*p_MenuParam->speed )  ){
 			ptrWorkVariable->stableFlag =true;
@@ -1113,7 +1226,14 @@ uint32_t _pow(uint32_t x,uint32_t y){
 	}
 	return retVal;
 }
-
+float _abs(float x){
+	if(x>=0){
+		return (x);
+	}
+	else{
+		return (-1*x);
+	}
+}
 
 	
 //#############################################################################################

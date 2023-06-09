@@ -19,9 +19,11 @@
 #define FAC_VAL_MULTITARE									mt_on
 #define FAC_VAL_ISN     									1234567
 #define FAC_VAL_GRAVITY 									9.789
-
-
-
+#define FAC_VAL_LIGHT 									  light_off
+#define FAC_VAL_MODEL 									  model_2
+#define FAC_VAL_RS232_BAUD 						 	  b_115200
+#define FAC_VAL_RS232_MODE 							  lp50
+#define FAC_VAL_RS232_PR 							    pr_8n1
 
 
 

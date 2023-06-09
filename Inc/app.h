@@ -40,10 +40,14 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam);
 void APP_All_Point_High(uint8_t selScreen);
 bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
 bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
-
+void APP_ShowTotal(float _price,MENU_Params *p_MenuParam);
+void calculate_2gr(float *_weight,MENU_Params *p_MenuParam);
+void calculate_5gr(float *_weight,MENU_Params *p_MenuParam);
+void calculate_10gr(float *_weight,MENU_Params *p_MenuParam);
  float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam);
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
+float _abs(float x);
 //#############################################################################################
 //                                           END
 //#############################################################################################

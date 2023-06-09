@@ -73,11 +73,45 @@ typedef enum LIGHT{
 }LIGHT;
 
 
+typedef enum MODEL{
+	model_1=0,
+	model_2,
+	model_3
+}MODEL;
+
+typedef enum RS232_MODE{
+	printer=0,
+	tpup,
+	lp50,
+	pos,
+	off,
+	cont,
+	stc,
+	toledo,
+	nciecr,
+	ncigen,
+	tec,
+	easy
+}RS232_MODE;
+
+typedef enum RS232_BAUD{
+	b_1200=0,
+	b_2400,
+	b_4800,
+	b_9600,
+	b_19200,
+	b_38400,
+	b_115200
+}RS232_BAUD;
+typedef enum RS232_PR{
+	pr_8n1 =0,
+	pr_7E1,
+	pr_7o1
+}RS232_PR;
 typedef struct RS232_Params{
-	uint32_t baudrate;
-	uint8_t parity;
-	uint8_t stop;
-	uint8_t word;
+	RS232_BAUD baudrate;
+	RS232_PR parity;
+	RS232_MODE mode;
 }RS232_Params;
 	
 typedef struct MENU_Params{
@@ -90,11 +124,12 @@ typedef struct MENU_Params{
 	uint8_t speed;
 	uint8_t minCoin;
 	uint8_t multiTare;
-	uint8_t light;
 	uint32_t isn;
 	float gravity;
 	uint8_t factoryReset;
 	RS232_Params rs232Param;
+	uint8_t light;
+	uint8_t model;
 }MENU_Params;
 
 MENU *newMenuObj();
@@ -165,5 +200,43 @@ void shw_f12b_on();
 void shw_f12c_off();
 void f12_Saved();
 
+void shw_model();
+void shw_f13a();
+void shw_f13b();
+void shw_f13c();
+void f13_Saved();
+
+void shw_f11a_mode();
+void shw_f11b_baud();
+void shw_f11c_pr();
+		
+void shw_f11a1printer();
+void shw_f11a2tpup();
+void shw_f11a3lp50();
+void shw_f11a4pos();
+void shw_f11a5off();
+void shw_f11a6cont();
+void shw_f11a7stc();
+void shw_f11a8toledo();
+void shw_f11a9nciecr();
+void shw_f11a10ncigen();
+void shw_f11a11tec();
+void shw_f11a12easy();
+		
+void shw_f11b1_1200();
+void shw_f11b2_2400();
+void shw_f11b3_4800();
+void shw_f11b4_9600();
+void shw_f11b5_19200();
+void shw_f11b6_38400();
+void shw_f11b7_115200();
+
+void shw_f11c1_8n1();
+void shw_f11c2_7e1();
+void shw_f11c3_701();
+	
+void f11a_mode_Saved();
+void f11b_baud_Saved();
+void f11c_pr_Saved();
 
 #endif

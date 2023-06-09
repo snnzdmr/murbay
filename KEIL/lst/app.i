@@ -4264,11 +4264,45 @@ typedef enum LIGHT{
 }LIGHT;
 
 
+typedef enum MODEL{
+ model_1=0,
+ model_2,
+ model_3
+}MODEL;
+
+typedef enum RS232_MODE{
+ printer=0,
+ tpup,
+ lp50,
+ pos,
+ off,
+ cont,
+ stc,
+ toledo,
+ nciecr,
+ ncigen,
+ tec,
+ easy
+}RS232_MODE;
+
+typedef enum RS232_BAUD{
+ b_1200=0,
+ b_2400,
+ b_4800,
+ b_9600,
+ b_19200,
+ b_38400,
+ b_115200
+}RS232_BAUD;
+typedef enum RS232_PR{
+ pr_8n1 =0,
+ pr_7E1,
+ pr_7o1
+}RS232_PR;
 typedef struct RS232_Params{
- uint32_t baudrate;
- uint8_t parity;
- uint8_t stop;
- uint8_t word;
+ RS232_BAUD baudrate;
+ RS232_PR parity;
+ RS232_MODE mode;
 }RS232_Params;
 
 typedef struct MENU_Params{
@@ -4281,11 +4315,12 @@ typedef struct MENU_Params{
  uint8_t speed;
  uint8_t minCoin;
  uint8_t multiTare;
- uint8_t light;
  uint32_t isn;
  float gravity;
  uint8_t factoryReset;
  RS232_Params rs232Param;
+ uint8_t light;
+ uint8_t model;
 }MENU_Params;
 
 MENU *newMenuObj();
@@ -4355,6 +4390,45 @@ void shw_f12a_auto();
 void shw_f12b_on();
 void shw_f12c_off();
 void f12_Saved();
+
+void shw_model();
+void shw_f13a();
+void shw_f13b();
+void shw_f13c();
+void f13_Saved();
+
+void shw_f11a_mode();
+void shw_f11b_baud();
+void shw_f11c_pr();
+
+void shw_f11a1printer();
+void shw_f11a2tpup();
+void shw_f11a3lp50();
+void shw_f11a4pos();
+void shw_f11a5off();
+void shw_f11a6cont();
+void shw_f11a7stc();
+void shw_f11a8toledo();
+void shw_f11a9nciecr();
+void shw_f11a10ncigen();
+void shw_f11a11tec();
+void shw_f11a12easy();
+
+void shw_f11b1_1200();
+void shw_f11b2_2400();
+void shw_f11b3_4800();
+void shw_f11b4_9600();
+void shw_f11b5_19200();
+void shw_f11b6_38400();
+void shw_f11b7_115200();
+
+void shw_f11c1_8n1();
+void shw_f11c2_7e1();
+void shw_f11c3_701();
+
+void f11a_mode_Saved();
+void f11b_baud_Saved();
+void f11c_pr_Saved();
 # 9 "..\\Inc/app.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdbool.h" 1 3
 # 10 "..\\Inc/app.h" 2
@@ -4382,10 +4456,14 @@ uint8_t APP_StartScreen(MENU_Params *p_MenuParam);
 void APP_All_Point_High(uint8_t selScreen);
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam);
 _Bool APP_Show_Weight(float *_weight,MENU_Params *p_MenuParam);
-
+void APP_ShowTotal(float _price,MENU_Params *p_MenuParam);
+void calculate_2gr(float *_weight,MENU_Params *p_MenuParam);
+void calculate_5gr(float *_weight,MENU_Params *p_MenuParam);
+void calculate_10gr(float *_weight,MENU_Params *p_MenuParam);
  float customValueInputFix(char pressedKey,AIP *p,MENU_Params *p_MenuParam);
 float customValueInput(char pressedKey,AIP *p);
 uint32_t _pow(uint32_t x,uint32_t y);
+float _abs(float x);
 # 2 "../src/app.c" 2
 # 1 "..\\Inc/keypad.h" 1
 # 37 "..\\Inc/keypad.h"
@@ -4858,7 +4936,7 @@ extern __attribute__((__nothrow__)) int __C_library_version_number(void);
 # 1 "../periph_conf.h" 1
 # 13 "..\\scale_v2.h" 2
 # 5 "..\\Inc/eeproom.h" 2
-# 33 "..\\Inc/eeproom.h"
+# 35 "..\\Inc/eeproom.h"
 void eeprom_write_array(uint32_t _address,uint32_t _array[],uint8_t _len);
 _Bool eeprom_read_array(uint32_t _address,uint32_t _buffer[],uint8_t lngth);
 void writeFlashMemoryInformation(MENU_Params *p_MenuParam);
@@ -5154,6 +5232,7 @@ void longPressHandler(char pressedKey,float _val,MENU_Params *p_MenuParam){
 
    p_MenuParam->decimalPoint = t_decPoint;
    customValueInputFix('c',p_LcdObj_S2,p_MenuParam);
+      ptrWorkVariable->oneShotMeasure =1;
    break;
   case 'u':
    break;
@@ -5167,6 +5246,18 @@ void longPressHandler(char pressedKey,float _val,MENU_Params *p_MenuParam){
    break;
  }
 }
+float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
+ if(p_MenuParam->FixFloat == ff_float){
+  return customValueInput(pressedKey,p);
+ }
+ else if(p_MenuParam->FixFloat == ff_fix){
+  return customValueInputFix(pressedKey,p,p_MenuParam);
+ }
+ else{
+  return -1;
+ }
+}
+
 
 
 void APP_SettingsHandle(){
@@ -5386,24 +5477,13 @@ float customValueInput(char pressedKey,AIP *p){
   return atof((const char *)tempArray);
 }
 
-float setPrice(char pressedKey,AIP *p,MENU_Params *p_MenuParam){
- if(p_MenuParam->FixFloat == ff_float){
-  return customValueInput(pressedKey,p);
- }
- else if(p_MenuParam->FixFloat == ff_fix){
-  return customValueInputFix(pressedKey,p,p_MenuParam);
- }
- else{
-  return -1;
- }
-}
-void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){
+
+void APP_ShowTotal(float _price,MENU_Params *p_MenuParam){
  static float lastTotalPrices =0;
  uint8_t array[10]="";
  uint8_t buffer[7]="";
  int len=0;
- float totalPrices = 0;
- totalPrices = _price * _wight;
+ float totalPrices = _price;
  if(totalPrices == lastTotalPrices){
   return;
  }
@@ -5438,12 +5518,22 @@ void APP_ShowTotal(float _price,float _wight,MENU_Params *p_MenuParam){
  p_LcdObj_S3->WriteString(0,0,(uint8_t *)buffer,&font_small,p_LcdObj_S3);
  p_LcdObj_S3->UpdateScreen(p_LcdObj_S3);
 }
+
+_Bool waitClearKey(char _chr){
+  int16_t pressedKey=0;
+  uint8_t longPres=0;
+  pressedKey = p_KeypadObj->Scan(&longPres);
+  if(pressedKey == _chr){
+   return 1;
+  }
+  return 0;
+}
 void APP_Handle(){
  uint8_t ret = 0;
  int16_t pressedKey=0;
  uint8_t longPres=0;
  float weight=0;
- float total = 0;
+ float prices = 0;
  ret = APP_StartScreen(&m_Param);
  if(ret){
   APP_SettingsHandle();
@@ -5455,18 +5545,19 @@ void APP_Handle(){
  while(1){
   APP_PointsHandle();
   APP_Show_Weight(&weight,&m_Param);
-  APP_ShowTotal(total,weight,&m_Param);
+  APP_ShowTotal((prices*weight),&m_Param);
   pressedKey = p_KeypadObj->Scan(&longPres);
   if(pressedKey > -1 && longPres == 0){
-   total = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
+   prices = setPrice((char)pressedKey,p_LcdObj_S2,&m_Param);
    if(pressedKey == 'p'){
-    total = LoadPluHandler(&m_Param);
+    prices = LoadPluHandler(&m_Param);
    }
+
   }
   if(pressedKey > -1 && longPres == 1){
    longPres=0;
-   longPressHandler(pressedKey,total,&m_Param);
-   total=0;
+   longPressHandler(pressedKey,prices,&m_Param);
+   prices=0;
   }
  }
 }
@@ -5709,6 +5800,104 @@ void APP_All_Point_High(uint8_t selScreen){
 
 
 
+float setMeasuereModelSelect(float *_weight,MENU_Params *p_MenuParam){
+ float fark;
+ switch(p_MenuParam->model){
+  case model_1:
+   switch(p_MenuParam->capacity ){
+    case c3kg:
+     fark = 0.001;
+     break;
+    case c6kg:
+     calculate_2gr(_weight,p_MenuParam);
+     fark = 0.002;
+     break;
+    case c15kg:
+     calculate_5gr(_weight,p_MenuParam);
+     fark = 0.005;
+     break;
+    case c30kg:
+     calculate_10gr(_weight,p_MenuParam);
+     fark = 0.010;
+     break;
+   }
+   break;
+  case model_2:
+   switch(p_MenuParam->capacity ){
+    case c3kg:
+     fark = 0.001;
+     break;
+    case c6kg:
+     if(*_weight<=3.000){
+      fark = 0.001;
+     }
+     else{
+      calculate_2gr(_weight,p_MenuParam);
+      fark = 0.002;
+     }
+     break;
+    case c15kg:
+     if(*_weight<=6.000){
+      calculate_2gr(_weight,p_MenuParam);
+      fark = 0.002;
+     }
+     else{
+      calculate_5gr(_weight,p_MenuParam);
+      fark = 0.005;
+     }
+     break;
+    case c30kg:
+     if(*_weight<=15.000){
+      calculate_5gr(_weight,p_MenuParam);
+      fark = 0.005;
+     }
+     else{
+      calculate_10gr(_weight,p_MenuParam);
+      fark = 0.010;
+     }
+     break;
+   }
+   break;
+  case model_3:
+   switch(p_MenuParam->capacity ){
+    case c3kg:
+     fark = 0.001;
+     break;
+    case c6kg:
+     fark = 0.001;
+     break;
+    case c15kg:
+     if(*_weight<=3.000){
+      fark = 0.001;
+     }
+     else if(*_weight<=6.000){
+      calculate_2gr(_weight,p_MenuParam);
+      fark = 0.002;
+     }
+     else{
+      calculate_5gr(_weight,p_MenuParam);
+      fark = 0.005;
+     }
+     break;
+    case c30kg:
+     if(*_weight<=6.000){
+      calculate_2gr(_weight,p_MenuParam);
+      fark = 0.002;
+     }
+     else if(*_weight<=15.000){
+      calculate_5gr(_weight,p_MenuParam);
+      fark = 0.005;
+     }
+     else{
+      calculate_10gr(_weight,p_MenuParam);
+      fark = 0.010;
+     }
+     break;
+   }
+   break;
+ }
+ return fark;
+}
 void calculate_2gr(float *_weight,MENU_Params *p_MenuParam){
  uint64_t tempVal=0;
  switch(p_MenuParam->decimalPoint){
@@ -5896,6 +6085,7 @@ void calculate_10gr(float *_weight,MENU_Params *p_MenuParam){
 
 _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
  uint8_t x=0;
+ float fark =0;
  static uint16_t counter =0;
  static float lastWeight =0;
  if(p_ScaleObj->available() == 1){
@@ -5904,12 +6094,13 @@ _Bool APP_GetMeasure(float *_weight,MENU_Params *p_MenuParam){
  if(*_weight <= 0 && ptrWorkVariable->saveButtonFlag == 0){
   setPrice('c',p_LcdObj_S2,p_MenuParam);
  }
- calculate_5gr(_weight,p_MenuParam);
+
+ fark = setMeasuereModelSelect(_weight,p_MenuParam);
  if(ptrWorkVariable->oneShotMeasure == 1){
   ptrWorkVariable->oneShotMeasure = 0;
   return 0;
  }
- if(*_weight == lastWeight){
+ if(_abs((*_weight)-lastWeight) <= fark ){
   counter++;
   if(counter >(200*p_MenuParam->speed ) ){
    ptrWorkVariable->stableFlag =1;
@@ -5978,4 +6169,12 @@ uint32_t _pow(uint32_t x,uint32_t y){
   retVal *= x;
  }
  return retVal;
+}
+float _abs(float x){
+ if(x>=0){
+  return (x);
+ }
+ else{
+  return (-1*x);
+ }
 }

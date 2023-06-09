@@ -75,6 +75,11 @@ void writeFlashMemoryInformation(MENU_Params *p_MenuParam){
 	_buffer[9]  = p_MenuParam->calibrationFactor;
 	_buffer[10] =	p_MenuParam->ZeroOffset;
 	
+	_buffer[11] =	p_MenuParam->light;
+	_buffer[12] =	p_MenuParam->model;
+	_buffer[13] =	p_MenuParam->rs232Param.baudrate;
+	_buffer[14] =	p_MenuParam->rs232Param.mode;
+	_buffer[15] =	p_MenuParam->rs232Param.parity;
   eeprom_write_array((uint32_t)EEPROM_ADDRESS_START,&_buffer[0],SAVE_EEPROOM_COMPANENT_SIZE);
 }
 void readFlashMemoryInformation(MENU_Params *p_MenuParam){
@@ -91,6 +96,11 @@ void readFlashMemoryInformation(MENU_Params *p_MenuParam){
 		p_MenuParam->gravity           = _buffer[8];
 		p_MenuParam->calibrationFactor = _buffer[9];
 		p_MenuParam->ZeroOffset        = _buffer[10];
+		p_MenuParam->light             = _buffer[11];
+		p_MenuParam->model             = _buffer[12];
+		p_MenuParam->rs232Param.baudrate             = _buffer[13];
+		p_MenuParam->rs232Param.mode                 = _buffer[14];
+		p_MenuParam->rs232Param.parity               = _buffer[15];
 		
 	}
 	else{
@@ -109,6 +119,12 @@ void InitFactorySetting(MENU_Params *p_MenuParam){
 		p_MenuParam->gravity           = FAC_VAL_GRAVITY;
 		p_MenuParam->calibrationFactor = FAC_VAL_CAL_FAC;
 		p_MenuParam->ZeroOffset        = FAC_VAL_ZERO_OFSET;
+		p_MenuParam->light             = FAC_VAL_LIGHT;
+		p_MenuParam->model             = FAC_VAL_MODEL;
+		p_MenuParam->rs232Param.baudrate             = FAC_VAL_RS232_BAUD;
+		p_MenuParam->rs232Param.mode                 = FAC_VAL_RS232_MODE;
+		p_MenuParam->rs232Param.parity               = FAC_VAL_RS232_PR;
+	
 	
 		writeFlashMemoryInformation(p_MenuParam);
 }
